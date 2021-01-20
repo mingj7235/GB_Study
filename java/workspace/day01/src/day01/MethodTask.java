@@ -5,8 +5,17 @@ import java.util.Scanner;
 public class MethodTask {
 	
 	//1~n까지의 합을 println()으로 출력하는 메소드
-	
+	/**
+	 * 
+	 * @param n
+	 * @throws ArithmeticException
+	 */
 	public void sum (int n) {
+		if (n < 1) {
+			throw new ArithmeticException();
+			//예외 발생시키기
+		}
+		
 		int result = 0;
 		for (int i = 0; i < n; i++) {
 			result += (i+1);
@@ -17,29 +26,36 @@ public class MethodTask {
 	
 	//나눗셈을 구해주는 메소드
 	
-	public String divide (double num1, double num2) {
-		
-		if (num2 != 0) {
-			return (num1 / num2)+ "";
-		} else {
-			return "0으로 나눌 수 없습니다. ";
-		}
-		
+	/**
+	 * 
+	 * @param num1
+	 * @param num2
+	 * @return
+	 * @throws ArithmeticException
+	 */
+	public double divide (double num1, double num2) {
+		return num1/ num2;
 	}
 	
 	public static void main(String[] args) {
-		
 		MethodTask mt = new MethodTask();
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("숫자를 입력해주세요");
 		int n = sc.nextInt();
+		try {
+			mt.sum(n);
+		} catch (ArithmeticException e) {
+			System.out.println("1보다 큰 수를 입력해주세요");
+		}
 		
-		mt.sum(n);
 		
 		System.out.println("정수를 두개 입력해주세요 ");
-		int num1 = sc.nextInt();
-		int num2 = sc. nextInt();
-		System.out.println(mt.divide(num1, num2));
+		try {
+			mt.divide(10, 20);
+		} catch (ArithmeticException e) {
+			System.out.println("0으로 나눌 수없습니다. ");
+		}
 		
 	}
 }
