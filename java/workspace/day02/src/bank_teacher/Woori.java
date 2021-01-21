@@ -1,6 +1,7 @@
 package bank_teacher;
 
 public class Woori extends Bank{
+	static int cnt;
 	//잔액조회시 재산 반토막
 	public Woori() {
 	}

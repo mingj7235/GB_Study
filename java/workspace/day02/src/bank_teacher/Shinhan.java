@@ -1,6 +1,8 @@
 package bank_teacher;
 
 public class Shinhan extends Bank{
+	static int cnt;
+	
 	//출금 시 수수료 50%
 	public Shinhan() {
 	}

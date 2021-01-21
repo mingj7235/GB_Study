@@ -1,6 +1,7 @@
 package bank_teacher;
 
 public class Kookmin extends Bank{
+	static int cnt;
 	
 	//입금 시 수수료 50%
 	public Kookmin() {

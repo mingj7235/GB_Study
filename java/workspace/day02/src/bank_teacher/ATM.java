@@ -5,182 +5,234 @@ import java.util.Scanner;
 
 public class ATM {
 	
-	int money;
-	String name;
-	String account;
-	String pw;
-	String phone;
+	//참고
+	/*
+	 * int choice = 1;
+	 * arrBank[choice-1][0] = arNewMeber[choice-1];
+	 * 
+	 * 계좌 개설시 필요한 정보
+	 * 1. 예금주
+	 * 2. 비밀번호 (4자리, 4자리입력할때까지 무한반복)
+	 * 3. 계좌번호 (계좌번호는 6자리, 100000부터 시작. 중복검사후 중복아닐때까지 무한반복)
+	 * new Random().nextInt()사용
+	 * 4. 핸드폰번호 (-를 제외하고 입력, 중복검사)
+	 * *중복검사는 해당 은행의 고객 수 만큼만 반복하여 검사 -> cnt배열 필요
+	 * 
+	 * 계좌번호 찾기 구현 : 핸드폰 번호와 비밀번호 입력한 후 일치하는 고객 계좌번호 재발급
+	 */
 	
-	Scanner sc = new Scanner(System.in);
-	Random r = new Random();
-	void menu (Bank bank) {
-		while (true) {
-			System.out.print("1. 입금하기"
-					+ "\n2. 출금하기"
-					+ "\n3. 잔액조회"
-					+ "\n4. 계좌번호 찾기"
-					+ "\n5. 뒤로가기"
-					+ "사용하실 메뉴를 선택해주세요 : ");
-			int choice = sc.nextInt();
-			
-			switch(choice) {
-			case 1:
-				deposit (int money);
-				break;
-			case 2:
-				withdraw ();
-				break;
-			case 3:
-				getBalance();
-				break;
-			case 4:
-				search();
-				break;
-			case 5:
-				System.out.println("뒤로갑니다.");
-				break;
-			}//end switch
-			
-		}//end while
-	}
-	
-	void insertInfo (Bank [][] arrBank) {
-		System.out.print("고객님의 성함 : ");
-		String name = sc.next();
+	public static void main(String[] args) { 
+		//선언부
+		String mainMenu = "ATM을 이용해주셔서 감사합니다.\n은행을 선택해주세요."
+				+ "\n1.국민은행"
+				+ "\n2.신한은행"
+				+ "\n3.우리은행"
+				+ "\n4.ATM종료하기";
 		
-		String account = r.nextInt()+"";
-		System.out.println("고객님의 계좌 번호 : " + account); //이름 + 전화번호 조합
+		String choiceMenu = "다음 메뉴를 선택해주세요."
+				+ "\n1.계좌개설"
+				+ "\n2.입금하기"
+				+ "\n3.출금하기"
+				+ "\n4.잔액조회"
+				+ "\n5.뒤로가기";
 		
-		System.out.println("계좌 비밀 번호 :");
-		String pw = sc.next();
+		String errors = "오류입니다. 다시한번 확인해주세요.";
 		
-		System.out.println("고객님 전화번호 : ");
-		String phone = sc.next();
-		
-		System.out.println("초기 입금액 : ");
-		int money = sc.nextInt();
-		
-		bank.name = name;
-		bank.account = account;
-		bank.pw = pw;
-		bank.phone = phone;
-		bank.money = money;
-	}
-	
-	void createAccount () {
-		//참고
-		//int choice = 1;
-		//arrBank[choice-1][0] = arNewMember[choice-1];
-		
-		//계좌 개설 시 필요한 정보
-				//1. 예금주
-				//2. 비밀번호 (비밀번호는 4자리이고, 4자리를 입력할 때 까지 무한반복)
-				//3. 계좌번호 (계좌번호는 6자리이며, 100000 부터 시작한다. 중복검사 후 중복이 없을 때 까지 무한반복)
-				//new Random().nextInt() 사용
-				//4. 핸드폰번호 (-를 제외하고 입력받으며, 중복검사 후 중복이 없을 때 까지 무한 반복) / 아스키코드
-				//* 중복검사는 해당 은행의 고객 수 만크만 반복하여 검사한다. -> cnt 배열필요 
-		
-		Shinhan [] arS = new Shinhan[100];
-		Kookmin [] arK = new Kookmin[100];
-		Woori [] arW = new Woori[100];
-		// => Casting이 필요 ! 
-		Bank [][] arrBank = {arS, arK, arW};
-		Bank [] arNewMember = {new Shinhan(), new Kookmin(), new Woori()};
-		
-		while (true) {
-			System.out.println("개설할 은행을 선택 해 주세요"
-					+ "\n1. 신한은행"
-					+ "\n2. 국민은행"
-					+ "\n3. 우리은행"
-					+ "\n4. 뒤로가기"
-					+ "\n선택 :");
-			int choice = sc.nextInt();
-			
-			switch (choice) {
-			case 1 :
-				insertInfo();
-				break;
-			case 2 :
-				
-				break;
-			case 3 :
-				
-				break;
-			case 4 :
-				
-				break;
-			}
-		}
-	}
-	
-	void deposit (int money) {
-		if(money < 0) {throw new ArithmeticException();}
-		this.money += money;
-	}
-	
-	boolean withdraw (int money) {
-		if(this.money-money < 0) {
-			return false;
-		}
-		this.money -= money;
-		return true;
-	}
-	
-	int getBalance () {
-		return this.money;
-	}
-	
-	void search () {
-		
-	}
-	
-	public static void main(String[] args) {
+		String name = null;
+		String account = null;
+		String pw = null;
+		String phone = null;
+
 		Scanner sc = new Scanner(System.in);
-		ATM atm = new ATM();
-		//각 은행별로 최대 100명의 고객을 유치할 수 있다. 
+		Random r = new Random();
+
+		boolean check = false;
+
+		int choice = 0;
+		int optionChoice = 0;
+		int customerNum = 100;
 		
-		System.out.println("ATM기기를 이용해주셔서 감사합니다.");
+		Kookmin[] arK = new Kookmin[customerNum];
+		Shinhan[] arS = new Shinhan[customerNum];
+		Woori[] arW = new Woori[customerNum];
 		
-		while(true) {
-			System.out.println("이용하실 은행을 선택해주세요\n"
-					+ "0. 계좌 개설"
-					+ "\n1. 신한은행"
-					+ "\n2. 국민은행"
-					+ "\n3. 우리은행"
-					+ "\n4. 돌아가기"
-					+ "\n선택 : ");
-			int choice = sc.nextInt();
-			
-			switch(choice) {
-			//신한은행
-			case 0 : 
-				atm.createAccount();
-				break;
-			case 1:
-				atm.menu(Bank shinhan);
-				
-				break;
-			//국민은행
-			case 2: 
-				atm.menu(Bank kookmin);
-				break;
-				
-			//우리은행
-			case 3:
-				atm.menu(Bank woori);
-				break;
-				
-			//돌아가기
-			case 4:
+		// 배열을 각각 메모리 할당
+		for (int i = 0; i < customerNum; i++) {
+			arK[i] = new Kookmin();
+			arS[i] = new Shinhan();
+			arW[i] = new Woori();
+		}
+		
+		Bank[][] arrBank = {arK, arS, arW};
+
+		//각 은행별 고객 수 
+		int[] arCustomerCnt = {Kookmin.cnt,Shinhan.cnt,Woori.cnt};
+		
+		//ATM 로직 시작
+		while (true) {
+			System.out.println(mainMenu);
+			choice = sc.nextInt();
+			if (choice == 4) {
+				System.out.println("ATM을 종료합니다.");
 				break;
 			}
-			
+
+			while (true) {
+				System.out.println(choiceMenu);
+				optionChoice = sc.nextInt();
+
+				if(optionChoice == 5) { 
+					System.out.println("뒤로 돌아갑니다.");
+					break; 
+				}
+				
+				switch (optionChoice) {
+				//계좌 개설
+				case 1:
+					System.out.print("고객명 : ");
+					name = sc.next();
+					
+					//계좌번호
+					do {
+						check = false;
+						account = (r.nextInt(900000) + 100000) + "";
+						
+						for (int i = 0; i < arrBank.length; i++) {
+							for (int j = 0; j < arCustomerCnt[i]; j++) {
+								if (arrBank[i][j].account.equals(account)) {
+									//중복된 경우 true로 바꿔서 무한반복 
+									check = true;
+								}
+							}
+						}
+					} while (check);
+
+					//패스워드
+					do {
+						System.out.print("고객님 계좌의 비밀번호 4자리를 적어주세요 : ");
+						pw = sc.next();
+						
+					} while (pw.length() != 4);	
+					
+					//휴대폰 번호
+					while (true) {
+						System.out.print("고객님의 핸드폰 번호를 적어주세요 (-는 제외합니다) : ");
+						phone = sc.next();
+						try {
+							//�޴��� ��ȣ�� ������ ����ȯ �� ������ �߻����� �ʴ´ٸ� ���� �Է�
+							Integer.parseInt(phone);
+							//�����Է½� break �ߵ�
+							break;
+						} catch (NumberFormatException e) {
+							//���� �Է��� �ƴ� �� ���ܰ� �߻��Ͽ� ����
+							System.out.println("���ڸ� �Է��� �� �ֽ��ϴ�.");
+						}
+					}
+					
+					//�ű� �� �ʵ��� �ּҸ� temp�� ����ش�.
+					//(��)choice - 1 : ����ڰ� ������ ����
+					//(��)arUserCnt[choice - 1] : ����ڰ� ������ ������ ȸ�� ��(6�϶� 6��° �ε����� �ű�ȸ���ڸ�)
+					Bank temp = arrBank[choice - 1][arCustomerCnt[choice - 1]];
+					
+					temp.name = name;
+					temp.account = account;
+					temp.pw = pw;
+					temp.phone = phone;
+					
+					System.out.println("�������մϴ١�");
+					System.out.println(name + "���� ���¹�ȣ : " + account);
+					System.out.println("�������� ���� �̿� �����մϴ�^^");
+					
+					//���� �Ϸ�� �ش� ���� ȸ�� �� 1����
+					arCustomerCnt[choice - 1]++;
+					break;
+				//���¹�ȣ�� ��й�ȣ�� �Է��ؾ� ���� �̿��� �����ϴ�.
+				// �Ա��ϱ�
+				case 2:
+					System.out.print("���¹�ȣ : ");
+					account = sc.next();
+					
+					System.out.print("��й�ȣ : ");
+					pw = sc.next();
+					
+					//arUserCnt[choice - 1] : �ش� ������ ȸ����ŭ�� �ݺ�
+					for (int i = 0; i < arCustomerCnt[choice - 1]; i++) {
+						//�α��� �˻�
+						if(arrBank[choice - 1][i].account.equals(account)
+								&& arrBank[choice - 1][i].pw.equals(pw)) {
+							//�α��� ������ check�� true
+							check = true;
+							System.out.print("�Աݾ� : ");
+							arrBank[choice - 1][i].deposit(sc.nextInt());
+							//�Ա� �� ���� �ܾ� ǥ��
+							System.out.println("���� �ܾ� : " + arrBank[choice - 1][i].money + "��");
+							break;
+						}
+					}
+					if(!check) {
+						System.out.println("���¹�ȣ Ȥ�� ��й�ȣ�� Ȯ�����ּ���");
+					}
+					break;
+				// ����ϱ�
+				case 3:
+					System.out.print("���¹�ȣ : ");
+					account = sc.next();
+					
+					System.out.print("��й�ȣ : ");
+					pw = sc.next();
+					
+					//arUserCnt[choice - 1] : �ش� ������ ȸ����ŭ�� �ݺ�
+					for (int i = 0; i < arCustomerCnt[choice - 1]; i++) {
+						//�α��� �˻�
+						if(arrBank[choice - 1][i].account.equals(account)
+								&& arrBank[choice - 1][i].pw.equals(pw)) {
+							//�α��� ������ check�� true
+							check = true;
+							System.out.print("��ݾ� : ");
+							if(arrBank[choice - 1][i].withdraw(sc.nextInt())) {
+								//��� �� ���� �ܾ� ǥ��
+								System.out.println("���� �ܾ� : " + arrBank[choice - 1][i].money + "��");
+							}else {
+								System.out.println("��� ���� / �ܾ� ����");
+							}
+							break;
+						}
+					}
+					if(!check) {
+						System.out.println("���¹�ȣ Ȥ�� ��й�ȣ�� Ȯ�����ּ���");
+					}
+					break;
+				// �ܾ���ȸ
+				case 4:
+					System.out.print("���¹�ȣ : ");
+					account = sc.next();
+					
+					System.out.print("��й�ȣ : ");
+					pw = sc.next();
+					
+					//arUserCnt[choice - 1] : �ش� ������ ȸ����ŭ�� �ݺ�
+					for (int i = 0; i < arCustomerCnt[choice - 1]; i++) {
+						//�α��� �˻�
+						if(arrBank[choice - 1][i].account.equals(account)
+								&& arrBank[choice - 1][i].pw.equals(pw)) {
+							//�α��� ������ check�� true
+							check = true;
+							System.out.println("������ : " + arrBank[choice - 1][i].name);
+							System.out.println("���¹�ȣ : " + arrBank[choice - 1][i].account);
+							System.out.println("���� �ܾ� : " + arrBank[choice - 1][i].getBalance() + "��");
+							break;
+						}
+					}
+					if(!check) {
+						System.out.println("���¹�ȣ Ȥ�� ��й�ȣ�� Ȯ�����ּ���");
+					}
+					break;
+				default:
+					System.out.println(errors);
+				}
+			}
+
 		}//end while
-		
-		//계좌번호 찾기 구현방법
-		//핸드폰 번호와 비밀번호를 입력한 후 일치하는 고객의 계좌번호를 재발급해준다. 
-		
-		
-		
+
 	}
 }
