@@ -13,15 +13,48 @@ public class Road {
 	
 	public static void main(String[] args) {
 		
-		SuperCar ferrari = new SuperCar();
-		//자식생성자는 항상 본인이 메모리에 올라가기전에
-		//부모생성자부터 올리게 된다. 
-		ferrari.brand = "FERRARI";
-		ferrari.color = "RED";
-		ferrari.price = 30000;
+		//[casting]
 		
-		ferrari.engineStart();
-		ferrari.engineStop();
+		Car matiz = new Car();
+		SuperCar ferrrai = new SuperCar();
+		
+		//up casting
+		
+		Car noOptionFerrari = new SuperCar(); 
+		
+		//down casting
+		
+//		SuperCar brokenFerrari = (SuperCar) new Car(); //이건 불가능하다!! 캐스팅 오류!!!
+		// 이런실수 많이한다. 
+		
+		//down casting
+		//다운캐스팅은 업케스팅한것을 복원하는 것이다!
+		SuperCar fullOptionFerrari = (SuperCar) noOptionFerrari;
+//		fullOptionFerrari.openRoof();
+		
+		System.out.println(matiz instanceof Car);
+		System.out.println(matiz instanceof SuperCar);
+		System.out.println(ferrrai instanceof Car);
+		System.out.println(ferrrai instanceof SuperCar);
+		
+		System.out.println(noOptionFerrari instanceof Car);
+		System.out.println(noOptionFerrari instanceof SuperCar);
+		
+		System.out.println(fullOptionFerrari instanceof Car);
+		System.out.println(fullOptionFerrari instanceof SuperCar);
+				
+		
+		
+		
+//		SuperCar ferrari = new SuperCar();
+//		//자식생성자는 항상 본인이 메모리에 올라가기전에
+//		//부모생성자부터 올리게 된다. 
+//		ferrari.brand = "FERRARI";
+//		ferrari.color = "RED";
+//		ferrari.price = 30000;
+//		
+//		ferrari.engineStart();
+//		ferrari.engineStop();
 		
 //		Car myCar = new Car("벤틀리", "white", 30000);
 //		Car dadyCar = new Car("벤츠", "black",15000);
