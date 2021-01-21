@@ -12,9 +12,36 @@ public class Road {
 	
 	
 	public static void main(String[] args) {
-		Car myCar = new Car("벤틀리", "white", 30000);
-		Car dadyCar = new Car("벤츠", "black",15000);
-		Car momCar = new Car("yellow", 50000);
+		
+		SuperCar ferrari = new SuperCar();
+		//자식생성자는 항상 본인이 메모리에 올라가기전에
+		//부모생성자부터 올리게 된다. 
+		ferrari.brand = "FERRARI";
+		ferrari.color = "RED";
+		ferrari.price = 30000;
+		
+		ferrari.engineStart();
+		ferrari.engineStop();
+		
+//		Car myCar = new Car("벤틀리", "white", 30000);
+//		Car dadyCar = new Car("벤츠", "black",15000);
+//		Car momCar = new Car("yellow", 50000);
 		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

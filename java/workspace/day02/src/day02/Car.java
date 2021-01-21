@@ -26,9 +26,9 @@ public class Car {
 	}
 
 	void engineStart() {
-		System.out.println("시동킴");
+		System.out.println("열쇠로 시동킴");
 	}
 	void engineStop() {
-		System.out.println("시동끔");
+		System.out.println("열쇠로 시동끔");
 	}
 }
