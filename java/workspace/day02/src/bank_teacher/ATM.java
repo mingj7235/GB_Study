@@ -41,7 +41,6 @@ public class ATM {
 				break;
 			}//end switch
 			
-			
 		}//end while
 	}
 	
@@ -81,14 +80,12 @@ public class ATM {
 				//4. 핸드폰번호 (-를 제외하고 입력받으며, 중복검사 후 중복이 없을 때 까지 무한 반복) / 아스키코드
 				//* 중복검사는 해당 은행의 고객 수 만크만 반복하여 검사한다. -> cnt 배열필요 
 		
-		
 		Shinhan [] arS = new Shinhan[100];
 		Kookmin [] arK = new Kookmin[100];
 		Woori [] arW = new Woori[100];
 		// => Casting이 필요 ! 
 		Bank [][] arrBank = {arS, arK, arW};
 		Bank [] arNewMember = {new Shinhan(), new Kookmin(), new Woori()};
-		
 		
 		while (true) {
 			System.out.println("개설할 은행을 선택 해 주세요"
@@ -159,14 +156,18 @@ public class ATM {
 			case 0 : 
 				atm.createAccount();
 				break;
-			case 1: 
+			case 1:
+				atm.menu(Bank shinhan);
+				
 				break;
 			//국민은행
 			case 2: 
+				atm.menu(Bank kookmin);
 				break;
 				
 			//우리은행
 			case 3:
+				atm.menu(Bank woori);
 				break;
 				
 			//돌아가기
