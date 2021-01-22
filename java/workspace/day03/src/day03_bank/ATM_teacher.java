@@ -56,6 +56,11 @@ public class ATM_teacher {
 
 	         if (bank_choice == 4) {
 	            break;
+	            //은행이 늘어나면 은행 개수도 늘어나고, 은행 메뉴도 늘어난다. 
+	            //개발자가 직접 코드를 수정하지 ㅇ낳고
+	            //arMembercount.lenth를 통해 컴파일러가 연산하도록 개발한다. 
+	         }else if (bank_choice < 1 || bank_choice > arMemberCount.length) {
+	        	 continue;
 	         }
 
 	         while (true) {
