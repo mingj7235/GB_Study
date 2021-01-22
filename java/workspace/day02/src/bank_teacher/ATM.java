@@ -49,13 +49,15 @@ public class ATM {
 
 		int bankChoice = 0;
 		int optionChoice = 0;
+		
+		// 배열을 각각 메모리 할당
+		
 		int customerNum = 100;
 		
 		Kookmin[] arK = new Kookmin[customerNum];
 		Shinhan[] arS = new Shinhan[customerNum];
 		Woori[] arW = new Woori[customerNum];
 		
-		// 배열을 각각 메모리 할당
 		for (int i = 0; i < customerNum; i++) {
 			arK[i] = new Kookmin();
 			arS[i] = new Shinhan();
