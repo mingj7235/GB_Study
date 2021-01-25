@@ -1,16 +1,12 @@
 package day04;
 
-import java.util.Scanner;
-
 public class Road {
-	Scanner sc = new Scanner(System.in);
-	String choice = sc.next();
 	
 	public static void main(String[] args) {
 		
 		Starbucks kangnam = new Starbucks();
 		System.out.println("<<<강남매장>>>");
-		kangnam.register(new Cafe_adapter() {
+		kangnam.register(new Cafe() {
 			
 			@Override
 			public void sell(String menu) throws Exception {
@@ -42,18 +38,10 @@ public class Road {
 		jamsil.register(new Cafe_adapter() {
 			
 			@Override
-			public int[] getPrice() {
-				int [] arPrice = {0,0};
-				return arPrice;
-			}
-			
-			@Override
 			public String[] getMenu() {
 				String [] arMenu = {"딸기주스", "오렌지주스"};
 				return arMenu;
 			}
 		});
-		
-		
 	}
 }
