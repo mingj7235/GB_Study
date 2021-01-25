@@ -9,7 +9,7 @@ public class Starbucks {
 	int [] arPrice;
 	
 	
-	public void register(Cafe c) {
+	public void register(Cafe_adapter c) {
 		arMenu = c.getMenu();
 		arPrice = c.getPrice();
 		System.out.println("=======»Æ¿Œ¡ﬂ========");

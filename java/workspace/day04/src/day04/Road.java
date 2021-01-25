@@ -9,7 +9,8 @@ public class Road {
 	public static void main(String[] args) {
 		
 		Starbucks kangnam = new Starbucks();
-		kangnam.register(new Cafe() {
+		System.out.println("<<<강남매장>>>");
+		kangnam.register(new Cafe_adapter() {
 			
 			@Override
 			public void sell(String menu) throws Exception {
@@ -35,6 +36,24 @@ public class Road {
 				return arMenu;
 			}
 		});
+		
+		Starbucks jamsil = new Starbucks();
+		System.out.println("<<<잠실매장>>>");
+		jamsil.register(new Cafe_adapter() {
+			
+			@Override
+			public int[] getPrice() {
+				int [] arPrice = {0,0};
+				return arPrice;
+			}
+			
+			@Override
+			public String[] getMenu() {
+				String [] arMenu = {"딸기주스", "오렌지주스"};
+				return arMenu;
+			}
+		});
+		
 		
 	}
 }
