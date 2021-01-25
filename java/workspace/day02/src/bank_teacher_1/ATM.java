@@ -1,4 +1,4 @@
-package bank_teacher;
+package bank_teacher_1;
 
 import java.util.Random;
 import java.util.Scanner;

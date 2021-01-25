@@ -1,4 +1,4 @@
-package bank_teacher;
+package bank_teacher_1;
 
 public class Kookmin extends Bank{
 	static int cnt;
