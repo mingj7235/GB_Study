@@ -3,41 +3,41 @@ package day04;
 import java.util.Random;
 
 public class Starbucks {
-	//½Å±Ô ¸ÅÀåÀÇ ¸Þ´ºÆÇ
+	//ì‹ ê·œ ë§¤ìž¥ì˜ ë©”ë‰´íŒ
 	String [] arMenu;
 	
-	//½Å±Ô ¸ÅÀåÀÇ °¡°ÝÇ¥
+	//ì‹ ê·œ ë§¤ìž¥ì˜ ê°€ê²©í‘œ
 	int [] arPrice;
 	
-	//½Å±Ô ¸ÅÀå µî·ÏÇÏ±â 
-	//Cafe´Â ÀÎÅÍÆäÀÌ½º ÀÌ±â ¶§¹®¿¡ ¿ÜºÎ¿¡¼­ °ªÀ» Àü´Þ ¹ÞÀ¸·Á¸é
-	//¸ðµç Ãß»ó¸Þ¼Òµå°¡ ±¸ÇöÀÌ µÇ¾î¾ß ÇÑ´Ù.
-	//ÀÌ¸¦ ÀÌ¿ëÇÏ¿©, ½Å±Ô ¸ÅÀåÀÌ¶ó¸é ¹Ýµå½Ã Cafe¿¡ ¼±¾ðµÈ ±â´ÉµéÀ» ±¸ÇöÇØ¾ß ÇÑ´Ù. 
-	//¿ÜºÎ¿¡¼­ ±â´ÉÀÌ ¸ðµÎ ±¸ÇöµÈ ÇÊµåÀÇ ÁÖ¼Ò°ªÀÌ c°´Ã¼·Î Àü´ÞµÇ¹Ç·Î, ÇØ´ç ÇÊµå¿¡ Á¢±ÙÇÏ¿©
-	//±¸ÇöµÈ ¸Þ¼Òµå¸¦ »ç¿ëÇØÁØ´Ù. 
+	//ì‹ ê·œ ë§¤ìž¥ ë“±ë¡í•˜ê¸° 
+	//CafeëŠ” ì¸í„°íŽ˜ì´ìŠ¤ ì´ê¸° ë•Œë¬¸ì— ì™¸ë¶€ì—ì„œ ê°’ì„ ì „ë‹¬ ë°›ìœ¼ë ¤ë©´
+	//ëª¨ë“  ì¶”ìƒë©”ì†Œë“œê°€ êµ¬í˜„ì´ ë˜ì–´ì•¼ í•œë‹¤.
+	//ì´ë¥¼ ì´ìš©í•˜ì—¬, ì‹ ê·œ ë§¤ìž¥ì´ë¼ë©´ ë°˜ë“œì‹œ Cafeì— ì„ ì–¸ëœ ê¸°ëŠ¥ë“¤ì„ êµ¬í˜„í•´ì•¼ í•œë‹¤. 
+	//ì™¸ë¶€ì—ì„œ ê¸°ëŠ¥ì´ ëª¨ë‘ êµ¬í˜„ëœ í•„ë“œì˜ ì£¼ì†Œê°’ì´ cê°ì²´ë¡œ ì „ë‹¬ë˜ë¯€ë¡œ, í•´ë‹¹ í•„ë“œì— ì ‘ê·¼í•˜ì—¬
+	//êµ¬í˜„ëœ ë©”ì†Œë“œë¥¼ ì‚¬ìš©í•´ì¤€ë‹¤. 
 	public void register(Cafe c) {
 		arMenu = c.getMenu();
 		arPrice = c.getPrice();
 		
-		//¸¸¾à °¡°Ý ºÎºÐÀ» ±¸ÇöÇÏÁö ¾ÊÀº ¸ÅÀåÀÌ¶ó¸é ¹«·á ³ª´® ¸ÅÀå 
+		//ë§Œì•½ ê°€ê²© ë¶€ë¶„ì„ êµ¬í˜„í•˜ì§€ ì•Šì€ ë§¤ìž¥ì´ë¼ë©´ ë¬´ë£Œ ë‚˜ëˆ” ë§¤ìž¥ 
 		if(arPrice == null) {
-			System.out.println("¹«·á ³ª´® È®ÀÎ ¿Ï·á");
+			System.out.println("ë¬´ë£Œ ë‚˜ëˆ” í™•ì¸ ì™„ë£Œ");
 			return;
 		}
 		
-		System.out.println("=======È®ÀÎÁß========");
+		System.out.println("=======í™•ì¸ì¤‘========");
 		for (int i = 0; i < arMenu.length; i++) {
-			System.out.println(arMenu[i] + " : " + arPrice[i]+"¿ø");
+			System.out.println(arMenu[i] + " : " + arPrice[i]+"ì›");
 			
 		}
-		System.out.println("¸Þ´º/°¡°Ý ÀÌ»ó ¾øÀ½");
+		System.out.println("ë©”ë‰´/ê°€ê²© ì´ìƒ ì—†ìŒ");
 		try {
 			c.sell(arMenu[new Random().nextInt(arMenu.length)]);
-			System.out.println("ÆÇ¸Å ¹æ½Ä ÀÌ»ó ¾øÀ½");
+			System.out.println("íŒë§¤ ë°©ì‹ ì´ìƒ ì—†ìŒ");
 		} catch (Exception e) {
-			System.out.println("µî·Ï ½ÇÆÐ. º»»ç¿¡ ¹®ÀÇÇØÁÖ¼¼¿ä");
+			System.out.println("ë“±ë¡ ì‹¤íŒ¨. ë³¸ì‚¬ì— ë¬¸ì˜í•´ì£¼ì„¸ìš”");
 			return;
 		}
-		System.out.println("Á¤»ó µî·Ï µÇ¾ú½À´Ï´Ù. ");
+		System.out.println("ì •ìƒ ë“±ë¡ ë˜ì—ˆìŠµë‹ˆë‹¤. ");
 	}
 }

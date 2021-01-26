@@ -5,7 +5,7 @@ public class Road {
 	public static void main(String[] args) {
 		
 		Starbucks kangnam = new Starbucks();
-		System.out.println("<<<°­³²¸ÅÀå>>>");
+		System.out.println("<<<ê°•ë‚¨ë§¤ì¥>>>");
 		kangnam.register(new Cafe() {
 			
 			@Override
@@ -28,20 +28,21 @@ public class Road {
 			
 			@Override
 			public String[] getMenu() {
-				String [] arMenu = {"¾Æ¸Ş¸®Ä«³ë", "Ä«Æä¶ó¶¼", "Äİ¶ó"};
+				String [] arMenu = {"ì•„ë©”ë¦¬ì¹´ë…¸", "ì¹´í˜ë¼ë–¼", "ì½œë¼"};
 				return arMenu;
 			}
 		});
 		
 		Starbucks jamsil = new Starbucks();
-		System.out.println("<<<Àá½Ç¸ÅÀå>>>");
+		System.out.println("<<<ì ì‹¤ë§¤ì¥>>>");
 		jamsil.register(new Cafe_adapter() {
 			
 			@Override
 			public String[] getMenu() {
-				String [] arMenu = {"µş±âÁÖ½º", "¿À·»ÁöÁÖ½º"};
+				String [] arMenu = {"ë”¸ê¸°ì£¼ìŠ¤", "ì˜¤ë Œì§€ì£¼ìŠ¤"};
 				return arMenu;
 			}
 		});
 	}
 }
+

@@ -1,13 +1,13 @@
 package day04;
 
-//»ç¿ëÀÚ°¡ ¾î¶² ±â´ÉÀ» ±¸ÇöÇÒ Áö ¾Ë ¼ö ¾øÀ¸¹Ç·Î
-//¹Ýµå½Ã ±¸ÇöÇØ¾ß ÇÏ´Â Æ²¸¸ ¼±¾ðÇÏ¿© Á¦°øÇØÁØ´Ù.(°­Á¦¼º ºÎ¿©)
+//ì‚¬ìš©ìžê°€ ì–´ë–¤ ê¸°ëŠ¥ì„ êµ¬í˜„í•  ì§€ ì•Œ ìˆ˜ ì—†ìœ¼ë¯€ë¡œ
+//ë°˜ë“œì‹œ êµ¬í˜„í•´ì•¼ í•˜ëŠ” í‹€ë§Œ ì„ ì–¸í•˜ì—¬ ì œê³µí•´ì¤€ë‹¤.(ê°•ì œì„± ë¶€ì—¬)
 
 public interface Cafe {
-	//¸Þ´º
+	//ë©”ë‰´
 	String [] getMenu ();
-	//°¡°Ý
+	//ê°€ê²©
 	int [] getPrice();
-	//ÆÇ¸Å¹æ½Ä
+	//íŒë§¤ë°©ì‹
 	void sell (String menu) throws Exception;
 }
