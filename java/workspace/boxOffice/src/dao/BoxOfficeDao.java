@@ -5,6 +5,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+
+import javax.swing.Box;
 
 import vo.BoxOfficeVo;
 
@@ -153,40 +156,162 @@ public class BoxOfficeDao {
 	}
 	
 	//수정 (영화제목만 수정가능)
+//	public boolean update (String filmName, String newFilmName) throws IOException{
+//		//메모장에서 한 줄씩 가져온 후 수정할 영화 제목을 비교하여 검사한다.
+//		
+//		BufferedReader br = DBConnecter.getReader();
+//		String temp = "";
+//		boolean check = false;
+//		
+//		if (br == null) {return false;}
+//		
+//		while ((temp = br.readLine())!= null) {
+//			if(temp.split("\t")[1].equals(filmName)) {
+//				temp.split("\t")[1] = newFilmName;
+//				check = true;
+//			}
+//		}
+//		return check;
+//	}
 	public boolean update (String filmName, String newFilmName) throws IOException{
-		
 		//메모장에서 한 줄씩 가져온 후 수정할 영화 제목을 비교하여 검사한다.
-		
+	
 		BufferedReader br = DBConnecter.getReader();
-		String temp = "";
+		if(br == null) {return false;}
+		String temp= "";
+		String line = null;
+		
+		//수정 완료 여부 FLAG
 		boolean check = false;
 		
-		if (br == null) {return false;}
-		
-		while ((temp = br.readLine())!= null) {
-			if(temp.split("\t")[1].equals("filmname")) {
-				temp.split("\t")[1] = newFilmName;
+		while ((line = br.readLine())!= null) {
+			if(line.split("\t")[1].equals(filmName)) {
+				
+				//순위\t제목\t정보......
+				//substring은 문자 하나하나가 인덱스임 그래서 +1 해주면 \t이후 제목이나온다! 
+				
+				//indexOf는 첫번째 \t의 인덱스를 알려준다. 
+				//1) 그렇기때문에 stub는 첫번째 \t 이후 부터 가져온다. 이것을
+				String stub = line.substring(line.indexOf("\t")+1);
+//				//일치하는 영화제목이 있다면 새로운 영화제목으로 변경한다. 
+				
+				temp += line.split("\t")[0] + "\t"
+						+newFilmName 
+						//2) stub여기서 한번 더 indexOf로 잘라준다. "\t" 가 이제 원본에서는 2번째거다. 
+						+stub.substring(stub.indexOf("\t")) + "\n";
+				//수정되면 원본은 날려야하므로 continue
 				check = true;
+				continue;
+				
 			}
+			temp += line + "\n";
 		}
-		
-		return check;
-		
-		
-		
-		
-		
-		//일치하는 영화제목이 있다면 새로운 영화제목으로 변경한다. 
-		//수정이 되었다면 덮어쓴 후 true 리턴
-		
-		
+		br.close();
+//		//수정이 되었다면 덮어쓴 후 true 리턴
+		if(check) {
+			BufferedWriter bw = DBConnecter.getWriter();
+			bw.write(temp);
+			bw.close();
+			return true;
+		}
 		return false;
 	}
-	
 	//삭제
 	
+	public boolean delete (String filmName) throws IOException{
+		
+		BufferedReader br = DBConnecter.getReader();
+		if(br == null) {return false;}
+		
+		String line = null;
+		String temp = "";
+		int ranking = 0;
+		boolean check = false;
+		
+		while ((line = br.readLine())!= null) {
+			ranking ++;
+			if(line.split("\t")[1].equals(filmName)) {
+				ranking --;
+				check = true;
+				continue;
+			}
+			//ranking은 위에서 새로 하니까! 제외하고 붙여야한다.
+			//3을 삭제한다고하면 continue가 붙어서 4가 다시 3이 ranking이 되어서 붙는다. 
+			temp += ranking + line.substring(line.indexOf("\t")) + "\n";
+		}
+		
+		br.close();
+		
+		if(check) {
+			BufferedWriter bw = DBConnecter.getWriter();
+			bw.write(temp);
+			bw.close();
+			return true;
+		}
+		return false;
+	}
 	//검색
 	
+	public ArrayList<BoxOfficeVo> select (String keyword) throws IOException {
+		BufferedReader br = DBConnecter.getReader();
+		ArrayList<BoxOfficeVo> filmList = new ArrayList<>();
+		if(br == null) {return null;}
+		
+		String line = null;
+		
+		
+		while((line = br.readLine()) != null) {
+			String [] arTemp = line.split("\t");
+			if(arTemp[1].contains(keyword)) {
+				BoxOfficeVo film = new BoxOfficeVo();
+				film.setRanking(Integer.parseInt(arTemp[0]));
+				film.setFilmName(arTemp[1]);
+				film.setReleaseDate(arTemp[2]);
+				film.setIncome(Long.parseLong(arTemp[3]));
+				film.setGuestCnt(Integer.parseInt(arTemp[4]));
+				film.setScreenCnt(Integer.parseInt(arTemp[5]));
+				
+				filmList.add(film);
+			}
+		}
+		br.close();
+		return filmList;
+	}
+	
 	//목록
-
+	public ArrayList<BoxOfficeVo> selectAll () throws IOException {
+		BufferedReader br = DBConnecter.getReader();
+		ArrayList<BoxOfficeVo> filmList = new ArrayList<>();
+		if(br == null) {return null;}
+		String line = null;
+		while((line = br.readLine()) != null) {
+			String [] arTemp = line.split("\t");
+			BoxOfficeVo film = new BoxOfficeVo();
+			
+			film.setRanking(Integer.parseInt(arTemp[0]));
+			film.setFilmName(arTemp[1]);
+			film.setReleaseDate(arTemp[2]);
+			film.setIncome(Long.parseLong(arTemp[3]));
+			film.setGuestCnt(Integer.parseInt(arTemp[4]));
+			film.setScreenCnt(Integer.parseInt(arTemp[5]));
+			
+			filmList.add(film);
+		
+		}
+		br.close();
+		return filmList;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
