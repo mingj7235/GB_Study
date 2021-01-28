@@ -71,10 +71,17 @@ public class BoxOfficeDao {
 	private boolean insert(BoxOfficeVo film) throws IOException {
 		if(film == null) {return false;}
 		
+		//전달받은 삽입할 랭킹을 newRanking에 담아준다. 
 		int newRanking = film.getRanking(); //삽입은 랭킹이 전달되었다고 가정하고 구현하는 것임.
+		
+		
 		BufferedReader br = DBConnecter.getReader();
+		if(br == null) {return false;}
+		
 		String line = null;
 		String temp = "";
+		
+		//삽입 여부 FLAG
 		boolean check = false;
 		
 		while ( (line = br.readLine()) != null ) {
@@ -83,6 +90,8 @@ public class BoxOfficeDao {
 			//삽입할 순위를 기존 데이터와 비교
 			//각각의 모든 영화의 순위를 불러와서 new Ranking과 비교
 			if (Integer.parseInt(line.split("\t")[0]) == newRanking) {
+				//현재 순위와 삽입할 순위가 일치하면
+				//기존 정보 이전에 새로운 삽입할 정보를 temp에 넣어준다. 
 				temp += film.getRanking() + "\t"
 					+ film.getFilmName() + "\t"
 					+ film.getReleaseDate() +"\t"
@@ -91,10 +100,16 @@ public class BoxOfficeDao {
 					+ film.getScreenCnt() + "\n";
 				//이걸 film의 toString을 재정의해서 가져오면 temp += film으로 할수있음. (나중에할것)
 				
+				//삽입전과 후를 구분하기 위한것임!!! 
 				check = true;
+				//삽입 완료
+				
 			}
 			if (check) {
 				//삽입 후 나머지 랭킹에 모두 +1을 하여 수정해준다. 
+				
+				//line.subString(line.indexOf("\t") : 순위를 제외한 나머지 정보
+				//반복을 돌면서 기존 newRanking들이 계속 들어와서 1씩 늘어나면서 temp에 저장이되는 것이다. 
 				temp += ++newRanking + line.substring(line.indexOf("\t")) + "\n"; //readline은 줄바꿈을 안가져오므로 "\n"해야함
 			}else { //삽입이 안된경우
 				//삽입 전에는 순위를 그대로 유지해야 한다. 
@@ -110,24 +125,63 @@ public class BoxOfficeDao {
 		return true;
 	}
 	
-	
-	
-	
-	
 	//INSERT
 	//추가와 삽입을 메소드 하나에 넣기 -> 랭킹을 전달하느냐 않느냐를 기준으로 메소드를 구분  
 	public boolean insertOrAppend(BoxOfficeVo film) throws IOException{
 		//랭킹 유무 판단
 		if(film.getRanking() == 0) {
 			//추가 
+			if (append(film)) {
+				return true;
+			} 
 		}else {
 			//삽입
+			//전달받은 랭킹이 마지막 순위보다 클 때 (오류)
+			String contents = new String (Files.readAllBytes(Paths.get(DBConnecter.getPath())));
+			
+			//영화가 500개면 arTemp의 length는 500.
+			String[] arTemp = contents.split("\n");
+
+			// 오류인 경우를 따지는 것임 
+			//arTemp[arTemp.length-1].split("\t")[0] < 요건는
+			if(Integer.parseInt(arTemp[arTemp.length-1].split("\t")[0]) < film.getRanking()) {return false;} //추가가실패!
+			
+			if (insert(film)) {return true;}
 		}
 		
 		return false;
 	}
 	
-	//수정
+	//수정 (영화제목만 수정가능)
+	public boolean update (String filmName, String newFilmName) throws IOException{
+		
+		//메모장에서 한 줄씩 가져온 후 수정할 영화 제목을 비교하여 검사한다.
+		
+		BufferedReader br = DBConnecter.getReader();
+		String temp = "";
+		boolean check = false;
+		
+		if (br == null) {return false;}
+		
+		while ((temp = br.readLine())!= null) {
+			if(temp.split("\t")[1].equals("filmname")) {
+				temp.split("\t")[1] = newFilmName;
+				check = true;
+			}
+		}
+		
+		return check;
+		
+		
+		
+		
+		
+		//일치하는 영화제목이 있다면 새로운 영화제목으로 변경한다. 
+		//수정이 되었다면 덮어쓴 후 true 리턴
+		
+		
+		return false;
+	}
 	
 	//삭제
 	
