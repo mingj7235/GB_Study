@@ -126,6 +126,44 @@ public class BoxOfficeDao {
 		
 	}
 	
+	public boolean update (String filmName, String newFilmName) throws IOException {
+		
+		BufferedReader br = DBConnection.getReader();
+		if (br == null) {return false;}
+		
+		String line = null;
+		String temp = "";
+		boolean check = false;
+		while ((line = br.readLine()) != null) {
+			if(line.split("\t")[1].equals(filmName)) {
+				
+				//"\t"를 한 것에 1을 증가시킨 인덱스번호는 영화 제목 이후의 부분을 가져오는 것이다.
+				//즉 stub는 영화제목을 포함하지않은 그 다음의 정보들을 가져오게된다. 
+				String stub = line.substring(line.indexOf("\t")+1);
+				
+				temp += line.split("\t")[0] + "\t"
+						+ newFilmName
+						+ stub.substring(stub.indexOf("\t")) +"\n";
+				check = true;
+				continue;
+			}
+			temp += line + "\n";
+		}
+		
+		br.close();
+		
+		if(true) {
+			BufferedWriter bw = DBConnection.getWriter();
+			bw.write(temp);
+			bw.close();
+			return true;
+		}
+		
+		
+		return false;
+		
+		
+	}
 	
 }
  
