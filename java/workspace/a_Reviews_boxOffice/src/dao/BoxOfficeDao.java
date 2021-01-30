@@ -43,16 +43,54 @@ public class BoxOfficeDao {
 		bw.write(temp);
 		bw.close();
 		
-		return false;
+		return true;
 		
 	}
 	
 	private boolean insert (BoxOfficeVo film) throws IOException {
 		
+		if (film == null) {return false;}
+		
+		//이미 랭킹을 전달받은 것임. 
+		int newRanking = film.getRanking();
+		
+		BufferedReader br = DBConnection.getReader();
+		if( br == null) {return false;}
+		
+		String line = null;
+		String temp = "";
+		//newRanking이 어디에 삽입될건지 찾는 것임. 이제 여기에 걸리면 그 이전은 다 랭킹을 +1 시켜야함
+		boolean check = false;
+		
+		//한줄씩 이걸 가지고 올것이고, 
+		while ( (line = br.readLine()) != null) {
+			if (Integer.parseInt(line.split("\t")[0]) == newRanking) {
+				temp += film.getRanking() + "\t"
+						+ film.getFilmName() + "\t"
+						+ film.getReleaseDate() +"\t"
+						+ film.getIncome() + "\t"
+						+ film.getWatchCnt() + "\t"
+						+ film.getScreenCnt() + "\n";
+				check = true;
+			}
+			
+			if (check) {
+				temp += ++newRanking + line.substring(line.indexOf("\t")) + "\n";
+			}else {
+				temp += line +"\n";
+			}
+		}
+		
+		br.close();
+		
+		BufferedWriter bw = DBConnection.getWriter();
+		bw.write(temp);
+		bw.close();
+		
+		
+		return true;
 		
 	}
-	
-	
 	
 	public void insertAndAppend() {
 		
