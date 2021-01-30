@@ -63,6 +63,8 @@ public class BoxOfficeDao {
 		boolean check = false;
 		
 		//한줄씩 이걸 가지고 올것이고, 
+		//line = br.readLine()은 한줄씩 가져오고, 여기에 새로받은 랭킹과 기존의 랭킹을 비교
+		//그다음 boolean으로 check를해서 플래그를 세운다움에 밑에서 비교
 		while ( (line = br.readLine()) != null) {
 			if (Integer.parseInt(line.split("\t")[0]) == newRanking) {
 				temp += film.getRanking() + "\t"
@@ -74,6 +76,8 @@ public class BoxOfficeDao {
 				check = true;
 			}
 			
+			//반복을 돌면서 계속 중복된 랭킹들이 생기게 되고 그이후로는 newRanking에 
+			//1씩 계속 등가해서 들어가게된다. 
 			if (check) {
 				temp += ++newRanking + line.substring(line.indexOf("\t")) + "\n";
 			}else {
@@ -92,7 +96,33 @@ public class BoxOfficeDao {
 		
 	}
 	
-	public void insertAndAppend() {
+	// 랭킹을 전달 하느냐 않느냐를 기준으로 구분한다. ..?
+	public boolean insertAndAppend(BoxOfficeVo film) throws IOException{
+		
+		//전달받은 랭킹이 없는 경우. 즉 밑에 바로 추가되는 경우
+		if(film.getRanking() == 0) {
+			if(append (film)) {
+				return true;
+			}
+		}else {
+			//랭킹을 전달받은 경우 -> 삽입
+			
+			String contents = new String (Files.readAllBytes(Paths.get(DBConnection.getPath())));
+			
+			//배열의 각 요소들은 한줄. 즉 영화의 컨텐츠들이다. \n을 기준으로 잘랐기 때문이다.
+			//arTemp 배열은 각각의 영화의 내용이담긴것임
+			String [] arTemp = contents.split("\n");
+			
+			//랭킹이 최대값보다 더 큰 경우의 오류를 잡기위해 랭킹을 비교해준다.
+			if(Integer.parseInt(arTemp[arTemp.length-1].split("\t")[0]) 
+					< film.getRanking() ) {
+				return false;
+			}
+			if (insert(film)) {return true;}
+			
+		}
+		
+		return false;
 		
 	}
 	
