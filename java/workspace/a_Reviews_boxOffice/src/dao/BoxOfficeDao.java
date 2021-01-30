@@ -165,5 +165,41 @@ public class BoxOfficeDao {
 		
 	}
 	
+	public boolean delete (String filmName) throws IOException {
+		
+		BufferedReader br = DBConnection.getReader();
+		if( br == null) {return false;}
+		
+		String line = null;
+		String temp ="";
+		int ranking = 0;
+		boolean check = false;
+		
+		while ((line = br.readLine()) != null) {
+			//일단 랭킹을 밑에서 재조립할것임. 그니까 0부터시작하고 하나씩 증가시켜준다. 
+			ranking ++;
+			if(line.split("\t")[1].equals(filmName)) {
+				ranking --;
+				check = true;
+				continue;
+			}
+			temp += ranking 
+					+line.substring(line.indexOf("\t")) + "\n";
+			
+		}
+		br.close();
+		
+		//재조립된것이 여기로 온것임
+		if(check) {
+			BufferedWriter bw = DBConnection.getWriter();
+			bw.write(temp);
+			bw.close();
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
 }
  

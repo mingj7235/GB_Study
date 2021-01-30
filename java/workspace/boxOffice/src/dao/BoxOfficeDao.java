@@ -147,7 +147,8 @@ public class BoxOfficeDao {
 
 			// 오류인 경우를 따지는 것임 
 			//arTemp[arTemp.length-1].split("\t")[0] < 요건는
-			if(Integer.parseInt(arTemp[arTemp.length-1].split("\t")[0]) < film.getRanking()) {return false;} //추가가실패!
+			if(Integer.parseInt(arTemp[arTemp.length-1].split("\t")[0]) 
+					< film.getRanking()) {return false;} //추가가실패!
 			
 			if (insert(film)) {return true;}
 		}
