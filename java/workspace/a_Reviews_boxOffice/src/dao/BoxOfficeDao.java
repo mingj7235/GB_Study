@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import vo.BoxOfficeVo;
 
@@ -199,7 +200,34 @@ public class BoxOfficeDao {
 		return false;
 	}
 	
+	public ArrayList<BoxOfficeVo> select (String keyword) throws IOException {
+		
+		BufferedReader br = DBConnection.getReader();
+		ArrayList<BoxOfficeVo> filmList =new ArrayList<>();
+		String line = null;
+		
+		if (br == null) {return null;}
+		
+		while ((line = br.readLine()) != null) {
+			String [] arTemp = line.split("\t");
+			if (arTemp[1].equals(keyword)) {
+				BoxOfficeVo film = new BoxOfficeVo();
+				film.setRanking(Integer.parseInt(arTemp[0]));
+				film.setFilmName(arTemp[1]);
+				film.setReleaseDate(arTemp[2]);
+				film.setIncome(Long.parseLong(arTemp[3]));
+				film.setWatchCnt(Integer.parseInt(arTemp[4]));
+				film.setScreenCnt(Integer.parseInt(arTemp[5]));
+				filmList.add(film);
+			}
+		}
+		
+		
+		br.close();
+		
+		return filmList;
+	}
+	
 	
 	
 }
- 
