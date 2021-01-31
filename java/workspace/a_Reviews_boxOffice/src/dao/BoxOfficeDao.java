@@ -159,11 +159,7 @@ public class BoxOfficeDao {
 			bw.close();
 			return true;
 		}
-		
-		
-		return false;
-		
-		
+		return check;
 	}
 	
 	public boolean delete (String filmName) throws IOException {
