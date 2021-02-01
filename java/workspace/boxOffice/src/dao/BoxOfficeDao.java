@@ -77,7 +77,6 @@ public class BoxOfficeDao {
 		//전달받은 삽입할 랭킹을 newRanking에 담아준다. 
 		int newRanking = film.getRanking(); //삽입은 랭킹이 전달되었다고 가정하고 구현하는 것임.
 		
-		
 		BufferedReader br = DBConnecter.getReader();
 		if(br == null) {return false;}
 		
@@ -92,7 +91,7 @@ public class BoxOfficeDao {
 			
 			//삽입할 순위를 기존 데이터와 비교
 			//각각의 모든 영화의 순위를 불러와서 new Ranking과 비교
-			if (Integer.parseInt(line.split("\t")[0]) == newRanking) {
+			if (Integer.parseInt(line.split("\t")[0]) == film.getRanking()) {
 				//현재 순위와 삽입할 순위가 일치하면
 				//기존 정보 이전에 새로운 삽입할 정보를 temp에 넣어준다. 
 				temp += film.getRanking() + "\t"
@@ -268,9 +267,9 @@ public class BoxOfficeDao {
 				film.setRanking(Integer.parseInt(arTemp[0]));
 				film.setFilmName(arTemp[1]);
 				film.setReleaseDate(arTemp[2]);
-				film.setIncome(Long.parseLong(arTemp[3]));
-				film.setGuestCnt(Integer.parseInt(arTemp[4]));
-				film.setScreenCnt(Integer.parseInt(arTemp[5]));
+				film.setIncome(changeToLong(arTemp[3]));
+				film.setGuestCnt(changeToInteger(removeS(arTemp[4])));
+				film.setScreenCnt(changeToInteger(removeS(arTemp[5])));
 				
 				filmList.add(film);
 			}
@@ -292,9 +291,9 @@ public class BoxOfficeDao {
 			film.setRanking(Integer.parseInt(arTemp[0]));
 			film.setFilmName(arTemp[1]);
 			film.setReleaseDate(arTemp[2]);
-			film.setIncome(Long.parseLong(arTemp[3]));
-			film.setGuestCnt(Integer.parseInt(arTemp[4]));
-			film.setScreenCnt(Integer.parseInt(arTemp[5]));
+			film.setIncome(changeToLong(arTemp[3]));
+			film.setGuestCnt(changeToInteger(removeS(arTemp[4])));
+			film.setScreenCnt(changeToInteger(removeS(arTemp[5])));
 			
 			filmList.add(film);
 		
@@ -302,6 +301,39 @@ public class BoxOfficeDao {
 		br.close();
 		return filmList;
 	}
+	
+	
+	public int changeToInteger (String includedComma) {
+		String [] arTemp = includedComma.split(",");
+		String result = "";
+		for (int i = 0; i < arTemp.length; i++) {
+			result += arTemp[i];
+		}
+		if(includedComma.equals("")) {
+			result = "0";
+		}
+		return Integer.parseInt(result);
+	}
+	
+	public long changeToLong (String includedComma) {
+		String [] arTemp = includedComma.split(",");
+		String result = "";
+		for (int i = 0; i < arTemp.length; i++) {
+			result += arTemp[i];
+		}
+		if(includedComma.equals("")) {
+			result = "0";
+		}
+		return Long.parseLong(result);
+	}
+	
+	public String removeS (String screenCnt) {
+		if(screenCnt.contains("S")) {
+			screenCnt = screenCnt.substring(screenCnt.indexOf("S")+2);
+		}
+		return screenCnt;
+	}
+	
 }
 
 
