@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import vo.USER_TBL_VO;
 
@@ -240,17 +241,241 @@ public class USER_TBL_DAO {
 		
 	}
 	
+	//목록 (회원 전체목록 가져오기)
+	
+//	public ArrayList<USER_TBL_VO> selectAll () {
+//		ArrayList<USER_TBL_VO> users = null;
+//		String query = "SELECT * FROM USER_TBL";
+//		try {
+//			conn = DBConnecter.getConnection();
+//			pstm = conn.prepareStatement(query);
+//			rs = pstm.executeQuery();
+//			
+//			while (rs.next()) {
+//				users = new ArrayList<>();
+//				users.add(
+//			}
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		
+//		return users;
+//	}
+	
+	public ArrayList<USER_TBL_VO> selectAll() {
+		String query = "SELECT * FROM USER_TBL";
+		ArrayList<USER_TBL_VO> userList = new ArrayList<>();
+		try {
+			conn = DBConnecter.getConnection();
+			pstm = conn.prepareStatement(query);
+			
+			rs = pstm.executeQuery();
+			
+			while (rs.next()) {
+				USER_TBL_VO user = new USER_TBL_VO();
+				user.setId(rs.getString("ID"));
+				user.setPw(rs.getString("PW"));
+				user.setName(rs.getString("NAME"));
+				user.setAge(rs.getInt("AGE"));
+				user.setPhonenumber(rs.getString("PHONENUMBER"));
+				userList.add(user);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("selectAll() 쿼리문 오류");
+		} catch (Exception e) {
+			System.out.println("selectAll() 알 수 없는 오류");
+		} finally { //외부저장소를 열었으니까 이제 마지막으로 닫아줘야한다. 닫을때는 역순으로 닫아줘야한다. conn -> pstm -> rs로 열었으니 닫을때는 반대
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstm != null) {
+					pstm.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				//닫는곳에서 오류나면 심각한 일이일어날수있으므로 강제종료를 시켜줘야한다.
+				//그러므로 이렇게 오류를 던져줘야한다. 
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return userList;
+	}
 	
 	
-	//수정 (비밀번호 변경)
+	
 	
 	//삭제 (회원 탈퇴)
 	
-	//목록 (회원 전체목록 가져오기)
+	public boolean delete (String pw) {//아이디를 session에 스테틱으로 저장해놨으므로 pw만 받으면된다.
+		String query = "DELETE FROM USER_TBL WHERE ID = ? AND PW = ?";
+		boolean check = false;
+		try {
+			conn = DBConnecter.getConnection();
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, session_id);
+			pstm.setString(2, encrypt(pw));
+			if(pstm.executeUpdate() ==1) {
+				check = true;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("delete() 쿼리문 오류");
+		} catch (Exception e) {
+			System.out.println("delete() 알 수 없는 오류");
+		} finally { //외부저장소를 열었으니까 이제 마지막으로 닫아줘야한다. 닫을때는 역순으로 닫아줘야한다. conn -> pstm -> rs로 열었으니 닫을때는 반대
+			try {
+				if(pstm != null) {
+					pstm.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				//닫는곳에서 오류나면 심각한 일이일어날수있으므로 강제종료를 시켜줘야한다.
+				//그러므로 이렇게 오류를 던져줘야한다. 
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		
+		return check;
+	}
 	
-	//아이디 찾기 
+	//아이디 찾기
+	//핸드폰 번호와 비밀번호로 아이디 조회
 	
-	//비번 찾기
+//	public boolean findId (String pw, String phonenum) {
+//		
+//		String query = "SELECT COUNT(*) FROM USER_TBL WHERE PW = ? AND PHONENUM = ?";
+//		boolean check = false;
+//		try {
+//			conn = DBConnecter.getConnection();
+//			pstm = conn.prepareStatement(query);
+//			pstm.setString(1, pw);
+//			pstm.setString(2, phonenum);
+//			rs = pstm.executeQuery();
+//			rs.next();
+//			if(rs.getInt(1) == 1) {
+//				check = true;
+//			}
+//		} catch (SQLException e) {
+//			System.out.println("findId() 쿼리문 오류");
+//		} catch (Exception e) {
+//			System.out.println("findId() 알 수 없는 오류");
+//		} finally { //외부저장소를 열었으니까 이제 마지막으로 닫아줘야한다. 닫을때는 역순으로 닫아줘야한다. conn -> pstm -> rs로 열었으니 닫을때는 반대
+//			try {
+//				if(pstm != null) {
+//					pstm.close();
+//				}
+//				if(conn != null) {
+//					conn.close();
+//				}
+//			} catch (SQLException e) {
+//				//닫는곳에서 오류나면 심각한 일이일어날수있으므로 강제종료를 시켜줘야한다.
+//				//그러므로 이렇게 오류를 던져줘야한다. 
+//				throw new RuntimeException(e.getMessage());
+//			}
+//		}
+//		
+//		return check;	
+//		
+//	}
+	
+	public String findId(String phoneNumber, String pw) {
+		
+		String query = "SELECT ID FROM USER_TBL WHERE PHONENUMBER = ? AND PW = ?";
+		String id = null;
+		try {
+			conn = DBConnecter.getConnection();
+			pstm = conn.prepareStatement(query);
+			
+			pstm.setString(1, phoneNumber);
+			pstm.setString(2, encrypt(pw));
+			
+			rs = pstm.executeQuery();
+			
+			if(rs.next()) {
+				id = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("findId() 쿼리문 오류");
+		} catch (Exception e) {
+			System.out.println("findId() 알 수 없는 오류");
+		} finally { //외부저장소를 열었으니까 이제 마지막으로 닫아줘야한다. 닫을때는 역순으로 닫아줘야한다. conn -> pstm -> rs로 열었으니 닫을때는 반대
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstm != null) {
+					pstm.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				//닫는곳에서 오류나면 심각한 일이일어날수있으므로 강제종료를 시켜줘야한다.
+				//그러므로 이렇게 오류를 던져줘야한다. 
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		
+		return id;
+		
+	}
+	
+	//수정 (비밀번호 변경 : 로그인된 상태에서)
+		//현재 비밀번호, 새로운 비밀번호를 전달 받는다.
+	public boolean changePw (String pw, String new_pw) {
+		String query = "UPDATE USER_TBL SET PW = ? WHERE ID =? AND PW = ?";
+		boolean check = false;
+		try {
+			conn = DBConnecter.getConnection();
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, encrypt(new_pw));
+			pstm.setString(2, session_id);
+			pstm.setString(3, encrypt(pw));
+			
+			if (pstm.executeUpdate() ==1 ) {
+				check = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("changePw() 쿼리문 오류");
+		} catch (Exception e) {
+			System.out.println("changePw() 알 수 없는 오류");
+		} finally { //외부저장소를 열었으니까 이제 마지막으로 닫아줘야한다. 닫을때는 역순으로 닫아줘야한다. conn -> pstm -> rs로 열었으니 닫을때는 반대
+			try {
+				if(pstm != null) {
+					pstm.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				//닫는곳에서 오류나면 심각한 일이일어날수있으므로 강제종료를 시켜줘야한다.
+				//그러므로 이렇게 오류를 던져줘야한다. 
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return check;
+	}
+	
+	
+	//수정 (비밀번호 변경 : 임시비밀번호로 변경)
+		//회원번호를 통해 임시비밀번호로 비밀번호 변경
+	
+	//비번 찾기 (아이디와 핸드폰 번호를 전달 받는다)
+		//임시 비밀번호 6자리 생성(Random)
+		//SMS API를 사용하여 JSON으로 데이터(수신번호, 발신번호, 내용 등) 전송
+		//전송된 임시 비밀번호로 UPDATE
+		//본인 핸드폰에 온 문자 확인 후 임시 비밀번호 확인
 	
 	//암호화
 	
