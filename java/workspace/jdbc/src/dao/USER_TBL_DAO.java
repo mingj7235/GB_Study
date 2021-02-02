@@ -5,7 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
+import org.json.simple.JSONObject;
+
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import vo.USER_TBL_VO;
 
 public class USER_TBL_DAO {
@@ -426,9 +432,7 @@ public class USER_TBL_DAO {
 				throw new RuntimeException(e.getMessage());
 			}
 		}
-		
 		return id;
-		
 	}
 	
 	//수정 (비밀번호 변경 : 로그인된 상태에서)
@@ -447,9 +451,9 @@ public class USER_TBL_DAO {
 				check = true;
 			}
 		} catch (SQLException e) {
-			System.out.println("changePw() 쿼리문 오류");
+			System.out.println("changePw(String, String) 쿼리문 오류");
 		} catch (Exception e) {
-			System.out.println("changePw() 알 수 없는 오류");
+			System.out.println("changePw(String, String) 알 수 없는 오류");
 		} finally { //외부저장소를 열었으니까 이제 마지막으로 닫아줘야한다. 닫을때는 역순으로 닫아줘야한다. conn -> pstm -> rs로 열었으니 닫을때는 반대
 			try {
 				if(pstm != null) {
@@ -470,6 +474,39 @@ public class USER_TBL_DAO {
 	
 	//수정 (비밀번호 변경 : 임시비밀번호로 변경)
 		//회원번호를 통해 임시비밀번호로 비밀번호 변경
+		//뷰단에서 사용안하고 비밀번호찾기에서 사용할 녀석임
+	private void changePw(int user_number, String temp_pw) {
+		String query = "UPDATE USER_TBL SET PW = ? WHERE USERNUMBER = ?";
+		
+		try {
+			conn = DBConnecter.getConnection();
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, temp_pw);
+			pstm.setInt(2, user_number);
+			
+			pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("changePw(int, String) 쿼리문 오류");
+		} catch (Exception e) {
+			System.out.println("changePw(int, String) 알 수 없는 오류");
+		} finally { //외부저장소를 열었으니까 이제 마지막으로 닫아줘야한다. 닫을때는 역순으로 닫아줘야한다. conn -> pstm -> rs로 열었으니 닫을때는 반대
+			try {
+				if(pstm != null) {
+					pstm.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				//닫는곳에서 오류나면 심각한 일이일어날수있으므로 강제종료를 시켜줘야한다.
+				//그러므로 이렇게 오류를 던져줘야한다. 
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+	}
+	
+	
 	
 	//비번 찾기 (아이디와 핸드폰 번호를 전달 받는다)
 		//임시 비밀번호 6자리 생성(Random)
@@ -477,8 +514,63 @@ public class USER_TBL_DAO {
 		//전송된 임시 비밀번호로 UPDATE
 		//본인 핸드폰에 온 문자 확인 후 임시 비밀번호 확인
 	
-	//암호화
+	public void findPw (String id, String phoneNumber) {
+		//먼저 회원정보를 조회해야한다. 왜냐하면 changePw를 써야하므로
+		String query = "SELECT USER_NUMBER FROM USER_TBL WHERE ID = ? AND PHONENUMBER = ?";
+		
+		try {
+			conn = DBConnecter.getConnection();
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, id);
+			pstm.setString(2, phoneNumber);
+			
+			rs = pstm.executeQuery();
+			
+			if (rs.next()) { //행 -> 즉 데이터가 있냐 없냐 !  
+				//임시 비밀번호 생성
+				Random r = new Random();
+				String temp = "0123456789abcdefghijklmnopqrstuvwxyz~!@#$%^&*()_+[]{}:;/?";
+				String temp_pw = "";
+				final int TEMP_PW_LENGTH = 6;
+				
+				for (int i = 0; i < TEMP_PW_LENGTH; i++) {
+					temp_pw += temp.charAt(r.nextInt(temp.length()));
+				}
+				
+				//비밀 번호 변경
+				changePw(rs.getInt(1), temp_pw); //rs.getInt(1) : 쿼리의 결과값. 개쩐다... 이렇게쓰면되는구나. 
+				
+				//SMS문자 전송 -> 외부 api가져와서 보내기 (coolsms)
+				String api_key = "NCSRIPIHAZ3LQLSK";
+			    String api_secret = "OWEK0BQ227DKKRGC3YXFGQJH1UZ1NW7A";
+			    Message coolsms = new Message(api_key, api_secret);
+
+			    // 4 params(to, from, type, text) are mandatory. must be filled
+			    HashMap<String, String> params = new HashMap<String, String>();
+			    params.put("to", "01064707235");
+			    params.put("from", "01064707235");
+			    params.put("type", "SMS");
+			    params.put("text", "[테스트]\n임시비밀번호 :"  + temp_pw + "\n노출될 수 있으니 반드시 비밀번호를 변경해 주세요.");
+			    params.put("app_version", "JAVA SDK v2.2"); // application name and version
+
+			    try {
+			      JSONObject obj = (JSONObject) coolsms.send(params);
+			      System.out.println(obj.toString());
+			    } catch (CoolsmsException e) {
+			      System.out.println(e.getMessage());
+			      System.out.println(e.getCode());
+			    }
+				
+			}
+			
+		} catch (SQLException e) {
+		}
+		
+	}
 	
+	
+	
+	//암호화
 	public String encrypt (String pw) {
 		String en_pw = "";
 		for (int i = 0; i < pw.length(); i++) {
