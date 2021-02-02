@@ -476,12 +476,12 @@ public class USER_TBL_DAO {
 		//회원번호를 통해 임시비밀번호로 비밀번호 변경
 		//뷰단에서 사용안하고 비밀번호찾기에서 사용할 녀석임
 	private void changePw(int user_number, String temp_pw) {
-		String query = "UPDATE USER_TBL SET PW = ? WHERE USERNUMBER = ?";
+		String query = "UPDATE USER_TBL SET PW = ? WHERE USER_NUMBER = ?";
 		
 		try {
 			conn = DBConnecter.getConnection();
 			pstm = conn.prepareStatement(query);
-			pstm.setString(1, temp_pw);
+			pstm.setString(1, encrypt(temp_pw));
 			pstm.setInt(2, user_number);
 			
 			pstm.executeUpdate();
