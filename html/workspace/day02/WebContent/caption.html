@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블 캡션</title>
+<link rel="stylesheet" href="table_style.css">
+</head>
+<body>
+<!-- 
+	<caption>태그를 사용하면 테이블의 상단에 제목이나 짧은 설명을 붙일 수 있다. 
+	<table>태그 하나 당 하나의 <caption>태그만 사용가능하다. 
+	
+	프로그래밍 언어의 종류
+	1. 컴파일언어 (C언어, JAVA) : 번역된 파일 존재
+	2. 스크립트 언어 (SQL, HTML, 파이썬, JS) : 번역된 파일 없음
+ -->
+	<table>
+		<caption>
+			<strong>Programming Language</strong><br>
+			전 세계에서 많이 사용하는 프로그래밍 언어
+		</caption>
+			<tr>
+				<th>언어</th>
+				<th>종류</th>
+				<th>다운로드</th>
+			</tr>
+			
+			<tr>
+				<th>C언어</th>
+				<td>컴파일 언어</td>
+				<td align="center" onClick="location.href='https://visualstudio.microsoft.com/ko/downloads/'" style="cursor:pointer;">
+				https://visualstudio.microsoft.com/ko/downloads/</td>			
+			</tr>
+
+			<tr>
+				<th>자바</th>
+				<td>컴파일 언어</td>
+				<td>
+					<table>
+						<tr>
+							<td>JDK8</td>
+							<td align="center" onClick="location.href='https://www.oracle.com/kr/java/technologies/javase/javase-jdk8-downloads.html'" style="cursor:pointer;">
+							https://www.oracle.com/kr/java/technologies/javase/javase-jdk8-downloads.html</td>
+						</tr>
+						<tr>
+							<td>eclipse photon</td>
+							<td align="center" onClick="location.href='https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/photon/R/eclipse-jee-photon-R-win32-x86_64.zip'" style="cursor:pointer;">
+							https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/photon/R/eclipse-jee-photon-R-win32-x86_64.zip</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+						
+			<tr>
+				<th>파이썬</th>
+				<td>스크립트 언어</td>
+				<td align="center" onClick="location.href='https://docs.anaconda.com/anaconda/install/windows/'" style="cursor:pointer;">
+				https://docs.anaconda.com/anaconda/install/windows/</td>
+			</tr>
+	</table>
+ 
+</body>
+</html>
