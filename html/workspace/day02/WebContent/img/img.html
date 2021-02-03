@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 태그</title>
+</head>
+<body>
+<!-- 
+	이미지 태그
+	- 비어있는 요소, void 요소(Empty elements)
+	- 주로 문서에 무언가를 첨부하기 위해서 사용되며 단일 태그(single tag)라고 한다. (닫는 태그가없다.)
+	
+	<img src="이미지의 경로" alt="이미지 경로에 이미지가 없을때 대체할 텍스트">
+	
+	1. 웹 페이지에서 주로 사용되는 이미지의 종류
+		1) JPEG 이미지 : .jpg, jpeg 휴대폰, 카메라 사진
+		2) GIF 이미지 : .gif 움직이는 이미지
+		3) PNG 이미지 : .png 배경을 투명화 할때 사용
+	
+	2. html 문서에 이미지를 삽입할 때에는 <img> 태그를 사용한다.
+		1) 절대경로 : 현재 어디에 위치해도 찾아 갈 수 있는 경로
+		2) 상대경로 : 현재 작성하는 파일 기준으로 찾아가는 경로 (. : 현재경로, .. : 이전경로)
+		
+	3. 무료 icon 사이트
+		www.iconfinder.com
+
+ -->
+ 	<!-- 브라우저의 버전 또는 환경에 따라 절대 경로에 대한 보안성이 다르다.  -->
+ 	<!-- 
+ 		만약 절대경로를 막아준다면 보안성을 강조하는 브라우저이며, 모든 사용자가 개발자의
+ 		로컬 경로를 알게 되면 피해를 입을 수 있기 때문에 절대 경로는 사용하지 않는 것이 좋다.  
+ 		https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_skype-128.png
+ 		
+ 	 -->
+	<img src="D:\0900_gb_kmj\html\resource\icon5.png" alt="절대경로"> <!-- 이렇게하면 안나온다! 보안문제로 안나오게만듬 -->
+	
+	<!-- 앞에 /를 붙이면 최상위로 돌아간다는 의미임 -->
+	<img src ="img1/icon1.png" >
+	
+	<img src ="../img2/icon2.png">
+	
+	<img src = "../icon3.png">
+	
+	<img src = "icon4.png">
+	
+	<img src = "https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_skype-128.png">
+	<!-- 이미지를 저장할 수 없을 때 가져오고싶은 이미지 우클릭 후 이미지의 주소를 불러와서 하면된다.-->
+
+	
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
