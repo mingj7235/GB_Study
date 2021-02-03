@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>thead, tbody, tfoot</title>
+<style>
+	table{
+		margin-left:auto;
+		margin-right:auto;
+	}
+	
+	th, td {
+		width:100px;
+		height:15px;
+		padding:10px;
+		text-align:center;
+	}
+	
+	thead, tfoot{
+		background:#ffff00;
+	}
+	
+	tbody{
+		background:#eeeeee;
+	}
+	
+</style>
+</head>
+<body>
+	
+<!-- 
+	행을 묶어서 스타일을 지정한다.
+	하나의 테이블에 각각의 태그는 하나씩 사용가능하다.
+	
+ -->
+
+	<table border ="1">
+		<caption>&lt;thead&gt;&lt;tbody&gt;&lt;tfoot&gt;</caption>
+		<thead>
+			<tr>
+				<th>태그</th>
+				<th>영역</th>
+				<th>화면 판독기</th>
+				<th>기타</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr>
+				<td>thead</td>
+				<td>제목</td>
+				<td rowspan="3">0</td>
+				<td style="background:#ff0040;"></td>
+			</tr>
+			
+			<tr>
+				<td>tbody</td>
+				<td>본문</td>
+				<td style="background:#ff0040;"></td>
+			</tr>
+			<tr>
+				<td>tfoot</td>
+				<td>요약</td>
+				<td style="background:#ff0040;"></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4">요약</td>
+			</tr>
+		</tfoot>
+		
+	</table>
+
+</body>
+</html>
