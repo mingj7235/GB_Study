@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블 병합</title>
+</head>
+<body>
+<!-- 
+	병합
+	
+	colspan = "합칠 열 개수"
+		좌에서 우로 합쳐지고 현재 행에만 적용.
+		현재 행과 작성한 열 개수만큼 우측으로 병합.
+		
+		
+	rowspan = "합칠 행 개수"
+		현재 행과 아래 행이 합쳐지고 다음 행이 없다면 적용 안됨.
+
+ -->
+	<table border ="1">
+	
+		<tr>
+			<th colspan="2">1</th>
+			<th>3</th>
+		</tr>
+		
+		<tr>
+			<td>7</td>
+			<td>8</td>
+			<td rowspan="2">9</td>
+		
+		</tr>
+		
+		<tr>
+			<td>10</td>
+			<td>11</td>
+		</tr>
+	
+	</table> 
+ 
+
+</body>
+</html>

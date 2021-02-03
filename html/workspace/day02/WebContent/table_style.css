@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+
+table{
+	border:1px solid black;
+	width:30%;
+	margin-left:auto;
+	margin-right:auto;
+	/* collapse : 겹치는 부분을 없애서 선을 깔끔하게 해준다. */
+	border-collapse:collapse;
+}
+	
+th, td {
+	border : 1px solid black;
+	text-align : center;
+}
