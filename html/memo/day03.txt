@@ -75,8 +75,26 @@ datalist
 	form요소에서 미리 지정된 옵션 목록을 제공.
 	사용자들이 특정 글자를 입력하면 그에 해당하는 미리 지정된 목록을 보여준다.
 	
+	<input type = "text" list = 'datalist id값'>
 
+	<datalist id = "datalist id값">
+		<option value = "실제 값1" label = "표기할 값1"></option>
+		<option value = "실제 값2" label = "표기할 값2"></option>
+		...
+	</datalist>
 
+진행 정도
+	progress 태그를 이용하면 진행 정도를 나타낼 수 있다.
+	<progress value="현재 값" max="최대 값"></progress>
+
+fieldset
+	fieldset요소는 관련 있는 폼 필드 세트를 표시한다.
+	form필드 세트는 form내에서 관련 컨트롤을 하나의 그룹으로 묶은 것을 의미한다.
+	
+legend
+	fieldset 요소의 제목을 표시.
+	묶음에 대한 설명을 할 때 사용한다. 
+	
 
 
 

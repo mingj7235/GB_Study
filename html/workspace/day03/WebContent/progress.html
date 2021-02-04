@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>진행률 예제</title>
+</head>
+<body>
+	<div>
+		<!-- progress라는 타입의 pg라는 객체가있고 마침표를 찍으면 value, max라는 값에 접근하는 거.. .라고 생각하자! -->
+		<progress value ="20" max="100" id="pg"></progress>
+	</div>
+	<button onclick="pgFunction()">Click</button>	
+</body>
+<script>
+	function pgFunction(){
+		document.getElementById('pg').value = '80';
+	}
+</script>
+</html>

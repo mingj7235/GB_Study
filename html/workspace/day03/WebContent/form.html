@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form태그와 입력태그 예제</title>
+</head>
+<body>
+	<h1>form태그와 입력태그</h1>
+	
+	<form action="login.jsp" method="post" name="joinForm">
+		<p>아이디
+			<input type="text" size="20" maxlength="12" 
+			placeholder="아이디를 넣어주세요." name="userId" required>
+		</p>				
+		<p>비밀번호
+			<input type="password" size="20" maxlength="12" placeholder="패스워드를 넣어주세요." name="userPw" required>
+		</p>
+		<fieldset>
+			<legend>성별</legend>
+			<p>
+				<!-- radio는 하나의 값만 선택할 수있음.그렇기에 key값인 name의 값은 똑같아야한다. -->
+				<label>남자<input type="radio" name="gender" value ="남"></label> 
+				<label>여자<input type="radio" name="gender" value ="여" checked></label> <!-- checked : 디폴트로 여자가 체크된것 -->
+			</p>
+		</fieldset>
+		
+		<fieldset>
+			<legend>취미</legend>
+			<p>
+				<!-- type의 key는 배열의 형태로 가져온다. 왜냐하면 각각의 value가 다르기 때문이다.  -->
+				<label> 드라이브 <input type ="checkbox" name="hobby" value="드라이브"></label>
+				<label> 등산 <input type ="checkbox" name="hobby" value="등산"></label>
+				<label> 영화감상 <input type ="checkbox" name="hobby" value="영화감상"></label>
+				<label> 게임 <input type ="checkbox" name="hobby" value="게임"></label>
+			</p>
+		</fieldset>
+		
+		<p>파일 선택 <input type="file"></p>
+		<p>색상<input type="color" value="#00ff00"></p>
+		<p>메일주소<input type="email"></p>
+		<p>웹 사이트 <input type="url"></p>
+		<p>연락처 <input type="tel"></p>
+		<p>조회기간 <input type="date"></p>
+		<p>참여인원 <input type="number" value="1" min="0" max="100" step="5"></p>
+		<p>단계(상, 중, 하) <input type="range" value="1" min="1" max="3"></p>
+		<p>검색 <input type="search"></p>
+		
+		<p>학과선택
+			<select name="major">
+				<option value = "archi">건축공학과</option>
+				<option value = "mechanic">기계공학과</option>
+				<option value = "indust">산업공학과</option>
+				<option value = "elec">전기전자공학과</option>
+				<option value = "computer">컴퓨터공학과</option>
+				<option value = "chemical">화학공학과</option>
+			</select>
+		</p>
+		
+		<p>관심분야 <input type="text" list="choices">
+			<datalist id="choices">
+				<option value="grammar">문법</option>
+				<option value="voca">어휘</option>
+				<option value="speaking">회화</option>
+				<option value="listeing">리스닝</option>
+				<option value="news">뉴스 청취</option>
+			</datalist>
+		</p>	
+		
+		<p><textarea cols="100" rows="5">안녕하세요</textarea>	</p>
+		<p>진행률<progress value ="30" max ="100"></progress></p>
+		
+		<p><input type="submit" value="가입완료"></p> <!-- 누르자마자 form의 action 으로 이동 -->		
+		
+		<p><input type="button" value="버튼(input태그)" onclick="getMsg()"></p> <!-- 눌렀을때 action 으로 이동하지 않음 . 사용예 ) 아이디 중복검사. 바로 form의 action 으로 가지않고 별개로 체크할때-->
+		<p><button>버튼태그</button></p> <!-- 누르자마자 form의 action 으로 이동 -->
+		<p><input type="reset" value="초기화"></p>		
+	</form>
+	
+</body>
+<!-- 자바스크립트 맛보기 아주살짝 -->
+<script>
+	function getMsg() {
+		alert("클릭 했어요!");
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
