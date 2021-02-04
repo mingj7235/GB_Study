@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클래스와 아이디</title>
+<style>
+	.blue {
+		color:blue;
+	}
+	/* 마지막에 적용된 혹은 우선순위가 높은 스타일로 적용된다. */
+	.red {
+		color:red;
+	}
+	
+	#blue {
+		color : blue;
+	}
+	
+	#red {
+		color:red;
+	}
+	
+</style>
+</head>
+<body>
+	<!-- 클래스 명의 순서는 스타일의 적용 순서와 관련있지 않다.  -->
+	<p class="blue red">banana</p>
+	<!-- id에 2개가 들어가면 그냥 아예무시해버린다. 스타일 적용이 무시해버림 (공백은 자식 이라는 의미임) -->
+	<p id="blue red">파랑</p> <!-- id값을 여러개 사용하지 않는다. 잘못된 문법이다.  -->
+	<p id="blue">파랑</p>
+</body>
+</html>
