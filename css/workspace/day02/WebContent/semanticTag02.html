@@ -6,6 +6,14 @@
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 <title>미디어 쿼리 - 예제</title>
 <style>
+	
+	/* 가상 요소 */
+	/* 해당 요소 앞에 넣고 싶은 속성 */
+	h1::before {content:'1. ';} /* h1태그의 앞에 ! 붙여라 */
+	
+	/* 해당 요소 뒤에 넣고 싶은 속성 */
+	h1::after {content:"- 기본";} 
+
 	body {
 		background: #03cc2c;
 		color:#fff;
@@ -17,6 +25,8 @@
 		body {
 			background: #37cff0;
 		}
+		h1::before {content:'2. ';} 
+		h1::after {content:"- 1025px ~ 1280px";} 
 	}
 	
 	/* 데스크탑 */
@@ -25,6 +35,8 @@
 		body{
 			background: #1f23e0;
 		}
+		h1::before {content:'3. ';} 
+		h1::after {content:"- 961px ~ 1024px";} 
 	}
 	
 	/* 노트북 */
@@ -33,6 +45,8 @@
 		body {
 			background: #880e4f;
 		}
+		h1::before {content:'4. ';} 
+		h1::after {content:"- 769px ~ 960px";} 
 	}
 	
 	/* 테블릿 */
@@ -41,6 +55,8 @@
 		body {
 			background: #ff4b4b;
 		}
+		h1::before {content:'5. ';} 
+		h1::after {content:"- 577px ~ 768px";} 
 	}
 	
 	/* 모바일 */
@@ -49,6 +65,8 @@
 		body {
 			background: #000;
 		}
+		h1::before {content:'6. ';} 
+		h1::after {content:"- 0px ~ 576px";} 
 	}
 	
 	

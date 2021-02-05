@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>미디어 쿼리, 시맨틱 태그 실습</title>
+<style>
+	/* body는 default로 바깥여백이 있다.  */
+	/* 만약 body내의 요소가 100%의 width를 가지고 있다면 body의 margin을 0으로 해주어야 한다.  */
+	body {background: #e0f2f1;}
+	#wrap{width:1200px; margin:0 auto;}
+	header {width:100%; height :150px; background: #fff9c4;}
+	aside {float:left; width:30%; height: 700px; background: #1e88e5;}
+	section {float:left; width:70%; height: 700px; background: #f44336;}
+	footer{clear:both; width:100%; height :150px; background:#8bc34a;}
+	h1::after {content:"- 기본";} 
+	/* clear는 float속성을 제거할 때 사용된다. */
+	
+	/* 미디어 쿼리 작성 */
+	/* 데스크탑 1220px */
+	
+	@media (max-width:1220px) {
+		#wrap {
+			width: 95%;
+		}
+		h1::after {content:"- 769px ~ 1220px (desktop)";} 
+	}
+	/* 테블릿 : 768px */
+	
+	@media (max-width:768px) {
+		body{
+			margin:0;
+		}
+		#wrap {
+			width: 100%;
+		}
+		h1::after {content:"- 481px ~ 768px (tablet)";} 
+		
+	}
+	/* 모바일: 480px */
+	
+	@media (max-width:480px) {
+		body{
+			margin:0;
+		}
+		#wrap {
+			width:100%;
+		}
+		header, footer{
+			height:300px;
+		}
+		aside, section {float:none; width:100%; height:300px}
+		
+		h1::after {content:"- 0px ~ 480px (mobile)";} 
+	}
+	
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<h1>size : </h1>
+		<header></header>
+		
+		<aside></aside>
+		
+		<section></section>
+		
+		<footer></footer>
+	</div>
+
+
+</body>
+</html>
