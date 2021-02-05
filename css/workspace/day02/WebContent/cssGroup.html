@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>그룹 선택자</title>
+<style>
+	h1, h2 {
+		text-align:center;	/* 가운데 정렬 */
+	}
+	
+	h1 {
+		color:brown;
+	}
+	
+	h2 {
+		color:coral;
+	}
+	
+	p.gray, p.red{ /* p를 구체화 시키는 것임 p태그의 gray클래스! p .gray와는 차이있음-> 이건 자식임. 붙여쓰면 구체화!*/
+		font-size:13px;
+		margin-left:20px;
+	}
+	
+	p.gray {
+		color: gray;
+	}
+	
+	p.red{
+		color: red;
+	}
+	
+	/* red클래스와 blue클래스에 color를 blue로 설정한다. */
+	/* 단, strong 태그 이외의 blue클래스는 색상을 변경하지 않는다. */
+	
+	p.red, strong.blue {
+		color : blue;
+	}
+	
+	/* p태그 안에 있는 strong 태그는 초록색으로 글자색을 변경한다. */
+	/* 단, strong 태그 중 클래스가 blue인 요소만 변경한다. */
+	
+	p strong.blue {	/* strong .blue : 항상 공백으로 구분할 때에는 가장 마지막 선택자만 적용된다.  */
+		color : green;
+	}
+</style>
+
+</head>
+<body>
+	<h1 class="blue">그룹(group) 선택자</h1>
+	<h2>선택자를 이용해 스타일을 정의하다 보면 여러 선택자에 공통된 스타일이 사용되는 경우가 있다.</h2>
+	<p class="gray">
+		이럴 때에는 쉽표로 구분해 여러 선택자를 나열 한 후 스타일을 한번만 정의하면 소스코드 작성이 <strong>간편해진다.</strong>
+	</p>
+	
+	<p class="red">
+		예를 들어 h1태그와 h2태그를 사용한 내용을 모두 화면 중앙에 정렬하고 싶다면
+		그룹 선택자에 h1, h2 { <strong class="blue">text-align:cencter;</strong>} 로 스타일을 정의할 수 있다.
+	</p>
+	
+	<p>안녕 테스트</p>
+	<strong class = "blue">안녕 테스트2</strong>
+	
+</body>
+</html>
