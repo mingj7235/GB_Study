@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>font size</title>
+<style>
+	*{
+		padding:0; margin:0; text-align:center;
+	}
+	
+	body {
+		font-size:1.5em; color:green; /* 24px (디폴트가 16px이므로 16 * 1.5면 폰트크기는 24px) */
+		
+	}
+	div{color:red;}
+	p{color:black;}
+	
+	.body-p1{font-size:1.5em;} /* 36px */
+	.body-p2{font-size:1.5rem;} /* 24px */
+	.div1{font-size:1.5em;} /* 36px */
+	.div1-p1{font-size:1.5em;} /* 54px */
+	.div1-p2{font-size:1.5rem;} /* 24px */
+	.div2{font-size:1.5em;} /* 54px */
+	.div2-p1 {font-size:1.5em;} /* 81px */
+	.div2-p2 {font-size:1.5rem;} /* 24px */
+	.div3 {font-size:30px; color:blue;}
+	.div3-p1 {font-size:1.5em;} /* 45px */
+	.div3-p2 {font-size:1.5rem;} /* 24px */
+	.div4 {font-size:1.5rem;} /* 24px */
+	.div4-p1{font-size:1.5em;} /* 36px */
+	.div4-p2{font-size:1.5rem;} /* 24px */
+	
+</style>
+
+</head>
+<body>Hi, CSS!
+	<p class="body-p1">Hi, CSS!</p>
+	<p class="body-p2">Hi, CSS!</p>
+	<div class="div1">Hi, CSS!
+		<p class="div1-p1">Hi, CSS!</p>
+		<p class="div1-p2">Hi, CSS!</p>
+		<div class="div2">Hi, CSS!
+			<p class="div2-p1">Hi, CSS!</p>
+			<p class="div2-p2">Hi, CSS!</p>	
+			<div class="div3">Hi, CSS!
+				<p class="div3-p1">Hi, CSS!</p>
+				<p class="div3-p2">Hi, CSS!</p>	
+			</div>	
+			<div class="div4">Hi, CSS!
+				<p class="div4-p1">Hi, CSS!</p>
+				<p class="div4-p2">Hi, CSS!</p>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

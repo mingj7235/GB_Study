@@ -1,0 +1,5 @@
+@charset "UTF-8";
+ul {
+		color : red;
+		list-style-type: square;
+}

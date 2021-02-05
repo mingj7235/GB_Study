@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS상속</title>
+<style>
+	.inherit-test {
+		color: blue;
+		border: 3px dashed #30f;
+		padding: 20px;
+	}
+	
+	.inherit-test h1 {
+		/* 자동으로 상속이되지않으므로 inherit라는 값을 줘서 강제로 상속시킬수있다.
+			부모의 스타일을 그대로 붙여온다.  */
+		border: inherit;  
+		padding : inherit;
+	}
+	
+	.inherit-test button { /* 본래 color는 상속이 가능하나, button 태그는 예외다. 그러므로 강제상속해야함 */
+		color: inherit;
+	}
+	
+	/* 부모에게 먼저 스타일을 주고, 상속이 안된것들을 따로 이렇게 상속시켜주면된다. */
+	
+	/* p태그에 border와 padding을 상속받아 작성하기 */
+	/* 단, color는 red로 설정한다. */
+	
+	.inherit-test p {
+		border: inherit;
+		padding: inherit;
+		color : red;
+	}
+
+</style>
+</head>
+<body>
+	<div class="inherit-test">
+		<h1>Heading</h1>
+		<p>
+			Paragraph <strong>strong</strong>
+		</p>
+		<button>Button</button>
+	
+	</div>
+</body>
+</html>
