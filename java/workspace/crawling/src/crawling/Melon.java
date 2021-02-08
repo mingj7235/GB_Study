@@ -108,7 +108,7 @@ public class Melon {
 //		sc.next(); //사용자가 입력한 문자열 값
 		
 		//태그객체.sendKeys(sc.next());
-		element.sendKeys(sc.next());
+		element.sendKeys(sc.nextLine()); //노래 제목에 공백이 포함될 수 있기 때문에 nextLine()사용
 		
 		//엔터 입력
 		element.sendKeys(Keys.RETURN);
@@ -116,33 +116,65 @@ public class Melon {
 		//검색 결과 페이지 로딩 대기
 		try {Thread.sleep(1000);} catch (InterruptedException e) {}
 		
-		//곡명으로 검색된 결과를 담고 있는 form 태그 객체   frm_searchSong
-		element = driver.findElement(By.id("frm_searchSong"));
-		
-		//곡 번호 가져오기
-		List<WebElement> numList = element.findElements(By.className("no"));
+		//예외처리하기
+		try {
+			//곡명으로 검색된 결과를 담고 있는 form 태그 객체   frm_searchSong
+			element = driver.findElement(By.id("frm_searchSong"));
+			
+			//곡 번호 가져오기
+			List<WebElement> numList = element.findElements(By.className("no"));
 
-		//곡명 가져오기
-		List<WebElement> titleList = element.findElements(By.className("fc_gray"));
-		
-		//아티스트 가져오기 artistName(부모 div태그)
-		List<WebElement> artistList = element.findElements(By.id("artistName"));
-		
-		//가져온 데이터를 통해 목록 출력
-		for (int i = 0; i < numList.size(); i++) { //3개의 list가 인덱스를 모두 공유한다. 
-			System.out.println(numList.get(i).getText() + ". " + 
-				titleList.get(i).getText() + ", 아티스트 : " + artistList.get(i).getText());
+			//곡명 가져오기
+			List<WebElement> titleList = element.findElements(By.className("fc_gray"));
+			
+			//아티스트 가져오기 artistName(부모 div태그)
+			List<WebElement> artistList = element.findElements(By.id("artistName"));
+			
+			//가져온 데이터를 통해 목록 출력
+			for (int i = 0; i < numList.size(); i++) { //3개의 list가 인덱스를 모두 공유한다. 
+				System.out.println(numList.get(i).getText() + ". " + 
+					titleList.get(i).getText() + ", 아티스트 : " + artistList.get(i).getText());
+			}
+			
+			//번호 입력 받기
+			System.out.print(lyricNumMsg);
+			int num = sc.nextInt();
+			
+			//입력한 번호의 가사 보기 버튼 클릭 (입력한 번호 -1번재 방의 가사 버튼) btn_icon_detail
+			element.findElements(By.className("btn_icon_detail")).get(num-1).click(); //이게 사용자가 원하는 가사 태그. 오....
+			try {Thread.sleep(1000);} catch (InterruptedException e) {;}
+			
+			//가사가 없는 노래를 먼저 찾고(d_register 버튼을 먼저 찾기) 만약에 가사가 있는 노래면 catch로 들어간다. 
+			try {
+				//가사등록하기 버튼이 있다면
+				driver.findElement(By.className("d_register"));
+				//가사가 없는 날이다.
+				System.out.println("가사가 없는 곡입니다.");
+			} catch (NoSuchElementException e) {
+				//가사 등록하기 버튼이 없다면 가사가 있는 곡이거나 성인 노래다.
+				
+				//가사 펼치기 클릭 button_more
+				
+				//가사가 없는 노래는 아닌데, 성인인증일경우가 있을수 이므로, 다시 한번 try를 잡는 것이다.
+				try {
+					//가사 펼치기가 있다면 해당 가사를 출력해준다.
+					driver.findElement(By.className("button_more")).click();
+					try {Thread.sleep(1000);} catch (InterruptedException e1) {;}
+					
+					//가사 가져와서 출력하기 lyric
+					element = driver.findElement(By.className("lyric"));
+					System.out.println(element.getText());
+				} catch (Exception e1) {
+					//가사 펼치기 버튼이 없다면 성인 노래이다.
+					System.out.println("성인 노래 가사는 열람하실 수 없습니다. ");
+				}
+			}
+		} catch (NoSuchElementException e) {
+			System.out.println("검색 결과가 없습니다.");
 		}
 		
-		//번호 입력 받기
-		
-		//입력한 번호의 가사 보기 버튼 클릭 (입력한 번호 -1번재 방의 가사 버튼)
-		
-		//가사 펼치기 클릭
-
-		//가사 가져와서 출력하기
-		
 		//예외처리
+		
 	}
 	public static void main(String[] args) {
 		Melon melon = new Melon();
