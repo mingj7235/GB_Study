@@ -25,15 +25,15 @@ public class CGV {
 			e1.printStackTrace();
 		}
 		
-		//WebDriver설정
-//		ChromeOptions options = new ChromeOptions();
-		
-//		cgv.driver = new ChromeDriver(options);
+		//WebDriver설정 
+		ChromeOptions options = new ChromeOptions(); //옵션 주는 경우
+		options.addArguments("headless"); //크롬창이 열리지 않는 옵션임. 내부적으로만 돌게되는 옵션. 눈에만 안보이는것임. 
+		cgv.driver = new ChromeDriver(options); 
 		//크롬에 관려된 옵션을 설정하기위해 options를 ChromeDriver 생성자에 넣어주고, (옵션이 있을 경우에 이렇게 씀) 
 		//cgv의 드라이버에 넣어준다.
 		//WebDriver가 부모 ChromeDriver가 자식. 업케스팅 하여 넣어준것이다. 
 		
-		cgv.driver = new ChromeDriver();
+//		cgv.driver = new ChromeDriver(); //옵션 없는 경우
 		String url = "http://www.cgv.co.kr/movies/";
 		cgv.driver.get(url); //사이트로 가는것! 
 
@@ -43,11 +43,14 @@ public class CGV {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} //컴파일러가 페이지 로딩보다 더 빠르기때문에 기다려주는것임
+		//HTTP응답 속도보다 자바 컴파일러 응답속도가 더 빠르기 때문에 기다려주는것이다. 
 		
 		//btn-more-fontbold (더보기 버튼 클래스명)
 		
 		el1 = cgv.driver.findElement(By.className("btn-more-fontbold")); //이 통째로가 CGV 사이트의 더보기 버튼임! 개쩐다..
-		el1.click(); //클릭 자체가 다 가능한것이다.
+
+		//동적인 부분. 클릭!
+		el1.click(); //클릭 자체가 다 가능한것이다. 클릭!!
 		
 		try {
 			Thread.sleep(1000);
