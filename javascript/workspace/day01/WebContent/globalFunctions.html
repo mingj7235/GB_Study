@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>전역함수</title>
+</head>
+<body>
+	<h3>전역 함수</h3>
+	<hr>
+</body>
+<script>
+	function checkGlobalFunctions() {
+		var result = eval("2*3+4*6");
+		var num = parseInt("32");
+		var value = parseInt("hello");
+		
+		document.write("eval('2*3+4*6')은" + result + "<br>");
+		document.write("parseInt('32')는" + num + "<br>");
+		
+		console.log(value);
+		
+		if(isNaN(value)){
+			document.write("숫자가 아닙니다.");
+		}
+	}
+	
+	checkGlobalFunctions();
+	
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

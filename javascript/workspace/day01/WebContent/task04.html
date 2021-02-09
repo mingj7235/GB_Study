@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 실습4</title>
+</head>
+<body>
+<!-- 
+	pr("%", 5);
+	결과 : %%%%%
+	
+	위의 결과가 나오는 함수를 선언하여 사용한다.
+	단 최소 한 번은 출력되어야 한다. 
+ -->
+</body>
+<script>
+	var data = prompt("반복할 메세지를 입력하세요");
+	var num = prompt("반복할 횟수를 입력하세요");
+	var result = "";
+	
+	var check = num - Number.parseInt(num) != 0.0;
+
+	if(!check) {
+		num = parseInt(num);
+	}
+	
+	if(isNaN(num) || check ) {
+		alert("잘못 입력하셨습니다.");
+		location.reload(); /* 새로고침 */
+	}
+	
+	function pr (data, num) {
+		for (let i = 0; i < num ; i++) {
+			result += data;
+		}
+		return result;
+	}
+	
+	document.write(pr(data, num));
+	
+
+</script>
+
+
+</html>

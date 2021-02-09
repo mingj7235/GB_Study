@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 실습1</title>
+</head>
+<body>
+<!-- 
+	마우스를 올려보세요
+	--------------------
+	여기에 마우스를 올리면 배경이 노란색으로 변합니다.
+	
+	"여기에 마우스를..." 이 부분에 마우스 이벤트를 사용하여 배경색을 변경한다.
+	초기 배경색은 흰색으로 한다.
+
+ -->
+ 	<h3>마우스를 올려보세요</h3>
+ 	<hr>
+ 	<div style = "background-color:white" onmouseover = "change(this)" onmouseout = "out(this)">
+ 	<h4>여기에 마우스를 올리면 배경이 노란색으로 변합니다.</h4>
+ 	</div>
+ 	
+</body>
+<script>
+	function change (obj) {
+		obj.style ="background-color:yellow";
+	}
+	
+	function out (obj) {
+		obj.style ="background-color:white";
+	}
+</script>
+</html>
