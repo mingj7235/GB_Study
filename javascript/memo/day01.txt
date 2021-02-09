@@ -197,9 +197,28 @@
 		}	
 
 
+	6. 상수
+		let : 재할당 가능
+		const : 재할당 불가능
+
+		*var
+		var a = 'test';
+		var a = 'test2';
+		c = 'test';
+		var c;
+
+		*let (재할당 가능. 재선언은 불가. 값의 수정은 가능. )
+		let a = 'test'
+		let a = 'test2' 	: 오류
+		a = 'test3' 	: 가능		
+		
+		*const
+		const b = 'test';
+		const b = 'test2'; 	: 오류
+		b = 'test3' 	: 오류
 
 
-
+		※const가 원래 java에서 쓰던 상수의 의미이고 let은 js에만 있는 상수다. 
 
 
 

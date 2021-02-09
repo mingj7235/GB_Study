@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>지역변수와 전역변수</title>
+</head>
+<body>
+	<h3> 지역변수와 전역변수 </h3>
+	<hr>
+
+</body>
+<script>
+
+	var x = 100; //전역
+	
+	function f() {
+		var x = 1; //지역
+		with (document) {
+			write("<pre>");
+			writeln("지역변수 x = " + x);
+			writeln("전역변수 x = " + this.x);
+			write("</pre>");
+		}
+	}
+
+	f();
+</script>
+</html>
