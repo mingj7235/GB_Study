@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>다이얼로그 실습</title>
+</head>
+<body>
+<!-- 
+	prompt() 함수를 통해
+	이름, 국어점수, 영어점수, 수학점수를 입력받은 후 아래와 같이 출력하는 프로그램을 작성한다.
+	
+	※형변환은 Number로 한다.    Number(값)
+	※소수점 자르기는 toFixed(자리수)를 사용한다.
+	예) 3.222222.toFixed(2) == 3.22
+	
+	[출력 예시]
+	이름 : 홍길동
+	국어점수 : 90
+	영어점수 : 80
+	수학점수 : 70
+	총점 : 240점
+	평균 : 80점
+	입력하신 정보가 맞는 지 확인해주시기 바랍니다.
+	
+	*true일때
+	이름 : 홍길동
+	국어점수 : 90
+	영어점수 : 80
+	수학점수 : 70
+	총점 : 240점
+	평균 : 80점
+	
+	*false일때
+	처음부터 다시 작성해 주시기 바랍니다.
+ -->
+ 
+ 
+</body>
+<script>
+	/* var name = prompt("이름을 입력하세요.", "홍길동");
+	var kor = prompt("국어점수를 입력하세요.", "0");
+	var eng = prompt("영어점수를 입력하세요.", "0");
+	var math = prompt("수학점수를 입력하세요.", "0");
+	
+	var numKor = Number(kor);
+	var numEng = Number(Eng);
+	var numMath = Number(math);
+	
+	var sum = numKor + numEng + numMath;
+	var avg = (sum / 3).toFixed(2);
+	
+	var msg = "";
+	
+	msg = "이름 : " + name +
+			"\n국어 점수 : " + numKor +
+			"\n영어 점수 : " + numEng +
+			"\n수학 점수 : " + numMath +
+			"\n총점 : " + sum +
+			"\n평균 : " + avg +
+			"입력하신 정보가 맞는지 확인해주세요";
+	 
+	document.write(msg);
+	
+	if(confirm("입력하신 정보가 맞습니까?")) {
+		alert("전송 완료");
+	} else {
+		alert("전송 실패");
+	} */
+
+	var name = prompt ("이름을 입력해주세요");
+	var kor = Number(prompt("국어 점수를 입력해주세요"));
+	var eng = Number(prompt("영어 점수를 입력해주세요"));
+	var math = Number(prompt("수학 점수를 입력해주세요"));
+	
+	var total = kor + eng + math;
+	var avg = (total / 3).toFixed(2);
+	
+	var msg = "이름 : " +name 
+			+"\n국어 점수 : " + kor
+			+"\n영어 점수 : " + eng
+			+"\n수학 점수 : " + math
+			+"\n총점 : " + total +"점"
+			+"\n평균 : " + avg + "점"
+			+"\n입력하신 정보가 맞는지 확인해주세요";
+	
+	var result = "이름 : " +name 
+			+"\n국어 점수 : " + kor
+			+"\n영어 점수 : " + eng
+			+"\n수학 점수 : " + math
+			+"\n총점 : " + total +"점"
+			+"\n평균 : " + avg + "점"
+			+"\n등록 성공!";
+	
+	var errMsg = "처음부터 다시 작성해주시기 바랍니다.";
+	
+	if(confirm(msg)) {
+		alert(result);
+	}else {
+		alert(errMsg);
+		history.go(0); /* 다시 시도하면서 새로고침 시켜주는 거 */
+		/* location.reload() */
+	}
+	
+</script>
+
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

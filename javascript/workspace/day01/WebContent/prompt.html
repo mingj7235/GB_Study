@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>prompt 사용</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var data = prompt("이름을 입력하세요.", "홍길동");
+	var msg = "";
+	
+	if(data == null) {
+		msg = "취소 버튼을 누르셨거나 강제로 닫았습니다.";
+	}
+	else if (data == ""){
+		msg = "입력 없이 확인 버튼을 눌렀습니다.";
+	}
+	else {
+		msg = "성함 : " + data;
+	}
+	document.write(msg);
+	
+	
+	/* if(data == null) {
+		document.write("취소 버튼을 누르셨거나 강제로 닫았습ㄴ디ㅏ.");
+	}
+	else if (data == ""){
+		document.write("입력 없이 확인 버튼을 눌렀습니다.");
+	}
+	else {
+		document.write("성함 : " + data);
+	} */
+</script>
+</html>
