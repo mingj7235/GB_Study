@@ -20,7 +20,7 @@
 	
 
 <script>
-	while(true){
+/* 	while(true){
 		var pw = prompt("암호를 입력해주세요");
 		if (pw != "호랑이") {
 			continue;		
@@ -28,6 +28,26 @@
 			document.write("통과!");
 			break;
 		}
+	} */
+	
+	var code = "호랑이";
+	var isOk = false;
+	var cnt = -1;
+	
+	while (!isOk) {
+		cnt++;
+		var myCode = prompt("암호를 대라"); //입력창이 나왔을때 새로고침을 하면 입력이 된것으로 인식된다. 
+		isOk = myCode == code;
+		
+		if( cnt > 2 ) {
+			document.write ("나가랏");
+			break;
+		}
 	}
+	
+	if(isOk) {
+		document.write("통과!");
+	}
+	
 </script>
 </html>

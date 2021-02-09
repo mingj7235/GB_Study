@@ -14,14 +14,20 @@
 	초기 배경색은 흰색으로 한다.
 
  -->
- 	<h3>마우스를 올려보세요</h3>
+ 	<!-- <h3>마우스를 올려보세요</h3>
  	<hr>
  	<div style = "background-color:white" onmouseover = "change(this)" onmouseout = "out(this)">
  	<h4>여기에 마우스를 올리면 배경이 노란색으로 변합니다.</h4>
- 	</div>
+ 	</div> -->
+ 	
+ 	
+ 	<h3>마우스를 올려보세요</h3>
+ 	<hr>
+ 	<div onmouseover ="body.style.background ='yellow'" onmouseout ="body.style.background ='white'">
+ 	여기에 마우스를 올리면 배경이 노란색으로 변합니다.</div>
  	
 </body>
-<script>
+<!-- <script>
 	function change (obj) {
 		obj.style ="background-color:yellow";
 	}
@@ -29,5 +35,5 @@
 	function out (obj) {
 		obj.style ="background-color:white";
 	}
-</script>
+</script> -->
 </html>

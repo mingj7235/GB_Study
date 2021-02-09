@@ -14,7 +14,7 @@
  -->
 </body>
 <script>
-	var data = prompt("반복할 메세지를 입력하세요");
+/* 	var data = prompt("반복할 메세지를 입력하세요");
 	var num = prompt("반복할 횟수를 입력하세요");
 	var result = "";
 	
@@ -26,7 +26,7 @@
 	
 	if(isNaN(num) || check ) {
 		alert("잘못 입력하셨습니다.");
-		location.reload(); /* 새로고침 */
+		location.reload(); 
 	}
 	
 	function pr (data, num) {
@@ -37,8 +37,23 @@
 	}
 	
 	document.write(pr(data, num));
-	
+	 */
 
+	 function pr(str, cnt) {
+		 msg = "결과 : ";
+		 
+		 for(let i = 0; i <cnt ; i++) {
+			 msg += str; 
+		 }
+		 
+		 if(cnt < 1) {
+			 msg = "최소 한 번은 출력되어야 합니다.";
+		 }
+		 return msg;
+	 }
+	 
+	 document.write(pr("%", 5));
+	 
 </script>
 
 
