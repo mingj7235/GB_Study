@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document.write() 실습</title>
+</head>
+<body>
+
+<!-- 
+	<br>태그는 사용하지 않는다.
+	덧셈의 결과는 직접 연산을 통해 출력한다.
+	
+	[아래와 같은 문서로 응답하기]
+	
+	document.write()활용
+	----------------------(hr태그 사용)
+	Welcome!
+	
+	2+5는
+	7입니다
+	
+ -->
+ 
+ <script>
+ 	/* document.write("<pre>");
+ 	document.writeln("<h3>document.write()활용</h3>");
+ 	document.writeln("<hr>");
+ 	document.writeln("<h3>Welcome!!</h3>")
+	document.write("<h4>2+5는</h4>"); 
+ 	document.write("</pre>");
+	document.write(2+5 + "입니다."); */
+	
+	with(document){ /* 꿀팁! 앞에 붙는거 이렇게 쓰면됨 */
+		write("<h1>document.write() 활용 </h1>");
+		write("<hr>");
+		write("<h2>Welcome!</h2>");
+		write("<pre>");
+		writeln("2 + 5는");
+		writeln(2+5+"입니다.");
+		write("</pre>");
+	}
+	
+ </script>
+
+
+</body>
+</html>
