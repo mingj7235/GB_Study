@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM 이벤트</title>
+</head>
+<body>
+	<button id = "btn" onclick ="change('red', '30px')">버튼1</button>
+</body>
+<script>
+	function change(color, size){
+		var btn = document.getElementById("btn");
+		
+		btn.addEventListener("click", function(){ /* 클릭하면 뒤에 있는 함수가 실행되도록 하는것임. 익명클래스! */
+			/* this는 click된 객체를 말함 */
+			this.style.color = color;
+			this.style.fontSize = size;
+		});
+	}
+</script>
+</html>
