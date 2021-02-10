@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>방문 시간에 따라 변하는 배경</title>
+</head>
+<body>
+	<h3>방문시간에 따라 변하는 배경</h3>
+	<hr>
+</body>
+<script>
+	/*
+		초를 기준으로 짝수이면 문서의 배경을 violet 색상으로,
+		홀수이면 lightskyblue색상으로 변경
+		document.body.style.backgroundColor = "색상명";
+	*/
+	var now = new Date();
+	if(now.getSeconds() % 2 == 0) {
+		document.body.style.backgroundColor = "violet";
+	} else {
+		document.body.style.backgroundColor = "lightskyblue";
+	}
+	
+	with(document){
+		write("현재 시간 : ");
+		write(now.getHours(), "시");
+		write(now.getMinutes(), "분");
+		write(now.getSeconds(), "초<br>");
+		write(now.toUTCString());
+	}
+</script>
+</html>

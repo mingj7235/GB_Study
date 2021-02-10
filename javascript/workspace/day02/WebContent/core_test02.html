@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Array 객체로 배열 만들기</title>
+</head>
+<body>
+</body>
+<script>
+	var week = new Array("월", "화", "수", "목", "금", "토", "일");
+	
+	week.length = 3;
+	document.write(week[6]);
+	console.log(week.length);
+	for(let i = 0; i < week.length; i++) {
+		document.write(week[i]);
+	}
+	
+	/* join() 메소드 : 구분점을 해준다. 디폴트로 콤마가 붙는다. 주로 시간을 쓸때 많이 사용되는 메소드다.  */
+	document.write("<br>" + week.join());
+	document.write("<br>" + week.join("-"));
+	
+</script>
+</html>

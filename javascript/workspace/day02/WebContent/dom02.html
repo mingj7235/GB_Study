@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>스타일 동적 변경</title>
+</head>
+<body>
+	<h3>스타일 동적 변경</h3>
+	<hr>
+	<p id = "firstP" style = "color: blue;" onclick ="change()">
+		여기를 <span style = "color:red;">클릭하세요</span>
+	</p>
+</body>
+<script>
+	function change() {
+		var p = document.getElementById("firstP");
+		
+		/* innerHTML은 p태그 안의 내용을 대체하는 것이다. */
+		/* p.innerHTML = "<img src = 'icon1.png' width = '80px' height = '80px'> 이미지 등장"; */
+
+		/* 만약 대체하는게아니라 추가하고싶으면 appenChild를해야하는데 그러기위해서는 createElement를해줘야한다. */
+		var img = document.createElement("img");
+		img.innerHTML = "이미지등장";
+		img.setAttribute("src", "icon1.png");
+		img.setAttribute("width", "80px");
+		img.setAttribute("height", "80px");
+		p.appendChild(img);
+		
+		
+	}
+</script>
+</html>
