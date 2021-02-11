@@ -38,12 +38,12 @@
 	var tempTd;
 	var tempText;
 	
-	function confirm () {
-		var input = document.getElementById("choice");
+	function confirm() {
+		var input = document.getElementById("choice").value;
 		var datas = document.getElementsByClassName("data");
 		var check = false;
 		
-		if(tempTd != undefined) {
+		if (tempTd != undefined) {
 			tempTd.parentElement.style.background = "#fff";
 			tempTd.innerHTML = tempText;
 		}
@@ -51,16 +51,20 @@
 		for(let i = 0 ; i < datas.length ; i++) {
 			var td = datas[i].children[0];
 			if(input == td.innerHTML) {
+				tempTd = td;
+				tempText = td.innerHTML;
+				
 				td.parentElement.style.background = "red";
 				td.innerHTML = "★" + td.innerHTML;
 				check = true;
 				break;
+				
 			}
 		}
 		
-		if (!check){
-			alert("다시 시도해주세요");
-			history.go(0);
+		if (!check) {
+			alert("다시해");
+			location.reload();
 		}
 		
 	}
