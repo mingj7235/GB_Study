@@ -66,7 +66,10 @@ public class NaverCrawling {
 	}
 	
 	
-	
+	public static void main(String[] args) {
+		NaverCrawling naver = new NaverCrawling();
+		naver.operate();
+	}
 }
 
 
