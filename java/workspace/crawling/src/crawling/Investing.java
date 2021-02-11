@@ -15,7 +15,7 @@ public class Investing {
 	private WebDriver driver;
 	private String url;
 	public static final String WEB_DRIVER_ID ="webdriver.chrome.driver";
-	public static final String WEB_DRIVER_PATH ="C:\\chromedriver.exe";
+	public static final String WEB_DRIVER_PATH ="C:\\Users\\joshua\\Desktop\\chromedriver\\chromedriver.exe ";
 	
 	public Investing() {
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
