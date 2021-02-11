@@ -2,6 +2,8 @@ package crawling;
 
 import java.util.Scanner;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -42,6 +44,21 @@ public class NaverCrawling {
 		threadSleep();
 		
 		//네이버 가져와서, 로그인 (로그인 입력하도록 하고), 메일 누르고, 메일 내용 출력할수있도록 크롤링
+		
+		driver.findElement(By.className("link_login")).click();
+		
+		System.out.println("아이디를 입력하세요 : ");
+		String id = sc.next();
+		System.out.println("비밀번호를 입력하세요 : ");
+		String pw = sc.next();
+		element = driver.findElement(By.id("id"));
+		element.sendKeys(id);
+		
+		element = driver.findElement(By.id("pw"));
+		element.sendKeys(pw);
+		element.sendKeys(Keys.RETURN);
+		
+		//배열로 가져오기 (메일를 누르는 버튼 자체가 배열로 접근해서 가져와야함
 	}
 	
 	public void threadSleep () {
