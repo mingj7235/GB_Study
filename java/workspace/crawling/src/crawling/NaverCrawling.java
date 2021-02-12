@@ -1,5 +1,7 @@
 package crawling;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.openqa.selenium.By;
@@ -14,7 +16,8 @@ public class NaverCrawling {
 	private WebDriver driver;
 	private String url;
 	public static final String WEB_DRIVER_ID ="webdriver.chrome.driver";
-	public static final String WEB_DRIVER_PATH ="C:\\Users\\joshua\\Desktop\\chromedriver\\chromedriver.exe ";
+//	public static final String WEB_DRIVER_PATH ="C:\\Users\\joshua\\Desktop\\chromedriver\\chromedriver.exe ";
+	public static final String WEB_DRIVER_PATH ="C:\\chromedriver.exe";
 	
 	public NaverCrawling() {
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
@@ -51,6 +54,7 @@ public class NaverCrawling {
 		String id = sc.next();
 		System.out.println("비밀번호를 입력하세요 : ");
 		String pw = sc.next();
+		
 		element = driver.findElement(By.id("id"));
 		element.sendKeys(id);
 		
@@ -59,6 +63,12 @@ public class NaverCrawling {
 		element.sendKeys(Keys.RETURN);
 		
 		//배열로 가져오기 (메일를 누르는 버튼 자체가 배열로 접근해서 가져와야함
+		
+		List<WebElement> loginbox = driver.findElements(By.className("new_box"));
+		loginbox.get(0).click();
+		
+		element = driver.findElement(By.id("list_for_view")); // 네이버 메일 리스트 정보
+		
 	}
 	
 	public void threadSleep () {
