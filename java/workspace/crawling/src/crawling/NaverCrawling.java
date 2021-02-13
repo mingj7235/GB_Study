@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.tools.DocumentationTool.Location;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +26,6 @@ public class NaverCrawling {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("headless");
 		driver = new ChromeDriver(options);
-		
 		url = "https://www.naver.com/";
 	}
 	
@@ -64,10 +65,15 @@ public class NaverCrawling {
 		element.sendKeys(Keys.RETURN);
 		threadSleep();
 		//배열로 가져오기 (메일를 누르는 버튼 자체가 배열로 접근해서 가져와야함
+		System.out.println("로그인 완료");
+		driver.get(url);
+		driver.findElement(By.id("query")).sendKeys(Keys.F5);
+		threadSleep();
+		element = driver.findElement(By.className("MY_TAB_MAIL"));
+		element.click();
+		threadSleep();
 		
-		List<WebElement> tabs = driver.findElements(By.className("tab"));
-		System.out.println(tabs.size());
-		tabs.get(2).click();
+//		List<WebElement> tabs = driver.findElements(By.className("tab"));
 		System.out.println("점검");
 		threadSleep();
 //		element = driver.findElement(By.id("sender_context")); // 네이버 메일 리스트 정보
