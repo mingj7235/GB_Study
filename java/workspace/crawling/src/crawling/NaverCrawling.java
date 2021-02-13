@@ -65,9 +65,10 @@ public class NaverCrawling {
 		threadSleep();
 		//배열로 가져오기 (메일를 누르는 버튼 자체가 배열로 접근해서 가져와야함
 		
-		List<WebElement> loginbox = driver.findElements(By.className("link_new"));
-		System.out.println(loginbox.size());
-		loginbox.get(0).click();
+		List<WebElement> tabs = driver.findElements(By.className("tab"));
+		System.out.println(tabs.size());
+		tabs.get(2).click();
+		System.out.println("점검");
 		threadSleep();
 //		element = driver.findElement(By.id("sender_context")); // 네이버 메일 리스트 정보
 //		
