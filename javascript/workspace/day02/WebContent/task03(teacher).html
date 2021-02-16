@@ -57,7 +57,8 @@
    function confirm () {
 	   var input = document.getElementById("choice").value;
 	   
-	   var datas = document.getElementsByClassName("data");
+	   //위의 HTML 코드 중 class이름이 data인 태그 객체들
+	   var datas = document.getElementsByClassName("data"); //3칸
 	   
 	   var check = false;
 	   
@@ -66,16 +67,20 @@
 		   tempTd.innerHTML = tempText;
 	   }
 	   
-	   
+	   //가져온 태그 개수만큼 반복
 	   for(let i = 0; i<datas.length; i++) {
+		   //각각의 tr태그(datas[i])의 자식태그들 중 첫번째 자식을 td에 담아준다. 
+		   //이곳에서 우리가 사용해야하는 텍스트는 아동, 청소년, 성인이기 때문이다. 
 		   var td = datas[i].children[0];
+		   
+		   //td.innerHTML이 바로 "아동", "청소년", "성인" 이라는 텍스트이다. 
 		   if (input == td.innerHTML) {
 			   
 			   //전에꺼를 저장해주는것임.
 			   tempTd = td;
 			   tempText = td.innerHTML;
 			   
-			   
+			   //td.parentElement: td의 부모태그 (행)
 			   td.parentElement.style.background = "#ef5350";
 			   td.innerHTML ="★" + td.innerHTML;
 			   check = true;

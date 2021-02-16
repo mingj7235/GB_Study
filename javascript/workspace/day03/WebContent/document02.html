@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아이디를 이용한 선택</title>
+<style>
+	#even {
+		color :blue;
+	}
+
+</style>
+</head>
+<body>
+	<h1>아이디를 이용해봅시다.</h1>
+	<ul>
+		<li>첫번째 아이템이애요!</li>
+		<li id="even">두번째 아이템이애요!</li>
+		<li>세번째 아이템이애요!</li>
+		<li id="even">네번째 아이템이애요!</li>
+		<li>다섯번째 아이템이애요!</li>
+	</ul>
+</body>
+<script>
+	/* 
+		자바스크립트에서 중복된 아이디 값을 가져올 때에는 가장 먼저 찾은 id 값의 객체만 가지고 올 수 있다.
+		만약 동일한 id에 동일한 스타일을 주기 위해서는 CSS 스타일로 적용하는 것이 좋다. 
+	*/
+/* 	var selectedItem = document.getElementById("even");
+	selectedItem.style.color = "blue"; */
+</script>
+</html>
