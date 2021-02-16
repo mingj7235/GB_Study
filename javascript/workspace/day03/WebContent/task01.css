@@ -83,14 +83,15 @@ input {
 	border-left: none;
 	border-right: none;
 	border-top-style: solid;
-	border-top : 5px;
+	border-width : 5px;
 }
 
 button {
-	text-align: center;
+	margin : 0 auto;
+	/* text-align: center; */
 	width: 20%;
 	font-family: 'Nanum Pen Script';
-	font-size: 20px;	
+	font-size: 1em;	
 	color: #fff;
 	background-color: #ab47bc;
 }
