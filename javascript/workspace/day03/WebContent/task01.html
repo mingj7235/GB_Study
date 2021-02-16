@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숫자를 한글로 변경하기</title>
+</head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href = "task01.css">
+<style>
+	/*동그라미 구현*/
+	
+	div {
+		margin: 5px auto;
+		width: 60%;
+	}
+	
+	p {
+		text-align: center;
+		border: 4px solid #ab47bc;
+		border-radius : 50%;
+		width : 35px;
+		height : 35px;
+		font-family: 'Nanum Pen Script';
+		color : black;
+		font-size: 24px;
+		background-color: yellow;
+	}
+</style>
+<body>
+	<div>
+		<p id ="number"> 1 </p>
+	</div>
+	
+	<fieldset>
+		<legend> 숫자를 한글로 변경 </legend>
+		<textarea rows="3" cols="40" id ="result">
+		
+		</textarea>
+		
+		<input id ="data" type = "text">
+		
+		<div>
+		<button onclick="change()">변경</button>
+		</div>
+	
+	</fieldset>
+
+
+</body>
+<script>
+	function change() {
+		var korNums = "공일이삼사오육칠팔구";
+		var input = document.getElementById("data").value;
+		var textArea = document.getElementById("result");
+		var resultText = "";
+		
+		if(isFinite(input)) {
+			for(let i = 0; i<input.length; i++) {
+				if(input[i] ==".") {
+					resultText += "점";
+					continue;
+				}
+				resultText += korNums[input[i]];
+			}
+		} else {
+			resultText = "숫자를 입력해주세요";
+		}
+		textArea.value = resultText;
+		changeNum();
+	}
+	
+	//동그라미
+	function changeNum () {
+		if (resultText == "") {
+			document.getElementById("number").innerHTML = 2;
+		}
+	}
+	
+</script>
+</html>
