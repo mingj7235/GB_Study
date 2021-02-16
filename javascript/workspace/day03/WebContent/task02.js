@@ -4,6 +4,9 @@
 
 //비밀번호 오류 cnt도 전역변수로 바꿈. 
 
+SuperCar.prototype.pw = prompt("자동차 초기 비밀번호 입력");
+var check = false;
+
 //프로토 타입
 function SuperCar() {
 	this.brand = "Ferrari";
@@ -18,15 +21,18 @@ function activeEnter () {
 	}
 }
 
-SuperCar.prototype.pw = prompt("자동차 초기 비밀번호 입력");
 
 SuperCar.showInput = function(){ //버튼이 보이고 안보이고 //시동켜기에서 이걸로 onclick을 해줘야함
 //시동의 상태를 기억할 수 있는 변수를 만들고, 얘는 계속 기억을 하고 있어야한다. 
 //img는 img src 프로퍼티를 가지고와서 변경해주면된다. 
-	if() {
+	if(!check) {
 		//시동을 켤 수 있는 상태
+		check = true;
+		console.log("시동");
+		
 	}else {
 		//시동이 이미 켜져 있는 상태
+		console.log("시동꺼짐");
 	}
 }
 
