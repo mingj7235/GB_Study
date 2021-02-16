@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-	margin: 10%
+	margin: 10%;
 }
 
 
@@ -27,6 +27,7 @@ fieldset {
 	border-left:none;
 	border-right: none;
 	border-top-style: dashed;
+	border-width:10px;
 	border-top-color: #ab47bc;
 	width : 65%;
 	height: 180px;
@@ -34,7 +35,7 @@ fieldset {
 	padding : 15px;
 	text-align: center;
 	font-family: 'Nanum Pen Script';
-	font-size: 30px;
+	font-size: 3em;
 	display: inline-block;
 }
 

@@ -35,11 +35,8 @@
 	<fieldset>
 		<legend> 숫자를 한글로 변경 </legend>
 		<textarea rows="3" cols="40" id ="result">
-		
 		</textarea>
-		
 		<input id ="data" type = "text">
-		
 		<div>
 		<button onclick="change()">변경</button>
 		</div>
@@ -72,8 +69,9 @@
 	
 	//동그라미
 	function changeNum () {
+		var circle = document.getElementById("number");
 		if (resultText == "") {
-			document.getElementById("number").innerHTML = 2;
+			circle.innerHTML = "2";
 		}
 	}
 	
