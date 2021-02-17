@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery 심화 예제</title>
+</head>
+<body>
+	<ul class = "food">
+		<li>삼겹살</li>
+		<li>초콜릿</li>
+		<li>돈까스</li>
+	</ul>
+	
+	<div class = "toggle">눌러보세요!</div>
+	
+</body>
+<script src ="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	
+	$(".toggle").click(function(){
+		if($(".food").css("display") == "none") {
+			$(".food").show();
+		}else{
+			$(".food").hide();
+		}
+	});
+
+
+	/* $(".toggle").click(function(){
+		if($(".food").css("display") == "none"){ //css에서 속성값만을 던지면 그 값을 가져온다. 
+			$(".food").css("display", "block");
+		}else {
+			$(".food").css("display", "none");
+		}
+	}); */
+
+	/* 	$(".food").children().click(function(){
+		$(this).remove();//클릭한 그 객체!! 심볼을 써준이유는 JS문법이아니라 jQuery문법을 쓰는걸 명시하기위해서다. remove()는 JS에없다. jQuery에있다.
+	}); */
+	
+	
+	/* $(".food li").each(function(index, item){
+		console.log(index);
+		console.log(item);
+	});
+	 */
+</script>
+</html>
