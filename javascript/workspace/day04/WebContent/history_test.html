@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>history 객체 예제</title>
+</head>
+<body>
+	<h1>히스토리 목록의 접근</h1>
+	<p>아래의 버튼을 눌러보세요</p>
+	<button onclick ="goBack()">뒤로</button>
+	<button onclick ="go()">원하는 곳으로 이동</button>
+	<button onclick ="goForward()">앞으로</button>
+</body>
+<script>
+	function goBack () {
+		window.history.back(); //back() 메소드는 아예 그냥 뒤로가는 메소드임
+	}
+	function go () {
+		history.go(-1);
+	}
+	function goForward () {
+		history.goForward();
+	}
+</script>
+</html>

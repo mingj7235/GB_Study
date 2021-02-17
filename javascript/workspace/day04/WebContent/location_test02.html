@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>location 객체 예제 2</title>
+</head>
+<body>
+<!-- form테그는 name으로 객체가 생기는 것이다. 그리고 각각의 키값 (label의 name)이 프로퍼티다. -->
+	<form name = "myForm">
+		<p>
+			<label>네이버<input type="radio" value ="naver" name = "site"></label>
+		</p>
+		<p>
+			<label>다음<input type="radio" value ="daum" name = "site"></label>
+		</p>
+		<p>
+			<label>구글<input type="radio" value ="google" name = "site"></label>
+		</p>
+		<p>
+			<label><input type="button" onclick ="send_it()" value="이동"></label>
+		</p>
+	</form>
+</body>
+<script>
+	function send_it() {
+		var frm = document.myForm;
+		var choice = frm.site.value; // site가 키값이고 여기의 value를 찾아서, 이걸 choice에 넣는것!
+		var url = "";
+		switch (choice) {
+		case "naver" :
+			url = "https://www.naver.com";
+			break;
+		case "daum" :
+			url = "https://www.daum.net";
+			break;
+		case "google" :
+			url = "https://www.google.com";
+			break;
+		default :
+			alert("다시시도해주세요");
+			location.reload();
+		}
+		location.href = url;
+	}
+</script>
+</html>

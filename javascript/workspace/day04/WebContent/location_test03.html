@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>location 객체 예제 3</title>
+</head>
+<body>
+	<h1>히스토리 목록의 개수</h1>
+	<p>아래 버튼을 눌러 새로운 문서를 연 후, 브라우저의 뒤로가기 버튼을 눌러보세요!</p>
+	<button onclick="openDocument()">새로운 문서 열기</button>
+	<p id="text"></p>
+</body>
+<script>
+	//소스코드로 이동시키는건 모두 응답이다! 나는 개발자다!!! 응답!!!
+	function openDocument() {
+		//응답 방식이다. (사용자는 브라우저에서 요청하고, 우리는 이걸 응답을 해주는것이다.)
+		
+		//assign : 뒤로가기 가능
+		//location.assign("history_test.html");
+	
+		//replace : 뒤로가기 불가능
+		location.replace("history_test.html");
+	}
+	
+	document.getElementById("text").innerHTML = "현재 브라우저의 히스토리 목록의 개수는" 
+		+ history.length + "개 입니다.";
+	
+</script>
+</html>
