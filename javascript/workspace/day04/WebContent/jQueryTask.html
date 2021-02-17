@@ -47,15 +47,15 @@ th, td {
 			</tr>
 			
 			<tr>
-				<td id ="text">아동</td>
+				<td class ="text">아동</td>
 				<td>무료</td>
 			</tr>
 			<tr>
-				<td id = "text">청소년</td>
+				<td class = "text">청소년</td>
 				<td>2000원</td>
 			</tr>
 			<tr>
-				<td id = "text">성인</td>
+				<td class = "text">성인</td>
 				<td>5000원</td>
 			</tr>
 		</tbody>
@@ -69,63 +69,47 @@ th, td {
 </body>
 <script src ="//code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+	
 
 	var tempTr;
 	var tempTd;
 	var tempText;
 	
-	function confirm() {
+	function confirm() { 
 		//var input = document.getElementById("choice").value; /* 사용자가 입력한 값을 input에 담는다. */
-		var input = $("#choice").val();
-		
+ 		var input = $("#choice").val();
 		var check = false;
 		
-		$.each($("#text"), function(index, item) {
-			if($(item).text() == input) {
-				if(tempTr != undefined) {
-					tempTr.style.background = "#fff";
-					tempTd.innerHTML = tempText;
-				}
-				const tr = $(item).parent;
-				const td = $(item);
+		if(tempTr != undefined) {
+			tempTr.css("background", "#fff");
+			tempTd.text(tempText);
+		}
+		
+		$.each($(".text"), function(index, item) {
+			if(input == $(item).text()){
 				
-				tempTr = tr;
-				tempTd = td;
-				tempText = $(item).text;
+				//item과 this 는 JS이며, jQeury 문법을 사용하고자 할대에는
+				//$(this), $(item) 처럼 $로 묶어주어야 한다.
+				console.log("$item : " + $(item).text());
+				console.log("$this : " + $(this).text()); 
+				console.log("item : " + item.innerHTML);
+				console.log()
 				
-				tr.css("background", "#ef5350");
-				td.innerHTML = '☆' + $(item);
 				
+				tempTr = $(this).parent();
+				tempTd = $(this);
+				tempText = $(item).text();
+				
+				$(this).parent().css("background", "#ef5350");
+				$(this).text("☆" + $(item).text());
 				check = true;
 			}
-		});
-		
-		/* for(let i = 0; i <arAge.length; i++) {
-			if(arAge[i] == input) {
-				if(tempTr != undefined) {
-					tempTr.style.background = "#fff";
-					tempTd.innerHTML = tempText;
-				}
-				const tr = document.getElementById(arId[i]);
-				const td = document.getElementById(arId[i] + "-text");
-				
-				tempTr = tr;
-				tempTd = td;
-				tempText = arAge[i];
-				
-				tr.style.background = "#ef5350";
-				td.innerHTML = '☆' + arAge[i];
-				
-				check = true;
-			}
-		} */
-		
-		if(!check) {
+		}); 
+
+ 	if(!check) {
 			alert("다시 시도해주세요");
 			history.go(0);
 		}
-		
-		
 	}
 </script>
 

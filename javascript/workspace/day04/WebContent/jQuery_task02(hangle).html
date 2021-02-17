@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href = "jQuery_task02(hangle).css">
+
+<style>
+	#round {
+		margin-left : 120px;
+		border:5px solid #ab47bc;
+		border-radius : 50%;
+		width : 50px;
+		height : 50px;
+		text-align: center;
+		background : #ffee58;
+		line-height: 50px; /* 안의 글씨가 들어가는 높이를 원과 같이해주면 text-align으로도 가운데정렬댐 */
+		font-family: 'Nanum Pen Script';
+		font-size : 2rem;
+	}
+</style>
+</head>
+
+
+<body>
+	<div id="round">1</div>
+	
+	<fieldset>
+		<legend> 숫자를 한글로 변경 </legend>
+		<textarea rows="3" cols="40" id ="result">결과 표시 부분</textarea>
+		<input id ="num" type = "text"><br>
+		<button onclick="getResult()">변경</button>
+	</fieldset>
+</body>
+<script src ="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	$(document).ready(function () { //window.onload와 똑같음 
+		/* $("#num").keydown(function(key){
+			
+		}) */
+		
+		$("#num").on("keydown", function (key) { //누른 key가 값으로 전달이된다. 
+			if(key.keyCode ==13) {
+				getResult();
+			}	
+			
+		});
+	}); 
+
+
+	function changeToHangle(number) {
+		var result;
+		if(!isNaN(number)) {
+			//숫자일때 들어와라!
+			var data = number + ""; //문자열 값으로 변경해주는 것.
+			var hangle = "공일이삼사오육칠팔구"; //10칸짜리 배열로 보기
+			result = ""; //undefined문자가 붙으므로 이렇게 초기화해줌
+			//data가 10칸 collection 이라면 i는 0~9로 1식 증가시킴
+			for(let i in data){ //data 길이만큼 0부터 증가시키는 함수
+				//1234가 전달되면 data에 저장되고
+				//data.charAt(i)를 통해 각 숫자를 하나씩 추출한다.
+				//각 숫자는 hangle배열의 인덱스 번호로 활용되고,
+				//해당 숫자에 알맞는 한글로 변경된다. 
+				result += hangle[data.charAt(i)];
+			}
+		}
+		return result;
+	}
+	
+	function getResult() {
+		/* var divTag = document.getElementById("round");
+		var input = document.getElementById("num").value;
+		var textAreaTag = document.getElementById("result"); */
+		
+		var divTag = $("#round");
+		var input = $("#num").val();
+		var textAreaTag = $("#result");
+		
+		
+		var result = changeToHangle(input);
+		
+		console.log(result);
+		if(result == undefined || result == "") {
+			/* textAreaTag.innerHTML = "숫자만 입력하세요"; */
+			/* textAreaTag.innerText = ""; */
+			
+			textAreaTag.text("숫자만입력하세요");
+			/* divTag.innerHTML = "4"; */
+			divTag.text("4");
+		}else {
+			
+			var temp = result; // 실수와 정수를 구분해주기위해 임시로 저장
+			
+			//정상으로 들어올때
+			//이미 result는 숫자가 한글로 바뀐 값이다. 
+			//여기서 . 은 undefined로 나올것이다. 이걸 점으로 바꿔줌
+			result = result.replace(undefined, "점");
+			//실수이면 undefiend가 바뀜. 그래서 temp와 아래에 담은 result 다른지 비교
+			//실수라면 replace를 통해 변경되기 때문에 temp과 result가 같지 않다.
+			//정수라면 replace로 인해 변경되는 점이 없다. 
+			/* divTag.innerHTML = temp != result ? "2" : "3"; */
+			
+			divTag.text(temp != result ? "2" : "3");
+			
+			/* textAreaTag.innerHTML = result; */
+			textAreaTag.text(result);
+		}
+		
+	}
+
+</script>
+
+</html>
