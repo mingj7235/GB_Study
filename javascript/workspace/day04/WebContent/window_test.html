@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>window 객체 예제</title>
+</head>
+<body>
+</body>
+<script>
+	window.onload = function(){ //스크립트 태그가 어디에 있던간. html이 모두 실행되고 이 안에것이 사용된다.
+		window.setTimeout(function() {
+			//false : 보류 (사용하지말자...) default값
+			//true : 현재 히스토리 대체 (뒤로가기 방지)
+			//var w = window.open("http://naver.com", "_self", "width = 600, height = 300", false); //이 창 하나를 w 라는 객체로 담는 것임
+			var w = window.open("http://naver.com", "_child", "width = 600, height = 300", true);
+		}, 3000);
+	}
+</script>
+</html>
