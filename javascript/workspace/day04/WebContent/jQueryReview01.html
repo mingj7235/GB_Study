@@ -69,36 +69,38 @@ th, td {
 </body>
 <script src ="//code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-
+	
 	var tempTr;
 	var tempTd;
 	var tempText;
 	
-	function confirm() {
+	function confirm () {
 		var input = $("#choice").val();
 		var check = false;
-
-		if(tempTr != undefined) {
-			tempTr.style.background = "#fff";
-			tempTd.innerHTML = tempText;
-		}
-
-		$.each($(".text"), function (index, item) {
-			tempTr = $(this).parent();
-			tempTd = $(this);
-			tempText = $(this).text();
-			
-			$(this).parent().css("background" , "#ef5350");
-			$(this).text("☆" + $(this).text());
-			check = true;
-			
-		});
 		
+		if(tempTr != undefined) {
+			//초기화 시키는 부분
+			tempTr.css("background". "white");
+			tempTd.text(tempText);
+		}
+		
+		$.each ($(".text"), function (index, item) {
+			if(input == $(item).text()) {
+				tempTr = $(this).parent();
+				tempTd = $(this);
+				tempText = $(this).text();
+				
+				$(this).parent().css("background", "#ef5350");
+				$(this).text("☆" + $(this).text());
+				check = true;
+				
+			}
+		});
+	
 		if(!check) {
 			alert("다시 시도해주세요");
 			history.go(0);
 		}
-		
 		
 	}
 </script>
