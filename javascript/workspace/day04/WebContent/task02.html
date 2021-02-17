@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자동차 주행 테스트</title>
+<link rel="stylesheet" href="task02.css">
+</head>
+<body>
+	<fieldset>
+		<legend> 자동차 주행 </legend>
+		
+		<!-- 버튼 동작 및 연산에 따른 결과 메세지를 표시할 영역 -->
+		<textarea id = "result" rows="2" cols="40" readonly>현재 상태 표시</textarea> <!-- 수정할수없게 readonly -->
+		
+		<!-- 상황에 맞는 이미지로 표시하기 위한 영역 -->
+		<img id = "stat" src = "출발전.png"><br>
+		
+		<!-- 시동을 켜기 위해서 입력한 비밀번호 -->
+		<!-- 첫화면에서는 보이지 않도록 hidden 값을 준다. -->
+		<!-- 시동 켜기 버튼을 눌렀을 때 시동을 켤 수 있는 상태인지 검사 후 hidden이 visible로 변하면서 보이게 된다.  -->
+		<!-- onkeyup속성은 key 이벤트 발생 시 실행할 문장을 작성하도록 해준다. -->
+		<input id = "pw" style = "visibility:hidden" onkeyup = "activeEnter()" value ="비밀번호 입력" >
+		
+		<!-- 시동켜기, 끄기 버튼  -->
+		<button id = "on" onclick = "SuperCar.showInput()">시동 켜기</button>
+		<button id = "off" onclick = "SuperCar.engineStop()">시동 끄기</button>
+		<button onclick ="history.go(0)">초기화</button> <!-- 초기화는 이걸로 끝내기 -->
+	</fieldset>
+	
+</body>
+<!-- 
+	DOM 사용시 항상 HTML 코드 하단에 사용한다.
+	HTML이 모두 로딩 된 후에 DOM 사용이 가능해지기 때문이다. 
+ -->
+<script src = "task02.js"></script>
+</html>
