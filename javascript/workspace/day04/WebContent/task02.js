@@ -49,11 +49,14 @@ SuperCar.engineStart = function() {
 	
 	//비밀번호 검사(SuperCar.prototype.pw : 초기비밀번호)
 	if(SuperCar.prototype.pw == pw) {
+		//비밀번호 오류 초기화
+		policeCnt = 0;
 		img.src = "시동켜기.gif";
 		inputTag.value = "비밀번호 입력";
 		inputTag.style.visibility = "hidden";
 		result.innerHTML = "시동 켜짐";
 		check = true;
+		
 	}else {
 		//연속 3회 오류 시 경찰 출동
 		policeCnt++;
@@ -64,15 +67,24 @@ SuperCar.engineStart = function() {
 			document.getElementById("off").style.display = "none"; //영역도 없앰. visibility와 다르다.
 			inputTag.style.display = "none";
 			result.innerHTML = "경찰 출동";
+		}else {
+			result.innerHTML = "비밀번호 오류 : " + policeCnt + "회";
 		}
-		result.innerHTML = "비밀번호 오류 : " + policeCnt + "회";
 	}
 	
 }
 
 SuperCar.engineStop = function() {
 	//시동을 끌 수 있는 상태
-	//시동이 이미 꺼져 있는 상태
+	if(check) {
+		const img = document.getElementById("stat");
+		img.src = "시동끄기.gif";
+		result.innerHTML = "시동 꺼짐";
+		check = false;
+	}else {
+		//시동이 이미 꺼져 있는 상태
+		result.innerHTML = "이미 시동이 꺼져있습니다.";
+	}
 }
 
 
