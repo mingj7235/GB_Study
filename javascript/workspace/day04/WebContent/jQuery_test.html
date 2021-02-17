@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery 기초 예제</title>
+</head>
+<body>
+	<input type="text" class="num" value = "1"><br>
+	<input type="text" class="num" value = "2"><br>
+	<input type="text" class="num" value = "3"><br>
+	<!-- 개편하다 제이쿼리...... 오오오오오오오오.... -->
+	<input type="button" onclick = "$('.num').css('border-color', 'red')" value = "변경(jQuery 사용)"><br>
+	<input type="button" onclick="change()" value = "변경(javascript 사용)"><br>
+	
+</body>
+<script src ="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	function change(){
+		var obj = document.querySelectorAll(".num");
+		/* js에서 주로 사용하는 반복문의 형태 */
+		obj.forEach(function(element){
+			element.style.borderColor = 'red';
+		});
+	}
+</script>
+</html>
