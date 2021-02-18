@@ -164,12 +164,42 @@
 본 약관은 2020년 11월 16일부터 적용하고, 2016년 5월 2일부터 시행되던 종전의 약관은 본 약관으로 대체합니다.
 											</textarea>
 										</div>
+										<!-- <div class="field"> 이렇게 half를 지워도된다.-->
+										<div class="field half">
+											<input type="checkbox" id="agree" name="agree" checked>
+											<!-- 또는 position을 써준다. -->
+											<label for="agree" style = "position:absolute;"><span style="color:red; font-weight: 900;">[필수]</span>약관 및 개인정보 수집 / 이용 동의</label>
+										</div>
 									</div>
+									<ul class="actions">
+											<li style = "margin: 0 auto">
+											<input type="submit" value="Finish" class="primary" />
+											<input type="reset" value="Reset" style="margin-left: 30px"/>
+											</li>
+										</ul>
 								</form>
 							</article>
 							
 						<!-- Login -->
 							<article id="login">
+								<form method="post" action="#">
+									<div class="fields" >
+										<div class="field half" style = "margin: 0 auto">
+											<label for="email">Email</label>
+											<input type="email" name="email" id="email" value="" placeholder="abc@gmail.com" />
+											<br>
+											<label for="pw">Password</label>
+											<input type="password" name="pw" id="pw" value=""/>
+											<a href="#" style ="font-size : 0.7rem">아이디 또는 비밀번호 찾기</a>
+										</div>
+									</div>
+									<ul class="actions">
+										<li style = "margin: 0 auto">
+										<input type="submit" value="Login" />
+										</li>
+									</ul>
+								</form>
+							
 							</article>
 							
 							
