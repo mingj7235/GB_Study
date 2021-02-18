@@ -54,23 +54,17 @@
 		<!-- Wrapper -->
 			<div class="wrapper">
 				<!-- Main -->
-				<div>
+				<div style="margin: 20px">
 					<h3>회원가입</h3>
 				</div>
 				<br>
 				<form method="post" action="#">
 					<div class="row gtr-uniform">
-						<div class="col-6 col-12-xsmall" style = "margin: 0 auto;">
+						<div class="col-6 col-12-xsmall" style = "width : 40%; margin: 20px auto;">
 							<input type="text" name="name" id="name" value="" placeholder="Name" style="width: 300px"/><br>
 							<input type="email" name="email" id="email" value="" placeholder="Email" style="width: 300px"/><br>
 							<input type="password" name="pw" id="pw" value="" placeholder="password" style="width: 300px"/><br>
 							<input type="password" name="pw" id="pw" value="" placeholder="check password" style="width: 300px"/><br>
-							<div class="col-4 col-12-small">
-								<input type="radio" id="priority-low" name="priority" checked>
-								<label for="priority-low">남</label>
-								<input type="radio" id="priority-normal" name="priority">
-								<label for="priority-normal">여</label>
-							</div>
 							<div class="col-12">
 								<textarea name="term" id="term" style ="width : 300px; height : 200px; resize: none;" readonly="readonly">
 시행일자 : 2021년 2월 18일
@@ -177,13 +171,36 @@
 본 약관은 2020년 11월 16일부터 적용하고, 2016년 5월 2일부터 시행되던 종전의 약관은 본 약관으로 대체합니다.
 								</textarea>
 							</div>
+							<div class="col-6 col-12-small" style="margin-top: 10px">
+								<input type="checkbox" id="human" name="human" checked>
+								<label for="human"><span style ="color: red">[필수]</span>동의합니다.</label>
+							</div>
+							<hr style="width :300px;">
+							<div class="col-4 col-12-small">
+								<input type="radio" id="priority-low" name="priority" checked>
+								<label for="priority-low">남</label>
+								<input type="radio" id="priority-normal" name="priority">
+								<label for="priority-normal">여</label>
+							</div>
+							<h5>관심사</h5>
+							<div class="col-12">
+								<select name="category" id="category" style ="width : 300px;">
+									<option value="">- 카테고리 -</option>
+									<option value="1">운동</option>
+									<option value="1">게임</option>
+									<option value="1">음악</option>
+									<option value="1">자기개발</option>
+								</select>
+							</div>
+							<hr style="width :300px;">
+							<div class="col-12">
+								<ul class="actions" style="display: inline">
+									<li style = "width : 40%; margin: 10px auto;">
+									<input type="submit" value="Sign up" class="primary" />
+									</li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="col-12">
-						<ul class="actions">
-							<li style = "margin: 0 auto;"><input type="submit" value="Sign up" class="primary" />
-							<input type="reset" value="Reset" /></li>
-						</ul>
 					</div>
 				</form>
 
