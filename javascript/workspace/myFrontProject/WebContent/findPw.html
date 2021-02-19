@@ -5,140 +5,168 @@
 	License: pixelarity.com/license
 -->
 <html>
-	<head>
-		<title>Login</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+<title>Login</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
 
-		<!-- Header -->
-			<header id="header">
+	<!-- Header -->
+	<header id="header">
 
-				<!-- Logo -->
-					<span class="logo">
-						<a href="index.html">Faction</a>
-						<span>By Pixelarity</span>
-					</span>
+		<!-- Logo -->
+		<span class="logo"> 
+						<a href="index.html">Coram Deo</a>
+						<span>By Joshua</span>
+		</span>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#" class="icon solid fa-angle-down">Dropdown</a>
-								<ul>
-									<li><a href="#">Option One</a></li>
-									<li><a href="#">Option Two</a></li>
-									<li><a href="#">Option Three</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-							<li><a href="login.html" class="button">Log In</a></li>
-						</ul>
-					</nav>
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#" class="icon solid fa-angle-down">Dropdown</a>
+					<ul>
+						<li><a href="#">Option One</a></li>
+						<li><a href="#">Option Two</a></li>
+						<li><a href="#">Option Three</a></li>
+						<li><a href="#">Submenu</a>
+							<ul>
+								<li><a href="#">Option One</a></li>
+								<li><a href="#">Option Two</a></li>
+								<li><a href="#">Option Three</a></li>
+								<li><a href="#">Option Four</a></li>
+							</ul></li>
+					</ul></li>
+				<li><a href="generic.html">Generic</a></li>
+				<li><a href="elements.html">Elements</a></li>
+				<li><a href="login.html" class="button">Log In</a></li>
+			</ul>
+		</nav>
 
-			</header>
+	</header>
+	<!-- 
+		가운데정렬
+1. margin 사용
+   margin:0 auto;
+   좌우 여백(left, rigth)을 사용해서 직접 가운데 정렬
 
-		<!-- Wrapper -->
-			<div class="wrapper">
-				<!-- Main -->
-				<div style="margin: 20px">
-					<h3>로그인</h3>
+2. text-align 사용(form태그는 안됨)
+   외부요소 : text-align:center
+   내부요소 : inline-block
+3. flexbox
+   외부요소 : display:flex, justify-content:center
+			 -->
+	<!-- Wrapper -->
+	<div class="wrapper" style = "display : inline-flex;">
+		<!-- Main -->
+		<div style="margin: 20px; margin-left:100px;">
+			<h3>비밀번호 찾기</h3>
+		</div>
+		<form method="post" action="#">
+			<div class="gtr-uniform" >
+				<div class="col-6 col-12-xsmall"
+					style="margin: 20px auto;">
+					<h5> 이름</h5>
+					<input type="text" name="name" id="name" value="" placeholder="Name" style="width: 400px"/><br>
+					<h5> 이메일</h5>
+					<input type="email" name="email" id="email" value="" placeholder="email" style="width: 400px"/>
 				</div>
-				<br>
-				<form method="post" action="#">
-					<div class="gtr-uniform">
-						<div class="col-6 col-12-xsmall" style = "width : 40%; margin: 20px auto;">
-							<input type="email" name="email" id="email" value="" placeholder="Email" style="width: 300px"/><br>
-							<input type="password" name="pw" id="pw" value="" placeholder="password" style="width: 300px"/>
-						</div>
-						<div style = "width : 40%; margin: 20px auto;">
-							<a href="findId.html" style="font-size: 0.7rem">아이디 찾기</a>
-							<a href="findPw.html" style="font-size: 0.7rem;">비밀번호 찾기</a>
-						</div>
-					</div>
-					<div class="col-12">
-						<ul class="actions">
-							<li style = "width : 40%; margin: 20px auto; display: inline;">
-							<input type="submit" value="login" class="primary" style="width: 40%"/>
-							<a href="Signup.html" class="button" style="width: 40%">Sign up</a>
-							</li>
-						</ul>
-					</div>
-				</form>
-
+				<h5> 등록한 휴대폰 번호</h5>
+				<div style="width:400px; display:flex; ">
+					<select name="category" id="category" style="width: 110px;margin-right: 5px; ">
+						<option value="">010</option>
+						<option value="1">011</option>
+						<option value="1">016</option>
+					</select>
+					<input type="text" name="name" id="name" value=""  style="width: 100px;margin-right: 5px;"/><br>
+					<input type="text" name="name" id="name" value=""  style="width: 100px;margin-right: 5px;"/><br>
+					<button class="button primary disabled" style="width: 100px;margin: 5px;padding: 0 2px;font-size: 0.7rem;">인증번호발송</button>
+				</div>
+				<div style="width:400px; display:flex;">
+					<input type="text" name="name" id="name" value="" placeholder="인증번호 입력" style="width: 316px"/>
+					<button class="button primary disabled" style="width: 84px;margin: 5px;padding: 0 2px;font-size: 0.7rem;">인증번호확인</button>
+				</div>
+				<h5> <span style ="color:red; margin:5px;">*</span> 인증번호가 확인후 등록된 이메일로 임시비밀번호가 발송됩니다.</h5>
+				<hr style="width :400px;">
+				<div class="col-12 actions" style = "display:flex; justify-content:center; width:400px">
+<!-- 						<input type="submit" value="Login" class="primary" style = "width: 300px; "/> -->
+						<a href="login.html" class="button primary" style="width: 300px">Login</a>
+						<a href="Signup.html" class="button" style="width: 300px">Sign up</a>
+				</div>
 			</div>
+		</form>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<section class="info">
-						<h3>About Us</h3>
-						<div class="about">
-							<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur malesuada.</p><p>Sagittis felis ac sagittis semper. Curabitur purus leo donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">Learn More</a></li>
-							</ul>
-						</div>
-						<div class="team">
-							<article>
-								<span class="image"><img src="images/pic06.jpg" alt=""></span>
-								<p>
-									<strong class="name">John Doe</strong>
-									<span class="title">Lorem semper magna etiam</span>
-								</p>
-							</article>
-							<article>
-								<span class="image"><img src="images/pic07.jpg" alt=""></span>
-								<p>
-									<strong class="name">Jane Anderson</strong>
-									<span class="title">Etiam feugiat adipiscing veroeros</span>
-								</p>
-							</article>
-							<article>
-								<span class="image"><img src="images/pic08.jpg" alt=""></span>
-								<p>
-									<strong class="name">Mike Smith</strong>
-									<span class="title">Consequat nulla dolor blandit</span>
-								</p>
-							</article>
-						</div>
-					</section>
-					<section class="contact">
-						<h3>Contact Us</h3>
-						<ul class="contact-icons">
-							<li class="icon solid fa-home"><a href="#">1234 Somewhere Road #80486<br>Nashville, TN 00000</a></li>
-							<li class="icon solid fa-phone"><a href="#">(800) 555-0000 x12345</a></li>
-							<li class="icon solid fa-envelope"><a href="#">hello@untitled.tld</a></li>
-							<li class="icon brands fa-facebook"><a href="#">facebook.com/untitled-tld</a></li>
-							<li class="icon brands fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
-						</ul>
-					</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<section class="info">
+				<h3>About Us</h3>
+				<div class="about">
+					<p>Morbi mattis mi consectetur tortor elementum, varius
+						pellentesque velit convallis. Aenean tincidunt lectus auctor
+						mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et
+						ex tincidunt, quis lacinia velit aliquet. Duis non efficitur
+						malesuada.</p>
+					<p>Sagittis felis ac sagittis semper. Curabitur purus leo donec
+						vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames
+						ac ante ipsum primis.</p>
+					<ul class="actions">
+						<li><a href="#" class="button">Learn More</a></li>
+					</ul>
 				</div>
-				<div class="copyright">
-					&copy; Untitled. All rights reserved.
+				<div class="team">
+					<article>
+						<span class="image"><img src="images/pic06.jpg" alt=""></span>
+						<p>
+							<strong class="name">John Doe</strong> <span class="title">Lorem
+								semper magna etiam</span>
+						</p>
+					</article>
+					<article>
+						<span class="image"><img src="images/pic07.jpg" alt=""></span>
+						<p>
+							<strong class="name">Jane Anderson</strong> <span class="title">Etiam
+								feugiat adipiscing veroeros</span>
+						</p>
+					</article>
+					<article>
+						<span class="image"><img src="images/pic08.jpg" alt=""></span>
+						<p>
+							<strong class="name">Mike Smith</strong> <span class="title">Consequat
+								nulla dolor blandit</span>
+						</p>
+					</article>
 				</div>
-			</footer>
+			</section>
+			<section class="contact">
+				<h3>Contact Us</h3>
+				<ul class="contact-icons">
+					<li class="icon solid fa-home"><a href="#">1234 Somewhere
+							Road #80486<br>Nashville, TN 00000
+					</a></li>
+					<li class="icon solid fa-phone"><a href="#">(800) 555-0000
+							x12345</a></li>
+					<li class="icon solid fa-envelope"><a href="#">hello@untitled.tld</a></li>
+					<li class="icon brands fa-facebook"><a href="#">facebook.com/untitled-tld</a></li>
+					<li class="icon brands fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
+				</ul>
+			</section>
+		</div>
+		<div class="copyright">&copy; Untitled. All rights reserved.</div>
+	</footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
-	</body>
+</body>
 </html>
