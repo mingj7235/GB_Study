@@ -60,7 +60,7 @@
 				<br>
 				<form method="post" action="#">
 					<div class="row gtr-uniform">
-						<div class="col-6 col-12-xsmall" style = "width : 40%; margin: 20px auto;">
+						<div class="col-6 col-12-xsmall" style = "margin: 20px auto;">
 							<input type="text" name="name" id="name" value="" placeholder="Name" style="width: 300px"/><br>
 							<input type="email" name="email" id="email" value="" placeholder="Email" style="width: 300px"/><br>
 							<input type="password" name="pw" id="pw" value="" placeholder="password" style="width: 300px"/><br>
@@ -171,12 +171,12 @@
 본 약관은 2020년 11월 16일부터 적용하고, 2016년 5월 2일부터 시행되던 종전의 약관은 본 약관으로 대체합니다.
 								</textarea>
 							</div>
-							<div class="col-6 col-12-small" style="margin-top: 10px">
+							<div class="col-6 col-12-small" style="margin-top: 10px; width : 200px;">
 								<input type="checkbox" id="human" name="human" checked>
 								<label for="human"><span style ="color: red">[필수]</span>동의합니다.</label>
 							</div>
 							<hr style="width :300px;">
-							<div class="col-4 col-12-small">
+							<div class="col-4 col-12-small" style ="display:inline-block;">
 								<input type="radio" id="priority-low" name="priority" checked>
 								<label for="priority-low">남</label>
 								<input type="radio" id="priority-normal" name="priority">
@@ -193,12 +193,9 @@
 								</select>
 							</div>
 							<hr style="width :300px;">
-							<div class="col-12">
-								<ul class="actions" style="display: inline">
-									<li style = "width : 40%; margin: 10px auto;">
-									<input type="submit" value="Sign up" class="primary" />
-									</li>
-								</ul>
+							<div class="col-12 actions" style = "display:flex; justify-content:center">
+									<input type="submit" value="Sign up" class="primary" style = "width: 200px; margin-left : 50px;"/>
+									<input type="reset" value="Reset" style = "width: 200px; margin-left : 50px;"/>
 							</div>
 						</div>
 					</div>
