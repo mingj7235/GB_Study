@@ -61,10 +61,20 @@
 				<form method="post" action="#">
 					<div class="row gtr-uniform">
 						<div class="col-6 col-12-xsmall" style = "margin: 20px auto;">
+							<div style="align-items: right">
+								<h5>(<span style ="color:red;">*</span>)표시는 필수입니다.</h5>
+							</div>
+							<h5><span style ="color:red;">*</span> 이름</h5>
 							<input type="text" name="name" id="name" value="" placeholder="Name" style="width: 300px"/><br>
+							<h5><span style ="color:red;">*</span> 이메일</h5>
 							<input type="email" name="email" id="email" value="" placeholder="Email" style="width: 300px"/><br>
+							<h5><span style ="color:red;">*</span> 비밀번호</h5>
 							<input type="password" name="pw" id="pw" value="" placeholder="password" style="width: 300px"/><br>
+							<h5><span style ="color:red;">*</span> 비밀번호 확인</h5>
 							<input type="password" name="pw" id="pw" value="" placeholder="check password" style="width: 300px"/><br>
+							
+							
+							
 							<div class="col-12">
 								<textarea name="term" id="term" style ="width : 300px; height : 200px; resize: none;" readonly="readonly">
 시행일자 : 2021년 2월 18일
@@ -176,7 +186,7 @@
 								<label for="human"><span style ="color: red">[필수]</span>동의합니다.</label>
 							</div>
 							<hr style="width :300px;">
-							<div class="col-4 col-12-small" style ="display:inline-block;">
+							<div class="col-4 col-12-small" style ="width : 300px; text-align: center;">
 								<input type="radio" id="priority-low" name="priority" checked>
 								<label for="priority-low">남</label>
 								<input type="radio" id="priority-normal" name="priority">
@@ -194,8 +204,8 @@
 							</div>
 							<hr style="width :300px;">
 							<div class="col-12 actions" style = "display:flex; justify-content:center">
-									<input type="submit" value="Sign up" class="primary" style = "width: 200px; margin-left : 50px;"/>
-									<input type="reset" value="Reset" style = "width: 200px; margin-left : 50px;"/>
+									<input type="submit" value="Sign up" class="primary" style = "width: 250px; margin-left : 25px; margin-right: 25px;"/>
+									<input type="reset" value="Reset" style = "width: 250px; margin-left : 25px; margin-right: 25px;"/>
 							</div>
 						</div>
 					</div>
