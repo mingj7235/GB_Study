@@ -239,15 +239,33 @@
 							</div>
 							<div class="col-6 col-12-small" style="margin-top: 10px; width : 200px;">
 								<input type="checkbox" id="human" name="human" checked>
-								<label for="human"><span style ="color: red">[필수]</span>동의합니다.</label>
+								<label for="human"><span style ="color: red">[필수]</span> 동의합니다.</label>
 							</div>
 							<hr style="width :400px;">
-							<div class="col-4 col-12-small" style ="width : 400px; text-align: center;">
+							
+							<!-- Talent 세부 관련 사항 -->
+							<h5 style ="width: 400px;">성별</h5>
+							<div class="col-4 col-12-small" style ="width : 400px; ">
 								<input type="radio" id="priority-low" name="priority" checked>
 								<label for="priority-low">남</label>
 								<input type="radio" id="priority-normal" name="priority">
 								<label for="priority-normal">여</label>
 							</div>
+							<h5 style ="width: 400px;">지역</h5>
+							<form method="post" action="#">
+								<div class="row gtr-uniform" style="width: 400px;">
+									<div class="col-9 col-12-small">
+										<input type="text" name="query" id="query" value="" placeholder="- 지역검색 - (000동 입력)" style="width: 280px;"/>
+									</div>
+									<div class="col-3 col-12-small">
+										<input type="submit" value="Search" class="fit" style="width: 100px"/>
+									</div>
+								</div>
+							</form>
+							<input type="text" name="location" id="location" value="" placeholder="세부 주소" style="width: 400px; margin-top: 10px;"/>
+							<h6 style ="width: 400px;">지역이 구체적일 수록 내 주변의 모임들을 찾기에 좋아요 :)</h6><br>
+							
+							<br>
 							<h3 style="width: 400px">Sharing Talent For you</h3>
 							<blockquote style="width: 400px">
 							당신의 재능은 무엇인가요?<br>
@@ -267,7 +285,7 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<select name="category" id="category" style ="width : 400px;">
+								<select name="category" id="category" style ="width : 400px; margin-top: 10px;">
 									<option value="">- 세부분야 -</option>
 									<option value="1">운동</option>
 									<option value="1">게임</option>
@@ -286,8 +304,8 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<select name="category" id="category" style ="width : 400px;">
-									<option value="">- 세부분야 -</option>
+								<select name="category" id="category" style ="width : 400px; margin-top: 10px;">
+									<option value="">- 세부분야 -</option> 
 									<option value="1">운동</option>
 									<option value="1">게임</option>
 									<option value="1">음악</option>
@@ -305,7 +323,7 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<select name="category" id="category" style ="width : 400px;">
+								<select name="category" id="category" style ="width : 400px; margin-top: 10px;">
 									<option value="">- 세부분야 -</option>
 									<option value="1">운동</option>
 									<option value="1">게임</option>
@@ -325,7 +343,7 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<select name="category" id="category" style ="width : 400px;">
+								<select name="category" id="category" style ="width : 400px; margin-top: 10px;">
 									<option value="">- 세부분야 -</option>
 									<option value="1">운동</option>
 									<option value="1">게임</option>
@@ -344,7 +362,7 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<select name="category" id="category" style ="width : 400px;">
+								<select name="category" id="category" style ="width : 400px; margin-top: 10px;">
 									<option value="">- 세부분야 -</option>
 									<option value="1">운동</option>
 									<option value="1">게임</option>
@@ -363,7 +381,7 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<select name="category" id="category" style ="width : 400px;">
+								<select name="category" id="category" style ="width : 400px; margin-top: 10px;">
 									<option value="">- 세부분야 -</option>
 									<option value="1">운동</option>
 									<option value="1">게임</option>
