@@ -6,7 +6,7 @@
 -->
 <html>
 <head>
-<title>Login</title>
+<title>STforU_Find_PW</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -102,7 +102,7 @@
    외부요소 : display:flex, justify-content:center
 			 -->
 	<!-- Wrapper -->
-	<div class="wrapper" style = "display : inline-flex;">
+	<div class="wrapper">
 		<!-- Main -->
 		<div style="margin: 20px; margin-left:100px;">
 			<h3>비밀번호 찾기</h3>
@@ -118,18 +118,19 @@
 				</div>
 				<h5> 등록한 휴대폰 번호</h5>
 				<div style="width:400px; display:flex; ">
-					<select name="category" id="category" style="width: 110px;margin-right: 5px; ">
+					<select name="category" id="category" style="width: 95px;margin-right: 5px; ">
 						<option value="">010</option>
 						<option value="1">011</option>
 						<option value="1">016</option>
 					</select>
-					<input type="text" name="name" id="name" value=""  style="width: 100px;margin-right: 5px;"/><br>
-					<input type="text" name="name" id="name" value=""  style="width: 100px;margin-right: 5px;"/><br>
-					<button class="button primary disabled" style="width: 100px;margin: 5px;padding: 0 2px;font-size: 0.7rem;">인증번호발송</button>
+					<input type="text" name="name" id="name" value=""  style="width: 95px;margin-right: 5px;"/><br>
+					<input type="text" name="name" id="name" value=""  style="width: 95px;margin-right: 5px;"/><br>
+					<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호발송</button>
+					<!-- <span class="button primary disabled" style="width: 90px; text-align: center">인증번호발송</span> -->
 				</div>
 				<div style="width:400px; display:flex;">
-					<input type="text" name="name" id="name" value="" placeholder="인증번호 입력" style="width: 316px"/>
-					<button class="button primary disabled" style="width: 84px;margin: 5px;padding: 0 2px;font-size: 0.7rem;">인증번호확인</button>
+					<input type="text" name="name" id="name" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
+					<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호확인</button>
 				</div>
 				<h5> <span style ="color:red; margin:5px;">*</span> 인증번호가 확인후 등록된 이메일로 임시비밀번호가 발송됩니다.</h5>
 				<hr style="width :400px;">
