@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>현재 위치</title>
+</head>
+<body>
+	<h3>getCurrentPosition()으로 현재 위치 파악</h3>
+	<hr>
+	<div id = "msg">이곳에 위치 정보 출력</div>
+	<div id = "map" style="width:500px;height:400px;"></div><!-- 지도 이미지 출력 부분 -->
+</body>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c703d7d889c7c3ee288374349eac2d00"></script>
+<script>
+	if(!navigator.geolocation) {
+		alert("지원하지않음");
+	}else{
+		navigator.geolocation.getCurrentPosition(getPosition, error);
+		
+		function error (err) {
+			alert("실패: " + err.message);
+		}
+		
+		function getPosition(position) {
+			var now = new Date(position.timeStamp); //timeStamp : 시간
+			var lat = position.coords.latitude; //위도
+			var lon = position.coords.longitude; //경도
+			var acc = position.coords.accuracy; //정확도(미터)
+			
+			//위도경도가 길기때문에 잘라준다.소수점 6자리로 자름
+			lat = lat.toPrecision(6);
+			lon = lon.toPrecision(6);
+			
+			console.log(lat);
+			console.log(lon);
+			console.log(acc);
+			
+			var text ="좌표가 찍힌 시간 : " + now.toUTCString() + "<br>";
+			text += "현재좌표(위도 : " + lat + "˚, 경도 : " + lon + ")<br>";
+			text += "정확도 : " + acc + "m<br>";
+			
+			document.getElementById("msg").innerHTML = text;
+			
+			var container = document.getElementById("map"); //지도를 담을 영역의 DOM 레퍼런스
+			var options = { //지도를 생성할 때 필요한 기본 옵션
+				center: new kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
+				level: 3 //지도의 레벨(확대, 축소 정도)
+			};
+
+			var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+			
+		}
+	}
+</script>
+</html>
