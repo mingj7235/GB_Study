@@ -25,4 +25,19 @@
     <servlet-name>calc-jsp</servlet-name>
     <url-pattern>/calc</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>calc_teacher-jsp</servlet-name>
+    <!-- ③요청한 경로 대신 calc_teacher.jsp를 응답해준다. -->
+    <jsp-file>/calc_teacher.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<!-- ②calc_teacher-jsp이름으로 찾아간다. -->
+    <servlet-name>calc_teacher-jsp</servlet-name>
+    <!-- ①클라이언트가 요청한 URL에 calc_teacher가 들어있다면 -->
+    <url-pattern>/calc_teacher</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>계산기</title>
 </head>
 <body>
 	<h1>JSP로 만든 페이지</h1>
