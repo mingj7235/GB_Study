@@ -8,11 +8,11 @@
 </head>
 <body>
 	<!-- 헤더영역 -->
-	<%@ include file = "header.jsp" %>
+	<%@ include file = "header.jsp" %> <!-- 인클루드 디렉티브 태그 -->
 	<hr>
 	<h4>------------------------현재 페이지 영역----------------------</h4>
 	<hr>
 	<!-- 푸터영역 -->
-	<%@ include file = "footer.jsp" %>
+	<jsp:include page = "footer.jsp" %> <!-- 액션 태그-->
 </body>
 </html>
