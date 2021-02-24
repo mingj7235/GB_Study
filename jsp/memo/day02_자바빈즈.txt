@@ -1,0 +1,33 @@
+자바빈즈(자바 객체)
+	JSP의 표준 액션 태그를 통해 접근할 수 있는 자바 클래스로서,
+	기본 생성자, 멤버 변수(필드)와 setter, getter메소드로 이루어져 있다.
+
+	(day01 액션태그와 이어짐)
+	4. useBean - <jsp:useBean />	(기본생성자)
+	5. setProperty - <jsp:setProperty />	(setter)
+	6. getProperty - <jsp:getProperty />	(getter)
+	
+
+자바빈즈 태그 사용 문법
+	-객체 생성
+		MemberVO member = new MemberVO();
+		<jsp:useBean class ="com.koreait.beans.MemberVO" id = "member" />
+
+	-setter()
+		member.setName("한동석");
+		<jsp:setProperty name="member" property="name" value="한동석" />
+	-getter()
+		member.getName();
+		<jsp:getProperty name="member" property="name" />	
+
+자바빈즈 규칙
+	1. 패키지화
+		(디폴트 패키지없이 반드시 패키지의 이름을 정해줘라!)
+
+	2. 멤버변수 접근자 private으로 설정
+		-> getter setter를 사용하도록 한것임
+
+	3. getter, setter 메소드 접근자는 public으로 만들어야한다.
+
+	4. 기본 생성자 선언
+
