@@ -7,56 +7,46 @@
 <title>회원가입</title>
 </head>
 <body>
-
-<!-- 
-	
-	1.입력한 아이디를 join_ok.jsp로 전송
-	2.join_ok.jsp에서 DAO에 있는아이디 중복검사 메소드 사용
-	3.결과를 join.jsp로 전송 (check)
-	4.join.jsp에서 check의 값에 따른 적절한 메세지를 p태그에 삽입
-	
-	※우선 check가 null인지부터 판단한 후 false, true 검사
-	※어떻게 자바 코드에 있는 변수를 JS코드로 가져올 수 있을까? << 고민해야함. 
-
- -->
- 
- 	<%
- 		String check = request.getParameter("check"); /* get방식으로 가져온 check값 */
- 		/* null인상태는 처음 들어왔을때. join_ok에서 날아온게  */
- 		if(check == null) {
- 			check = "";
- 		} 
- 	%>
- 	<!-- 이렇게 가지고 오면된다. 자바코드를 js로 가져오는 법 -->
- 	<input type ="hidden" name = "check" value ="<%=check%>">
- 	
-	<form action ="join_ok.jsp" name ="joinForm">
-		아이디 : <input type="text" name = "id"><p id="result" "></p>
-		<input type="button" value ="완료" onclick="sendIt()">
+	<form action ="join_db.jsp" name="joinForm">
+		<p>
+			<!-- input태그의 name 은 action으로 갈때 키 값을 가져오기위해서, id 속성은 이 태그를  script에서 dom으로 쓰기위해서-->
+			<label>아이디 : <input type="text" name = "id" id="id"></label>
+			<input type ="button" value = "중복 확인" onclick="sendIt()"> 
+		</p>
+		<p id ="result"> </p>
+		<p>
+			<label>이름 : <input type="text" name = "name"></label>
+		</p>
+		<p>
+			<label>패스워드 : <input type="password" name = "password"></label>
+		</p>
+		<p>
+			<label>패스워드 확인 : <input type="password" name = "password_re"></label>
+		</p>
+		<p>
+			성별 : <label><input type="radio" name = "gender" value ="남자" checked></label>
+			성별 : <label><input type="radio" name = "gender" value ="여자" ></label>
+		</p>
+		<p>
+			우편번호 : <input type="text" name="zipcode" class="postcodify_postcode5" value="" readonly/>
+			<button id="postcodify_search_button">검색</button><br />
+		</p>
+		<p>
+			주소 : <input type="text" name="address" class="postcodify_address" value="" readonly/><br />
+		</p>
+		<p>
+			상세 주소 : <input type="text" name="address_detail" class="postcodify_details" value="" /><br />
+		</p>
+		<p>
+			참고 항목 : <input type="text" name="address_etc" class="postcodify_extra_info" value="" /><br />
+		</p>
+		
+		<p>
+			<label>이름 : <input type="text" name = "name"></label>
+		</p>
+		<p>
+			<label>이름 : <input type="text" name = "name"></label>
+		</p>
 	</form>
 </body>
-
-<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-	
- 	<!-- 이렇게 가지고 오면된다. 자바코드를 js로 가져오는 법 -->
-	var check = $("input[name = 'check']").val();
-	
-	//check가 null이 아닐 때
-	if (check != "") {
-		if(check =="true") {
-			$("p#result").text("중복된 아이디입니다.");
-		}else {
-			$("p#result").text("사용 가능한 아이디입니다.");
-		}
-	}
-	
-	function sendIt(){
-		if($("input[name='id']").val() =="") {
-			alert("아이디를 입력해주세요.");
-			return false;
-		}
-		document.joinForm.submit();
-	}
-</script>
 </html>
