@@ -22,21 +22,35 @@
  
  	<%
  		String check = request.getParameter("check"); /* get방식으로 가져온 check값 */
- 		
+ 		/* null인상태는 처음 들어왔을때. join_ok에서 날아온게  */
  		if(check == null) {
  			check = "";
- 		} else if (check.equals("true")) {
- 			
- 		}
+ 		} 
  	%>
- 
+ 	<!-- 이렇게 가지고 오면된다. 자바코드를 js로 가져오는 법 -->
+ 	<input type ="hidden" name = "check" value ="<%=check%>">
+ 	
 	<form action ="join_ok.jsp" name ="joinForm">
 		아이디 : <input type="text" name = "id"><p id="result" "></p>
 		<input type="button" value ="완료" onclick="sendIt()">
 	</form>
 </body>
+
 <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+	
+ 	<!-- 이렇게 가지고 오면된다. 자바코드를 js로 가져오는 법 -->
+	var check = $("input[name = 'check']").val();
+	
+	//check가 null이 아닐 때
+	if (check != "") {
+		if(check =="true") {
+			$("p#result").text("중복된 아이디입니다.");
+		}else {
+			$("p#result").text("사용 가능한 아이디입니다.");
+		}
+	}
+	
 	function sendIt(){
 		if($("input[name='id']").val() =="") {
 			alert("아이디를 입력해주세요.");
