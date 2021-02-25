@@ -29,24 +29,25 @@
 		</p>
 		<p>
 			우편번호 : <input type="text" name="zipcode" class="postcodify_postcode5" value="" readonly/>
-			<button id="postcodify_search_button">검색</button><br />
+			<input type ="button" id="postcodify_search_button" value ="검색"><br />
 		</p>
 		<p>
 			주소 : <input type="text" name="address" class="postcodify_address" value="" readonly/><br />
 		</p>
 		<p>
-			상세 주소 : <input type="text" name="address_detail" class="postcodify_details" value="" /><br />
+			상세 주소 : <input type="text" name="addressDetail" class="postcodify_details" value="" /><br />
 		</p>
 		<p>
-			참고 항목 : <input type="text" name="address_etc" class="postcodify_extra_info" value="" /><br />
+			참고 항목 : <input type="text" name="addressEtc" class="postcodify_extra_info" value="" /><br />
 		</p>
 		
 		<p>
-			<label>이름 : <input type="text" name = "name"></label>
-		</p>
-		<p>
-			<label>이름 : <input type="text" name = "name"></label>
+			<input type="button" value ="가입완료" onclick="join()">
 		</p>
 	</form>
 </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+<script src ="member.js"></script>
 </html>

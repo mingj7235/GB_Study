@@ -7,17 +7,29 @@
 <title>GET, POST 방식의 요청</title>
 </head>
 <body>
-	<h1>GET 방식의 요청</h1>
+<!-- 	<h1>GET 방식의 요청</h1>
 	<button type="button" onclick="sendRequest()">GET방식으로 요청 보내기!</button>
-	<p id="text"></p>
+	<p id="text"></p> -->
+	
+	<h1>POST 방식의 요청</h1>
+	<button type ="button" onclick="sendRequest()">POST 방식으로 요청 보내기!</button>
+	<p id="text"></p> 
+	
 </body>
 <script>
 	function sendRequest(){
 		var httpRequest = new XMLHttpRequest();
 		
-		/* GET방식 */
-		httpRequest.open("GET", "request_ajax.jsp?city=Seoul&zipcode=88855", true);
-		httpRequest.send();
+		/* GET방식 */ //get방식은 open()에 데이터를 쿼리스트링으로 보낸다.
+/* 		httpRequest.open("GET", "request_ajax.jsp?city=Seoul&zipcode=88855", true);
+		httpRequest.send(); */
+
+		/* POST방식 */ //post는 send()에 header로 보냄
+		httpRequest.open("POST", "request_ajax.jsp", true);
+		httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		//post방식에서 send에 있는것을 header에 숨겨서 보내야하므로 암호화(encoded)해서 보내야한다.
+		httpRequest.send("city=Seoul&zipcode=55775");
+		
 		
 		/* 응답 상태를 알기위해서 쓰는것임 */
 		httpRequest.onreadystatechange = function () {
