@@ -33,10 +33,11 @@
 }*/
 
 var check = false;
-//사용가능한 아이디를 수정했을때
+//사용가능한 아이디를 수정했을때 체크하는 변수 
 
-function modify () {
-	//클릭이벤트 메소드
+function modifyId () {
+	//클릭이벤트 메소드 (readonly를 막아줬던 것을 다시 풀어줌  id input태그에 클릭이됬을경우)
+	document.joinForm.id.readOnly =false;
 	check = false;
 }
 
@@ -53,8 +54,11 @@ function sendIt(){
 		if(httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status ==200) {
 			//요청한 파일에는 값만 존재하는 것이 처리하기 편하다. 
 			if(httpRequest.responseText.trim() == "ok") {
+				document.joinForm.id.readOnly = true;
+				document.getElementById("result").innerHTML = "사용가능한 아이디입니다.";
 				check = true;
 			}else {
+				document.getElementById("result").innerHTML = "중복된 아이디입니다.";
 				check = false;
 			}
 		}
