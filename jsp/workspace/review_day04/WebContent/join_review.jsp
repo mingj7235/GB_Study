@@ -10,7 +10,7 @@
 
 	<form action = "join_db.jsp" name="joinForm" method ="post">
 		<p>
-			<label>아이디 : <input type= "text" name = "id" id ="id" ></label>
+			<label>아이디 : <input type= "text" name = "id" id ="id" onclick = "modifyId()"></label>
 			<input type = "button" value = "중복확인" onclick = "checkId()"> 
 		</p>
 		<p id = "result"></p>
@@ -38,8 +38,8 @@
 			참고 항목 : <input type="text" name="addressEtc" class="postcodify_extra_info" value="" /><br />
 		</p>
 		<p>
-		
-				
+			<input type = "button" value = "가입완료" onclick = "join()">
+		</p>
 	</form>
 
 </body>

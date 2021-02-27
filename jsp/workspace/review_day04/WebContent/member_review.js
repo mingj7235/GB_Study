@@ -2,6 +2,12 @@
  * 
  */
 
+var check = false;
+
+function modifyId() {
+	document.joinForm.id.readOnly = false;
+	check = false;
+}
 
 function checkId() {
 	//Ajax
@@ -16,13 +22,22 @@ function checkId() {
 		if(httpRequest.readyState == XMLHttpRequest.DONE) {
 			if(httpRequest.status == 200) {
 				if(httpRequest.responseText.trim()=="ok") {
-					
+					document.joinForm.id.readOnly = true;
+					document.getElementById("result").innerHTML = "사용가능한 아이디입니다.";
+					check = true;
+				}else {
+					document.getElementById("result").innerHTML = "중복된 아이디입니다.";
+					check = false;
 				}
 				
 			}
 		}
-		
-		
 	}
+}
+
+
+function join () {
+	
+	
 	
 }
