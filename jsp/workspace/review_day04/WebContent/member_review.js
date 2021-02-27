@@ -10,6 +10,19 @@ function checkId() {
 	var id = document.getElementById("id").value;
 	
 	httpRequest.open("GET", "join_ok.jsp?id="+id);
+	httpRequest.send();
 	
+	httpRequest.onreadystatechange =function () {
+		if(httpRequest.readyState == XMLHttpRequest.DONE) {
+			if(httpRequest.status == 200) {
+				if(httpRequest.responseText.trim()=="ok") {
+					
+				}
+				
+			}
+		}
+		
+		
+	}
 	
 }
