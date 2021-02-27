@@ -11,7 +11,7 @@
 	<form action = "join_db.jsp" name="joinForm" method ="post">
 		<p>
 			<label>아이디 : <input type= "text" name = "id" id ="id" ></label>
-			<input type = "button" value = "중복확인" onclick = "sendIt()"> 
+			<input type = "button" value = "중복확인" onclick = "checkId()"> 
 		</p>
 		<p id = "result"></p>
 		<p>
