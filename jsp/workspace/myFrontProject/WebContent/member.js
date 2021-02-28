@@ -4,6 +4,11 @@
 
 var check = false;
 
+function modifyId () {
+	document.signupForm.email.readOnly = false;
+	check = false;
+}
+
 function checkId() {
 	//Ajax로 중복 체크 해주기.
 	
@@ -16,7 +21,7 @@ function checkId() {
 		if(httpRequest.readyState == XMLHttpRequest.DONE && 
 				httpRequest.status ==200) {
 			if(httpRequest.responseText.trim() == "ok") {
-				document.signupForm.id.readOnly = true;
+				document.signupForm.email.readOnly = true;
 				document.getElementById("check_id_result").innerHTML ="사용가능한 아이디입니다.";
 				check = true;
 			} else {
@@ -25,4 +30,9 @@ function checkId() {
 			}
 		}
 	}
+}
+
+function signup() {
+	
+	
 }
