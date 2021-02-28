@@ -7,7 +7,8 @@
 <title>회원가입 복습</title>
 </head>
 <body>
-
+	<input type="hidden" name = "joinCheck" value = "<%=request.getParameter("check")%>" >
+	
 	<form action = "join_db.jsp" name="joinForm" method ="post">
 		<p>
 			<label>아이디 : <input type= "text" name = "id" id ="id" onclick = "modifyId()"></label>
@@ -46,6 +47,11 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 <script src="member.js"></script>
+<script>
+	if($("input[name='joinCheck']").val()=='false') {
+		alert("회원가입 실패. 다시시도해주세요");
+	}
 
+</script>
 <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 </html>
