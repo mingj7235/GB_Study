@@ -252,17 +252,20 @@
 								<label for="priority-normal">여</label>
 							</div>
 							<h5 style ="width: 400px;">지역</h5>
-							<form method="post" action="#">
 								<div class="row gtr-uniform" style="width: 400px;">
 									<div class="col-9 col-12-small">
-										<input type="text" name="query" id="query" value="" placeholder="- 지역검색 - (000동 입력)" style="width: 280px;"/>
+										
+										<!-- <input type="text" name="query" id="query" value="" placeholder="- 지역검색 - (000동 입력)" style="width: 280px;"/> -->
+										<input type="text" name="zipcode" class="postcodify_postcode5" value="" readonly placeholder="- 우편번호 (검색버튼 클릭 후 검색)" style="width: 280px;"/>
 									</div>
 									<div class="col-3 col-12-small">
-										<input type="submit" value="Search" class="fit" style="width: 100px"/>
+										<input type="button" id="postcodify_search_button" value="검색" class="fit" style="width: 100px"><br />
+								<!-- 		<input type="submit" value="Search" class="fit" style="width: 100px"/> -->
 									</div>
 								</div>
 							</form>
-							<input type="text" name="location" id="location" value="" placeholder="세부 주소" style="width: 400px; margin-top: 10px;"/>
+							<input type="text" name="address" class="postcodify_address" placeholder="- 주소 (우편번호 검색 후 자동입력)" value="" style="width: 400px; margin-top: 10px;" readonly/>
+							<input type="text" name="addressDetail" class="postcodify_details" placeholder="- 세부 주소" style="width: 400px; margin-top: 10px;"/>
 							<h6 style ="width: 400px;">지역이 구체적일 수록 내 주변의 모임들을 찾기에 좋아요 :)</h6><br>
 							
 							<br>
@@ -526,6 +529,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+			<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+			<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 	</body>
 </html>
