@@ -112,7 +112,7 @@ public class TABLE_MEMBER_DAO {
 			pstm.setString(idx++, member.getInterest02());
 			pstm.setString(idx++, member.getInterest02Detail());
 			pstm.setString(idx++, member.getInterest03());
-			pstm.setString(idx++, member.getInterest03Detail());
+			pstm.setString(idx++, member.getInterest03Detail() );
 			
 			if(pstm.executeUpdate() == 1) {
 				check = true;

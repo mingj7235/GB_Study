@@ -34,6 +34,7 @@ function checkId() {
 
 function signup() {
 	var frm = document.signupForm;
+	var phonenum = document.signupForm.phonenum_head.value + document.signupForm.phonenum_mid.value + document.signupForm.phonenum_bottom.value;
 	
 	if(frm.id.value == "") {
 		alert("아이디를 입력해주세요");
@@ -41,4 +42,97 @@ function signup() {
 		return false;
 	}
 	
+	if(frm.id.value.length <4 || frm.id.value.length >16) {
+		alert("아이디는 4자 이상, 16자 이하로 입력해주세요.");
+		frm.id.focus();
+		return false;
+		
+	}
+	
+	if(document.getElementById("name").value == ""){
+		alert("이름을 입력해주세요.");
+		document.getElementById("name").focus();
+		return false;
+		
+	} 
+	var reg = /^(?=.*?[A-Z])(?=.*?[a-z])$/;
+	if(reg.test(document.getElementById("name").value)) {
+		alert("이름은 한글로 입력해주세요");
+		document.getElementById("name").focus();
+		return false;
+	} 
+	
+	if(frm.email.value =="") {
+		alert("이메일을 입력해주세요");
+		frm.email.focus();
+		return false;
+	}
+	
+	if(frm.password.value == ""){
+		alert("패스워드를 입력해주세요.");
+		frm.password.focus();
+		return false;
+	}else{
+		//8자리 이상, 대문자/소문자/숫자/특수문자 모두 포함되어 있는 지 검사
+		var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		//한글이 있는 지 검사
+		var hangleCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+		
+		if(!reg.test(frm.password.value)){
+			//정규식 조건에 맞지 않으면
+			alert("비밀번호는 8자리 이상이어야 하며, 대문자/소문자/숫자/특수문자 모두 포함해야 합니다.");
+			frm.password.focus();
+			return false;
+		}//비밀번호에 공백을 포함할 수 없다.
+		else if(frm.password.value.search(/\s/) != -1){
+			
+			//비밀번호에서 공백을 찾았다면
+			alert("비밀번호에 공백 없이 입력해주세요.");
+			frm.password.focus();
+			return false;
+			
+		}else if(hangleCheck.test(frm.password.value)){
+			//정규식 조건에 맞으면
+			alert("비밀번호에 한글을 사용할 수 없습니다.");
+			frm.password.focus();
+			return false;
+		}
+		//비밀번호 확인
+		if(frm.password.value != frm.password_re.value){
+			alert("패스워드를 확인해주세요");
+			frm.password_re.focus();
+			return false;
+		}
+	}
+	
+	if(phonenum == "") {
+		alert ("핸드폰 번호를 입력해주세요.");
+		frm.phonenum_mid.focus();
+		return false;
+	}
+	
+	if(!check){
+		alert("아이디 중복확인을 진행해주세요");
+		return false;
+	}
+	
+	frm.submit();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
