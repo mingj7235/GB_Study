@@ -49,21 +49,27 @@ function signup() {
 		
 	}
 	
-	if(document.getElementById("name").value == ""){
+	if(frm.nameMember.value == ""){
 		alert("이름을 입력해주세요.");
-		document.getElementById("name").focus();
+		frm.nameMember.focus();
 		return false;
 		
 	} 
-	var reg = /^(?=.*?[A-Z])(?=.*?[a-z])$/;
-	if(reg.test(document.getElementById("name").value)) {
+	var nameReg = /^[가-힣]{2,6}$/;
+	if(!nameReg.test(frm.nameMember.value)) {
 		alert("이름은 한글로 입력해주세요");
-		document.getElementById("name").focus();
+		frm.nameMember.focus();
 		return false;
 	} 
-	
+	var mailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	if(frm.email.value =="") {
 		alert("이메일을 입력해주세요");
+		frm.email.focus();
+		return false;
+	}
+	
+	if(mailReg.test(frm.email.value)) {
+		alert("이메일 형식에 맞게 입력해주세요");
 		frm.email.focus();
 		return false;
 	}
