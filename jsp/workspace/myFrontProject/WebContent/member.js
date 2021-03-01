@@ -125,6 +125,7 @@ function signup() {
 	
 	if(!check){
 		alert("아이디 중복확인을 진행해주세요");
+		frm.id.focus();
 		return false;
 	}
 	

@@ -100,6 +100,8 @@
 					<h3>회원가입</h3>
 				</div>
 				<br>
+				<!-- html에서는 jsp처럼 java문법을 사용할수 없다... 이럴경우는?  -->
+				<input type="hidden" value = "<%=re%>">
 				<form name = "signupForm" action="signup_db.jsp" method="post" >
 					<div class="row gtr-uniform">
 						<div class="col-6 col-12-xsmall" style = "margin: 20px;">
