@@ -13,8 +13,8 @@ function checkId() {
 	//Ajax로 중복 체크 해주기.
 	
 	var httpRequest = new XMLHttpRequest();
-	var id = document.getElementById("id").value;
-	httpRequest.open("GET", "signup_check.jsp?id="+id);
+	console.log(document.getElementById("id").value);
+	httpRequest.open("GET", "signup_check.jsp?id="+document.getElementById("id").value);
 	httpRequest.send();
 	
 	httpRequest.onreadystatechange = function () {
@@ -22,10 +22,10 @@ function checkId() {
 				httpRequest.status ==200) {
 			if(httpRequest.responseText.trim() == "ok") {
 				document.signupForm.id.readOnly = true;
-				document.getElementById("check_id_result").innerHTML ="<span style ='color:red;'>*</span>사용가능한 아이디입니다.";
+				document.getElementById("check_id_result").innerHTML ="<span style ='color:red;'>*</span> 사용가능한 아이디입니다.";
 				check = true;
 			} else {
-				document.getElementById("check_id_result").innerHTML ="<span style ='color:red;'>*</span>중복된 아이디입니다.";
+				document.getElementById("check_id_result").innerHTML ="<span style ='color:red;'>*</span> 중복된 아이디입니다.";
 				check =  true;
 			}
 		}
@@ -46,7 +46,6 @@ function signup() {
 		alert("아이디는 4자 이상, 16자 이하로 입력해주세요.");
 		frm.id.focus();
 		return false;
-		
 	}
 	
 	if(frm.nameMember.value == ""){
@@ -110,11 +109,17 @@ function signup() {
 			return false;
 		}
 	}
-	
+	var phoneReg = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 	if(phonenum == "") {
 		alert ("핸드폰 번호를 입력해주세요.");
 		frm.phonenum_mid.focus();
 		return false;
+	}
+	if(phoneReg.test(phonenum)) {
+		alert ("핸드폰 번호를 올바르게 입력해주세요");
+		frm.phonenum_mid.focus();
+		return false;
+		
 	}
 	
 	if(!check){

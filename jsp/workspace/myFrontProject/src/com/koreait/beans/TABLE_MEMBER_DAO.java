@@ -20,7 +20,7 @@ public class TABLE_MEMBER_DAO {
 	 */
 	//아이디 중복검사
 	public boolean checkId(String id) {
-		String query = "SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = ?";
+		String query = "SELECT COUNT(*) FROM TBL_STFORU_MEMBER WHERE ID = ?";
 		boolean check = false;
 		try {
 			conn = DBConnection.getConnection();
@@ -85,7 +85,7 @@ public class TABLE_MEMBER_DAO {
 	
 	//회원가입
 	public boolean join(TABLE_MEMBER_VO member) {
-		String query = "INSERT INTO TABLE_MEMBER VALUES(MEMBER_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO TBL_STFORU_MEMBER(MEMBER_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		boolean check = false;
 		
 		try {
