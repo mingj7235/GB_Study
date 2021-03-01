@@ -60,14 +60,14 @@ function signup() {
 		frm.nameMember.focus();
 		return false;
 	} 
-	var mailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	if(frm.email.value =="") {
 		alert("이메일을 입력해주세요");
 		frm.email.focus();
 		return false;
 	}
 	
-	if(mailReg.test(frm.email.value)) {
+	var mailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	if(!mailReg.test(frm.email.value)) {
 		alert("이메일 형식에 맞게 입력해주세요");
 		frm.email.focus();
 		return false;
@@ -109,13 +109,14 @@ function signup() {
 			return false;
 		}
 	}
-	var phoneReg = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 	if(phonenum == "") {
 		alert ("핸드폰 번호를 입력해주세요.");
 		frm.phonenum_mid.focus();
 		return false;
 	}
-	if(phoneReg.test(phonenum)) {
+	var phoneReg = /^([0-9]{3,4})?([0-9]{4})$/;
+	console.log(phonenum);
+	if(!phoneReg.test(phonenum)) {
 		alert ("핸드폰 번호를 올바르게 입력해주세요");
 		frm.phonenum_mid.focus();
 		return false;
