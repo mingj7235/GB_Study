@@ -93,7 +93,7 @@ public class TABLE_MEMBER_DAO {
 			pstm = conn.prepareStatement(query);
 			int idx = 0;
 			pstm.setString(idx++, member.getId());
-			pstm.setString(idx++, member.getName());
+			pstm.setString(idx++, member.getNameMember());
 			pstm.setString(idx++, member.getEmail());
 			pstm.setString(idx++, member.getPassword());
 			pstm.setString(idx++, member.getPhonenum());

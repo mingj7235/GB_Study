@@ -29,7 +29,7 @@ package com.koreait.beans;
 public class TABLE_MEMBER_VO {
 	private int num;
 	private String id;
-	private String name;
+	private String nameMember;
 	private String email;
 	private String password;
 	private String phonenum;
@@ -79,15 +79,17 @@ public class TABLE_MEMBER_VO {
 
 
 
-	public String getName() {
-		return name;
+
+	public String getNameMember() {
+		return nameMember;
 	}
 
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameMember(String nameMember) {
+		this.nameMember = nameMember;
 	}
+
 
 
 	public String getEmail() {
@@ -318,7 +320,7 @@ public class TABLE_MEMBER_VO {
 
 	@Override
 		public String toString() {
-			String data = "id : " + id + ", name : " + name + ", password : " + password + ", address : " + address;
+			String data = "id : " + id + ", name : " + nameMember + ", password : " + password + ", address : " + address;
 			return data;
 		}
 }
