@@ -88,5 +88,9 @@ public class MemberVO {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		String data = "id : " + id  + ", name : " + name ;
+		return data;
+	}
 }

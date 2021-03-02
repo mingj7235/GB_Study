@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 매퍼로 기능하게 하기위해 이렇게 써줘야함  -->
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+									<!-- 
+										 둘 중에 되는 걸로 하자! 버전별로 상이함.
+										 DTD Config 3.0 
+										 DTD Mapper 3.0	-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace ="Member">
 	<select id = "checkId" parameterType = "string" resultType="_int"> 
@@ -8,7 +12,53 @@
 				<!-- 리턴값도 타입!!을 알려줘야한다. resultType !! _가 붙은것은 원시타입이다. _가붙지 않은 int는 integer다.  -->
 		SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{id} <!-- 키값이 id 인 value를 전달하는 것이다.  -->
 	</select>
-	<select id = "login" parameterType = "string" parameterType="string" resultType = "_int">
-		SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{id} AND #{pw}
+ 	<select id = "login" parameterType = "hashmap"  resultType = "_int"> <!-- 전달할게 2개이상이므로 hashmap형태로 보낸다. -->
+		SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{id} AND PASSWORD = #{pw}
+	</select> 
+	
+	<!--  
+		회원가입 팁
+		외부에서 모델객체를 받아온다. Type은 반드시 패키지부터 클래스까지 전부 작성해야 한다. (각 디렉토리는.로 구분한다)
+		전달받은 모델 객체의 필드명을 #{}안에 작성해준다.
+		예 #{num}, #{address} (직접 .로 직접 접근할 필요없다.) 
+	-->
+	<!-- 
+	private int num;
+	private String id;
+	private String name;
+	private String password;
+	private String gender;
+	private String zipcode;
+	private String address;
+	private String addressDetail;
+	private String addressEtc;
+	 -->
+	
+	<!-- <insert id = "join" parameterType="com.koreait.vo.MemberVO"> 장점 : 명시적이고 가독성이 좋다. 단점 : 쓰기에 귀찮다. 하지만 이게 정확함. 알리아스를 주기위해서는 config.xml에서 typeAliases 태그를 통해 명시해줘야한다.
+		INSERT INTO TABLE_MEMBER
+		VALUES(MEMBER_SEQ.NEXTVAL, #{id}, #{name}, #{password}, #{gender}, #{zipcode}, #{address},
+		#{addressDetail}, #{addressEtc})		
+	</insert> -->
+	<insert id = "join" parameterType="member"> <!-- 알리아스를 준 것이다. config.xml에 만든것임.-->
+		INSERT INTO TABLE_MEMBER
+		VALUES(MEMBER_SEQ.NEXTVAL, #{id}, #{name}, #{password}, #{gender}, #{zipcode}, #{address},
+		#{addressDetail}, #{addressEtc})		
+		<!-- 이 쿼리문은 preparedstatement를 통해 사용되는것이다!  -->
+	</insert>
+	
+<!-- 	<select id = "selectUser" parameterType ="_int" resultType="member">
+		SELECT * FROM TABLE_MEMBER WHERE NUM = #{num}
+	</select> -->
+	
+	<select id = "getMember" parameterType="_int" resultType = "member">
+		SELECT * FROM TABLE_MEMBER WHERE NUM = #{num}
+	</select>
+	
+	<select id = "getNum" parameterType = "string" resultType = "_int">
+		SELECT NUM FROM TABLE_MEMBER WHERE ID = #{id} 
+	</select>
+	
+	<select id = "getPw" parameterType = "string" resultType = "string">
+		SELECT PASSWORD FROM TABLE_MEMBER WHERE ID = #{id}
 	</select>
 </mapper>
