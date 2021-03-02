@@ -3,7 +3,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace ="Member">
-	<select id = "checkId">
-		
+	<select id = "checkId" parameterType = "string" resultType="_int"> 
+				<!-- 전달받을 값의 타입 설정. string 이라는 이름으로 알리아스를 해놓은것이다. 원래는 경로를 다 적어놔야한다. 그래서 앞글자가 소문자임 -->
+				<!-- 리턴값도 타입!!을 알려줘야한다. resultType !! _가 붙은것은 원시타입이다. _가붙지 않은 int는 integer다.  -->
+		SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{id} <!-- 키값이 id 인 value를 전달하는 것이다.  -->
+	</select>
+	<select id = "login" parameterType = "string" parameterType="string" resultType = "_int">
+		SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{id} AND #{pw}
 	</select>
 </mapper>

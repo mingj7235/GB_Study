@@ -18,4 +18,8 @@
 		</environment>
 	</environments>
 	
+	<mappers>
+		<!-- mapper들을 이렇게 등록해줘야 제대로 찾아갈수있다!!! -->
+		<mapper resource = "com/koreait/mybatis/sql/member.xml"/> 
+	</mappers>
 </configuration>
