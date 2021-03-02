@@ -70,6 +70,13 @@ public class MemberDAO { //memberdao는 선언이다!!
 	//비밀번호 조회 (아이디로)
 	public String getPw (String id) {
 		return sqlsession.selectOne("Member.getPw", id);
+		
+		
+	}
+	
+	//아이디조회 (회원번호로)
+	public String getId (int num) {
+		return sqlsession.selectOne("Member.getId", num);
 	}
 }
 

@@ -61,4 +61,8 @@
 	<select id = "getPw" parameterType = "string" resultType = "string">
 		SELECT PASSWORD FROM TABLE_MEMBER WHERE ID = #{id}
 	</select>
+	
+	<select id = "getId" parameterType ="_int" resultType = "string">
+		SELECT ID FROM TABLE_MEMBER WHERE NUM = #{num}
+	</select>
 </mapper>

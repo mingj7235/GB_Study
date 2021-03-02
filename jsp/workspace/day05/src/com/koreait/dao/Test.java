@@ -38,5 +38,7 @@ public class Test {
 		
 		System.out.println(dao.getPw("3mins1"));
 		
+		System.out.println(dao.getId(41));
+		
 	}
 }
