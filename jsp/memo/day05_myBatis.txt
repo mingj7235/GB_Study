@@ -18,7 +18,7 @@ MyBatis
 
 	MyBatis는 프레임워크다!!
 
-MyBatis 작동 순서
+MyBatis 작동 순서 (사진같이 참고)
 
 1) 응용 프로그램(어플리케이션)이 SqlSessionFactoryBuilder를 통해 SqlSessionFactory를 빌드할도록 요청한다.
 2) SqlSessionFactoryBuilder는 SqlSessionFactory를 생성하기 위한 MyBatis구성파일을 읽는다. (Config파일)
@@ -30,3 +30,16 @@ MyBatis 작동 순서
    SqlSession을 가져온다. 
 6) SqlSessionFactory는 SqlSession을 생성하고 이를 Application에 반환한다. 
 7) 응용 프로그램이 SqlSession에서 매퍼 인터페이스의 구현 객체를 가져온다. 
+8) 응용 프로그램이 매퍼 인터페이스의 메소드를 호출한다. (8번을 하기위해서 7번을 한것임)
+	-> 구현된 객체를 통해 메소드를 호출하는 것임. 
+9) 매퍼 인터페이스의 구현 개체가 SqlSession의 메소드를 호출하고 SQL실행을 요청한다. 
+10) SqlSession은 매핑 파일에서 실행할 SQL을 가져와 SQL을 실행한다. 
+
+
+MyBatis 설치 
+	https://blog.mybatis.org/p/products.html
+
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
