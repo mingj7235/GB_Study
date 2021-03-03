@@ -44,5 +44,15 @@ public class Test {
 		
 		System.out.println(dao.getMemberList());
 		
+		//수정하는법
+		//회원 이름 수정 (회원번호, 새로운 이름)
+		//회원 상세보기 (마이페이지-select)를 통해 가져온 모델 객체에 바로 수정하기 때문에
+		//수정된 모델객체를 전달받는것이 편하다. 
+		MemberVO member = dao.getMember(41);
+		member.setName("홍길동");
+		
+		System.out.println(dao.getMember(41));
+		
+		System.out.println(dao.delete(41));
 	}
 }

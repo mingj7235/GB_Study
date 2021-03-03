@@ -76,10 +76,18 @@
 		SELECT * FROM TABLE_MEMBER
 	</select>
 	
-	<update id = "modify" parametyerType = "member" resultType = "_int">
-		UPDATE TABLE_MEMBER SET NAME = #{name} WHERE NUM = #{num}
-		
+	<!-- 셀렉트로 가져온걸 그대로 수정으로 넘기는게 좋으므로 member타입으로 (모델객체)파라미터로 가져오는게 좋다. -->
+	<!-- 리절트타입은 안써도 업데이트는 리턴을1을한다.-->
+	<update id="modify" parameterType="member">
+		UPDATE TABLE_MEMBER 
+		SET NAME = #{name} 
+		WHERE NUM = #{num}
 	</update>
+	
+	<delete id="delete" parameterType="_int">
+		DELETE FROM TABLE_MEMBER WHERE NUM = #{num}
+	</delete>
+
 	
 	
 </mapper>

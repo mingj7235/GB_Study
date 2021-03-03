@@ -93,10 +93,13 @@ public class MemberDAO { //memberdao는 선언이다!!
 	
 	//회원 이름 수정 (회원번호로 찾고, 새로운 이름으로 바꾸기)
 	public boolean modify(MemberVO member) {
-		return sqlsession.update("Member.modify", member) != 0;
+		return sqlsession.update("Member.modify", member) == 1;
 	}
 	
-	
+	//회원삭제 (회원번호)
+	public boolean delete (int num) {
+		return sqlsession.delete("Member.delete", num) == 1;
+	}
 }
 
 
