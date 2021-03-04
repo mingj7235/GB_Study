@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 매퍼로 기능하게 하기위해 이렇게 써줘야함  -->
+									
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace ="Member">
+	<insert id="join" parameterType="memberVO">
+		INSERT INTO TABLE_MEMBER 
+		VALUES(
+			#{memberId}, #{memberPw}, #{memberName}, #{memberAge}, #{memberGender}, 
+			#{memberEmail}, #{memberZipcode}, #{memberAddress}, #{memberAddressDetail}, #{memberAddressEtc}
+		)
+	</insert>
+</mapper>
