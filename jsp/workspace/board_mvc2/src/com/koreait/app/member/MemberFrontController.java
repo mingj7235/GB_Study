@@ -2,10 +2,13 @@ package com.koreait.app.member;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.koreait.action.ActionForward;
 
 public class MemberFrontController extends HttpServlet {
 	/**
@@ -29,10 +32,36 @@ public class MemberFrontController extends HttpServlet {
 	
 	//각각의 doGet과 doPost에 똑같이 사용할 것을 여기에 만드는것임
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//이걸 이제 2번째로 분석하기위함. 확장자는 web.xml에서 구분했다.
+		String requestURI = req.getRequestURI(); //경로가 아니라, 우리가 만든 데이터이므로 URL이아니라 URI로 가는것임
+		String contextPath = req.getContextPath(); //반복되어지는 URI를 가져옴 www.naver.com/news 에서 www.naver.com을 contextPath에 담음것임
+		String command = requestURI.substring(contextPath.length()); //이게 사용자가 원하는 news 라는 것!! substring으로 contextPath를 잘라내는것임
+		
+		ActionForward forward = null;
+		
+		if(command.equals("/member/MemberJoin.me")) { //사용자가 요청한 거 즉, join을 요청한것임 
+			try {
+				forward = new MemberJoinOkAction().execute(req, resp);
+			} catch (Exception e) {
+
+			}
+		}else {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/app/error/404.jsp");
+		}
+		
+		//페이지 이동하겠다는 것임
+		if(forward != null) {
+			if(forward.isRedirect()) {
+				resp.sendRedirect(forward.getPath());
+			}else {
+				RequestDispatcher dispatcher = req.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(req, resp);
+			}
+		}
 		
 	}
-	
-	
 }
 
 
