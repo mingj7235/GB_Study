@@ -11,4 +11,7 @@
 			#{memberEmail}, #{memberZipcode}, #{memberAddress}, #{memberAddressDetail}, #{memberAddressEtc}
 		)
 	</insert>
+	<select id="checkId" parameterType="string">
+		SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{memberId}
+	</select>
 </mapper>

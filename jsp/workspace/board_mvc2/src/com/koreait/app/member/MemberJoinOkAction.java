@@ -10,7 +10,7 @@ import com.koreait.action.ActionForward;
 public class MemberJoinOkAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		// TODO Auto-generated method stub
+		req.getParameter(name)
 		return null;
 	}
 }

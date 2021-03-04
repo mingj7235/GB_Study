@@ -40,6 +40,17 @@ public class MemberDAO {
 		}
 		return de_pw;
 	}
+	
+	//아이디 검사
+	/**
+	 * 
+	 * @param memberId
+	 * @return
+	 * true : 중복된 아이디 <br>false : 사용 가능한 아이디
+	 */
+	public boolean checkId (String memberId) {
+		return (Integer) session.selectOne("Member.checkId", memberId) == 1;
+	}
 }
 
 
