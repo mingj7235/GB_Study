@@ -1,0 +1,85 @@
+MVC
+[model2]
+								
+								                전송방식
+								    1.redirect 	    2.forward
+	a.jsp 		--> web.xml		--> Front-Controller.java---------------------------->c.jsp
+							   ↕
+							   ↕
+							   ↕
+							   ↕
+							   ↕
+						        Controller.java
+							   ↕
+							   ↕
+							   ↕
+							   ↕
+							   ↕
+							 DAO
+							   ↕
+							   ↕
+							   ↕
+							   ↕
+							   ↕
+							   DB							
+
+어떤 프론트 컨트롤러인지는 web.xml에서 결정
+어떤 Controller인지는 프론트 컨트롤러에서 결정
+프론트 컨트롤러는 Controller의 메소드들을 사용을 하는것이다. 
+프론트 컨트롤러는 모든 Controller들을 제어하는 것임
+
+Controller가 핵심 로직! DB조회, 연산, 응답방식, 응답 페이지등을 해준다!
+Controller에는 request, response가 있어야한다. 
+Controller안에 있는 메소드 -> execute( request , response ) 
+execute() 에서 DAO객체를 통해 DB를 조회한다. (여기에 다 놓으면 소스코드가 길어지고, 분리가 안되므로!)
+DAO라는 곳에 DB와 DB에 접속하는 메소드를 따로 모아서 모아놓는다. 
+Controller에서는 DAO를 객체화하여 접근한다. 
+※Controller에는 execute()메소드밖에없다. 
+
+※전송방식을 정하는 것도 Controller에서 정하는 것이다. 
+
+DAO에서 선언하고, Controller.java에서 사용하고,
+Controller.java에서 선언하고 , Front-Controller.java에서 사용!!
+=====================================================================
+[MVC Model2 선생님 필기]
+
+a.jsp에서 다음 페이지를 이동하기 전 필요한 비지니스 로직을 완벽히 분리하여 관리한다. 
+사용자가 정의한 확장자(.me, .bo,...)를 페이지 이동 주소 (URL)에 작성하게 되면 서블릿이
+web.xml에 가서 경로를 찾는다. 
+
+※.me , .bo 등은 사용자 정의다. 이것에 알맞는 프론트 컨트롤러로 가라! 라는 지시가 web.xml에 있다. 
+	이것을 substring을 써서 분기처리를 해서 알맞는 Controller에 꽂아주는 것이다. 
+
+web.xml에 파일 경로를 하나씩 모두 만들게 되면 코드가 길어지기 때문에 
+*.me (와일드카드 * 사용 / 앞에있는 * 부분은 프론트컨트롤러에서 분기처리. 뒤의 확장자만 걸러준다.) 
+와일드 카드 방법을 사용해서 .me가 붙은 모든 요청을 하나의 경로로 보내주도록 설정해 놓는다. 
+이 경로를 알맞는 Front-Controller.java경로로 설정해 놓는다. 
+
+※ URL을 2번 필터링하는 과정이라고 생각하면 편하다. 우선 이 과정은 확장자를 걸러주기
+	web.xml에서 Front-Controller로 갈때는 확장자로 걸러준다.
+
+Front-Controller에서는 들어온 요청에 .me 앞의 요청명으로 (파일명)어떤 로직을 수행할 지를 판단하도록
+분기처리를 한다. -> 즉, 이제 2번째 필터링!! 으로 파일명을 걸러준다.
+
+비지니스 로직을 Front-Controller에서 작업하게 되면 마찬가지로 코드가 길어지고
+유지보수 및 재사용이 어렵기 때문에 요청별 Controller(Action)를 만들어서 execute()메소드를 구현한다. 
+따라서 execute()메소드를 모든 Controller(Action)에서 구현해야 하기 때문에 Action 인터페이스를 선언하여
+추상메소드 형태로 execute()를 선언해 놓고 각 Controller(Action)에게 지정하여 구현하도록 한다. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
