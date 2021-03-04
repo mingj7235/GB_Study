@@ -7,7 +7,7 @@
       <title>회원가입 페이지</title>
    </head>
    <body>
-      <form name="joinForm" action="" method="post">
+      <form name="joinForm" action="${pageContext.request.contextPath}/member/MemberJoin.me" method="post">
          <center>
             <table  border="1" cellpadding="0" cellspacing="0" width="25%">
                <tr height="50px">
@@ -18,55 +18,55 @@
                <tr height="40px">
                   <td align="center" width="100px">아이디</td>
                   <td><input type="text" name="memberId" style="width:280px;" />
-                  <p id="idCheck_text">사용 가능한 아이디 입니다.</p>
+                  <p id="idCheck_text"></p>
                   </td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">비밀번호</td>
-                  <td><input type="password" name="" style="width:280px;" /></td>
+                  <td><input type="password" name="memberPw" style="width:280px;" /></td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">이름</td>
-                  <td><input type="text" name="" style="width:280px;" /></td>
+                  <td><input type="text" name="memberName" style="width:280px;" /></td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">나이</td>
-                  <td><input type="text" name="" style="width:50px; margin-left:5px;" />살</td>
+                  <td><input type="text" name="memberAge" style="width:50px; margin-left:5px;" />살</td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">성별</td>
                   <td>
-                     <input type="radio" name="" value="남" checked/>남자
-                     <input type="radio" name="" value="여"/>여자
+                     <input type="radio" name="memberGender" value="남" checked/>남자
+                     <input type="radio" name="memberGender" value="여"/>여자
                   </td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">이메일</td>
-                  <td><input type="text" name="" style="width:280px;" /></td>
+                  <td><input type="text" name="memberEmail" style="width:280px;" /></td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">우편번호</td>
                   <td>
-                  <input type="text" name="" class="postcodify_postcode5" value="" readonly/>
+                  <input type="text" name="memberZipcode" class="postcodify_postcode5" value="" readonly/>
                   <input type="button" id="postcodify_search_button" value="검색"><br />
                   </td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">주소</td>
                   <td>
-                     <input type="text" name="" class="postcodify_address" value="" style="width:280px;" readonly/><br />
+                     <input type="text" name="memberAddress" class="postcodify_address" value="" style="width:280px;" readonly/><br />
                   </td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">상세주소</td>
                   <td>
-                     <input type="text" name="" class="postcodify_details" value="" style="width:280px;" /><br />
+                     <input type="text" name="memberAddressDetail" class="postcodify_details" value="" style="width:280px;" /><br />
                   </td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">참고항목</td>
                   <td>
-                     <input type="text" name="" class="postcodify_extra_info" value="" style="width:280px;" readonly /><br />
+                     <input type="text" name="memberAddressEtc" class="postcodify_extra_info" value="" style="width:280px;" readonly /><br />
                   </td>
                </tr>
                <tr height="40px">
@@ -86,8 +86,6 @@
 <script src="${pageContext.request.contextPath}/app/member/join.js"></script>
 <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 </html>
-
-
 
 
 
