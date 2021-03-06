@@ -8,7 +8,7 @@
       <title>로그인 페이지</title>
    </head>
    <body>
-      <form name="loginForm" action="" method="">
+      <form name="loginForm" action="${pageContext.request.contextPath}/member/MemberLogin.me" method="post">
          <center>
             <table border="1" cellpadding="0" cellspacing="0" width="400px">
                <tr height="50px">
