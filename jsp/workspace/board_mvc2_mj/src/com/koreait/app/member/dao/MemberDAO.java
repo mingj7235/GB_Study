@@ -111,7 +111,8 @@ public class MemberDAO {
    }
    
    public boolean login(MemberVO member) {
-	   return (Integer) session.selectOne("Member.login", member) == 1;
+	  /* System.out.println(member.getMemberId() + member.getMemberPw());*/
+	   return (Integer)session.selectOne("Member.checkId", member) == 1;
    }
 }
 

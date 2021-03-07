@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>      
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http//mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Member">
    <insert id="join" parameterType="memberVO">
@@ -16,7 +16,7 @@
    </select>
    
    <select id="login" parameterType="memberVO" resultType="_int">
-   	  SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{memberId} AND PASSWORD = {#memberPw}
+   	  SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{memberId} AND MEMBERPW = {#memberPw}
    </select>
    
 </mapper>
