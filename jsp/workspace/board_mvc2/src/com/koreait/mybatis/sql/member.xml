@@ -15,6 +15,10 @@
       SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{memberId}
    </select>
    
+   <select id="login" parameterType="memberVO" resultType="_int">
+   	  SELECT COUNT(*) FROM TABLE_MEMBER WHERE ID = #{memberId} AND PASSWORD = {#memberPw}
+   </select>
+   
 </mapper>
 
 

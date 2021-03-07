@@ -109,6 +109,10 @@ public class MemberDAO {
    public boolean checkId(String memberId) {
       return (Integer)session.selectOne("Member.checkId", memberId) == 1;
    }
+   
+   public boolean login(MemberVO member) {
+	   return (Integer) session.selectOne("Member.login", member) == 1;
+   }
 }
 
 

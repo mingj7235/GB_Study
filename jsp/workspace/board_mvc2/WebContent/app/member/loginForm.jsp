@@ -8,7 +8,7 @@
       <title>로그인 페이지</title>
    </head>
    <body>
-      <form name="loginForm" action="" method="">
+      <form name="loginForm" action="${pageContext.request.contextPath}/member/MemberLogin.me" method="post">
          <center>
             <table border="1" cellpadding="0" cellspacing="0" width="400px">
                <tr height="50px">
@@ -18,20 +18,22 @@
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">아이디</td>
-                  <td align="center"><input type="text" name="" style="width:280px;" /></td>
+                  <td align="center"><input type="text" name="memberId" style="width:280px;" /></td>
                </tr>
                <tr height="40px">
                   <td align="center" width="100px">비밀번호</td>
-                  <td align="center"><input type="password" name=""  style="width:280px;" /></td>
+                  <td align="center"><input type="password" name="memberPw"  style="width:280px;" /></td>
                </tr>
                <tr height="30px">
                   <td colspan="2" align=center>
-                     <a href="#">로그인</a>&nbsp;&nbsp;
-                     <a href="#">회원가입</a>
+                     <a href="javascript:login()">로그인</a>&nbsp;&nbsp;
+                     <a href="joinForm.jsp">회원가입</a>
                   </td>
                </tr>
             </table>
          </center>
       </form>
    </body>
+   <script>var contextPath = "${pageContext.request.contextPath}";</script>
+<script src="${pageContext.request.contextPath}/app/member/login.js"></script>
 </html>

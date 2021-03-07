@@ -73,7 +73,7 @@
                   <td colspan="2" align="center">
                      <a href="javascript:formSubmit()">회원가입</a>&nbsp;&nbsp;
                      <a href="javascript:joinForm.reset()">다시작성</a>&nbsp;&nbsp;
-                     <a href="">로그인</a>
+                     <a href="loginForm.jsp">로그인</a>
                   </td>
                </tr>
             </table>

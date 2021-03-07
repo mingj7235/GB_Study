@@ -39,8 +39,9 @@ public class MemberFrontController extends HttpServlet {
 				forward = new MemberJoinOkAction().execute(req,resp);
 			} catch (Exception e) {;}
 		}else if (command.equals("/member/MemberLogin.me")) {
-			//아직 안만들었음
-			
+			try {
+				forward = new MemberLoginOkAction().execute(req,resp);
+			} catch (Exception e) {;}
 		}else if (command.equals("/member/MemberCheckIdOk.me")) {
 			try {
 				forward = new MemberCheckIdOkAction().execute(req, resp);
