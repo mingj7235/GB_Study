@@ -34,6 +34,7 @@
          </center>
       </form>
    </body>
+   <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
    <script>var contextPath = "${pageContext.request.contextPath}";</script>
-<script src="${pageContext.request.contextPath}/app/member/login.js"></script>
+   <script src="${pageContext.request.contextPath}/app/member/login.js"></script>
 </html>
