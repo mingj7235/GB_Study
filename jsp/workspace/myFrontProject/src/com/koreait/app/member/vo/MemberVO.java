@@ -1,30 +1,28 @@
 package com.koreait.app.member.vo;
 
-/*CREATE TABLE TABLE_MEMBER(
-		memberId VARCHAR2(300),
-		memberPw VARCHAR2(300),
-		memberName VARCHAR2(300),
-		memberAge NUMBER(3),
-		memberGender VARCHAR2(20),
-		memberEmail VARCHAR2(200),
-		memberZipcode VARCHAR2(20),
-		memberAddress VARCHAR2(300),
-		memberAddressDetail VARCHAR2(300),
-		memberAddressEtc VARCHAR2(100),
-		CONSTRAINT MEMBER_PK PRIMARY KEY(memberId)
+/*CREATE TABLE TBL_STFORU_MEMBER(
+		MEMBERID VARCHAR2(300),
+		MEMBERNAME VARCHAR2(300),
+		MEMBEREMAIL VARCHAR2(300),
+		MEMBERPW VARCHAR2(300),
+		MEMBERPHONE VARCHAR2(300),
+		MEMBERGENDER VARCHAR2(50),
+		MEMBERZIPCODE VARCHAR2(30),
+		MEMBERADDRESS VARCHAR2(300),
+		MEMBERADDRESSDETAIL VARCHAR2(300),
+		CONSTRAINT STFORU_PK PRIMARY KEY (MEMBERID)
 	);*/
 
 public class MemberVO {
 	private String memberId;
-	private String memberPw;
 	private String memberName;
-	private int memberAge;
-	private String memberGender;
 	private String memberEmail;
+	private String memberPw;
+	private String memberPhone;
+	private String memberGender;
 	private String memberZipcode;
 	private String memberAddress;
 	private String memberAddressDetail;
-	private String memberAddressEtc;
 	
 	public MemberVO() {;}
 
@@ -36,14 +34,6 @@ public class MemberVO {
 		this.memberId = memberId;
 	}
 
-	public String getMemberPw() {
-		return memberPw;
-	}
-
-	public void setMemberPw(String memberPw) {
-		this.memberPw = memberPw;
-	}
-
 	public String getMemberName() {
 		return memberName;
 	}
@@ -52,12 +42,28 @@ public class MemberVO {
 		this.memberName = memberName;
 	}
 
-	public int getMemberAge() {
-		return memberAge;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
 
-	public void setMemberAge(int memberAge) {
-		this.memberAge = memberAge;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
+
+	public String getMemberPw() {
+		return memberPw;
+	}
+
+	public void setMemberPw(String memberPw) {
+		this.memberPw = memberPw;
+	}
+
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
 
 	public String getMemberGender() {
@@ -66,14 +72,6 @@ public class MemberVO {
 
 	public void setMemberGender(String memberGender) {
 		this.memberGender = memberGender;
-	}
-
-	public String getMemberEmail() {
-		return memberEmail;
-	}
-
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
 	}
 
 	public String getMemberZipcode() {
@@ -99,14 +97,7 @@ public class MemberVO {
 	public void setMemberAddressDetail(String memberAddressDetail) {
 		this.memberAddressDetail = memberAddressDetail;
 	}
-
-	public String getMemberAddressEtc() {
-		return memberAddressEtc;
-	}
-
-	public void setMemberAddressEtc(String memberAddressEtc) {
-		this.memberAddressEtc = memberAddressEtc;
-	}
+	
 	
 	
 	

@@ -30,7 +30,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/MemberHome.me">Home</a></li>
 							<li>
 								<a href="#" class="icon solid fa-angle-down">Dropdown</a>
 								<ul>
@@ -50,7 +50,7 @@
 							</li>
 							<li><a href="generic.html">Generic</a></li>
 							<li><a href="elements.html">Elements</a></li>
-							<li><a href="login.html" class="button">Log in</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/MemberLogin.me" class="button">Log in</a></li>
 						</ul>
 					</nav>
 

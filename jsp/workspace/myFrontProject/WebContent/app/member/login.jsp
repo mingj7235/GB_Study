@@ -12,7 +12,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
@@ -68,7 +68,7 @@
 
 		<!-- Logo -->
 					<span class="logo">
-						<a href="index.html">STforU</a>
+						<a href="${pageContext.request.contextPath}/member/MemberHome.me">STforU</a>
 						<span >Sharing Talent For U</span>
 					</span>
 
@@ -92,7 +92,7 @@
 					</ul></li>
 				<li><a href="generic.html">Generic</a></li>
 				<li><a href="elements.html">Elements</a></li>
-				<li><a href="login.html" class="button">Log In</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/MemberLogin.me" class="button">Log In</a></li>
 			</ul>
 		</nav>
 
@@ -115,7 +115,7 @@
 		<div style="margin: 20px; margin-left:100px;">
 			<h3>로그인</h3>
 		</div>
-		<form method="post" action="#">
+		<form method="post" action="${pageContext.request.contextPath}/member/MemberLoginOk.me">
 			<div class="gtr-uniform" >
 				<div class="col-6 col-12-xsmall"
 					style="margin: 20px auto;">
@@ -130,8 +130,9 @@
 				</div>
 				<div class="col-12" class="actions"
 					style="margin: 20px auto; display: inline-block;">
-					<input type="submit" value="login" class="primary"style="width: 150px" /> 
-					<a href="Signup.html" class="button"style="width: 150px">Sign up</a>
+					<!-- login()을 위해 js를 만들어서 -> 공백 체크하고 넘기기 -->
+					<input type="button" value="login" class="primary"style="width: 150px" onclick="login()"/> 
+					<a href="${pageContext.request.contextPath}/member/MemberSignup.me" class="button"style="width: 150px">Sign up</a>
 				</div>
 			</div>
 		</form>

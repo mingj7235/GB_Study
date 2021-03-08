@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.koreait.action.Action;
 import com.koreait.action.ActionForward;
@@ -14,33 +15,30 @@ public class MemberLoginOkAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
-		ActionForward forward = null;
-		MemberVO m_vo = new MemberVO();
+		
+		//세션넣기
+		HttpSession session = req.getSession();
+		
+		ActionForward forward = new ActionForward();
+		
 		MemberDAO m_dao = new MemberDAO();
 		
-		m_vo.setMemberId(req.getParameter("memberId"));
-		m_vo.setMemberPw(req.getParameter("memberPw"));
-/*		System.out.println("test1");
-		System.out.println(m_dao.login(m_vo)); 왜안찍혀??*/
-		if(m_dao.login(m_vo)) {
-			//로그인 성공
-			//세션에 ID 저장
-			System.out.println("test2");
-			req.setAttribute("memberId", m_vo.getMemberId());
-			//확인
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			//아직 미구현 (로그인 성공하면 메인페이지로 이동)
-			forward.setPath("/member/MemberLogin.me");
-		} else {
+		String id = req.getParameter("memberId");
+		String pw = req.getParameter("memberPw");
+		
+		if(m_dao.login(id, pw)) {
+			//로그인 성공 시
+			session.setAttribute("session_id", id); //세션아이디에 담기
+			forward.setRedirect(true); //세션에 담을 것이기 때문에 request가 필요가없다.
+			forward.setPath(req.getContextPath() + "/board/BoardList.bo"); //사라지기 전에 req객체로 주소를 담아줘야한다.
+		}else {
 			//로그인 실패
-			System.out.println("test3");
-			resp.setContentType("text/html;charset=utf-8");
-			PrintWriter out = resp.getWriter();
-			out.println("<script>alert('로그인 실패. 아이디와 비밀번호를 다시확인해주세요');</script>");
-			out.close();
-			
+			forward.setRedirect(false); //그전의 정보를 지킬정보가 아니고 냅둬도되니까 false
+			//로그인 실패 시 경고창을 출력해주기 위해서 login 파라미터를 같이 전송해준다. 
+			forward.setPath("/member/MemberLogin.me?login=false"); //다시 로그인 페이지로 이동 
+			//login=false <<이거는 프론트에서 파라미터로 받아서 분기점이 된다. 
 		}
+		
 		return forward;
 	}
 }

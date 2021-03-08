@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <!--
 	Faction by Pixelarity
@@ -9,9 +10,8 @@
 <html>
 	<head>
 		<title>STforU_Sign_up</title>
-		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<style>
 	.section {width:500px; height: 500px; margin: 20px auto;}
 	.section input[id*="slide"] {display:none;}
@@ -62,14 +62,14 @@
 
 				<!-- Logo -->
 					<span class="logo">
-						<a href="index.html">STforU</a>
+						<a href="${pageContext.request.contextPath}/member/MemberHome.me">STforU</a>
 						<span >Sharing Talent For U</span>
 					</span>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/MemberHome.me">Home</a></li>
 							<li>
 								<a href="#" class="icon solid fa-angle-down">Dropdown</a>
 								<ul>
@@ -89,7 +89,7 @@
 							</li>
 							<li><a href="generic.html">Generic</a></li>
 							<li><a href="elements.html">Elements</a></li>
-							<li><a href="login.html" class="button">Log In</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/MemberLogin.me" class="button">Log In</a></li>
 						</ul>
 					</nav>
 
@@ -103,7 +103,7 @@
 				</div>
 				<br>
 				<!-- html에서는 jsp처럼 java문법을 사용할수 없다... 이럴경우는?  -->
-				<form name = "signupForm" action="signup_db.jsp" method="post" >
+				<form name = "signupForm" action="#" method="post" >
 					<div class="row gtr-uniform">
 						<div class="col-6 col-12-xsmall" style = "margin: 20px;">
 							<div style="align-items: right">
@@ -115,6 +115,7 @@
 								<input type="button" value="Check ID" class="primary" style = "width: 95px; text-align: center;" onclick="checkId()"/>
 							</div>
 								<h6 id="check_id_result" style="width: 400px; margin-top: 10px;"></h6>
+								
 							<h5><span style ="color:red;">*</span> 이름</h5>
 							<input type="text" name="nameMember" id="nameMember" value="" placeholder="Name" style="width: 400px"/><br>
 							
@@ -278,7 +279,7 @@
 							<input type="text" name="addressDetail" class="postcodify_details" placeholder="- 세부 주소" style="width: 400px; margin-top: 10px;"/>
 							<h6 style ="width: 400px;">지역이 구체적일 수록 내 주변의 모임들을 찾기에 좋아요 :)</h6><br>
 							
-							<br>
+<!-- 							<br>
 							<h3 style="width: 400px">Sharing Talent For you</h3>
 							<blockquote style="width: 400px">
 							당신의 재능은 무엇인가요?<br>
@@ -401,7 +402,7 @@
 									<option value="1">음악</option>
 									<option value="1">자기개발</option>
 								</select>
-							</div>
+							</div> -->
 							<hr style="width :400px;">
 							<div class="col-12 actions" style = "display:flex; justify-content:center; width:400px">
 									<input type="button" value="Sign up" class="primary" style = "width: 300px;" onclick="signup()"/>
@@ -539,9 +540,10 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>var contextPath = "${pageContext.request.contextPath}";</script>
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 			<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 			<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
-			<script src = "member.js"></script>
+			<script src = "${pageContext.request.contextPath}/app/member/member.js"></script>
 	</body>
 </html>

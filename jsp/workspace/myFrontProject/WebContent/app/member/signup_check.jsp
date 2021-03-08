@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean class = "com.koreait.beans.TABLE_MEMBER_DAO" id="dao"></jsp:useBean>
+<jsp:useBean class = "com.koreait.app.member.dao.MemberDAO" id="dao"></jsp:useBean>
 
 <% 
 	if(dao.checkId(request.getParameter("id"))) {

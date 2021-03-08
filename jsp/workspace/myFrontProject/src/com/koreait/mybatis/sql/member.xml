@@ -5,9 +5,8 @@
    <insert id="join" parameterType="memberVO">
       INSERT INTO TABLE_MEMBER 
       VALUES(
-         #{memberId}, #{memberPw}, #{memberName}, #{memberAge}, 
-         #{memberGender}, #{memberEmail}, #{memberZipcode}, #{memberAddress}, 
-         #{memberAddressDetail}, #{memberAddressEtc}
+         #{memberId}, #{memberName}, #{memberEmail}, #{memberPw}, #{memberPhone},
+         #{memberGender}, #{memberZipcode}, #{memberAddress}, #{memberAddressDetail}
       )
    </insert>
    

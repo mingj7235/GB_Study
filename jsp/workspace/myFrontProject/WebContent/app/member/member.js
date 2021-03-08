@@ -4,15 +4,48 @@
 
 var check = false;
 
-function modifyId () {
-	document.signupForm.id.readOnly = false;
-	check = false;
-}
+function formSubmit(){
+	   var form = document.signupForm;
+	   
+	   //아이디 검사
+	   if(form.memberId.value == "" || !check){
+	      alert("아이디를 확인해주세요.");
+	      form.memberId.focus();
+	      return false;
+	   }
+	   
+	   form.submit();
+	}
 
-function checkId() {
+function checkId(id) {
 	//Ajax로 중복 체크 해주기.
 	
-	var httpRequest = new XMLHttpRequest();
+	check = false;
+	if(id == "") {
+		$("#check_id_result").text("아이디를 작성해주세요.");
+	}else {
+		$.ajax ({
+			url:contextPath + "/member/MemberCheckIdOk.me?id="+id,
+			type:"get",
+			dataType:"text",
+			success:function(result){
+				if(result.trim()=="ok"){
+					check=true;
+					$("#check_id_result").text("<span style ='color:red;'>*</span> 사용가능한 아이디입니다.");
+				}else {
+					$("#check_id_result").text("<span style ='color:red;'>*</span> 중복된 아이디입니다.");
+				}
+			},
+			error:function(){
+				console.log("오류");
+			}
+				
+			
+		});
+	}
+	
+	
+	/*var httpRequest = new XMLHttpRequest();
 	console.log(document.getElementById("id").value);
 	httpRequest.open("GET", "signup_check.jsp?id="+document.getElementById("id").value);
 	httpRequest.send();
@@ -29,8 +62,14 @@ function checkId() {
 				check =  true;
 			}
 		}
-	}
+	}*/
 }
+
+$("input[name='id']").keyup(function(event){
+	var id = $("input[name='id']").val();
+	checkId(id);
+	
+});
 
 function signup() {
 	var frm = document.signupForm;
