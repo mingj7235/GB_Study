@@ -111,7 +111,7 @@
 							</div>
 							<h5 style ="width: 400px"><span style ="color:red;">*</span> 아이디 (중복체크를 꼭 해주세요)</h5>
 							<div class="col-12 actions" style = "display:flex; justify-content:center; width:400px">
-								<input type="text" name="id" id="id" value="" placeholder="ID" style="width: 300px; margin-right: 5px;" onclick="modifyId()"/>
+								<input type="text" name="memberId" id="memberId" value="" placeholder="ID" style="width: 300px; margin-right: 5px;" onclick="modifyId()"/>
 								<input type="button" value="Check ID" class="primary" style = "width: 95px; text-align: center;" onclick="checkId()"/>
 							</div>
 								<h6 id="check_id_result" style="width: 400px; margin-top: 10px;"></h6>
