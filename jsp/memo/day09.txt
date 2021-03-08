@@ -1,0 +1,18 @@
+로그인 시도 - > LoginOkAction -> 
+1. 로그인 성공 (게시판 목록으로 이동할수있도록)
+2. 로그인 실패 (로그인 페이지 - 경고메세지 출력)
+
+LoginForm.jsp로 가는 경우가 두가지다.
+-> 1. 로그인 버튼 클릭 (LoginForm.jsp페이지 이동) 
+    2. 로그인 실패 (LoginForm.jsp페이지 이동) -> 이때만 alert가 뜨게 하고싶음 
+
+
+로직의 흐름
+
+LoginOkAction.java에서 로그인 실패 시 
+login=false (파라미터에 false를 담는다) 이 파라미터를 Login프론트 컨트롤러로 전달한다.(req.getParameter 로 받는다.)
+	-> MemberLoginOkAction 에서 로그인 실패시 login 파라미터의 값을 false로 담아서  프론트로 전달.
+	-> 프론트 컨트롤러로 가면 String 타입 login 이라는 변수에 req.getParameter("login") 즉, 리턴값인 false를 전달한다.
+	-> 
+
+
