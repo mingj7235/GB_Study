@@ -14,5 +14,6 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/0900_gb_kmj/jsp/resource/mybatis-3.5.4/mybatis-3.5.4/mybatis-3.5.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

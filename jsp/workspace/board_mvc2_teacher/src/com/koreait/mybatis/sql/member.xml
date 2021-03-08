@@ -16,7 +16,7 @@
    </select>
    
    <select id="login" parameterType="map" resultType="_int">
-   	  SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{id} AND MEMBERPW = {#pw}
+   	  SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{id} AND MEMBERPW = #{pw}
    </select>
    
 </mapper>

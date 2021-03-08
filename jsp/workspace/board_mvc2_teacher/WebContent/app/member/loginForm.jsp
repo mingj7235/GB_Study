@@ -11,6 +11,7 @@
    <!-- 1. login 파라미터를 받았다면 -->
    	  <!-- 2. 받은 login에 false가 담겨있다면.. 이라는 의미 not 부정임. false일때 들어온다는 것임. -->
    	  		<!-- 3. 로그인이 실패했을 경우 alert가 뜨게된다.  -->
+   	  		<!-- ※ 확실하게 하기위해 2가지의 경우를 모두 if EL문으로 쓴것이다. -->
    	  <c:if test="${not empty param.login}">
    	  	<c:if test="${not param.login }">
    	  		<script>alert("아이디 또는 비밀번호를 다시 확인해 주세요.");</script>

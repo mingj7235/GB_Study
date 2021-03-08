@@ -121,10 +121,8 @@ public class MemberDAO {
     */
    public boolean login(String id, String pw) {
 	   HashMap<String, String> member = new HashMap<>();
-	   
 	   member.put("id", id);
 	   member.put("pw", encrypt(pw)); //암호화
-	   
 	   return (Integer)session.selectOne("Member.login", member) == 1;
    }
 }

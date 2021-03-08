@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Math를 이용한 구구단 연습</title>
+</head>
+<body>
+	<h3>Math를 이용한 구구단 연습</h3>
+	<hr>
+</body>
+<script>
+	/* 
+		floor는 소수점 내림, ceiling은 소수점 올림
+		즉, floor를 쓰면 정수가 나온다.
+		Math.floor(Math.random() * n) : 0 ~ n-1의 난수
+	*/
+	
+	//n * m 정답은? 
+	//사용자가 입력한 값과 정답 비교
+	//정답, 오답 시 각각 알맞는 메세지 출력
+	
+	/* var num1 = (Math.floor(Math.random() * 9) + 1);
+	var num2 = (Math.floor(Math.random() * 9) + 1);
+	
+	var result = prompt(num1 + " x " +num2 + " = ? " , "정답을 적어주세요");
+	
+	if (result == num1 * num2) {
+		alert("정답입니다.");
+	} else{
+		alert("오답입니다.");
+		location.reload();
+	} */
+	
+	function getRandomInt() {
+		return { 
+			num1 : Math.floor(Math.random() * 9)+1,
+			num2 : Math.floor(Math.random() * 9)+1
+		}
+	}
+	var nums = getRandomInt();
+	var q = nums.num1 + "*" + nums['num2'];
+	var answer = eval(q);
+	var msg ="";
+	
+	var myAnswer = prompt(q + "값은 얼마일까요?", 0);
+	
+	if(myAnswer == null) {
+		msg = "연습종료";
+	}else {
+		msg = answer == myAnswer? "정답" : "오답";
+		
+	}
+	msg += "<br>" +q + " = " + "<strong>" + answer + "</strong>";
+	
+	document.write(msg);
+	
+</script>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>요금표</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<style>
+
+body {
+	font-family: 'Nanum Pen Script';
+
+}
+table {
+	border:1px solid black;
+	width: 40%;
+	margin-left:auto;
+	margin-right:auto;
+	border-collapse:collapse;
+	font-size: 20px;
+}
+
+th, td {
+	border : 1px solid black;
+	text-align :center;
+}
+#bottom {
+	width: 40%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#table_header {
+	background-color: #ffeaa7;
+}
+</style>
+</head>
+<body>
+	<table>
+		<caption>&lt; 요금표 &gt;</caption>
+		<tbody>
+			<tr id = "table_header">
+				<th>구분</th>
+				<th>요금</th>
+			</tr>
+			
+			<tr id = "table_child">
+				<td id = "td_child">아동</td>
+				<td>무료</td>
+			</tr>
+			<tr id = "table_youth">
+				<td id = "td_youth">청소년</td>
+				<td>2000원</td>
+			</tr>
+			<tr id = "table_adult">
+				<td id = "td_adult">성인</td>
+				<td>5000원</td>
+			</tr>
+		</tbody>
+	</table>
+	<fieldset id = "bottom">
+		<legend>구분</legend>
+		<input id="inputtag" type ="text" >
+		<button id ="btn" onclick="change()"> 확인</button>
+	</fieldset>
+</body>
+
+
+<script>
+	//input태그에 사용자가 작성한 값을 가져올 때에는
+	//input객체.value로 가져올 수 있다. 
+	//*힌트 : 배열을 쓰면 조금 더 쉽게할 수 있다. 
+	
+	function change () {
+		var btn = document.getElementById("btn");
+		var child = document.getElementById("table_child");
+		var youth = document.getElementById("table_youth");
+		var adult = document.getElementById("table_adult");
+		
+		if(document.getElementById("inputtag").value == "아동") {
+			btn.addEventListener("click", function () {
+				youth.style.backgroundColor = "white";
+				adult.style.backgroundColor = "white";
+				child.style.backgroundColor = "#ff7675";
+				document.getElementById("td_child").innerHTML = "★아동";
+				document.getElementById("td_youth").innerHTML = "청소년";
+				document.getElementById("td_adult").innerHTML = "성인";
+			});
+		} else if (document.getElementById("inputtag").value == "청소년") {
+			btn.addEventListener("click", function () {
+				child.style.backgroundColor = "white";
+				adult.style.backgroundColor = "white";
+				youth.style.backgroundColor = "#ff7675";
+				document.getElementById("td_child").innerHTML = "아동";
+				document.getElementById("td_youth").innerHTML = "★청소년";
+				document.getElementById("td_adult").innerHTML = "성인";
+			});
+		} else if (document.getElementById("inputtag").value == "성인") {
+			btn.addEventListener("click", function () {
+				child.style.backgroundColor = "white";
+				youth.style.backgroundColor = "white";
+				adult.style.backgroundColor = "#ff7675";
+				document.getElementById("td_child").innerHTML = "아동";
+				document.getElementById("td_youth").innerHTML = "청소년";
+				document.getElementById("td_adult").innerHTML = "★성인";
+			});
+		} else {
+			alert ("다시 시도해주세요");
+			location.reload();
+		}
+	}
+	
+</script>
+
+</html>

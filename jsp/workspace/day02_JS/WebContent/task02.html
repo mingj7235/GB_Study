@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+<style>
+body {
+	font-family: 'Nanum Pen Script';
+
+}
+table {
+	border:1px solid black;
+	width: 40%;
+	margin-left:auto;
+	margin-right:auto;
+	border-collapse:collapse;
+	font-size: 20px;
+}
+
+th, td {
+	border : 1px solid black;
+	text-align :center;
+}
+#bottom {
+	width: 40%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#table_header {
+	background-color: #ffeaa7;
+}
+
+</style>
+
+</head>
+<body>
+	<table>
+		<caption>&lt; 요금표 &gt;</caption>
+		<tbody>
+			<tr id = "table_header">
+				<th>구분</th>
+				<th>요금</th>
+			</tr>
+			
+			<tr id = "kids">
+				<td id ="kids-text">아동</td>
+				<td>무료</td>
+			</tr>
+			<tr id = "teen">
+				<td id = "teen-text">청소년</td>
+				<td>2000원</td>
+			</tr>
+			<tr id ="adult">
+				<td id = "adult-text">성인</td>
+				<td>5000원</td>
+			</tr>
+		</tbody>
+	</table>
+	<fieldset style = "text-aling:center; width:30%; margin:0 auto;">
+		<legend>구분</legend>
+		<input id="choice" type ="text" >
+		
+		<!-- 이벤트 리스너 부분의 값에는 JS문법을 사용한다. -->
+		<!-- 즉, JS 에 선언된 confirm() 함수를 호출(실행)한다. -->
+		<button onclick="confirm()"> 확인</button>
+	</fieldset>
+</body>
+<!-- 작업 순서 : 1. HTML 작성 -> 2. CSS 작성  -> 3. JS 작성 -->
+<script>
+
+	/* 원상복구하기위해 전역변수로 선언해준다. 임시저장소 */
+	/* 색상이 바뀌기 전 값을 임시로 저장할 저장소들이다. */
+	/* 다른 행의 색상을 변경할 때, 이전 변경된 행을 원상복구하기 위함이다. */
+	var tempTr;
+	var tempTd;
+	var tempText;
+	
+	function confirm() {
+		//value는 input 태그, textarea태그만 사용 가능 
+		//그 외의 태그의 내용은 innerHTML로 사용가능 
+		var input = document.getElementById("choice").value; /* 사용자가 입력한 값을 input에 담는다. */
+		
+		//규칙석을 부여하기 위해 배열을 사용한다. 
+		var arAge = ['아동', '청소년', '성인'];
+		var arId = ['kids', 'teen', 'adult'];
+	
+		//사용자가 입력한 값이 '구분(테이블에 있는 값)'에 있는 지 검사할 FLAG 
+		var check = false;
+		
+		//'구분'의 개수만큼 반복
+		for(let i = 0; i <arAge.length; i++) {
+			//사용자가 입력한 값과일치하는 값이 있다면
+			if(arAge[i] == input) {
+				
+				/* 초기화 하기위해서 만들어진 태그. */
+				if(tempTr != undefined) {
+					/* 변경된 행이 있다면..! 이라는 의미임. 변경된게없으면 undefined일것이다. */
+					tempTr.style.background = "#fff";
+					tempTd.innerHTML = tempText;
+					//원상 복구 완료
+				}
+				//const를 사용하여 밑에서 값이 수정되지 않도록 막아준다. 
+				const tr = document.getElementById(arId[i]);
+				const td = document.getElementById(arId[i] + "-text");
+				
+				// 색상을 변경하기 전 원래의 값을 담아준다.  
+				/* 변경전의 정보를 여기에 담는거고 */
+				tempTr = tr;
+				tempTd = td;
+				tempText = arAge[i];
+				
+				/* 여기서 변경함  */
+				//색상 및 텍스트 변경
+				tr.style.background = "#ef5350";
+				td.innerHTML = '☆' + arAge[i];
+				
+				//사용자가 정상 입력했기 때문에 FLAG를 true로 변경
+				check = true;
+			}
+			
+		}
+		
+		if(!check) {
+			alert("다시 시도해주세요");
+			history.go(0);
+		}
+		
+		
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

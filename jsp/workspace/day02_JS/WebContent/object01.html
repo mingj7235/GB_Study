@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>사용자 객체 선언 및 사용</title>
+</head>
+<body>
+</body>
+<script>
+	/*
+	자바 스크립트에서 직접 만들어서 객체에 담는 것은 자주 사용하지 않는다.
+	외부에서 전달받은 JSON타입의 데이터를 추출할 때 주로 사용되며,
+	Ajax 통신으로 여러 개의 값을 서버에 전달 할 때 {}로 묶어서 전달하는 방식으로 자주 사용된다.
+	따라서 .와 ['key'] 방식, {key : 'value'} 방식, 이렇게 두 가지 방식만 연습하면 된다. 
+	*/
+	var account ={
+		owner : "한동석",
+		code : "1234",
+		balance: 100000,
+		deposit : function(money){this.balance += money;},/* 객체안에서 프로퍼티를 사용할경우 this를 꼭 사용하자! */
+		withdraw : function (money){this.balance -= money;},
+		show_balance : function(){return this.balance;}
+	}
+	
+	with (document) {
+		write ("account : ");
+		write(account.owner + ", ");
+		write(account.code + ", ");
+		write(account['balance']+"<br>"); /* 맵 처럼!! key값을 가져와서 value를 호출하는것이다. 이렇게 접근하는 방법이있다. */
+	}
+		account.deposit(50000);
+		document.write("현재 잔액 : " + account.show_balance());
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

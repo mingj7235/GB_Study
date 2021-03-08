@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>사용자 객체</title>
+</head>
+<body>
+</body>
+<script>
+	function show_balance() {
+		return this.balance;
+	}
+	
+	function deposit(money){
+		this.balance += money;
+	}
+	function withdraw (money) {
+		this.balance -= money;
+		return money;
+	}
+
+	/* Object를 넣어주고 (비어있음) 그 후에 넣어준다. 근데 이렇게 하나씩 밑에서 넣기 불편함 */
+	var account = new Object();
+	
+	account.owner = "한동석";
+	account.code = "1234";
+	account.balance = 100000;
+	
+	account.show_balance = show_balance; /* 기존에 만들어진 함수를 넣을땐 이름만 이렇게 써주면 들어감 */
+	account.deposit = deposit;
+	account.withdraw = withdraw;
+	
+	with (document) {
+		write ("account : ");
+		write (account.owner + ", ");
+		write (account.code + ", ");
+		write (account.balance + "<br>");
+	}
+	
+	account.deposit(10000);
+	document.write("10,000원 입금 후 잔액 : " + account.show_balance() + "원<br>");
+	document.write(account.withdraw(500000) + "원 출금 후 잔액 : " + account.show_balance() + "원");
+	
+	
+</script>
+</html>

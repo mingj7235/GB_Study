@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<caption>&lt; 요금표 &gt;</caption>
+		<tbody>
+			<tr id = "table_header">
+				<th>구분</th>
+				<th>요금</th>
+			</tr>
+			
+			<tr id = "kids">
+				<td id ="kids-text">아동</td>
+				<td>무료</td>
+			</tr>
+			<tr id = "teen">
+				<td id = "teen-text">청소년</td>
+				<td>2000원</td>
+			</tr>
+			<tr id ="adult">
+				<td id = "adult-text">성인</td>
+				<td>5000원</td>
+			</tr>
+		</tbody>
+	</table>
+	<fieldset style = "text-aling:center; width:30%; margin:0 auto;">
+		<legend>구분</legend>
+		<input id="choice" type ="text" >
+		<button onclick="confirm()"> 확인</button>
+	</fieldset>
+</body>
+<script>
+	var tempTr;
+	var tempTd;
+	var tempText;
+	
+	
+	function confirm() {
+		var input = document.getElementById("choice").value;
+		var arAge = ['아동', '청소년', '성인'];
+		var arId = ['kids', 'teen', 'adult'];
+		var check = false;
+		
+		for (let i = 0; i < arAge.length; i++) {
+			if(arAge[i] == input) {
+				if(tempTr != undefined) {
+					/* previous data back-up (background color, text) */
+					tempTr.style.background = "#fff";				
+					tempTd.innerHTML = tempText;
+				}
+				
+				const tr = document.getElementById(arId[i]);
+				const td = document.getElementById(arId[i]+"-text");
+				
+				tempTr = tr;
+				tempTd = td;
+				tempText = arAge[i];
+				
+				tr.style.background = "#ef5350";
+				td.innerHTML = "☆" + td.innerHTML;
+				check = true;
+				
+			}			
+		}
+		if (!check) {
+			alert("다시 시도");
+			history.go(0);
+		}
+	}
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
