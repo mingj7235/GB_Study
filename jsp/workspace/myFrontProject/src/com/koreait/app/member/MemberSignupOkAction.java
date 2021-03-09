@@ -32,6 +32,7 @@ public class MemberSignupOkAction implements Action{
 		);
 		 */
 		//사용자가 입력한 정보들
+		System.out.println("정보를 담기전");
 	    m_vo.setMemberId(req.getParameter("memberId"));
 	    m_vo.setMemberName(req.getParameter("memberName"));
 	    m_vo.setMemberEmail(req.getParameter("memberEmail"));
@@ -42,15 +43,18 @@ public class MemberSignupOkAction implements Action{
 	    m_vo.setMemberAddress(req.getParameter("memberAddress"));
 	    m_vo.setMemberAddressDetail(req.getParameter("memberAddressDetail"));
 
+	    System.out.println("if문자체에 안들어옴");
 	    //DB에서 INSERT 실패 시 
 		if(m_dao.join(m_vo)) {
 			//직접 HTML문서로 응답
+			System.out.println("인서트 실패 들어옴");
 			PrintWriter out = resp.getWriter();
 			resp.setContentType("text/html;charset=utf-8");
 			out.println("<script>alert('서버가 불안정합니다. 잠시후 다시 시도해주세요.');</script>");
 			out.close();
 		}else {
 			//DB에서 INSERT 성공시
+			System.out.println("인서트 성공 들어옴");
 			forward = new ActionForward();
 			
 			//이동할 페이지 정보를 담아서 리턴
