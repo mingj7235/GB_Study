@@ -231,11 +231,15 @@ function signup() {
 		return false;
 		
 	}
-	/*
-	 * var checkIdFlag = false;
-var checkSmsFlag = false;
-var checkModifyFlag = false;
-	 * */
+	
+	if(!phoneReg.test(memberPhone)) {
+		alert ("핸드폰 번호를 올바르게 입력해주세요");
+		frm.memberPhoneMid.focus();
+		return false;
+		
+	}
+	
+	
 	if(!checkIdFlag){
 		alert("아이디 중복확인을 진행해주세요");
 		frm.memberId.focus();

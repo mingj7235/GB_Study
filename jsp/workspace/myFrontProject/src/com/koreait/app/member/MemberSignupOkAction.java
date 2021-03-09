@@ -57,9 +57,6 @@ public class MemberSignupOkAction implements Action{
 			forward.setRedirect(false);
 			forward.setPath("/member/MemberLogin.me");
 		}
-		//alert창 띄우고 페이지 이동 : 이건 오류, 절대불가능하다. 
-		//컨트롤러에서 응답은 반드시 한 번만 가능하다.
-		//왜? 응답은 무조건 1번이기때문에!!! alert를 이미 했기때문에 페이지 이동은 불가능하다. 중복응답이라 여러번 응답한걸로 되어 오류가 뜬다. 
 		
 		return forward; //페이지 이동이있으므로 forward를 리턴!
 	}
