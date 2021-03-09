@@ -141,6 +141,7 @@
 								<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
 								<input type="button" value="인증번호확인" class="" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkModifyNum()"/>
 							</div>
+								<h6 id="check_modifyNum_result" style="width: 400px; margin-top: 10px;"></h6>
 							<br>
 							<div class="col-12">
 								<textarea name="term" id="term" style ="width : 400px; height : 200px; resize: none;" readonly="readonly">

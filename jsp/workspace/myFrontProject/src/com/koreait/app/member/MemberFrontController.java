@@ -58,6 +58,11 @@ public class MemberFrontController extends HttpServlet {
 			forward= new MemberCheckPhoneOkAction().execute(req, resp);
 		} catch (Exception e) {;}
     
+      } else if(command.equals("/member/MemberCheckModifyOk.me")) {
+    	  try {
+    		  forward= new MemberCheckModifyOkAction().execute(req, resp);
+    	  } catch (Exception e) {;}
+    	  
          	  
       //회원가입
       } else if(command.equals("/member/MemberSignupOk.me")) {

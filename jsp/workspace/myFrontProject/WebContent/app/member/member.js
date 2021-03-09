@@ -105,6 +105,7 @@ function checkModifyNum () {
 	//사용자가 적은것
 	var modifyInput = document.getElementById("phoneIdentifyNum").value;
 
+	console.log(modifyInput);
 	if(modifyInput == "") {
 		$("check_modifyNum_result").text("인증번호를 입력해주세요");
 	}else {
@@ -115,9 +116,9 @@ function checkModifyNum () {
 			success:function(result){
 				if(result.trim()=="ok"){
 					check=true;
-					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 전송되었습니다.";
+					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 확인되었습니다.";
 				}else {
-					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 이미 등록된 번호입니다. 확인해주세요.";
+					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호를 다시 확인해주세요";
 				}
 			},
 			error:function(){

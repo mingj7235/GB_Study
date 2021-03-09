@@ -71,7 +71,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class MemberDAO {
    private static final int KEY = 3;
-   public static int modifyNum = 0;
+   public static String MODIFYNUM = "";
    SqlSessionFactory sessionf = SqlMapConfig.getSqlMapInstance();
    SqlSession session;
    
@@ -136,15 +136,18 @@ public class MemberDAO {
 	    String api_secret = "OWEK0BQ227DKKRGC3YXFGQJH1UZ1NW7A";
 	    Message coolsms = new Message(api_key, api_secret);
 	    Random r = new Random();
-	    String tempIdentifyNum = "" + r.nextInt(100000);
+	    String tempIdentifyNum = ""+r.nextInt(100000);
 	    System.out.println(tempIdentifyNum);
+	    //스테틱으로 넣기
+	    MODIFYNUM = tempIdentifyNum;
 	    
 	    // 4 params(to, from, type, text) are mandatory. must be filled
+	    //인증번호확인을 위해 잠시 주석
 	    HashMap<String, String> params = new HashMap<String, String>();
 	    params.put("to", memberPhone);
 	    params.put("from", "01064707235");
 	    params.put("type", "SMS");
-	    params.put("text", "송송 인증번호 가나요?" + tempIdentifyNum +"♥");
+	    params.put("text", "인증번호 : " + tempIdentifyNum);
 	    params.put("app_version", "test app 1.2"); // application name and version
 
 	    try {
