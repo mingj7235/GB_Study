@@ -30,16 +30,14 @@ public class MemberCheckPhoneOkAction implements Action{
 		
 		//Ajax에서 요청한 데이터를 DB에서 조회한 후
 		//text로 출력하여 응답해준다.
-		if(m_dao.checkPhone(memberPhone)) {
+		if(!m_dao.checkPhone(memberPhone)) {
 			//not-ok
-			out.println("not-ok");
-			System.out.println("들어옴1");
+			out.println("ok");
+			m_dao.checkSms(memberPhone);
 		}else {
 			//ok
-			out.println("ok");
+			out.println("not-ok");
 			//인증번호 api
-			out.println(m_dao.checkSms(memberPhone));
-			System.out.println("들어옴2");
 		}
 		out.close();
 		//페이지 이동을 하지 않는다.

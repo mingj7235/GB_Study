@@ -86,14 +86,11 @@ function checkSms() {
 			type:"get",
 			dataType:"text",
 			success:function(result){
-				console.log("들어오니?");
 				if(result.trim()=="ok"){
 					checkSmsFlag=true;
 					document.getElementById("check_phone_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 전송되었습니다.";
-					console.log("들어옴3");
 				}else {
 					document.getElementById("check_phone_result").innerHTML ="<span style ='color:red;'>*</span> 이미 등록된 번호입니다. 확인해주세요.";
-					console.log("들어옴4");
 				}
 			},
 			error:function(){
