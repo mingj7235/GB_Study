@@ -33,11 +33,13 @@ public class MemberCheckPhoneOkAction implements Action{
 		if(m_dao.checkPhone(memberPhone)) {
 			//not-ok
 			out.println("not-ok");
+			System.out.println("들어옴1");
 		}else {
 			//ok
 			out.println("ok");
 			//인증번호 api
 			out.println(m_dao.checkSms(memberPhone));
+			System.out.println("들어옴2");
 		}
 		out.close();
 		//페이지 이동을 하지 않는다.

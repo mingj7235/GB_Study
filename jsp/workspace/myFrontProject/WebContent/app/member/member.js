@@ -5,10 +5,7 @@
 var checkIdFlag = false;
 var checkSmsFlag = false;
 var checkModifyFlag = false;
-var memberPhoneHead = document.getElementById("memberPhoneHead").value;
-var memberPhoneMid = document.getElementById("memberPhoneMid").value;
-var memberPhoneBottom = document.getElementById("memberPhoneBottom").value;
-var memberPhone = memberPhoneHead + memberPhoneMid + memberPhoneBottom;
+
 
 function formSubmit(){
 	   var form = document.signupForm;
@@ -74,7 +71,12 @@ function checkId() {
 function checkSms() {
 	//Ajax로 중복 체크 해주기.
 	var div = document.getElementById("phoneDiv");
+	
 	checkSmsFlag = false;
+	var memberPhoneHead = document.getElementById("memberPhoneHead").value;
+	var memberPhoneMid = document.getElementById("memberPhoneMid").value;
+	var memberPhoneBottom = document.getElementById("memberPhoneBottom").value;
+	var memberPhone = memberPhoneHead + memberPhoneMid + memberPhoneBottom;
 	if(memberPhoneHead == "" || memberPhoneMid == "" || memberPhoneBottom =="") {
 		$("#check_phone_result").text("휴대폰 인증버튼을 눌러주세요");
 		
@@ -84,11 +86,14 @@ function checkSms() {
 			type:"get",
 			dataType:"text",
 			success:function(result){
+				console.log("들어오니?");
 				if(result.trim()=="ok"){
 					checkSmsFlag=true;
 					document.getElementById("check_phone_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 전송되었습니다.";
+					console.log("들어옴3");
 				}else {
 					document.getElementById("check_phone_result").innerHTML ="<span style ='color:red;'>*</span> 이미 등록된 번호입니다. 확인해주세요.";
+					console.log("들어옴4");
 				}
 			},
 			error:function(){
@@ -131,7 +136,10 @@ function checkModifyNum () {
 
 function signup() {
 	var frm = document.signupForm;
-	
+	var memberPhoneHead = document.getElementById("memberPhoneHead").value;
+	var memberPhoneMid = document.getElementById("memberPhoneMid").value;
+	var memberPhoneBottom = document.getElementById("memberPhoneBottom").value;
+	var memberPhone = memberPhoneHead + memberPhoneMid + memberPhoneBottom;
 	if(frm.memberId.value == "") {
 		alert("아이디를 입력해주세요");
 		frm.memberId.focus();
@@ -205,6 +213,10 @@ function signup() {
 			return false;
 		}
 	}
+	console.log(memberPhone);
+	console.log(memberPhoneHead);
+	console.log(memberPhoneMid);
+	console.log(memberPhoneBottom);
 	if(memberPhone == "" || memberPhoneMid == "") {
 		alert ("핸드폰 번호를 입력해주세요.");
 		frm.memberPhoneMid.focus();
@@ -215,7 +227,7 @@ function signup() {
 		frm.memberPhoneBottom.focus();
 		return false;
 	}
-	var phoneReg = /^([0-9]{3,4})?([0-9]{4})$/;
+	var phoneReg = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 	if(!phoneReg.test(memberPhone)) {
 		alert ("핸드폰 번호를 올바르게 입력해주세요");
 		frm.memberPhoneMid.focus();
