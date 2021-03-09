@@ -71,7 +71,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class MemberDAO {
    private static final int KEY = 3;
-   
+   public static int modifyNum = 0;
    SqlSessionFactory sessionf = SqlMapConfig.getSqlMapInstance();
    SqlSession session;
    
@@ -131,7 +131,7 @@ public class MemberDAO {
 	   return (Integer)session.selectOne("Member.checkId", member) == 1;
    }
    
-   public void smsCheck (String memberPhone) {
+   public String checkSms (String memberPhone) {
 	   String api_key = "NCSRIPIHAZ3LQLSK";
 	    String api_secret = "OWEK0BQ227DKKRGC3YXFGQJH1UZ1NW7A";
 	    Message coolsms = new Message(api_key, api_secret);
@@ -154,6 +154,7 @@ public class MemberDAO {
 	      System.out.println(e.getMessage());
 	      System.out.println(e.getCode());
 	    }
+	    return tempIdentifyNum;
    }
 }
 

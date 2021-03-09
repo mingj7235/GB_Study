@@ -134,14 +134,12 @@
 								</select>
 								<input type="text" name="memberPhoneMid" id="memberPhoneMid" value=""  style="width: 95px;margin-right: 5px;"/><br>
 								<input type="text" name="memberPhoneBottom" id="memberPhoneBottom" value=""  style="width: 95px;margin-right: 5px;"/><br>
-								<input type="button" value="인증번호발송" class="primary" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkPhone()"/>
-								<!-- <button class="button primary" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkPhone()">인증번호발송</button> -->
-								<!-- <span class="button primary disabled" style="width: 90px; text-align: center">인증번호발송</span> -->
+								<input type="button" value="인증번호발송" class="primary" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkSms()"/>
 							</div>
 								<h6 id="check_phone_result" style="width: 400px; margin-top: 10px;"></h6>
 							<div style="width:400px; display:flex;">
 								<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
-								<button class="button primaryS" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호확인</button>
+								<input type="button" value="인증번호확인" class="" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkModifyNum()"/>
 							</div>
 							<br>
 							<div class="col-12">

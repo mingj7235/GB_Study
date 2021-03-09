@@ -37,11 +37,9 @@ public class MemberCheckPhoneOkAction implements Action{
 			//ok
 			out.println("ok");
 			//인증번호 api
-			m_dao.smsCheck(memberPhone);
-			
+			out.println(m_dao.checkSms(memberPhone));
 		}
 		out.close();
-		
 		//페이지 이동을 하지 않는다.
 		return null;
 	}

@@ -65,7 +65,7 @@ function checkId() {
 	}*/
 }
 
-function checkPhone() {
+function checkSms() {
 	//Ajax로 중복 체크 해주기.
 	var div = document.getElementById("phoneDiv");
 	var memberPhoneHead = document.getElementById("memberPhoneHead").value;
@@ -75,11 +75,6 @@ function checkPhone() {
 	var memberPhone = memberPhoneHead + memberPhoneMid + memberPhoneBottom;
 	
 	check = false;
-	console.log("들어옴");
-	console.log(memberPhoneHead);
-	console.log(memberPhoneMid);
-	console.log(memberPhoneBottom);
-	
 	if(memberPhoneHead == "" || memberPhoneMid == "" || memberPhoneBottom =="") {
 		$("#check_phone_result").text("휴대폰 인증버튼을 눌러주세요");
 		
@@ -91,7 +86,6 @@ function checkPhone() {
 			success:function(result){
 				if(result.trim()=="ok"){
 					check=true;
-					//여기에 인증번호 버튼 로직을 짜야하는것인가..?
 					document.getElementById("check_phone_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 전송되었습니다.";
 				}else {
 					document.getElementById("check_phone_result").innerHTML ="<span style ='color:red;'>*</span> 이미 등록된 번호입니다. 확인해주세요.";
@@ -104,6 +98,35 @@ function checkPhone() {
 		});
 	}
 
+}
+
+
+function checkModifyNum () {
+	//사용자가 적은것
+	var modifyInput = document.getElementById("phoneIdentifyNum").value;
+
+	if(modifyInput == "") {
+		$("check_modifyNum_result").text("인증번호를 입력해주세요");
+	}else {
+		$.ajax({
+			url:contextPath + "/member/MemberCheckModifyOk.me?modifyInput="+modifyInput,
+			type:"get",
+			dataType:"text",
+			success:function(result){
+				if(result.trim()=="ok"){
+					check=true;
+					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 전송되었습니다.";
+				}else {
+					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 이미 등록된 번호입니다. 확인해주세요.";
+				}
+			},
+			error:function(){
+				console.log("오류");
+			}
+			
+		});
+		
+	}
 }
 
 function signup() {
