@@ -3,19 +3,23 @@
 
 <mapper namespace="Member">
    <select id="checkId" parameterType="string" resultType="_int">
-      SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{memberId}
+      SELECT COUNT(*) FROM TBL_STFORU_MEMBER WHERE MEMBERID = #{memberId}
+   </select>
+   <select id="checkPhone" parameterType="string" resultType="_int">
+      SELECT COUNT(*) FROM TBL_STFORU_MEMBER WHERE MEMBERPHONE = #{memberPhone}
    </select>
    
    <insert id="join" parameterType="memberVO">
-      INSERT INTO TABLE_MEMBER 
+      INSERT INTO TBL_STFORU_MEMBER 
       VALUES(
          #{memberId}, #{memberName}, #{memberEmail}, #{memberPw}, #{memberPhone},
          #{memberGender}, #{memberZipcode}, #{memberAddress}, #{memberAddressDetail}
       )
    </insert>
    
+   
    <select id="login" parameterType="memberVO" resultType="_int">
-   	  SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{memberId} AND MEMBERPW = {#memberPw}
+   	  SELECT COUNT(*) FROM TBL_STFORU_MEMBER WHERE MEMBERID = #{memberId} AND MEMBERPW = {#memberPw}
    </select>
    
 </mapper>
