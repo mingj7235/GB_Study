@@ -57,7 +57,7 @@ public class MemberFrontController extends HttpServlet {
     	  try {
 			forward= new MemberCheckPhoneOkAction().execute(req, resp);
 		} catch (Exception e) {;}
-    
+      //인증번호 체크
       } else if(command.equals("/member/MemberCheckModifyOk.me")) {
     	  try {
     		  forward= new MemberCheckModifyOkAction().execute(req, resp);

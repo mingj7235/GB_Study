@@ -103,7 +103,7 @@
 				</div>
 				<br>
 				<!-- html에서는 jsp처럼 java문법을 사용할수 없다... 이럴경우는?  -->
-				<form id = "signupForm" name = "signupForm" action="#" method="post" >
+				<form id = "signupForm" name = "signupForm" action="${pageContext.request.contextPath}/member/MemberSignupOk.me" method="post" >
 					<div class="row gtr-uniform">
 						<div class="col-6 col-12-xsmall" style = "margin: 20px;">
 							<div style="align-items: right">
@@ -122,9 +122,9 @@
 							<h5 style ="width: 400px"><span style ="color:red;">*</span> 이메일주소 </h5>
 							<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="ex> abc1234@stforu.com" style="width: 400px; "/><br>
 							<h5><span style ="color:red;">*</span> 비밀번호</h5>
-							<input type="password" name="memberPassword" id="memberPassword" value="" placeholder="password" style="width: 400px"/><br>
+							<input type="password" name="memberPw" id="memberPw" value="" placeholder="password" style="width: 400px"/><br>
 							<h5><span style ="color:red;">*</span> 비밀번호 확인</h5>
-							<input type="password" name="memberPasswordRe" id="memberPasswordRe" value="" placeholder="check password" style="width: 400px"/><br>
+							<input type="password" name="memberPwRe" id="memberPwRe" value="" placeholder="check password" style="width: 400px"/><br>
 							<h5><span style ="color:red;">*</span> 전화번호 등록</h5>
 							<div style="width:400px; display:flex; ">
 								<select name="memberPhoneHead" id="memberPhoneHead" style="width: 95px;margin-right: 5px; ">

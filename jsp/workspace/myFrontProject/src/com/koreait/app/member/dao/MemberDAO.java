@@ -140,10 +140,11 @@ public class MemberDAO {
 	    System.out.println(tempIdentifyNum);
 	    //스테틱으로 넣기
 	    MODIFYNUM = tempIdentifyNum;
+	    //인증번호 시간되면 스태틱말고 세션으로 변경해서 써보기
 	    
 	    // 4 params(to, from, type, text) are mandatory. must be filled
 	    //인증번호확인을 위해 잠시 주석
-	    HashMap<String, String> params = new HashMap<String, String>();
+	   /* HashMap<String, String> params = new HashMap<String, String>();
 	    params.put("to", memberPhone);
 	    params.put("from", "01064707235");
 	    params.put("type", "SMS");
@@ -156,7 +157,7 @@ public class MemberDAO {
 	    } catch (CoolsmsException e) {
 	      System.out.println(e.getMessage());
 	      System.out.println(e.getCode());
-	    }
+	    }*/
 	    return tempIdentifyNum;
    }
 }
