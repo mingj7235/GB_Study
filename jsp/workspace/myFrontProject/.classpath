@@ -15,5 +15,7 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
 	<classpathentry exported="true" kind="lib" path="D:/0900_gb_kmj/jsp/resource/mybatis-3.5.4/mybatis-3.5.4/mybatis-3.5.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/0900_gb_kmj/jsp/resource/java-sdk-2.2-http-cv52/lib/javaSDK-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/0900_gb_kmj/jsp/resource/java-sdk-2.2-http-cv52/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

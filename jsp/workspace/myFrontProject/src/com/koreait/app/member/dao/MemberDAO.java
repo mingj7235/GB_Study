@@ -56,11 +56,18 @@ public class MemberDAO {
 
 package com.koreait.app.member.dao;
 
+import java.util.HashMap;
+import java.util.Random;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.koreait.app.member.vo.MemberVO;
 import com.koreait.mybatis.config.SqlMapConfig;
+
+import org.json.simple.JSONObject;
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class MemberDAO {
    private static final int KEY = 3;
@@ -109,7 +116,12 @@ public class MemberDAO {
    public boolean checkId(String memberId) {
       return (Integer)session.selectOne("Member.checkId", memberId) == 1;
    }
-   
+   /**
+    * 
+    * @param memberPhone
+    * @return
+    * ture : 중복된 번호<br>false : 사용가능한 번호이므로 인증번호 전송할수있게끔
+    */
    public boolean checkPhone (String memberPhone) {
 	   return (Integer)session.selectOne("Member.checkPhone", memberPhone) == 1;
    }
@@ -117,6 +129,31 @@ public class MemberDAO {
    public boolean login(MemberVO member) {
 	  /* System.out.println(member.getMemberId() + member.getMemberPw());*/
 	   return (Integer)session.selectOne("Member.checkId", member) == 1;
+   }
+   
+   public void smsCheck (String memberPhone) {
+	   String api_key = "NCSRIPIHAZ3LQLSK";
+	    String api_secret = "OWEK0BQ227DKKRGC3YXFGQJH1UZ1NW7A";
+	    Message coolsms = new Message(api_key, api_secret);
+	    Random r = new Random();
+	    String tempIdentifyNum = "" + r.nextInt(100000);
+	    System.out.println(tempIdentifyNum);
+	    
+	    // 4 params(to, from, type, text) are mandatory. must be filled
+	    HashMap<String, String> params = new HashMap<String, String>();
+	    params.put("to", memberPhone);
+	    params.put("from", "01064707235");
+	    params.put("type", "SMS");
+	    params.put("text", "송송 인증번호 가나요?" + tempIdentifyNum +"♥");
+	    params.put("app_version", "test app 1.2"); // application name and version
+
+	    try {
+	      JSONObject obj = (JSONObject) coolsms.send(params);
+	      System.out.println(obj.toString());
+	    } catch (CoolsmsException e) {
+	      System.out.println(e.getMessage());
+	      System.out.println(e.getCode());
+	    }
    }
 }
 

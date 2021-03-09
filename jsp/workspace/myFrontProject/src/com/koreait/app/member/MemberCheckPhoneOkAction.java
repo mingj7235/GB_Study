@@ -9,6 +9,11 @@ import com.koreait.action.Action;
 import com.koreait.action.ActionForward;
 import com.koreait.app.member.dao.MemberDAO;
 
+import java.util.HashMap;
+import java.util.Random;
+
+
+
 //컨트롤러
 public class MemberCheckPhoneOkAction implements Action{
 	//여기에 문자전송 api 만들기
@@ -31,6 +36,9 @@ public class MemberCheckPhoneOkAction implements Action{
 		}else {
 			//ok
 			out.println("ok");
+			//인증번호 api
+			m_dao.smsCheck(memberPhone);
+			
 		}
 		out.close();
 		
