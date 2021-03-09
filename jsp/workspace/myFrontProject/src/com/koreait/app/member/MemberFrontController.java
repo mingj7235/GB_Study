@@ -10,21 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.koreait.action.ActionForward;
 
-//만약 요청한 응답 페이지가 흰 색 화면이 나온다면 문법 오류 혹은 페이지 이동 오류일 가능성이 높다.
 public class MemberFrontController extends HttpServlet {
-   /**
-    * JVM의 메모리에서만 머물러 있던 객체를 시스템이 종료되거나 네트워크로 통신을 할 때에도 그대로 사용할 수 있도록
-    * 영구화 목적으로 직렬화를 사용한다.
-    * 직렬화 된 객체는 byte형태로 변환되어 있으며, 다시 사용하고 싶을 때에는 역직렬화를 통해서 객체로 변환된다.
-    * 이 때 SUID(serialVersionUID)라는 값을 고정시켜 구분점으로 사용해서 사용자가 원하는 객체가 맞는 지 판단하게 된다.
-    * 자주 변경되는 클래스 객체에는 사용하지 않는 것이 좋다.
-    */
    private static final long serialVersionUID = 1L;
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      //doGet 또는 doPost가 실행될 때 모두 같은 로직이 실행되어야 하므로
-      //doProcess메소드 선언 후 재사용한다.
       doProcess(req, resp);
    }
    
@@ -34,37 +24,47 @@ public class MemberFrontController extends HttpServlet {
    }
    //비지니스 핵심 로직을 모아둔 메소드
    protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      //클라이언트가 요청한 전체 URI
       String requestURI = req.getRequestURI();
-      //도메인부터 계속 반복되는 URI 앞(헤드)부분
-      //사용자의 요청을 구분하기 위해서는 불필요한 부분이다.
       String contextPath = req.getContextPath();
-      //불필요한 부분을 잘라낸 나머지 부분 즉, 사용자의 요청이 무엇인지를 판단할 수 있는 부분을 담는다.
       String command = requestURI.substring(contextPath.length());
       
-      //컨트롤러에서 응답할 정보를 담아줄 객체
       ActionForward forward = null;
       
-      // /member/를 붙인 이유는 사용자의 요청이 어떤 소속인지를 나타내기 위함이다(가독성).
-      
+      //로그인 페이지 이동
       if(command.equals("/member/MemberLogin.me")) {
     	  forward = new ActionForward();
           forward.setRedirect(false);
           forward.setPath("/app/member/login.jsp");
-          
+      //홈페이지로 이동    
       } else if(command.equals("/member/MemberHome.me")) {
     	  forward = new ActionForward();
           forward.setRedirect(false);
           forward.setPath("/app/member/index.jsp");
-          
+      //회원가입 페이지로 이동
       } else if(command.equals("/member/MemberSignup.me")) {
     	  forward = new ActionForward();
           forward.setRedirect(false);
           forward.setPath("/app/member/signup.jsp");
-          
-      } else if(command.equals("/member/MemberLoginOk.me")) {
-    	  
-      }
+      
+      //아이디 중복체크
+      } else if(command.equals("/member/MemberCheckIdOk.me")) {
+    	  try {
+			forward= new MemberCheckIdOkAction().execute(req, resp);
+		} catch (Exception e) {;}
+      
+      //폰 번호 체크
+      } else if(command.equals("/member/MemberCheckPhoneOk.me")) {
+    	  try {
+			forward= new MemberCheckPhoneOkAction().execute(req, resp);
+		} catch (Exception e) {;}
+    
+         	  
+      //회원가입
+      } else if(command.equals("/member/MemberSignupOk.me")) {
+    	  try {
+    		forward = new MemberSignupOkAction().execute(req, resp);
+    	  } catch (Exception e) {;}
+      } 
       
       /*if(command.equals("/member/MemberJoinOk.me")) {
          try {

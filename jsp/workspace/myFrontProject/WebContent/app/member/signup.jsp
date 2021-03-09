@@ -103,7 +103,7 @@
 				</div>
 				<br>
 				<!-- html에서는 jsp처럼 java문법을 사용할수 없다... 이럴경우는?  -->
-				<form name = "signupForm" action="#" method="post" >
+				<form id = "signupForm" name = "signupForm" action="#" method="post" >
 					<div class="row gtr-uniform">
 						<div class="col-6 col-12-xsmall" style = "margin: 20px;">
 							<div style="align-items: right">
@@ -117,29 +117,31 @@
 								<h6 id="check_id_result" style="width: 400px; margin-top: 10px;"></h6>
 								
 							<h5><span style ="color:red;">*</span> 이름</h5>
-							<input type="text" name="nameMember" id="nameMember" value="" placeholder="Name" style="width: 400px"/><br>
+							<input type="text" name="memberName" id="memberName" value="" placeholder="Name" style="width: 400px"/><br>
 							
 							<h5 style ="width: 400px"><span style ="color:red;">*</span> 이메일주소 </h5>
-							<input type="email" name="email" id="email" value="" placeholder="ex> abc1234@stforu.com" style="width: 400px; "/><br>
+							<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="ex> abc1234@stforu.com" style="width: 400px; "/><br>
 							<h5><span style ="color:red;">*</span> 비밀번호</h5>
-							<input type="password" name="password" id="password" value="" placeholder="password" style="width: 400px"/><br>
+							<input type="password" name="memberPassword" id="memberPassword" value="" placeholder="password" style="width: 400px"/><br>
 							<h5><span style ="color:red;">*</span> 비밀번호 확인</h5>
-							<input type="password" name="password_re" id="password_re" value="" placeholder="check password" style="width: 400px"/><br>
+							<input type="password" name="memberPasswordRe" id="memberPasswordRe" value="" placeholder="check password" style="width: 400px"/><br>
 							<h5><span style ="color:red;">*</span> 전화번호 등록</h5>
 							<div style="width:400px; display:flex; ">
-								<select name="phonenum_head" id="phonenum_head" style="width: 95px;margin-right: 5px; ">
-									<option value="">010</option>
-									<option value="1">011</option>
-									<option value="1">016</option>
+								<select name="memberPhoneHead" id="memberPhoneHead" style="width: 95px;margin-right: 5px; ">
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
 								</select>
-								<input type="text" name="phonenum_mid" id="phonenum_mid" value=""  style="width: 95px;margin-right: 5px;"/><br>
-								<input type="text" name="phonenum_bottom" id="phonenum_bottom" value=""  style="width: 95px;margin-right: 5px;"/><br>
-								<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호발송</button>
+								<input type="text" name="memberPhoneMid" id="memberPhoneMid" value=""  style="width: 95px;margin-right: 5px;"/><br>
+								<input type="text" name="memberPhoneBottom" id="memberPhoneBottom" value=""  style="width: 95px;margin-right: 5px;"/><br>
+								<input type="button" value="인증번호발송" class="primary" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkPhone()"/>
+								<!-- <button class="button primary" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkPhone()">인증번호발송</button> -->
 								<!-- <span class="button primary disabled" style="width: 90px; text-align: center">인증번호발송</span> -->
 							</div>
+								<h6 id="check_phone_result" style="width: 400px; margin-top: 10px;"></h6>
 							<div style="width:400px; display:flex;">
-								<input type="text" name="name" id="name" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
-								<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호확인</button>
+								<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
+								<button class="button primaryS" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호확인</button>
 							</div>
 							<br>
 							<div class="col-12">
@@ -257,9 +259,9 @@
 							<!-- Talent 세부 관련 사항 -->
 							<h5 style ="width: 400px;">성별</h5>
 							<div class="col-4 col-12-small" style ="width : 400px; ">
-								<input type="radio" id="priority-low" name="priority" checked>
+								<input type="radio" id="memberGender" name="memberGender" value ="남" checked> 
 								<label for="priority-low">남</label>
-								<input type="radio" id="priority-normal" name="priority">
+								<input type="radio" id="memberGender" name="memberGender" value ="여"> 
 								<label for="priority-normal">여</label>
 							</div>
 							<h5 style ="width: 400px;">지역</h5>
@@ -267,7 +269,7 @@
 									<div class="col-9 col-12-small">
 										
 										<!-- <input type="text" name="query" id="query" value="" placeholder="- 지역검색 - (000동 입력)" style="width: 280px;"/> -->
-										<input type="text" name="zipcode" class="postcodify_postcode5" value="" readonly placeholder="- 우편번호 (검색버튼 클릭 후 검색)" style="width: 280px;"/>
+										<input type="text" name="memberZipcode" class="postcodify_postcode5" value="" readonly placeholder="- 우편번호 (검색버튼 클릭 후 검색)" style="width: 280px;"/>
 									</div>
 									<div class="col-3 col-12-small">
 										<input type="button" id="postcodify_search_button" value="검색" class="fit" style="width: 100px"><br />
@@ -275,8 +277,8 @@
 									</div>
 								</div>
 							</form>
-							<input type="text" name="address" class="postcodify_address" placeholder="- 주소 (우편번호 검색 후 자동입력)" value="" style="width: 400px; margin-top: 10px;" readonly/>
-							<input type="text" name="addressDetail" class="postcodify_details" placeholder="- 세부 주소" style="width: 400px; margin-top: 10px;"/>
+							<input type="text" name="memberAddress" class="postcodify_address" placeholder="- 주소 (우편번호 검색 후 자동입력)" value="" style="width: 400px; margin-top: 10px;" readonly/>
+							<input type="text" name="memberAddressDetail" class="postcodify_details" placeholder="- 세부 주소" style="width: 400px; margin-top: 10px;"/>
 							<h6 style ="width: 400px;">지역이 구체적일 수록 내 주변의 모임들을 찾기에 좋아요 :)</h6><br>
 							
 <!-- 							<br>

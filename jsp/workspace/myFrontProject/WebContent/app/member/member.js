@@ -17,9 +17,9 @@ function formSubmit(){
 	   form.submit();
 	}
 
-function checkId(id) {
+function checkId() {
 	//Ajax로 중복 체크 해주기.
-	
+	var id = document.getElementById("memberId").value;
 	check = false;
 	if(id == "") {
 		$("#check_id_result").text("아이디를 작성해주세요.");
@@ -31,9 +31,9 @@ function checkId(id) {
 			success:function(result){
 				if(result.trim()=="ok"){
 					check=true;
-					$("#check_id_result").text("<span style ='color:red;'>*</span> 사용가능한 아이디입니다.");
+					document.getElementById("check_id_result").innerHTML ="<span style ='color:red;'>*</span> 사용가능한 아이디입니다.";
 				}else {
-					$("#check_id_result").text("<span style ='color:red;'>*</span> 중복된 아이디입니다.");
+					document.getElementById("check_id_result").innerHTML ="<span style ='color:red;'>*</span> 중복된 아이디입니다.";
 				}
 			},
 			error:function(){
@@ -44,7 +44,7 @@ function checkId(id) {
 		});
 	}
 	
-	
+	//jQuery가 아닌 방법으로 Ajax
 	/*var httpRequest = new XMLHttpRequest();
 	console.log(document.getElementById("id").value);
 	httpRequest.open("GET", "signup_check.jsp?id="+document.getElementById("id").value);
@@ -65,11 +65,46 @@ function checkId(id) {
 	}*/
 }
 
-$("input[name='id']").keyup(function(event){
-	var id = $("input[name='id']").val();
-	checkId(id);
+function checkPhone() {
+	//Ajax로 중복 체크 해주기.
+	var div = document.getElementById("phoneDiv");
+	var memberPhoneHead = document.getElementById("memberPhoneHead").value;
+	var memberPhoneMid = document.getElementById("memberPhoneMid").value;
+	var memberPhoneBottom = document.getElementById("memberPhoneBottom").value;
 	
-});
+	var memberPhone = memberPhoneHead + memberPhoneMid + memberPhoneBottom;
+	
+	check = false;
+	console.log("들어옴");
+	console.log(memberPhoneHead);
+	console.log(memberPhoneMid);
+	console.log(memberPhoneBottom);
+	
+	if(memberPhoneHead == "" || memberPhoneMid == "" || memberPhoneBottom =="") {
+		$("#check_phone_result").text("휴대폰 인증버튼을 눌러주세요");
+		
+	}else {
+		$.ajax ({
+			url:contextPath + "/member/MemberCheckPhoneOk.me?memberPhone="+memberPhone,
+			type:"get",
+			dataType:"text",
+			success:function(result){
+				if(result.trim()=="ok"){
+					check=true;
+					//여기에 인증번호 버튼 로직을 짜야하는것인가..?
+					document.getElementById("check_phone_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 전송되었습니다.";
+				}else {
+					document.getElementById("check_phone_result").innerHTML ="<span style ='color:red;'>*</span> 이미 등록된 번호입니다. 확인해주세요.";
+				}
+			},
+			error:function(){
+				console.log("오류");
+			}
+			
+		});
+	}
+
+}
 
 function signup() {
 	var frm = document.signupForm;

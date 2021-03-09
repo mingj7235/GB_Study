@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Member">
+   <select id="checkId" parameterType="string" resultType="_int">
+      SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{memberId}
+   </select>
+   
    <insert id="join" parameterType="memberVO">
       INSERT INTO TABLE_MEMBER 
       VALUES(
@@ -9,10 +13,6 @@
          #{memberGender}, #{memberZipcode}, #{memberAddress}, #{memberAddressDetail}
       )
    </insert>
-   
-   <select id="checkId" parameterType="string" resultType="_int">
-      SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{memberId}
-   </select>
    
    <select id="login" parameterType="memberVO" resultType="_int">
    	  SELECT COUNT(*) FROM TABLE_MEMBER WHERE MEMBERID = #{memberId} AND MEMBERPW = {#memberPw}

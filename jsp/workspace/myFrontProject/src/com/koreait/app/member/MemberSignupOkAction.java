@@ -11,36 +11,36 @@ import com.koreait.app.member.dao.MemberDAO;
 import com.koreait.app.member.vo.MemberVO;
 
 //컨트롤러
-public class MemberJoinOkAction implements Action{
+public class MemberSignupOkAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
 		ActionForward forward = null;
 		MemberVO m_vo = new MemberVO();
 		MemberDAO m_dao = new MemberDAO();
-		/*	private String memberId;
-			private String memberPw;
-			private String memberName;
-			private int memberAge;
-			private String memberGender;
-			private String memberEmail;
-			private String memberZipcode;
-			private String memberAddress;
-			private String memberAddressDetail;
-			private String memberAddressEtc;
+		/*	CREATE TABLE TBL_STFORU_MEMBER(
+			MEMBERID VARCHAR2(300),
+			MEMBERNAME VARCHAR2(300),
+			MEMBEREMAIL VARCHAR2(300),
+			MEMBERPW VARCHAR2(300),
+			MEMBERPHONE VARCHAR2(300),
+			MEMBERGENDER VARCHAR2(50),
+			MEMBERZIPCODE VARCHAR2(30),
+			MEMBERADDRESS VARCHAR2(300),
+			MEMBERADDRESSDETAIL VARCHAR2(300),
+			CONSTRAINT STFORU_PK PRIMARY KEY (MEMBERID)
+		);
 		 */
-		
 		//사용자가 입력한 정보들
 	    m_vo.setMemberId(req.getParameter("memberId"));
-	    m_vo.setMemberPw(req.getParameter("memberPw"));
 	    m_vo.setMemberName(req.getParameter("memberName"));
-	    m_vo.setMemberAge(Integer.parseInt(req.getParameter("memberAge")));
-	    m_vo.setMemberGender(req.getParameter("memberGender"));
 	    m_vo.setMemberEmail(req.getParameter("memberEmail"));
+	    m_vo.setMemberPw(req.getParameter("memberPw"));
+	    m_vo.setMemberPhone(req.getParameter("memberPhone"));
+	    m_vo.setMemberGender(req.getParameter("memberGender"));
 	    m_vo.setMemberZipcode(req.getParameter("memberZipcode"));
 	    m_vo.setMemberAddress(req.getParameter("memberAddress"));
 	    m_vo.setMemberAddressDetail(req.getParameter("memberAddressDetail"));
-	    m_vo.setMemberAddressEtc(req.getParameter("memberAddressEtc"));
 
 	    //DB에서 INSERT 실패 시 
 		if(m_dao.join(m_vo)) {
