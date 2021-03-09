@@ -44,6 +44,8 @@ public class MemberSignupOkAction implements Action{
 	    m_vo.setMemberAddressDetail(req.getParameter("memberAddressDetail"));
 
 	    System.out.println("if문자체에 안들어옴");
+	    System.out.println(m_dao.join(m_vo));
+	    //여기까지 확인. // !@#!@@%@%!@%!# if문 자체에 안들어온다. 
 	    //DB에서 INSERT 실패 시 
 		if(m_dao.join(m_vo)) {
 			//직접 HTML문서로 응답
