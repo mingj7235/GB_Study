@@ -68,8 +68,13 @@ public class MemberFrontController extends HttpServlet {
       } else if(command.equals("/member/MemberSignupOk.me")) {
     	  try {
     		forward = new MemberSignupOkAction().execute(req, resp);
-    	  } catch (Exception e) {;}
+    	  } catch (Exception e) {
+    		 e.printStackTrace();
+    	  }
       } 
+      
+      
+      
       
       /*if(command.equals("/member/MemberJoinOk.me")) {
          try {

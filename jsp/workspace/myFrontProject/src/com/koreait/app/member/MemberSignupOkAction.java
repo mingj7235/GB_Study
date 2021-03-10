@@ -42,11 +42,18 @@ public class MemberSignupOkAction implements Action{
 	    m_vo.setMemberZipcode(req.getParameter("memberZipcode"));
 	    m_vo.setMemberAddress(req.getParameter("memberAddress"));
 	    m_vo.setMemberAddressDetail(req.getParameter("memberAddressDetail"));
-
-	    System.out.println("if문자체에 안들어옴");
+	    
+	    System.out.println(req.getParameter("memberId"));
+	    System.out.println(req.getParameter("memberName"));
+	    System.out.println(req.getParameter("memberEmail"));
+	    System.out.println(req.getParameter("memberPw"));
+	    System.out.println(req.getParameter("memberPhone"));
+	    System.out.println(req.getParameter("memberGender"));
+	    System.out.println(req.getParameter("memberZipcode"));
+	    System.out.println(req.getParameter("memberAddress"));
+	    System.out.println(req.getParameter("memberAddressDetail"));
+	    System.out.println("if문전");
 	    System.out.println(m_dao.join(m_vo));
-	    //여기까지 확인. // !@#!@@%@%!@%!# if문 자체에 안들어온다. 
-	    //DB에서 INSERT 실패 시 
 		if(m_dao.join(m_vo)) {
 			//직접 HTML문서로 응답
 			System.out.println("인서트 실패 들어옴");

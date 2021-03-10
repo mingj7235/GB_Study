@@ -2,10 +2,12 @@
  * 
  */
 
+//아이디 중복체크검사
 var checkIdFlag = false;
+//휴대폰 인증번호보내기 체크 검사
 var checkSmsFlag = false;
+//인증번호 일치 체크 검사
 var checkModifyFlag = false;
-
 
 function formSubmit(){
 	   var form = document.signupForm;
@@ -137,6 +139,10 @@ function signup() {
 	var memberPhoneMid = document.getElementById("memberPhoneMid").value;
 	var memberPhoneBottom = document.getElementById("memberPhoneBottom").value;
 	var memberPhone = memberPhoneHead + memberPhoneMid + memberPhoneBottom;
+	
+	//jsp에서 잘려있는 정보를 이렇게 넣기 jsp와 자유롭게 소통
+	$("input[name='memberPhone']").val(memberPhone);
+	
 	if(frm.memberId.value == "") {
 		alert("아이디를 입력해주세요");
 		frm.memberId.focus();
@@ -236,9 +242,7 @@ function signup() {
 		alert ("핸드폰 번호를 올바르게 입력해주세요");
 		frm.memberPhoneMid.focus();
 		return false;
-		
 	}
-	
 	
 	if(!checkIdFlag){
 		alert("아이디 중복확인을 진행해주세요");

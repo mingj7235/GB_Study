@@ -91,7 +91,7 @@ public class MemberDAO {
 	  System.out.println("여기니?1"); //들어오고
       member.setMemberPw(encrypt(member.getMemberPw()));
       System.out.println("여기니?2"); //들어옴 확인
-      return (session.insert("Member.join", member) == 1);
+      return session.insert("Member.join", member) == 1;
    }
    
    //암호화

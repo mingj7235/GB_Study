@@ -104,6 +104,8 @@
 				<br>
 				<!-- html에서는 jsp처럼 java문법을 사용할수 없다... 이럴경우는?  -->
 				<form id = "signupForm" name = "signupForm" action="${pageContext.request.contextPath}/member/MemberSignupOk.me" method="post" >
+				<!-- 신의한줄 -->
+				<input type="hidden" name="memberPhone">
 					<div class="row gtr-uniform">
 						<div class="col-6 col-12-xsmall" style = "margin: 20px;">
 							<div style="align-items: right">
@@ -541,10 +543,10 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script>var contextPath = "${pageContext.request.contextPath}";</script>
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 			<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-			<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+			<script>var contextPath = "${pageContext.request.contextPath}";</script>
 			<script src = "${pageContext.request.contextPath}/app/member/member.js"></script>
+			<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 	</body>
 </html>
