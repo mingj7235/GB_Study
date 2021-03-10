@@ -116,7 +116,7 @@
 				<div class="col-6 col-12-xsmall"
 					style="margin: 20px auto;">
 					<h5> 이메일 주소</h5>
-					<input type="text" name="memberEmail" id="memnerEmail" value="" placeholder="Email" style="width: 400px"/>
+					<input type="text" name="memberEmail" id="memberEmail" value="" placeholder="Email" style="width: 400px"/>
 				</div>
 				<h5> 등록한 휴대폰 번호</h5>
 				<div style="width:400px; display:flex; ">

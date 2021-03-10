@@ -30,7 +30,7 @@ public class MemberCheckModifyFindIdOkAction implements Action{
 			//ok
 			out.println("ok");
 			//이메일 전송 메소드 사용
-			
+			m_dao.sendEmailForFindId();
 		}else {
 			//not-ok
 			out.println("not-ok");

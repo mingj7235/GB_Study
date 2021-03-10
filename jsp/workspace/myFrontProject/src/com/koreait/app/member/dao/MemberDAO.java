@@ -174,6 +174,10 @@ public class MemberDAO {
 	    }*/
 	    return tempIdentifyNum;
    }
+   
+   public void sendEmailForFindId() {
+	   //gmail api 넣기
+   }
 }
 
 
