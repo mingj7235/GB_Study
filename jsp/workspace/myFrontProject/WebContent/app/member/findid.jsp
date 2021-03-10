@@ -88,7 +88,7 @@
 					</ul></li>
 				<li><a href="generic.html">Generic</a></li>
 				<li><a href="elements.html">Elements</a></li>
-				<li><a href="login.html" class="button">Log In</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/memberLogin.me" class="button">Log In</a></li>
 			</ul>
 		</nav>
 
@@ -140,8 +140,8 @@
 				<hr style="width :400px;">
 				<div class="col-12 actions" style = "display:flex; justify-content:center; width:400px">
 <!-- 						<input type="submit" value="Login" class="primary" style = "width: 300px; "/> -->
-						<a href="login.html" class="button primary" style="width: 300px">Login</a>
-						<a href="Signup.html" class="button" style="width: 300px">Sign up</a>
+						<a href="${pageContext.request.contextPath}/member/MemberLogin.me" class="button primary" style="width: 300px">Login</a>
+						<a href="${pageContext.request.contextPath}/member/MemberSignup.me" class="button" style="width: 300px">Sign up</a>
 				</div>
 			</div>
 		</form>

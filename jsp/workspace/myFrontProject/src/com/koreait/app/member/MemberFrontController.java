@@ -93,7 +93,15 @@ public class MemberFrontController extends HttpServlet {
 	   } catch (Exception e) {
 		   e.printStackTrace();
 	   }
-   }
+	   
+	   //비밀번호 찾기 로직
+      } else if(command.equals("/member/M/member/MemberCheckModifyFindPwOk.me")) {
+	   try {
+		   forward = new MemberCheckModifyFindPwOkAction().execute(req, resp);
+	   } catch (Exception e) {
+		   e.printStackTrace();
+	   }
+      }
       
       
       

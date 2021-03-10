@@ -29,6 +29,8 @@ public class MemberCheckModifyFindIdOkAction implements Action{
 		if(m_dao.MODIFYNUM.equals(modifyInput)) {
 			//ok
 			out.println("ok");
+			//이메일 전송 메소드 사용
+			
 		}else {
 			//not-ok
 			out.println("not-ok");
