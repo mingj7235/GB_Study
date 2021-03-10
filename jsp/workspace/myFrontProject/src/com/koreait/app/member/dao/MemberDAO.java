@@ -88,9 +88,7 @@ public class MemberDAO {
     * true : 가입 성공 <br> false : 가입 실패
     */
    public boolean join(MemberVO member) {
-	  System.out.println("여기니?1"); //들어오고
       member.setMemberPw(encrypt(member.getMemberPw()));
-      System.out.println("여기니?2"); //들어옴 확인
       return session.insert("Member.join", member) == 1;
    }
    

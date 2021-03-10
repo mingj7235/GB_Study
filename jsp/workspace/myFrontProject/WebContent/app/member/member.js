@@ -9,7 +9,7 @@ var checkSmsFlag = false;
 //인증번호 일치 체크 검사
 var checkModifyFlag = false;
 
-function formSubmit(){
+/*function formSubmit(){
 	   var form = document.signupForm;
 	   
 	   //아이디 검사
@@ -21,7 +21,7 @@ function formSubmit(){
 	   
 	   form.submit();
 	}
-
+*/
 function checkId() {
 	//Ajax로 중복 체크 해주기.
 	var id = document.getElementById("memberId").value;

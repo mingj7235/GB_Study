@@ -43,7 +43,7 @@ public class MemberSignupOkAction implements Action{
 	    m_vo.setMemberAddress(req.getParameter("memberAddress"));
 	    m_vo.setMemberAddressDetail(req.getParameter("memberAddressDetail"));
 	    
-	    System.out.println(req.getParameter("memberId"));
+	   /* System.out.println(req.getParameter("memberId"));
 	    System.out.println(req.getParameter("memberName"));
 	    System.out.println(req.getParameter("memberEmail"));
 	    System.out.println(req.getParameter("memberPw"));
@@ -53,22 +53,20 @@ public class MemberSignupOkAction implements Action{
 	    System.out.println(req.getParameter("memberAddress"));
 	    System.out.println(req.getParameter("memberAddressDetail"));
 	    System.out.println("if문전");
-	    System.out.println(m_dao.join(m_vo));
+	    System.out.println(m_dao.join(m_vo));*/
 		if(m_dao.join(m_vo)) {
+			//DB에서 INSERT 성공시
+			System.out.println("인서트 성공 들어옴");
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/member/MemberLogin.me");
+		}else {
 			//직접 HTML문서로 응답
 			System.out.println("인서트 실패 들어옴");
 			PrintWriter out = resp.getWriter();
 			resp.setContentType("text/html;charset=utf-8");
 			out.println("<script>alert('서버가 불안정합니다. 잠시후 다시 시도해주세요.');</script>");
 			out.close();
-		}else {
-			//DB에서 INSERT 성공시
-			System.out.println("인서트 성공 들어옴");
-			forward = new ActionForward();
-			
-			//이동할 페이지 정보를 담아서 리턴
-			forward.setRedirect(false);
-			forward.setPath("/member/MemberLogin.me");
 		}
 		
 		return forward; //페이지 이동이있으므로 forward를 리턴!

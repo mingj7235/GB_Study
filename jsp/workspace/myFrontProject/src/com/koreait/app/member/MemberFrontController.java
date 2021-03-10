@@ -62,8 +62,6 @@ public class MemberFrontController extends HttpServlet {
     	  try {
     		  forward= new MemberCheckModifyOkAction().execute(req, resp);
     	  } catch (Exception e) {;}
-    	  
-         	  
       //회원가입
       } else if(command.equals("/member/MemberSignupOk.me")) {
     	  try {
@@ -71,7 +69,14 @@ public class MemberFrontController extends HttpServlet {
     	  } catch (Exception e) {
     		 e.printStackTrace();
     	  }
-      } 
+      
+      } else if(command.equals("/member/MemberLoginOk.me")) {
+    	  try {
+    		forward = new MemberLoginOkAction().execute(req, resp);
+    	  } catch (Exception e) {
+    		 e.printStackTrace();
+    	  }
+      }
       
       
       
