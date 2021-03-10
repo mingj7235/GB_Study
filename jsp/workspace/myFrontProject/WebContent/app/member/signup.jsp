@@ -40,8 +40,8 @@
 
 	/* 좌,우 슬라이드 버튼 */
 	.slide-control > div {display:none;}
-	.section .left {left:5px;background:url('./img/left.png') center center / 100% no-repeat; margin-right:50px; }
-	.section .right {right:5px;background:url('./img/right.png') center center / 100% no-repeat;}
+	.section .left {left:5px;background:url('${pageContext.request.contextPath}/img/left.png') center center / 100% no-repeat; margin-right:50px; }
+	.section .right {right:5px;background:url('${pageContext.request.contextPath}/img/right.png') center center / 100% no-repeat;}
 	.section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {display:block;}
 	.section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {display:block;}
 	.section input[id="slide03"]:checked ~ .slidewrap .slide-control > div:nth-child(3) {display:block;}
@@ -429,7 +429,7 @@
 						<h3>첫번째 슬라이드</h3>
 						<p>첫번째 슬라이드 입니다.</p>
 					</div>
-					<img src="./img/slide.jpg">
+					<img src="${pageContext.request.contextPath}/img/slide.jpg">
 				</a>
 			</li>
 			<li class="slideitem">
@@ -439,7 +439,7 @@
 						<h3>두번째 슬라이드</h3>
 						<p>두번째 슬라이드 입니다.</p>
 					</div>
-					<img src="./img/slide.jpg">
+					<img src="${pageContext.request.contextPath}/img/slide.jpg">
 				</a>
 			</li>
 			<li class="slideitem">
@@ -449,7 +449,7 @@
 						<h3>두번째 슬라이드</h3>
 						<p>두번째 슬라이드 입니다.</p>
 					</div>
-					<img src="./img/slide.jpg">
+					<img src="${pageContext.request.contextPath}/img/slide.jpg">
 				</a>
 			</li class="slideitem">
 

@@ -22,6 +22,7 @@ public class MemberCheckModifyFindIdOkAction implements Action{
 		//전달받은 데이터 중 한글이 있다면 깨지지 않도록 방지
 		req.setCharacterEncoding("UTF-8");
 		String modifyInput = req.getParameter("modifyInput");
+		String memberEmail = req.getParameter("memberEmail");
 		MemberDAO m_dao = new MemberDAO();
 		
 		PrintWriter out = resp.getWriter();
@@ -30,7 +31,7 @@ public class MemberCheckModifyFindIdOkAction implements Action{
 			//ok
 			out.println("ok");
 			//이메일 전송 메소드 사용
-			m_dao.sendEmailForFindId();
+			m_dao.sendEmailForFindId(memberEmail);
 		}else {
 			//not-ok
 			out.println("not-ok");

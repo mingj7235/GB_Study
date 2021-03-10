@@ -131,12 +131,13 @@ function checkModifyNum () {
 function checkModifyNumFindId () {
 	//사용자가 적은것
 	var modifyInput = document.getElementById("phoneIdentifyNum").value;
+	var memberEmail = document.getElementById("memberEmail").value;
 	checkModifyFlag = false;
 	if(modifyInput == "") {
 		$("check_modifyNum_result").text("인증번호를 입력해주세요");
 	}else {
 		$.ajax({
-			url:contextPath + "/member/MemberCheckModifyFindIdOk.me?modifyInput="+modifyInput,
+			url:contextPath + "/member/MemberCheckModifyFindIdOk.me?modifyInput="+modifyInput+"&memberEmail="+memberEmail,
 			type:"get",
 			dataType:"text",
 			success:function(result){
