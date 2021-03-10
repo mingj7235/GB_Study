@@ -79,14 +79,21 @@ public class MemberFrontController extends HttpServlet {
     	  } catch (Exception e) {
     		 e.printStackTrace();
     	  }
-      
+      //로그인
       } else if(command.equals("/member/MemberLoginOk.me")) {
     	  try {
     		forward = new MemberLoginOkAction().execute(req, resp);
     	  } catch (Exception e) {
     		 e.printStackTrace();
     	  }
-      }
+      //아이디 찾기 로직
+      } else if(command.equals("/member/M/member/MemberCheckModifyFindIdOk.me")) {
+	   try {
+		   forward = new MemberCheckModifyFindIdOkAction().execute(req, resp);
+	   } catch (Exception e) {
+		   e.printStackTrace();
+	   }
+   }
       
       
       

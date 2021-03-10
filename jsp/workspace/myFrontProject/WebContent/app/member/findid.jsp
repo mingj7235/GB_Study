@@ -120,21 +120,23 @@
 				</div>
 				<h5> 등록한 휴대폰 번호</h5>
 				<div style="width:400px; display:flex; ">
-					<select name="phonenum_head" id="phonenum_head" style="width: 95px;margin-right: 5px; ">
-						<option value="">010</option>
-						<option value="1">011</option>
-						<option value="1">016</option>
+					<select name="memberPhoneHead" id="memberPhoneHead" style="width: 95px;margin-right: 5px; ">
+						<option value="010">010</option>
+						<option value="011">011</option>
+						<option value="016">016</option>
 					</select>
-					<input type="text" name="phonenum_mid" id="phonenum_mid" value=""  style="width: 95px;margin-right: 5px;"/><br>
-					<input type="text" name="phonenum_bottom" id="phonenum_bottom" value=""  style="width: 95px;margin-right: 5px;"/><br>
-					<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호발송</button>
-					<!-- <span class="button primary disabled" style="width: 90px; text-align: center">인증번호발송</span> -->
+					<input type="text" name="memberPhoneMid" id="memberPhoneMid" value=""  style="width: 95px;margin-right: 5px;"/><br>
+					<input type="text" name="memberPhoneBottom" id="memberPhoneBottom" value=""  style="width: 95px;margin-right: 5px;"/><br>
+					<input type="button" value="인증번호발송" class="primary" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkSms()"/>
 				</div>
+					<h6 id="check_phone_result" style="width: 400px; margin-top: 10px;"></h6>
 				<div style="width:400px; display:flex;">
-					<input type="text" name="name" id="name" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
-					<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호확인</button>
+					<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
+					<input type="button" value="인증번호확인" class="" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkModifyNumFindId()"/>
 				</div>
-				<h5> <span style ="color:red; margin:5px;">*</span> 인증번호가 확인후 등록된 번호로 이메일주소가 발송됩니다.</h5>
+					<h6 id="check_modifyNum_result" style="width: 400px; margin-top: 10px;"></h6>
+				<br>
+				<!-- <h5> <span style ="color:red; margin:5px;">*</span> 인증번호가 확인후 등록된 번호로 이메일주소가 발송됩니다.</h5> -->
 				<hr style="width :400px;">
 				<div class="col-12 actions" style = "display:flex; justify-content:center; width:400px">
 <!-- 						<input type="submit" value="Login" class="primary" style = "width: 300px; "/> -->
