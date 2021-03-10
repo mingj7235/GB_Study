@@ -45,8 +45,6 @@ function checkId() {
 			error:function(){
 				console.log("오류");
 			}
-				
-			
 		});
 	}
 	
@@ -99,10 +97,8 @@ function checkSms() {
 			error:function(){
 				console.log("오류");
 			}
-			
 		});
 	}
-
 }
 
 
@@ -128,9 +124,7 @@ function checkModifyNum () {
 			error:function(){
 				console.log("오류");
 			}
-			
 		});
-		
 	}
 }
 
@@ -148,7 +142,7 @@ function checkModifyNumFindId () {
 			success:function(result){
 				if(result.trim()=="ok"){
 					checkModifyFlag=true;
-					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 확인되었습니다.";
+					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호가 확인되었습니다. 이메일로 아이디를 보내드렸습니다.";
 				}else {
 					document.getElementById("check_modifyNum_result").innerHTML ="<span style ='color:red;'>*</span> 인증번호를 다시 확인해주세요";
 				}
@@ -265,7 +259,6 @@ function signup() {
 		alert ("핸드폰 번호를 올바르게 입력해주세요");
 		frm.memberPhoneMid.focus();
 		return false;
-		
 	}
 	
 	if(!phoneReg.test(memberPhone)) {
@@ -293,10 +286,7 @@ function signup() {
 	frm.submit();
 }
 
-function login() {
-	
-	
-}
+
 
 
 

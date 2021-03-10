@@ -79,7 +79,7 @@ public class MemberFrontController extends HttpServlet {
     	  } catch (Exception e) {
     		 e.printStackTrace();
     	  }
-      //로그인
+      //로그인 // 실패, 성공여부를 아래 코드 보면서 한 번 더 확인해보기 
       } else if(command.equals("/member/MemberLoginOk.me")) {
     	  try {
     		forward = new MemberLoginOkAction().execute(req, resp);

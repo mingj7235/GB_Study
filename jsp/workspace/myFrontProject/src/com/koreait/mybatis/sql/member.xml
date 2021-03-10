@@ -5,6 +5,7 @@
    <select id="checkId" parameterType="string" resultType="_int">
       SELECT COUNT(*) FROM TBL_STFORU_MEMBER WHERE MEMBERID = #{memberId}
    </select>
+   
    <select id="checkPhone" parameterType="string" resultType="_int">
       SELECT COUNT(*) FROM TBL_STFORU_MEMBER WHERE MEMBERPHONE = #{memberPhone}
    </select>
