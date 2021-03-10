@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE HTML>
 <!--
 	Faction by Pixelarity
@@ -12,7 +13,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <style>
 	.section {width:500px; height: 500px; margin: 20px auto;}
 	.section input[id*="slide"] {display:none;}
@@ -64,7 +65,7 @@
 
 		<!-- Logo -->
 					<span class="logo">
-						<a href="index.html">STforU</a>
+						<a href="${pageContext.request.contextPath}/member/MemberHome.me">STforU</a>
 						<span >Sharing Talent For U</span>
 					</span>
 
@@ -87,7 +88,7 @@
 					</ul></li>
 				<li><a href="generic.html">Generic</a></li>
 				<li><a href="elements.html">Elements</a></li>
-				<li><a href="login.html" class="button">Log In</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/MemberLogin.me" class="button">Log In</a></li>
 			</ul>
 		</nav>
 
@@ -105,35 +106,38 @@
    외부요소 : display:flex, justify-content:center
 			 -->
 	<!-- Wrapper -->
-	<div class="wrapper" >
+	<div class="wrapper">
 		<!-- Main -->
 		<div style="margin: 20px; margin-left:100px;">
-			<h3>아이디 찾기</h3>
+			<h3>비밀번호 찾기</h3>
 		</div>
 		<form method="post" action="#">
 			<div class="gtr-uniform" >
 				<div class="col-6 col-12-xsmall"
 					style="margin: 20px auto;">
-					<h5> 이름</h5>
-					<input type="text" name="name" id="name" value="" placeholder="Name" style="width: 400px"/>
+					<h5> 아이디</h5>
+					<input type="text" name="memberId" id="memberId" value="" placeholder="Id" style="width: 400px"/><br>
+					<h5> 이메일</h5>
+					<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="Email" style="width: 400px"/>
 				</div>
 				<h5> 등록한 휴대폰 번호</h5>
 				<div style="width:400px; display:flex; ">
-					<select name="category" id="category" style="width: 95px;margin-right: 5px; ">
-						<option value="">010</option>
-						<option value="1">011</option>
-						<option value="1">016</option>
+					<select name="memberPhoneHead" id="memberPhoneHead" style="width: 95px;margin-right: 5px; ">
+						<option value="010">010</option>
+						<option value="011">011</option>
+						<option value="016">016</option>
 					</select>
-					<input type="text" name="name" id="name" value=""  style="width: 95px;margin-right: 5px;"/><br>
-					<input type="text" name="name" id="name" value=""  style="width: 95px;margin-right: 5px;"/><br>
-					<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호발송</button>
-					<!-- <span class="button primary disabled" style="width: 90px; text-align: center">인증번호발송</span> -->
+					<input type="text" name="memberPhoneMid" id="memberPhoneMid" value=""  style="width: 95px;margin-right: 5px;"/><br>
+					<input type="text" name="memberPhoneBottom" id="memberPhoneBottom" value=""  style="width: 95px;margin-right: 5px;"/><br>
+					<input type="button" value="인증번호발송" class="primary" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkSms()"/>
 				</div>
+					<h6 id="check_phone_result" style="width: 400px; margin-top: 10px;"></h6>
 				<div style="width:400px; display:flex;">
-					<input type="text" name="name" id="name" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
-					<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호확인</button>
+					<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 295px; margin-right: 5px"/>
+					<input type="button" value="인증번호확인" class="" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;" onclick="checkModifyNumFindPw()"/>
 				</div>
-				<h5> <span style ="color:red; margin:5px;">*</span> 인증번호가 확인후 등록된 번호로 이메일주소가 발송됩니다.</h5>
+					<h6 id="check_modifyNum_result" style="width: 400px; margin-top: 10px;"></h6>
+				<br>
 				<hr style="width :400px;">
 				<div class="col-12 actions" style = "display:flex; justify-content:center; width:400px">
 <!-- 						<input type="submit" value="Login" class="primary" style = "width: 300px; "/> -->

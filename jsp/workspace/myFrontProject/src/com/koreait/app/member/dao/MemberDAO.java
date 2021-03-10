@@ -178,6 +178,9 @@ public class MemberDAO {
    public void sendEmailForFindId() {
 	   //gmail api 넣기
    }
+   public void sendEmailForFindPw() {
+	   //gmail api 넣기 (find PW)
+   }
 }
 
 
