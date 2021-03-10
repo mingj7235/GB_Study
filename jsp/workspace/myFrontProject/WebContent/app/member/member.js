@@ -25,6 +25,7 @@ var checkModifyFlag = false;
 function checkId() {
 	//Ajax로 중복 체크 해주기.
 	var id = document.getElementById("memberId").value;
+	/*console.log(id+"체크아이디"); 등러옴*/
 	checkIdFlag = false;
 	if(id == "") {
 		$("#check_id_result").text("아이디를 작성해주세요.");

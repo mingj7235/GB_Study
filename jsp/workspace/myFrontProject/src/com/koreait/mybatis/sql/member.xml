@@ -17,9 +17,9 @@
       )
    </insert>
    
-   
+   <!-- dao에서 가져오는 매개변수를 여기에 써야함 -->
    <select id="login" parameterType="memberVO" resultType="_int">
-   	  SELECT COUNT(*) FROM TBL_STFORU_MEMBER WHERE MEMBERID = #{memberId} AND MEMBERPW = {#memberPw}
+      SELECT COUNT(*) FROM TBL_STFORU_MEMBER WHERE MEMBERID = #{id} AND MEMBERPW = #{pw}
    </select>
    
 </mapper>

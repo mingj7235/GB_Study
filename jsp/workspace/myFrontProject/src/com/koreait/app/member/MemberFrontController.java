@@ -45,7 +45,17 @@ public class MemberFrontController extends HttpServlet {
     	  forward = new ActionForward();
           forward.setRedirect(false);
           forward.setPath("/app/member/signup.jsp");
-      
+      //아이디 찾기 페이지로 이동
+      } else if(command.equals("/member/MemberFindId.me")) {
+    	  forward = new ActionForward();
+    	  forward.setRedirect(false);
+    	  forward.setPath("/app/member/signup.jsp");
+      //비밀번호 찾기 페이지로 이동
+      } else if(command.equals("/member/MemberFindPw.me")) {
+    	  forward = new ActionForward();
+    	  forward.setRedirect(false);
+    	  forward.setPath("/app/member/signup.jsp");
+    	  
       //아이디 중복체크
       } else if(command.equals("/member/MemberCheckIdOk.me")) {
     	  try {

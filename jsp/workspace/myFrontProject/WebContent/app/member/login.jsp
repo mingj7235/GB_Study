@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <!--
 	Faction by Pixelarity
@@ -119,14 +120,12 @@
 			<div class="gtr-uniform" >
 				<div class="col-6 col-12-xsmall"
 					style="margin: 20px auto;">
-					<input type="email" name="email" id="email" value=""
-						placeholder="Email" style="width: 300px" /><br> <input
-						type="password" name="pw" id="pw" value="" placeholder="password"
-						style="width: 300px" />
+					<input type="text" name="memberId" id="memberId" value="" placeholder="ID" style="width: 300px" /><br> 
+					<input type="password" name="memberPw" id="memberPw" value="" placeholder="password" style="width: 300px" />
 				</div>
 				<div style="margin: 20px auto; text-align: center;">
-					<a href="findId.html" style="border-bottom : none; font-size: 0.7rem; ">아이디 찾기</a> <a
-						href="findPw.html" style="border-bottom : none; font-size: 0.7rem;">비밀번호 찾기</a>
+					<a href="${pageContext.request.contextPath}/member/MemberFindId.me" style="border-bottom : none; font-size: 0.7rem; ">아이디 찾기</a> <a
+						href="${pageContext.request.contextPath}/member/MemberFindPw.me" style="border-bottom : none; font-size: 0.7rem;">비밀번호 찾기</a>
 				</div>
 				<div class="col-12" class="actions"
 					style="margin: 20px auto; display: inline-block;">
@@ -275,6 +274,7 @@
 	<script src="assets/js/main.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	<script>var contextPath = "${pageContext.request.contextPath}";</script>
 	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 </body>
 </html>

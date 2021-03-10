@@ -22,16 +22,18 @@ public class MemberLoginOkAction implements Action{
 		ActionForward forward = new ActionForward();
 		
 		MemberDAO m_dao = new MemberDAO();
-		
 		String id = req.getParameter("memberId");
 		String pw = req.getParameter("memberPw");
+		System.out.println(req.getParameter("memberId"));
+		System.out.println(req.getParameter("memberPw"));
 		
 		if(m_dao.login(id, pw)) {
 			//로그인 성공 시
 			System.out.println("로그인성공");
 			session.setAttribute("session_id", id); //세션아이디에 담기
 			forward.setRedirect(true); //세션에 담을 것이기 때문에 request가 필요가없다.
-			forward.setPath(req.getContextPath() + "/board/BoardList.bo"); //사라지기 전에 req객체로 주소를 담아줘야한다.
+			//forward.setPath(req.getContextPath() + "/board/BoardList.bo"); //사라지기 전에 req객체로 주소를 담아줘야한다.
+			forward.setPath(req.getContextPath() + "/member/MemberHome.me"); //사라지기 전에 req객체로 주소를 담아줘야한다.
 		}else {
 			//로그인 실패
 			System.out.println("로그인실패");

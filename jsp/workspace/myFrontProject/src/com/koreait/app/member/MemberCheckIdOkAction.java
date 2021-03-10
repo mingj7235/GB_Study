@@ -59,7 +59,6 @@ public class MemberCheckIdOkAction implements Action{
       String id = req.getParameter("id");
       MemberDAO m_dao = new MemberDAO();
       PrintWriter out = resp.getWriter();
-      
       resp.setContentType("text/html;charset=utf-8");
       
       //Ajax에서 요청한 데이터를 DB에서 조회한 후
