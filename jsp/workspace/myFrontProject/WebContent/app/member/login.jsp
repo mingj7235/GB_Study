@@ -115,7 +115,7 @@
 		<div style="margin: 20px; margin-left:100px;">
 			<h3>로그인</h3>
 		</div>
-		<form method="post" action="${pageContext.request.contextPath}/member/MemberLoginOk.me">
+		<form name = "loginForm" method="post" action="${pageContext.request.contextPath}/member/MemberLoginOk.me">
 			<div class="gtr-uniform" >
 				<div class="col-6 col-12-xsmall"
 					style="margin: 20px auto;">
@@ -131,7 +131,7 @@
 				<div class="col-12" class="actions"
 					style="margin: 20px auto; display: inline-block;">
 					<!-- login()을 위해 js를 만들어서 -> 공백 체크하고 넘기기 -->
-					<input type="button" value="login" class="primary"style="width: 150px" onclick="login()"/> 
+					<a href="javascript:loginForm.submit()" class="button primary"style="width: 150px">login</a>
 					<a href="${pageContext.request.contextPath}/member/MemberSignup.me" class="button"style="width: 150px">Sign up</a>
 				</div>
 			</div>
@@ -273,6 +273,8 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 </body>
 </html>

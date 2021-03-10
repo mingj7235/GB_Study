@@ -132,9 +132,17 @@ public class MemberDAO {
 	   return (Integer)session.selectOne("Member.checkPhone", memberPhone) == 1;
    }
    
-   public boolean login(MemberVO member) {
-	  /* System.out.println(member.getMemberId() + member.getMemberPw());*/
-	   return (Integer)session.selectOne("Member.checkId", member) == 1;
+   /**
+    * 
+    * @param member
+    * @return
+    * true : 로그인 가능
+    */
+   public boolean login(String id, String pw) {
+	   HashMap<String, String> member = new HashMap<>();
+	   member.put("id", id);
+	   member.put("pw", encrypt(pw)); //암호화
+	   return (Integer)session.selectOne("Member.login", member) == 1;
    }
    
    public String checkSms (String memberPhone) {
