@@ -49,12 +49,12 @@ public class MemberFrontController extends HttpServlet {
       } else if(command.equals("/member/MemberFindId.me")) {
     	  forward = new ActionForward();
     	  forward.setRedirect(false);
-    	  forward.setPath("/app/member/signup.jsp");
+    	  forward.setPath("/app/member/findid.jsp");
       //비밀번호 찾기 페이지로 이동
       } else if(command.equals("/member/MemberFindPw.me")) {
     	  forward = new ActionForward();
     	  forward.setRedirect(false);
-    	  forward.setPath("/app/member/signup.jsp");
+    	  forward.setPath("/app/member/findpw.jsp");
     	  
       //아이디 중복체크
       } else if(command.equals("/member/MemberCheckIdOk.me")) {

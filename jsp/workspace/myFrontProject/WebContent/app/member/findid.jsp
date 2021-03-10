@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <!--
 	Faction by Pixelarity
@@ -12,7 +13,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <style>
 	.section {width:500px; height: 500px; margin: 20px auto;}
 	.section input[id*="slide"] {display:none;}
@@ -114,18 +115,18 @@
 			<div class="gtr-uniform" >
 				<div class="col-6 col-12-xsmall"
 					style="margin: 20px auto;">
-					<h5> 이름</h5>
-					<input type="text" name="name" id="name" value="" placeholder="Name" style="width: 400px"/>
+					<h5> 이메일 주소</h5>
+					<input type="text" name="memberEmail" id="memnerEmail" value="" placeholder="Email" style="width: 400px"/>
 				</div>
 				<h5> 등록한 휴대폰 번호</h5>
 				<div style="width:400px; display:flex; ">
-					<select name="category" id="category" style="width: 95px;margin-right: 5px; ">
+					<select name="phonenum_head" id="phonenum_head" style="width: 95px;margin-right: 5px; ">
 						<option value="">010</option>
 						<option value="1">011</option>
 						<option value="1">016</option>
 					</select>
-					<input type="text" name="name" id="name" value=""  style="width: 95px;margin-right: 5px;"/><br>
-					<input type="text" name="name" id="name" value=""  style="width: 95px;margin-right: 5px;"/><br>
+					<input type="text" name="phonenum_mid" id="phonenum_mid" value=""  style="width: 95px;margin-right: 5px;"/><br>
+					<input type="text" name="phonenum_bottom" id="phonenum_bottom" value=""  style="width: 95px;margin-right: 5px;"/><br>
 					<button class="button primary disabled" style="width: 95px;margin: 5px 2.5px;padding: 0 2px;font-size: 0.7rem;">인증번호발송</button>
 					<!-- <span class="button primary disabled" style="width: 90px; text-align: center">인증번호발송</span> -->
 				</div>
@@ -277,6 +278,10 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	<script>var contextPath = "${pageContext.request.contextPath}";</script>
+	<script src = "${pageContext.request.contextPath}/app/member/member.js"></script>
+	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>	
 </body>
 </html>
