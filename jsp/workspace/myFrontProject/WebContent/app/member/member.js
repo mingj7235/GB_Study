@@ -128,12 +128,17 @@ function checkModifyNum () {
 	}
 }
 
-function checkModifyNumFindId () {
+function checkModifyNumFindId() {
 	//사용자가 적은것
 	var modifyInput = document.getElementById("phoneIdentifyNum").value;
 	var memberEmail = document.getElementById("memberEmail").value;
+	console.log("1");
+	console.log(modifyInput);
+	console.log(memberEmail);
+	
 	checkModifyFlag = false;
 	if(modifyInput == "") {
+		console.log("1");
 		$("check_modifyNum_result").text("인증번호를 입력해주세요");
 	}else {
 		$.ajax({

@@ -87,7 +87,7 @@ public class MemberFrontController extends HttpServlet {
     		 e.printStackTrace();
     	  }
       //아이디 찾기 로직
-      } else if(command.equals("/member/M/member/MemberCheckModifyFindIdOk.me")) {
+      } else if(command.equals("member/MemberCheckModifyFindIdOk.me")) {
 	   try {
 		   forward = new MemberCheckModifyFindIdOkAction().execute(req, resp);
 	   } catch (Exception e) {
@@ -95,7 +95,7 @@ public class MemberFrontController extends HttpServlet {
 	   }
 	   
 	   //비밀번호 찾기 로직
-      } else if(command.equals("/member/M/member/MemberCheckModifyFindPwOk.me")) {
+      } else if(command.equals("member/MemberCheckModifyFindPwOk.me")) {
 	   try {
 		   forward = new MemberCheckModifyFindPwOkAction().execute(req, resp);
 	   } catch (Exception e) {
