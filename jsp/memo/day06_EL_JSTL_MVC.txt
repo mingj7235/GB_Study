@@ -52,7 +52,7 @@ EL문과 JSTL : 페이지 가독성 상승 !!!!
 	!, not
 
 
-	-JSTP (Jsp Standard Tag Library)
+	-JSTL (Jsp Standard Tag Library)
 	
 	연산이나 조건문, 반복문 등을 편하게 처리할 수 있으며, JSP페이지 내에서
 	자바코드를 사용하지 않고도 로직을 구현할 수 있도록 효율적인 방법을 제공해준다.

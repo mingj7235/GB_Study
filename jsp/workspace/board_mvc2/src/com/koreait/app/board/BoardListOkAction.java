@@ -14,6 +14,7 @@ public class BoardListOkAction implements Action{
 		resp.setCharacterEncoding("UTF-8");
 		
 		BoardDAO b_dao = new BoardDAO();
+		ActionForward forward = new ActionForward();
 		
 		String temp = req.getParameter("page");
 		
@@ -24,7 +25,6 @@ public class BoardListOkAction implements Action{
 		//한 페이지당 ?개의 게시글이 보이도록 설정
 		int boardSize = 10;
 		int pageSize = 10;
-		
 		
 		//한 페이지에서 가장 마지막 행 번호
 		int endRow = page * boardSize;
@@ -40,8 +40,23 @@ public class BoardListOkAction implements Action{
 		
 		int realEndPage = (totalCnt-1) / pageSize + 1;
 		
+		//삼항연산자에 넣기
+		endPage = endPage > realEndPage ? realEndPage : endPage;
 		
-		return null;
+		//전달할값
+		req.setAttribute("totalCnt", totalCnt);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		req.setAttribute("nowPage", page);
+		req.setAttribute("boardList", b_dao.getBoardList(startRow, endRow));
+		
+		//전달할것을 기억해서 전달해야하니까 포워드에 담아서 전달
+		forward.setRedirect(false);
+		//한번은 jsp로 가줘야한다. 프론트로가면
+		forward.setPath("/app/board/boardList.jsp");
+		
+		
+		return forward;
 	}
 	
 	
