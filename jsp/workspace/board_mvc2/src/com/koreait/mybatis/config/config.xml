@@ -4,6 +4,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.koreait.app.member.vo.MemberVO" alias="memberVO"/>
+		<typeAlias type="com.koreait.app.board.vo.BoardVO" alias="boardVO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -19,5 +20,6 @@
 
 	<mappers>
 		<mapper resource="com/koreait/mybatis/sql/member.xml"/>
+		<mapper resource="com/koreait/mybatis/sql/board.xml"/>
 	</mappers>
 </configuration>
