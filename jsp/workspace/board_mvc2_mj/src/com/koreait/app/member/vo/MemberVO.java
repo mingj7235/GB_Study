@@ -14,7 +14,6 @@ package com.koreait.app.member.vo;
 		CONSTRAINT MEMBER_PK PRIMARY KEY(memberId)
 	);*/
 
-
 public class MemberVO {
 	private String memberId;
 	private String memberPw;
@@ -108,19 +107,7 @@ public class MemberVO {
 	public void setMemberAddressEtc(String memberAddressEtc) {
 		this.memberAddressEtc = memberAddressEtc;
 	}
+	
+	
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

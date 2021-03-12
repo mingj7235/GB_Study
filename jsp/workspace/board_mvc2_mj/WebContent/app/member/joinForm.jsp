@@ -7,7 +7,7 @@
       <title>회원가입 페이지</title>
    </head>
    <body>
-      <form name="joinForm" action="${pageContext.request.contextPath}/member/MemberJoinOk.me" method="post">
+      <form name="joinForm" action="${pageContext.request.contextPath}/member/MemberJoin.me" method="post">
          <center>
             <table  border="1" cellpadding="0" cellspacing="0" width="25%">
                <tr height="50px">
@@ -73,7 +73,7 @@
                   <td colspan="2" align="center">
                      <a href="javascript:formSubmit()">회원가입</a>&nbsp;&nbsp;
                      <a href="javascript:joinForm.reset()">다시작성</a>&nbsp;&nbsp;
-                     <a href="${pageContext.request.contextPath}/member/MemberLogin.me">로그인</a>
+                     <a href="loginForm.jsp">로그인</a>
                   </td>
                </tr>
             </table>
@@ -86,7 +86,6 @@
 <script src="${pageContext.request.contextPath}/app/member/join.js"></script>
 <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 </html>
-
 
 
 
