@@ -1,18 +1,17 @@
 package com.koreait.app.board.vo;
+
 /*BOARDNUM NUMBER(10),
 BOARDTITLE VARCHAR2(1000),
 BOARDCONTENT VARCHAR2(3000),
 BOARDID VARCHAR2(100),
-BOARDDATE DATE,
-CONSTRAINT BOARD_PK PRIMARY KEY(BOARDNUM),
-CONSTRAINT BOARD_FK FOREIGN KEY(BOARDID) REFERENCES TABLE_MEMBER(MEMBERID)*/
+BOARDDATE DATE,*/
+
 public class BoardVO {
-	
 	private int boardNum;
 	private String boardTitle;
 	private String boardContent;
 	private String boardId;
-	private String board_date;
+	private String boardDate;
 	
 	public BoardVO() {;}
 
@@ -48,13 +47,26 @@ public class BoardVO {
 		this.boardId = boardId;
 	}
 
-	public String getBoard_date() {
-		return board_date;
+	public String getBoardDate() {
+		return boardDate;
 	}
 
-	public void setBoard_date(String board_date) {
-		this.board_date = board_date;
+	public void setBoardDate(String boardDate) {
+		this.boardDate = boardDate;
 	}
-	
-	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

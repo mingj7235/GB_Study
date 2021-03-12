@@ -23,16 +23,16 @@ public class BoardDAO {
 	//페이지 별 게시글 목록
 	public List<BoardVO> getBoardList(int startRow, int endRow) {
 		HashMap<String, Integer> pageMap = new HashMap<>();
-		//여기 키값이 board.xml에서 쿼리 컬럼의 키값으로 쓰여지는것이다.
+		
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
-		return session.selectList("Board.listAll",pageMap);
+		
+		return session.selectList("Board.listAll", pageMap);
 	}
 	
 	public int getBoardCnt() {
 		return session.selectOne("Board.getBoardCnt");
 	}
-	
 }
 
 

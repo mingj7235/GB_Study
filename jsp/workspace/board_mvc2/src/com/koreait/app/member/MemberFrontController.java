@@ -49,7 +49,7 @@ public class MemberFrontController extends HttpServlet {
 			try {
 				//사용자의 요청에 맞는 응답을 하기 위해서
 				//컨트롤러를 메모리에 할당하고, 그 안에 있는 execute메소드를 사용해준다.
-				forward = new MemberSignupOkAction().execute(req, resp);
+				forward = new MemberJoinOkAction().execute(req, resp);
 			} catch (Exception e) {System.out.println(e);}
 			
 		}else if(command.equals("/member/MemberJoin.me")) {
@@ -70,10 +70,13 @@ public class MemberFrontController extends HttpServlet {
 			try {
 				forward = new MemberLoginOkAction().execute(req, resp);
 			} catch (Exception e) {;}
-			
 		}else if(command.equals("/member/MemberCheckIdOk.me")) {
 			try {
 				forward = new MemberCheckIdOkAction().execute(req, resp);
+			} catch (Exception e) {;}
+		}else if(command.equals("/member/MemberLogout.me")) {
+			try {
+				forward = new MemberLogoutAction().execute(req, resp);
 			} catch (Exception e) {;}
 		}else {
 			//만약 위의 모든 분기에 들어가지 않았다면, 요청한 URI가 잘못된 것이다.

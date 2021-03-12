@@ -14,20 +14,18 @@
             location.replace("${pageContext.request.contextPath}/member/MemberLogin.me");
          </script>
       </c:if>
-      
-      <!-- JSTL로 BoardListOkAction을 통해 전달된 데이터 받기 -->
-      <c:set var ="list" value ="${boardList}"/>
-      <c:set var ="totalCnt" value ="${totalCnt}"/>
-      <c:set var ="startPage" value ="${startPage}"/>
-      <c:set var ="endPage" value ="${endPage}"/>
-      <c:set var ="nowPage" value ="${nowPage}"/>
-      
+      <c:set var="list" value="${boardList}"/>
+      <c:set var="totalCnt" value="${totalCnt}"/>
+      <c:set var="startPage" value="${startPage}"/>
+      <c:set var="endPage" value="${endPage}"/>
+      <c:set var="nowPage" value="${nowPage}"/>
+      <c:set var="realEndPage" value="${realEndPage}"/>
       <center>
          <table border="0" cellpadding="0" cellspacing="0" width="900px" >
             <tr align="right" valign="middle">
                <td>
                   ${session_id} 님 환영합니다.
-                  <a href="">로그아웃</a>
+                  <a href="${pageContext.request.contextPath}/member/MemberLogout.me">로그아웃</a>
                </td>
             </tr>
          </table>
@@ -40,8 +38,7 @@
                <td><h3>MVC 게시판</h3></td>
             </tr>
             <tr align="right" valign="middle">
- 				<!-- jstl로 가져온 값을 그대로 꽂아넣기 -->           
-               <td>글 개수 : <c:out value="${totalCnt}"/> 개</td>
+               <td>글 개수 : <c:out value="${totalCnt}"/>개</td>
             </tr>
          </table>
          
@@ -63,19 +60,66 @@
                   <div align="center">조회수</div>
                </td>
             </tr>
-            <c:choose>
-            <c:when test="">
-	            <c:forEach>
-	            </c:forEach>
-            
-            </c:when>
-            <c:otherwise>
-            
-            </c:otherwise>
-            </c:choose>
-            
+               <c:choose>
+               <c:when test="${list != null and fn:length(list) > 0}">
+	               <c:forEach var="b_bean" items="${list}">
+	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
+	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
+	               			${b_bean.getBoardNum()}
+	               		</td>
+	               		<td style="font-family:Tahoma; font-size:10pt;">
+	               			<div align="left">
+	               				<a href="">${b_bean.getBoardTitle()}</a>
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoardId()}
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				${b_bean.getBoardDate()}
+	               			</div>
+	               		</td>
+	               		<td>
+	               			<div align="center">
+	               				0
+	               			</div>
+	               		</td>
+	               	</tr>
+	               </c:forEach>
+	           </c:when>
+	           <c:otherwise>
+	           	<tr>
+	           		<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+	           	</tr>
+	           </c:otherwise>
+               </c:choose>
          </table>
          <br/>
+         <table border="0" cellpadding="0" cellspacing="0" width="900px">
+         	<tr align="center" valign="middle">
+         		<td>
+         			<c:if test="${nowPage >1}">
+         				<a href="">[이전]</a>
+         			</c:if>
+	         		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+	         			<c:choose>
+	         				<c:when test="${i eq nowPage}">
+	         					[${i}]&nbsp;
+	         				</c:when>
+	         				<c:otherwise>
+	         					<a href="${pageContext.request.contextPath}/board/BoardList.bo?page=${i}">${i}&nbsp;</a>
+	         				</c:otherwise>
+	         			</c:choose>
+	         		</c:forEach>
+         			<c:if test="${realEndPage != nowPage}">
+         				<a href="">[다음]</a>
+         			</c:if>
+         		</td>
+         	</tr>
+         </table>
          <table border="0" cellpadding="0" cellspacing="0" width="900px">
             <tr align="right" valign="middle">
                <td><a href="">[글쓰기]</a></td>
@@ -84,3 +128,14 @@
       </center>
    </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
