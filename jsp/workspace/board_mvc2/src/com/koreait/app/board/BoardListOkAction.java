@@ -43,6 +43,7 @@ public class BoardListOkAction implements Action{
 		
 		endPage = endPage > realEndPage ? realEndPage : endPage;
 		
+		//boardList.jsp로 객체를 담아서 보내기
 		req.setAttribute("totalCnt", totalCnt);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
