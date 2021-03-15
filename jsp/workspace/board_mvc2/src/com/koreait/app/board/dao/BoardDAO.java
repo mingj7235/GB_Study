@@ -37,20 +37,18 @@ public class BoardDAO {
 	public void updateReadCount(int boardNum){
 		session.update("Board.updateReadCount", boardNum);
 	}
-	
-	public void insertBoard(BoardVO board) {
-		session.insert("Board.insertBoard", board);
+	//게시글 정보만 담기 위해서는 boolean을 리턴할 필요가 없으니
+	//첨부파일을 추가해야하는 장기계획에 따라서
+	//트랜잭션에 맞게 설계해야 한다.
+	public boolean insertBoard(BoardVO board) {
+		return session.insert("Board.insertBoard", board) == 1;
 	}
 	
+	//게시글 가져오기
+	public BoardVO getDetail(int boardNum) {
+		return session.selectOne("Board.getDetail", boardNum);
+	}
 }
-
-
-
-
-
-
-
-
 
 
 

@@ -43,19 +43,17 @@ public class BoardListOkAction implements Action{
 		
 		endPage = endPage > realEndPage ? realEndPage : endPage;
 		
-		//boardList.jsp로 객체를 담아서 보내기
+		//requestScope
 		req.setAttribute("totalCnt", totalCnt);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		req.setAttribute("nowPage", page);
 		req.setAttribute("realEndPage", realEndPage);
 		req.setAttribute("boardList", b_dao.getBoardList(startRow, endRow));
-		//setAttribute로 객체들을 담은 것들은 어디에 저장이 되는가? 
-		//requestScope에 저장이 된다. 여기에 담아야 el문과 jstl에서 사용할수 있다. 
 		
-		//forward를 사용해야 할 때 : req객체에 데이터를 담아서 전달해야 할 때 ( 객체가 유지가 되어서 날아간다 !! ) 
-		//redirect를 사용해야 할 때 : 전달할 req데이터가 없고 값을 초기화 하고 싶을 때 중요!!! 
-		forward.setRedirect(false); 
+		//forward를 사용해야 할 때 : req객체에 데이터를 담아서 전달해야 할 때
+		//redirect를 사용해야 할 때 : 전달할 req 데이터가 없고 값을 초기화 하고 싶을 때
+		forward.setRedirect(false);
 		forward.setPath("/app/board/boardList.jsp");
 		
 		return forward;
