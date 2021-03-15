@@ -20,6 +20,11 @@
 		3. ROWNUM은 반드시 1부터 시작되어야 하기 때문에 모든 ROWNUM이 붙은 테이블로 부터
 		4. WHERE절을 사용하여 필요한 게시글 정보만 조회한다.
 	 -->
+	 
+	 <!-- 
+	 	※ROWNUM은 항상 1부터 시작한다. 
+	 	※만약 11이상인 ROWNUM을 가저오기 위해서는 1부터 붙어있는 테이블에서 조회가 가능하다. 
+	  -->
 	<select id="listAll" parameterType="map" resultType="boardVO">
 		SELECT * FROM 
 			(SELECT ROWNUM R, D.* FROM 
@@ -36,6 +41,12 @@
 		SET READCOUNT = READCOUNT + 1 
 		WHERE BOARDNUM = #{boardNum}
 	</update>
+	
+	<insert id="insertBoard" parameterType="boardVO">
+		INSERT INTO TABLE_BOARD 
+		VALUES (BOARD_SEQ.NEXTVAL, #{boardTitle}, #{boardContent}, #{boardId}, SYSDATE, 0)
+	</insert>
+	
 </mapper>
 
 

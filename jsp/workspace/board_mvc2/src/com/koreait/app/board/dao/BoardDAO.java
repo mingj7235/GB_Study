@@ -37,6 +37,11 @@ public class BoardDAO {
 	public void updateReadCount(int boardNum){
 		session.update("Board.updateReadCount", boardNum);
 	}
+	
+	public void insertBoard(BoardVO board) {
+		session.insert("Board.insertBoard", board);
+	}
+	
 }
 
 

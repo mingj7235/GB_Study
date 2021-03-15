@@ -36,10 +36,17 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			break;
+		case "/board/BoardWriteOk.bo":
+			try {
+				forward = new .execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
 		case "/board/BoardWrite.bo":
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			req.setAttribute("page", req.getParameter("page"));
+			req.setAttribute("page", req.getParameter("page")); //page를 requestScope에 담은 채로  forward를 통해 전달한다.
 			forward.setPath("/app/board/boardWrite.jsp");
 			break;
 		default:

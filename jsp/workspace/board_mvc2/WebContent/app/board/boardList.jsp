@@ -65,6 +65,7 @@
 	               <c:forEach var="b_bean" items="${list}">
 	               	<tr align="center" valign="middle" onmouseover="this.style.backgroudColor='F8F8F8'" onmouseout="this.style.backgroundColor='FFFFFF'">
 	               		<td height="23" style="font-family:Tahoma; font-size:10pt;">
+		               <!-- 모델 객체로 b_bean으로 접근하여 get~~들을 가져오는 것이다. 파라미터말고 이 방법이 사실 가장 1번재다 -->
 	               			${b_bean.getBoardNum()}
 	               		</td>
 	               		<td style="font-family:Tahoma; font-size:10pt;">
@@ -105,11 +106,13 @@
          				<a href="${pageContext.request.contextPath}/board/BoardList.bo?page=${nowPage - 1}">[이전]</a>
          			</c:if>
 	         		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+	         			<!-- choose문을 쓰는 이유: 지금이 현재 있는 페이지라면 링크를 넣지 않음 -->
 	         			<c:choose>
 	         				<c:when test="${i eq nowPage}">
 	         					[${i}]&nbsp;
 	         				</c:when>
 	         				<c:otherwise>
+	         					<!-- 다시 페이지로 이동하려면 연산이 필요하기 때문에 컨트롤러로 이동하는 것이다. -->
 	         					<a href="${pageContext.request.contextPath}/board/BoardList.bo?page=${i}">${i}&nbsp;</a>
 	         				</c:otherwise>
 	         			</c:choose>
@@ -122,6 +125,7 @@
          </table>
          <table border="0" cellpadding="0" cellspacing="0" width="900px">
             <tr align="right" valign="middle">
+            	<!-- 페이지를 파라미터에 전달할 이유 : 글쓰다가 목록을 누를 때 다시 그 페이지를 이동시키도록하기위해서다. -->
                <td><a href="${pageContext.request.contextPath}/board/BoardWrite.bo?page=${nowPage}">[글쓰기]</a></td>
             </tr>
          </table>
