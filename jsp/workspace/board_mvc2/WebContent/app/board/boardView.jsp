@@ -57,7 +57,7 @@
 				<tr align="right" valign="middle">
 					<td>
 						<c:if test="${b_vo.getBoardId() eq session_id}">
-							<a href="">[수정]</a>
+							<a href="${pageContext.request.contextPath}/board/BoardModify.bo?boardNum=${b_vo.getBoardNum()}&page=${page}">[수정]</a>
 							<a href="">[삭제]</a>
 						</c:if>
 						<a href="${pageContext.request.contextPath}/board/BoardList.bo?page=${page}">[목록]</a>

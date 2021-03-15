@@ -48,6 +48,11 @@ public class BoardDAO {
 	public BoardVO getDetail(int boardNum) {
 		return session.selectOne("Board.getDetail", boardNum);
 	}
+	
+	//게시글 수정
+	public void updateBoard(BoardVO b_vo) {
+		session.update("Board.updateBoard", b_vo);
+	}
 }
 
 

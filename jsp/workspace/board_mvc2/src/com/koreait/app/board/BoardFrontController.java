@@ -50,6 +50,20 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			break;
+		case "/board/BoardModify.bo":
+			try {
+				forward = new BoardModifyAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "/board/BoardModifyOk.bo":
+			try {
+				forward = new BoardModifyOkAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
 		case "/board/BoardWrite.bo":
 			forward = new ActionForward();
 			forward.setRedirect(false);

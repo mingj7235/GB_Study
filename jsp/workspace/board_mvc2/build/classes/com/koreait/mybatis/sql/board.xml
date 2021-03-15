@@ -51,6 +51,12 @@
 		WHERE BOARDNUM = #{boardNum}
 	</select>
 	
+	<update id="updateBoard" parameterType="boardVO">
+		UPDATE TABLE_BOARD 
+		SET BOARDTITLE = #{boardTitle}, BOARDCONTENT = #{boardContent} 
+		WHERE BOARDNUM = #{boardNum}
+	</update>
+	
 </mapper>
 
 
