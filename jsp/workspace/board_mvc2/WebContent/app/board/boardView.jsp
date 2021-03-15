@@ -58,14 +58,26 @@
 					<td>
 						<c:if test="${b_vo.getBoardId() eq session_id}">
 							<a href="${pageContext.request.contextPath}/board/BoardModify.bo?boardNum=${b_vo.getBoardNum()}&page=${page}">[수정]</a>
-							<a href="">[삭제]</a>
+							<a href="javascript:deleteBoard()">[삭제]</a>
 						</c:if>
 						<a href="${pageContext.request.contextPath}/board/BoardList.bo?page=${page}">[목록]</a>
 					</td>
 				</tr>
 			</table>
+			
+			<form name="deleteBoard" method="post" action="${pageContext.request.contextPath}/board/BoardDeleteOk.bo">
+				<!-- hidden된 이 객체들이 boardDeleteOk.bo를 통해 날아간다. -->
+				<input type="hidden" name="boardNum" value="${b_vo.getBoardNum()}">
+				<input type="hidden" name="page" value="${page}">
+			</form>
+			
 		</center>
 	</body>
+	<script>
+		function deleteBoard() {
+			document.getElementsByName("deleteBoard")[0].submit();
+		} 
+	</script>
 </html>
 
 

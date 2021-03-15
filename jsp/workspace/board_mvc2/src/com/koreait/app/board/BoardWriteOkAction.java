@@ -7,20 +7,30 @@ import com.koreait.action.Action;
 import com.koreait.action.ActionForward;
 import com.koreait.app.board.dao.BoardDAO;
 import com.koreait.app.board.vo.BoardVO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class BoardWriteOkAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		req.setCharacterEncoding("UTF-8");
 		
 		BoardVO b_vo = new BoardVO();
 		BoardDAO b_dao = new BoardDAO();
 		ActionForward forward = null;
+
+		String saveFolder = "D:\\0900_gb_kmj\\jsp\\workspace\\board_mvc2\\WebContent\\app\\upload";
 		
-		b_vo.setBoardTitle(req.getParameter("boardTitle"));
-		b_vo.setBoardId(req.getParameter("boardId"));
-		b_vo.setBoardContent(req.getParameter("boardContent"));
+		int fileSize = 5 * 1024 * 1024; //용량제한 5메가
+		
+		MultipartRequest multi = null;
+		
+		//DefaultFileRenamePolicy : 파일 업로드 및 다운로드 정책(같은 이름이 존재하면 자동으로 이름이 변경되도록 한다).
+		multi = new MultipartRequest(req, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		
+		b_vo.setBoardTitle(multi.getParameter("boardTitle"));
+		b_vo.setBoardId(multi.getParameter("boardId"));
+		b_vo.setBoardContent(multi.getParameter("boardContent"));
 		
 		if(b_dao.insertBoard(b_vo)) {
 			//첨부파일 추가

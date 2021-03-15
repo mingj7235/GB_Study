@@ -53,6 +53,11 @@ public class BoardDAO {
 	public void updateBoard(BoardVO b_vo) {
 		session.update("Board.updateBoard", b_vo);
 	}
+	
+	//게시글 삭제
+	public void deleteBoard (int boardNum) {
+		session.delete("Board.deleteBoard", boardNum);
+	}
 }
 
 

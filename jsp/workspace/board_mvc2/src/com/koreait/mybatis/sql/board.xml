@@ -57,6 +57,11 @@
 		WHERE BOARDNUM = #{boardNum}
 	</update>
 	
+	<delete id="deleteBoard" parameterType="_int">
+		DELETE TABLE_BOARD 
+		WHERE BOARDNUM = #{boardNum}
+	</delete>
+	
 </mapper>
 
 

@@ -22,7 +22,7 @@
 			<br />
 			
 			<!-- 게시판 등록 -->
-			<form action="${pageContext.request.contextPath}/board/BoardWriteOk.bo" method="post" name="boardform">
+			<form action="${pageContext.request.contextPath}/board/BoardWriteOk.bo" method="post" name="boardform" enctype="multipart/form-data">
 				<table width="900px" border="0" cellpadding="0" cellspacing="0">
 					<tr align="center" valign="middle">
 						<td><h3>MVC 게시판</h3></td>
@@ -54,7 +54,30 @@
 							<textarea name="boardContent" style="width:700px; height:185px"></textarea>
 						</td>
 					</tr>
-									
+					<tr height="30px">
+						<td align="center" width="150px">
+							<div align="center">파일 첨부</div>
+						</td>
+						<td style="padding-left:10px;">
+							<input type="file" name="boardFile1">
+						</td>
+					</tr>
+					<tr height="30px">
+						<td align="center" width="150px">
+							<div align="center">파일 첨부</div>
+						</td>
+						<td style="padding-left:10px;">
+							<input type="file" name="boardFile2">
+						</td>
+					</tr>
+					<tr height="30px">
+						<td align="center" width="150px">
+							<div align="center">파일 첨부</div>
+						</td>
+						<td style="padding-left:10px;">
+							<input type="file" name="boardFile3">
+						</td>
+					</tr>
 				</table>
 				
 				<table border="0" cellpadding="0" cellspacing="0" width="900px">
