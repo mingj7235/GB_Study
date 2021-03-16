@@ -8,4 +8,8 @@
 	<select id="getFileList" parameterType="_int" resultType="filesVO">
 		SELECT * FROM TABLE_FILES WHERE BOARDNUM = #{boardNum}
 	</select>
+	
+	<delete id="deleteFile" parameterType="_int">
+		DELETE FROM TABLE_FILES WHERE BOARDNUM = #{boardNum}
+	</delete>
 </mapper>
