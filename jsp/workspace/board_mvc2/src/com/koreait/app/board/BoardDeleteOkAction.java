@@ -19,12 +19,15 @@ public class BoardDeleteOkAction implements Action {
 		ActionForward forward = new ActionForward();
 		FilesDAO f_dao = new FilesDAO();
 		
+		//리눅스 서버로 출시 후 서비스 제공 시 업로드 경로는 아래와 같이 사용하여 작업한다.  
+		//req.getServletContext().getRealPath("/")  
+		
+		String saveFolder = "D:\\0900_gb_kmj\\jsp\\workspace\\board_mvc2\\WebContent\\app\\upload";
 		int boardNum = Integer.parseInt(req.getParameter("boardNum"));
 		int page = Integer.parseInt(req.getParameter("page"));
 		
-		String saveFolder = "D:\\0900_gb_kmj\\jsp\\workspace\\board_mvc2\\WebContent\\app\\upload";
 		
-		//파일 삭제(2개 로직 작성)
+		//경로에 있는 파일 삭제
 		for(FilesVO file : f_dao.getFileList(boardNum)) {
 			File f = new File(saveFolder, file.getFileName());
 			if(f.exists()) {
@@ -34,7 +37,6 @@ public class BoardDeleteOkAction implements Action {
 		
 		//DB삭제
 		f_dao.deleteFile(boardNum);
-		
 		
 		b_dao.deleteBoard(boardNum);
 		

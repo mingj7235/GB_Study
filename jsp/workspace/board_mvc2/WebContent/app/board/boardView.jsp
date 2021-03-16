@@ -80,6 +80,45 @@
 				<input type="hidden" name="boardNum" value="${b_vo.getBoardNum()}">
 				<input type="hidden" name="page" value="${page}">
 			</form>
+			
+			<!-- 댓글  -->
+			<form action = "" method ="" name="">
+				<table>
+					<tr height="200px">
+						<td align="center" width="80px">
+							<div align="center">댓 글</div>
+						</td>
+						<!-- 댓글 추가 -->
+						<td style="padding-left: 10px;">
+							<textarea style="width:750px; height:85px; resize:none;"></textarea>
+							<a href="#">[등록]</a>
+						</td>
+					</tr>
+					<!-- 댓글 목록 -->
+					<c:choose>
+						<c:when test="">
+							<c:forEach var="" items="">
+								<tr>
+									<td align="center" width="150px">작성자</td>
+									<td>
+										<textarea style="width:750px; height:85px; resize:none;"></textarea>
+										<c:if test="">
+											<a>[수정]</a>
+											<a style="display:none;">[수정 완료]</a> 
+											<a>[삭제]</a>
+										</c:if>
+									</td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr align="center">
+								<td align="center" width="150px;">댓글이 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</table>
+			</form>
 		</center>
 	</body>
 	<script>
