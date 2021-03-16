@@ -28,7 +28,8 @@
 			</table>
 			<br />
 			<br />
-			<form action="${pageContext.request.contextPath}/board/BoardModifyOk.bo" method="post" name="modifyForm">
+			
+			<form action="${pageContext.request.contextPath}/board/BoardModifyOk.bo" method="post" name="modifyForm" enctype="multipart/form-data">
 				<input type="hidden" name="boardNum" value="${b_vo.getBoardNum()}">
 				<input type="hidden" name="page" value="${page}">
 				<table width="900px" border="0" cellpadding="0" cellspacing="0">
@@ -62,6 +63,33 @@
 							<textarea name="boardContent" style="width:700px; height:185px; resize:none;">${b_vo.getBoardContent()}</textarea>
 						</td>
 					</tr>
+					<tr height="30px">
+						<td align="center" width="150px">
+							<div align="center">파일 첨부</div>
+						</td>
+						<td style="padding-left:10px;">
+							<input type="file" name="boardFile1">
+							<input type="button" onclick="cancleFile('boardFile1')" value="첨부 삭제">
+						</td>
+					</tr>
+					<tr height="30px">
+						<td align="center" width="150px">
+							<div align="center">파일 첨부</div>
+						</td>
+						<td style="padding-left:10px;">
+							<input type="file" name="boardFile2">
+							<input type="button" onclick="cancleFile('boardFile2')" value="첨부 삭제">
+						</td>
+					</tr>
+					<tr height="30px">
+						<td align="center" width="150px">
+							<div align="center">파일 첨부</div>
+						</td>
+						<td style="padding-left:10px;">
+							<input type="file" name="boardFile3">
+							<input type="button" onclick="cancleFile('boardFile3')" value="첨부 삭제">
+						</td>
+					</tr>
 				</table>
 				
 				<table border="0" cellpadding="0" cellspacing="0" width="900px">
@@ -75,11 +103,22 @@
 			</form>
 		</center>
 	</body>
+	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	<script>
 		function modifyBoard(){
 			modifyForm.submit();
 		}
+		function cancleFile(fileTagName){
+			if($.browser.msie){//ie일 때
+				//첨부파일 업로드 전의 태그를 복사해 놓고, 초기화 시 복사된 태그를 덮어 씌워준다.
+				$("input[name='" + fileTagName + "']").replaceWith($("input[name='" + fileTagName + "']").clone(true));
+			}else{//그 외 브라우저
+				$("input[name='" + fileTagName + "']").val("");
+			}
+		}
 	</script>
+	
 </html>
 
 
