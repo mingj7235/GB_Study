@@ -1,6 +1,7 @@
 package com.koreait.app.board.dao;
 
 import java.util.Enumeration;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,7 +19,7 @@ public class FilesDAO {
 	}
 	
 	public boolean insertFiles(int boardNum, MultipartRequest multi) {
-		boolean check =true;
+		boolean check = true;
 		FilesVO vo = new FilesVO();
 		//사용자가 업로드한 원본 파일명
 		Enumeration<String> files = multi.getFileNames();
@@ -35,13 +36,17 @@ public class FilesDAO {
 			if(session.insert("Files.insertFile", vo) != 1) {
 				check = false;
 				break;
-				
 			}
 		}
 		return check;
 	}
 	
+	public List<FilesVO> getFileList (int boardNum) {
+		return session.selectList("Files.getFileList", boardNum);
+	}
 }
+
+
 
 
 

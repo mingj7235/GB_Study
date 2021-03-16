@@ -21,6 +21,4 @@ public class FilesVO {
 	public void setBoardNum(int boardNum) {
 		this.boardNum = boardNum;
 	}
-	
-	
 }

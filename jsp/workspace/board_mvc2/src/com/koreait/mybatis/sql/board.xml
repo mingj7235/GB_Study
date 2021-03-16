@@ -62,6 +62,10 @@
 		WHERE BOARDNUM = #{boardNum}
 	</delete>
 	
+	<select id="getBoardNum" resultType="_int">
+		SELECT BOARD_SEQ.CURRVAL FROM DUAL
+	</select>
+	
 </mapper>
 
 

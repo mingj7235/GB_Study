@@ -60,6 +60,7 @@
 						</td>
 						<td style="padding-left:10px;">
 							<input type="file" name="boardFile1">
+							<input type="button" onclick="cancelFile('boardFile1')" value="첨부 삭제">
 						</td>
 					</tr>
 					<tr height="30px">
@@ -68,6 +69,7 @@
 						</td>
 						<td style="padding-left:10px;">
 							<input type="file" name="boardFile2">
+							<input type="button" onclick="cancelFile('boardFile2')" value="첨부 삭제">
 						</td>
 					</tr>
 					<tr height="30px">
@@ -76,6 +78,7 @@
 						</td>
 						<td style="padding-left:10px;">
 							<input type="file" name="boardFile3">
+							<input type="button" onclick="cancelFile('boardFile3')" value="첨부 삭제">
 						</td>
 					</tr>
 				</table>
@@ -104,10 +107,21 @@
 	<!--
 		migrate 1.2.1 버전 사용 시 반드시 jquery 3.5.1버전 적용 후 사용해야 한다.
 	-->
+	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	<script>
 		function addBoard(){
 			boardform.submit();
 		}
+		
+		function cancelFile(fileTagName){
+	         if($.browser.msie){////인터넷 익스플로어일때
+	        	//인터넷 익스플로어는 첨부파일 업로드 전의 태그를 복사해 놓고, 초기화 시 복사된 태그를 덮어씌워줘야 초기화가 된다.
+	            $("input[name='" + fileTagName + "']").replaceWith($("input[name='" + fileTagName + "']").clone(true));
+	         }else{//그 외 브라우저
+	            $("input[name='" + fileTagName + "']").val("");
+	         }
+	      }
 	</script>
 
 </html>

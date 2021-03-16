@@ -55,10 +55,33 @@ public class BoardDAO {
 	}
 	
 	//게시글 삭제
-	public void deleteBoard (int boardNum) {
+	public void deleteBoard(int boardNum) {
 		session.delete("Board.deleteBoard", boardNum);
 	}
+	
+	//현재 게시글의 시퀀스 찾기
+	public int getBoardNum() {
+		return session.selectOne("Board.getBoardNum");
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

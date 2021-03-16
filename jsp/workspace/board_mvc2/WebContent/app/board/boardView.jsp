@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<c:set var="b_vo" value="${b_vo}"/>
+		<c:set var="files" value="${files}"/>
 		<center>
 		<c:choose>
 			<c:when test="${session_id eq null}">
@@ -52,7 +53,20 @@
 					<td align="center" width="150px">내 용</td>
 					<td valign="top" style="padding-top:10px; padding-left:10px;">${b_vo.getBoardContent()}</td>
 				</tr>
+				<c:if test="${files != null}">
+					<tr height="30px">
+						<td align="center">첨부파일</td>
+						<td>					
+							<c:forEach var="file" items="${files}">
+								<a href="">${file.getFileName()}</a>	
+							</c:forEach>
+						</td>
+					</tr>
+				</c:if>
 			</table>
+			
+			
+			
 			<table width="900px" border="0" cellpadding="0" cellspacing="0">
 				<tr align="right" valign="middle">
 					<td>
@@ -64,19 +78,19 @@
 					</td>
 				</tr>
 			</table>
-			
 			<form name="deleteBoard" method="post" action="${pageContext.request.contextPath}/board/BoardDeleteOk.bo">
-				<!-- hidden된 이 객체들이 boardDeleteOk.bo를 통해 날아간다. -->
 				<input type="hidden" name="boardNum" value="${b_vo.getBoardNum()}">
 				<input type="hidden" name="page" value="${page}">
 			</form>
-			
 		</center>
 	</body>
 	<script>
-		function deleteBoard() {
+		function deleteBoard(){
+			//만약 이미 사용중인 객체명을 사용하고 싶다면(form태그 name)
+			//1. name을 다른 이름으로 수정해준다.
+			//2. DOM으로 가져온다.
 			document.getElementsByName("deleteBoard")[0].submit();
-		} 
+		}
 	</script>
 </html>
 
