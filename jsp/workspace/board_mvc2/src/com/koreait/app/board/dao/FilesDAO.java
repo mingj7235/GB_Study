@@ -44,6 +44,10 @@ public class FilesDAO {
 	public List<FilesVO> getFileList(int boardNum) {
 		return session.selectList("Files.getFileList", boardNum);
 	}
+	
+	public void deleteFile(int boardNum) {
+		session.delete("Files.deleteFile", boardNum);
+	}
 }
 
 

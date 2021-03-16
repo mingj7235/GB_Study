@@ -11,7 +11,7 @@ import com.koreait.app.board.dao.BoardDAO;
 import com.koreait.app.board.vo.BoardVO;
 
 public class BoardModifyOkAction implements Action{
-
+	//수정완료를 눌렀을 때
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
