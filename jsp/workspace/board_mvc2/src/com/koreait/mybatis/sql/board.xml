@@ -72,6 +72,10 @@
 		INSERT INTO TABLE_REPLY VALUES(REPLY_SEQ.NEXTVAL, #{boardNum}, #{memberId}, #{replyContent})
 	</insert>
 	
+	<select id="getReplyList" parameterType="_int" resultType="boardReplyVO"> 
+		SELECT * FROM TABLE_REPLY WHERE BOARDNUM = #{boardNum} ORDER BY REPLYNUM DESC
+	</select>
+	
 </mapper>
 
 

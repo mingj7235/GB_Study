@@ -18,6 +18,7 @@ public class BoardReplyOkAction implements Action{
 		HttpSession session = req.getSession();
 		BoardReplyVO r_vo = new BoardReplyVO();
 		BoardDAO r_dao = new BoardDAO();
+		ActionForward forward = new ActionForward();
 		
 		//게시글 번호, 아이디, 컨텐츠
 		int boardNum = Integer.parseInt(req.getParameter("boardNum"));
@@ -30,6 +31,9 @@ public class BoardReplyOkAction implements Action{
 		
 		r_dao.insertReply(r_vo);
 		
-		return null;
+		forward.setRedirect(true);
+		forward.setPath(req.getContextPath() + "/board/BoardView.bo?boardNum="+boardNum +"&page=" + req.getParameter("page"));
+		
+		return forward;
 	}
 }

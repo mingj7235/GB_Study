@@ -78,6 +78,13 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			break;
+		case "/board/BoardReplyOk.bo":
+			try {
+				forward = new BoardReplyOkAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
 		case "/board/BoardWrite.bo":
 			forward = new ActionForward();
 			forward.setRedirect(false);

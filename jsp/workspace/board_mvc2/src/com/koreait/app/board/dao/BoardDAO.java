@@ -73,7 +73,10 @@ public class BoardDAO {
 		session.insert("Board.insertReply", r_vo);
 	}
 	
-	
+	//댓글 목록
+	public List<BoardReplyVO> getReplyList (int boardNum) {
+		return session.selectList("Board.getReplyList", boardNum);
+	}
 }
 
 

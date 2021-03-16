@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<c:set var="b_vo" value="${b_vo}"/>
+		<c:set var="replies" value="${replies}"/>
 		<c:set var="files" value="${files}"/>
 		<center>
 		<c:choose>
@@ -82,7 +83,9 @@
 			</form>
 			
 			<!-- 댓글  -->
-			<form action = "" method ="" name="">
+			<form action="${pageContext.request.contextPath}/board/BoardReplyOk.bo" method="post" name="boardReply">
+				<input type="hidden" name="boardNum" value="${b_vo.getBoardNum()}">
+				<input type="hidden" name="page" value="${page}">
 				<table>
 					<tr height="200px">
 						<td align="center" width="80px">
@@ -90,19 +93,19 @@
 						</td>
 						<!-- 댓글 추가 -->
 						<td style="padding-left: 10px;">
-							<textarea style="width:750px; height:85px; resize:none;"></textarea>
-							<a href="#">[등록]</a>
+							<textarea name="replyContent" style="width:750px; height:85px; resize:none;"></textarea>
+							<a href="javascript:insertReply()">[등록]</a>
 						</td>
 					</tr>
 					<!-- 댓글 목록 -->
 					<c:choose>
-						<c:when test="">
-							<c:forEach var="" items="">
+						<c:when test="${replies != null and fn:length(replies) > 0 }">
+							<c:forEach var="reply" items="${replies}">
 								<tr>
-									<td align="center" width="150px">작성자</td>
-									<td>
-										<textarea style="width:750px; height:85px; resize:none;"></textarea>
-										<c:if test="">
+									<td align="center" width="150px">${replies.getMemberId()}</td>
+									<td valign="top" style="padding-left:10px;">
+										<textarea style="width:750px; height:85px; resize:none;" readonly>${reply.getReplyContent()}</textarea>
+										<c:if test="${session_id eq reply.getMemberId()}">
 											<a>[수정]</a>
 											<a style="display:none;">[수정 완료]</a> 
 											<a>[삭제]</a>
@@ -121,12 +124,21 @@
 			</form>
 		</center>
 	</body>
+	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script>
 		function deleteBoard(){
 			//만약 이미 사용중인 객체명을 사용하고 싶다면(form태그 name)
 			//1. name을 다른 이름으로 수정해준다.
 			//2. DOM으로 가져온다.
 			document.getElementsByName("deleteBoard")[0].submit();
+		}
+		
+		function insertReply(){
+			if($("textarea[name='replyContent']").val() =="") {
+				alert("댓글을 작성해주세요");
+				return false;
+			}	
+			boardReply.submit();
 		}
 	</script>
 </html>
