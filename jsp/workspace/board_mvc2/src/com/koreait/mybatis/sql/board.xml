@@ -66,6 +66,12 @@
 		SELECT BOARD_SEQ.CURRVAL FROM DUAL
 	</select>
 	
+	<!-- 댓글 -->
+	
+	<insert id="insertReply" parameterType="boardReplyVO">
+		INSERT INTO TABLE_REPLY VALUES(REPLY_SEQ.NEXTVAL, #{boardNum}, #{memberId}, #{replyContent})
+	</insert>
+	
 </mapper>
 
 
