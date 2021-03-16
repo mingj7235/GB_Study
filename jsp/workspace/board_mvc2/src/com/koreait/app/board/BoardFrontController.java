@@ -64,6 +64,13 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			break;
+		case "/board/FileDownload.bo":
+			try {
+				forward = new FileDownloadAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
 		case "/board/BoardDeleteOk.bo":
 			try {
 				forward = new BoardDeleteOkAction().execute(req, resp);

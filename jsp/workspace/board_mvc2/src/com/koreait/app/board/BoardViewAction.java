@@ -31,7 +31,6 @@ public class BoardViewAction implements Action {
 			b_dao.updateReadCount(boardNum);
 			req.setAttribute("b_vo", b_vo);
 			req.setAttribute("page", page);
-			//파일이 있는 경우 파일 리스트를 setAttribute를 통해 넘겨준다. 
 			if(fileList != null) {
 				req.setAttribute("files", fileList);
 			}

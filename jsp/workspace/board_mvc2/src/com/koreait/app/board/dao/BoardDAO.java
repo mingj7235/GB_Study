@@ -59,7 +59,6 @@ public class BoardDAO {
 		session.delete("Board.deleteBoard", boardNum);
 	}
 	
-	//현재 게시글의 시퀀스 찾기
 	public int getBoardNum() {
 		return session.selectOne("Board.getBoardNum");
 	}

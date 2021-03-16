@@ -60,7 +60,7 @@
 						</td>
 						<td style="padding-left:10px;">
 							<input type="file" name="boardFile1">
-							<input type="button" onclick="cancelFile('boardFile1')" value="첨부 삭제">
+							<input type="button" onclick="cancleFile('boardFile1')" value="첨부 삭제">
 						</td>
 					</tr>
 					<tr height="30px">
@@ -69,7 +69,7 @@
 						</td>
 						<td style="padding-left:10px;">
 							<input type="file" name="boardFile2">
-							<input type="button" onclick="cancelFile('boardFile2')" value="첨부 삭제">
+							<input type="button" onclick="cancleFile('boardFile2')" value="첨부 삭제">
 						</td>
 					</tr>
 					<tr height="30px">
@@ -78,7 +78,7 @@
 						</td>
 						<td style="padding-left:10px;">
 							<input type="file" name="boardFile3">
-							<input type="button" onclick="cancelFile('boardFile3')" value="첨부 삭제">
+							<input type="button" onclick="cancleFile('boardFile3')" value="첨부 삭제">
 						</td>
 					</tr>
 				</table>
@@ -114,14 +114,14 @@
 			boardform.submit();
 		}
 		
-		function cancelFile(fileTagName){
-	         if($.browser.msie){////인터넷 익스플로어일때
-	        	//인터넷 익스플로어는 첨부파일 업로드 전의 태그를 복사해 놓고, 초기화 시 복사된 태그를 덮어씌워줘야 초기화가 된다.
-	            $("input[name='" + fileTagName + "']").replaceWith($("input[name='" + fileTagName + "']").clone(true));
-	         }else{//그 외 브라우저
-	            $("input[name='" + fileTagName + "']").val("");
-	         }
-	      }
+		function cancleFile(fileTagName){
+			if($.browser.msie){//ie일 때
+				//첨부파일 업로드 전의 태그를 복사해 놓고, 초기화 시 복사된 태그를 덮어 씌워준다.
+				$("input[name='" + fileTagName + "']").replaceWith($("input[name='" + fileTagName + "']").clone(true));
+			}else{//그 외 브라우저
+				$("input[name='" + fileTagName + "']").val("");
+			}
+		}
 	</script>
 
 </html>

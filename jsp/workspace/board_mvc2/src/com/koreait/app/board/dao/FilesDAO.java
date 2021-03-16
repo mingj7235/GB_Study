@@ -41,7 +41,7 @@ public class FilesDAO {
 		return check;
 	}
 	
-	public List<FilesVO> getFileList (int boardNum) {
+	public List<FilesVO> getFileList(int boardNum) {
 		return session.selectList("Files.getFileList", boardNum);
 	}
 }

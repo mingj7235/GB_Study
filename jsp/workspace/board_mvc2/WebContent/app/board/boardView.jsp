@@ -53,20 +53,18 @@
 					<td align="center" width="150px">내 용</td>
 					<td valign="top" style="padding-top:10px; padding-left:10px;">${b_vo.getBoardContent()}</td>
 				</tr>
+				
 				<c:if test="${files != null}">
 					<tr height="30px">
 						<td align="center">첨부파일</td>
-						<td>					
+						<td>
 							<c:forEach var="file" items="${files}">
-								<a href="">${file.getFileName()}</a>	
+								<a href="${pageContext.request.contextPath}/board/FileDownload.bo?fileName=${file.getFileName()}">${file.getFileName()}</a>
 							</c:forEach>
 						</td>
 					</tr>
 				</c:if>
 			</table>
-			
-			
-			
 			<table width="900px" border="0" cellpadding="0" cellspacing="0">
 				<tr align="right" valign="middle">
 					<td>

@@ -35,8 +35,8 @@ public class BoardWriteOkAction implements Action{
 		b_vo.setBoardContent(multi.getParameter("boardContent"));
 		
 		if(b_dao.insertBoard(b_vo)) {
-			//첨부파일 추가
 			if(f_dao.insertFiles(b_dao.getBoardNum(), multi)) {
+				//첨부파일 추가
 				forward = new ActionForward();
 				forward.setRedirect(true);
 				forward.setPath(req.getContextPath() + "/board/BoardList.bo");
