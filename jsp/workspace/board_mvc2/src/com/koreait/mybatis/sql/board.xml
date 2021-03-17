@@ -67,15 +67,18 @@
 	</select>
 	
 	<!-- 댓글 -->
-	
 	<insert id="insertReply" parameterType="boardReplyVO">
-		INSERT INTO TABLE_REPLY VALUES(REPLY_SEQ.NEXTVAL, #{boardNum}, #{memberId}, #{replyContent})
+		INSERT INTO TABLE_REPLY 
+		VALUES(REPLY_SEQ.NEXTVAL, #{boardNum}, #{memberId}, #{replyContent})	
 	</insert>
 	
-	<select id="getReplyList" parameterType="_int" resultType="boardReplyVO"> 
+	<select id="getReplyList" parameterType="_int" resultType="boardReplyVO">
 		SELECT * FROM TABLE_REPLY WHERE BOARDNUM = #{boardNum} ORDER BY REPLYNUM DESC
 	</select>
 	
+	<delete id="deleteReply" parameterType="_int">
+		DELETE FROM TABLE_REPLY WHERE REPLYNUM = #{replyNum}
+	</delete>
 </mapper>
 
 

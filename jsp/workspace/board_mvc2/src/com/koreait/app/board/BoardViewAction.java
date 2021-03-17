@@ -30,7 +30,6 @@ public class BoardViewAction implements Action {
 		List<FilesVO> fileList = f_dao.getFileList(boardNum);
 		List<BoardReplyVO> replyList = r_dao.getReplyList(boardNum);
 		
-		
 		if(b_vo != null) {
 			b_dao.updateReadCount(boardNum);
 			req.setAttribute("replies", replyList);

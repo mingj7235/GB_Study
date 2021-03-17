@@ -9,7 +9,8 @@ import com.koreait.action.ActionForward;
 import com.koreait.app.board.dao.BoardDAO;
 import com.koreait.app.board.vo.BoardReplyVO;
 
-public class BoardReplyOkAction implements Action{
+public class BoardReplyOkAction implements Action {
+
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
@@ -32,8 +33,16 @@ public class BoardReplyOkAction implements Action{
 		r_dao.insertReply(r_vo);
 		
 		forward.setRedirect(true);
-		forward.setPath(req.getContextPath() + "/board/BoardView.bo?boardNum="+boardNum +"&page=" + req.getParameter("page"));
+		forward.setPath(req.getContextPath() + "/board/BoardView.bo?boardNum=" + boardNum + "&page=" + req.getParameter("page"));
 		
 		return forward;
 	}
 }
+
+
+
+
+
+
+
+

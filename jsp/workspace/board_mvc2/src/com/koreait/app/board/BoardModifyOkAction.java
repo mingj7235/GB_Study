@@ -16,7 +16,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class BoardModifyOkAction implements Action{
-	//수정완료를 눌렀을 때
+
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
@@ -47,10 +47,10 @@ public class BoardModifyOkAction implements Action{
 				}
 			}
 			
-			//DB삭제
+			//DB 삭제
 			f_dao.deleteFile(boardNum);
 			
-			//새롭게 추가된 첨부파일 DB추가
+			//새롭게 추가한 첨부파일 DB에 추가
 			f_dao.insertFiles(boardNum, multi);
 			
 			b_vo.setBoardNum(boardNum);
@@ -60,7 +60,7 @@ public class BoardModifyOkAction implements Action{
 			b_dao.updateBoard(b_vo);
 			
 			forward.setRedirect(true);
-			//기본 제공 프로퍼티는 req로 접근한다. multi로 하면 안된다 이건 !! 
+			//기본 제공 프로퍼티는 req로 접근한다.
 			forward.setPath(req.getContextPath() + "/board/BoardView.bo?boardNum=" + b_vo.getBoardNum() + "&page="+page);
 			
 		} catch (Exception e) {

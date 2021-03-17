@@ -78,6 +78,12 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			break;
+		case "/board/BoardWrite.bo":
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			req.setAttribute("page", req.getParameter("page"));
+			forward.setPath("/app/board/boardWrite.jsp");
+			break;
 		case "/board/BoardReplyOk.bo":
 			try {
 				forward = new BoardReplyOkAction().execute(req, resp);
@@ -85,11 +91,12 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			break;
-		case "/board/BoardWrite.bo":
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			req.setAttribute("page", req.getParameter("page"));
-			forward.setPath("/app/board/boardWrite.jsp");
+		case "/board/BoardReplyDeleteOk.bo":
+			try {
+				forward = new BoardReplyDeleteOkAction().execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			break;
 		default:
 			forward = new ActionForward();

@@ -1,10 +1,9 @@
 package com.koreait.app.board.vo;
-/*
- *  REPLYNUM NUMBER(10),
-	BOARDNUM NUMBER(10),
-	MEMBERID VARCHAR2(100),
-	REPLYCONTENT VARCHAR2(4000),
- * */
+
+//REPLYNUM NUMBER(10),
+//BOARDNUM NUMBER(10),
+//MEMBERID VARCHAR2(100),
+//REPLYCONTENT VARCHAR2(4000),
 
 public class BoardReplyVO {
 	private int replyNum;
@@ -45,6 +44,4 @@ public class BoardReplyVO {
 	public void setReplyContent(String replyContent) {
 		this.replyContent = replyContent;
 	}
-	
-	
 }

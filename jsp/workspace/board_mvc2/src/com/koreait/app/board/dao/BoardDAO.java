@@ -74,8 +74,12 @@ public class BoardDAO {
 	}
 	
 	//댓글 목록
-	public List<BoardReplyVO> getReplyList (int boardNum) {
+	public List<BoardReplyVO> getReplyList(int boardNum){
 		return session.selectList("Board.getReplyList", boardNum);
+	}
+	
+	public void deleteReply(int replyNum) {
+		session.delete("Board.deleteReply", replyNum);
 	}
 }
 

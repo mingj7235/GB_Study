@@ -28,7 +28,6 @@
 			</table>
 			<br />
 			<br />
-			
 			<form action="${pageContext.request.contextPath}/board/BoardModifyOk.bo" method="post" name="modifyForm" enctype="multipart/form-data">
 				<input type="hidden" name="boardNum" value="${b_vo.getBoardNum()}">
 				<input type="hidden" name="page" value="${page}">
@@ -118,7 +117,6 @@
 			}
 		}
 	</script>
-	
 </html>
 
 
