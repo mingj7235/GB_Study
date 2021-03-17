@@ -1,5 +1,7 @@
 package com.koreait.app.board;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,6 +18,8 @@ public class BoardReplyOkAction implements Action {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
+		PrintWriter out = resp.getWriter();
+				
 		HttpSession session = req.getSession();
 		BoardReplyVO r_vo = new BoardReplyVO();
 		BoardDAO r_dao = new BoardDAO();
@@ -30,12 +34,19 @@ public class BoardReplyOkAction implements Action {
 		r_vo.setMemberId(memberId);
 		r_vo.setReplyContent(replyContent);
 		
-		r_dao.insertReply(r_vo);
+		if (r_dao.insertReply(r_vo)) {
+			out.println("추가성공");
+		}else {
+			out.println("추가 실패");
+		}
 		
-		forward.setRedirect(true);
-		forward.setPath(req.getContextPath() + "/board/BoardView.bo?boardNum=" + boardNum + "&page=" + req.getParameter("page"));
+		out.close();
 		
-		return forward;
+//		forward.setRedirect(true);
+//		forward.setPath(req.getContextPath() + "/board/BoardView.bo?boardNum=" + boardNum + "&page=" + req.getParameter("page"));
+		
+//		return forward;
+		return null;
 	}
 }
 

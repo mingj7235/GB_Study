@@ -82,102 +82,103 @@
 				<input type="hidden" name="page" value="${page}">
 			</form>
 			<!-- 댓글 -->
-			<form action="${pageContext.request.contextPath}/board/BoardReplyOk.bo" method="post" name="boardReply">
-				<input type="hidden" name="boardNum" value="${b_vo.getBoardNum()}">
-				<input type="hidden" name="page" value="${page}">
-				<table>
-					<tr height="200px">
-						<td align="center" width="80px">
-							<div align="center">댓 글</div>
-						</td>
-						<!-- 댓글 추가 -->
-						<td style="padding-left:10px">
-							<textarea name="replyContent" style="width:750px; height:85px; resize:none;"></textarea>
-							<a href="javascript:insertReply()">[등록]</a>
-						</td>
-					</tr>
-					<!-- 댓글 목록 -->
-					<c:choose>
-						<c:when test="${replies != null and fn:length(replies) > 0}">
-							<c:set var="i" value="${0}"/>
-							<c:forEach var="reply" items="${replies}">
-								<c:set var="i" value="${i+1}" />
-								<tr>
-									<td align="center" width="150px">${reply.getMemberId()}</td>
-									<td valign="top" style="padding-left:10px;">
-										<textarea name ="content${i}" id ="${i}" class="re" style="width:750px; height:85px; resize:none;" readonly>${reply.getReplyContent()}</textarea>
-										<c:if test="${session_id eq reply.getMemberId()}">
-											<a id="ready${i}" href="javascript:updateReply(${i})">[수정]</a>
-											<a id="ok${i}" style="display:none;">[수정 완료]</a>
-											<a href="javascript:deleteReply(${reply.getReplyNum()})">[삭제]</a>
-										</c:if>
-									</td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr align="center">
-								<td align="center" width="150px;">댓글이 없습니다.</td>
-							</tr>
-						</c:otherwise>
-					</c:choose>
-				</table>
-			</form>
-			<form action="${pageContext.request.contextPath}/board/BoardReplyDeleteOk.bo" method="post" name="deleteReplyForm">
-				<input type="hidden" name="replyNum" value="">
-				<input type="hidden" name="boardNum" value="${b_vo.getBoardNum()}">
-				<input type="hidden" name="page" value="${page}">
-			</form>
+			<table id="replyTable"></table>
 			
 		</center>
 	</body>
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
 	<script>
-		autosize($("textarea.re"));
-		check = false;
+		function deleteBoard() {
+			boardForm.submit();
+		}
+	</script>
+	<script>
+		$(document).ready(function(){getList();});
 		
-		function deleteBoard(){
-			//만약 이미 사용중인 객체명을 사용하고 싶다면(form태그 name)
-			//1. name을 다른 이름으로 수정해준다.
-			//2. DOM으로 가져온다.
-			document.getElementsByName("deleteBoard")[0].submit();
+		var pageContext = "${pageContext.request.contextPath}";		
+		var boardNum = "${b_vo.getBoardNum()}";
+		
+		//댓글 추가
+		function insertReply() {
+			var replyContent = $("textarea[name='replyContent']").val();
+			$ajax({
+				url : pageContext + "/board/BoardReplyOk.bo",
+				type : "post",
+				data : {"replyContent" : replyContent, "boardNum" : boardNum},
+				dataType : "text",
+				success : function(result) {
+					alert(result);
+					getList();
+				}
+			});
+		} 
+		
+		//댓글 목록
+		function getList(){
+			$.ajax({
+				url : pageContext + "/board/BoardReplyList.bo?boardNum="+boardNum,
+				type : "get",
+				//dataType : "text",
+				dataType : "json",
+				/* success : function(result) {
+					var replys=JSON.parse(result);
+					console.log(replys); */
+				success : showList
+			});
 		}
 		
-		function insertReply(){
-			if($("textarea[name='replyContent']").val() == ""){
-				alert("댓글을 작성해주세요.");
-				return false;
-			}
-			boardReply.submit();
-		}
-		
-		function deleteReply(replyNum) {
-			$("input[name='replyNum']").val(replyNum); //deleteReplyForm에 있는 폼테그 안의 인풋을 모두 채움
-			deleteReplyForm.submit();
-		}
-		
-		function updateReply(num) {
-			if(!check) {
-				var textarea = $("textarea#" + num);			
-				var a_ready =$("a#ready"+ num);
-				var a_ok =$("a#ok" + num);
-				
-				teatarea.removeAttr("readonly");
-				a_ready.hide();
-				a_ok.show();
-			}else {
-				alert("수정중인 댓글이 있습니다.");
-			}
-		}
-		
-		function updateOkReply(replyNum) {
-			$("form[name='boardReply']").attr("action","${pageContext.request.contextPath}/board/.bo");
-		
-		}
+ 		function showList(replys){
+//			console.log(replys);
+			
+ 	         var insertReply_HTML = "<tr height='200px'>   <td align='center' width='80px'><div align='center'>댓 글</div></td>"
+ 	            + "<td style='padding-left:10px'><textarea name='replyContent' style='width:750px; height:85px; resize:none;''></textarea>"
+ 	            + "<a href='javascript:insertReply()''>[등록]</a></td></tr>";
+         
+ 	         var text = insertReply_HTML;
+ 	         
+ 	         if(replys != null && replys.length != 0) {
+				$.each(replys, function(index, reply) {
+					text += "<tr><td align='center' width='150px'>" + reply.memberId + "</td>";	
+					text += "<td valign='top' style='padding-left:10px;'>"
+					text += "<textarea name='content"+(index + 1)+"' id='"+ (index + 1)+"' class='re' style='width:750px; height:85px; resize:none;' readonly>" + reply.replyContent + "</textarea>";
+					
+					if("${session_id}" == reply.memberId) {
+						text += "<a id='ready"+ (index + 1) +"' href='javascript:updateReply("+ (index + 1) +")'>[수정]</a>";
+						text +="<a id='ok"+(index + 1)+ "' href='javascript:updateOkReply("+reply.replyNum+", "+(index + 1)+")' style='display:none;'>[수정 완료]</a>";
+						text += "<a href='javascript:deleteReply("+reply.replyNum+")'>[삭제]</a>"
+					}
+					
+					text +="</td></tr>";
+					
+				}); 	         
+        	 }else {
+        		text += "<tr align='center'><td align='center' width='150px' colspan='2'>댓글이 없습니다.</td></tr>";	 
+        	 }
+ 	         
+ 	         $("#replyTable").html(text);
+ 	         //autosize
+ 	         autosize($("textarea.re"));
+        	 
+	    }
+
+ 		 
 		
 	</script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

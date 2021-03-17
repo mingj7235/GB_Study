@@ -69,8 +69,8 @@ public class BoardDAO {
 	 */
 	
 	//댓글 추가
-	public void insertReply(BoardReplyVO r_vo) {
-		session.insert("Board.insertReply", r_vo);
+	public boolean insertReply(BoardReplyVO r_vo) {
+		return session.insert("Board.insertReply", r_vo) == 1;
 	}
 	
 	//댓글 목록
@@ -78,8 +78,14 @@ public class BoardDAO {
 		return session.selectList("Board.getReplyList", boardNum);
 	}
 	
+	//댓글삭제
 	public void deleteReply(int replyNum) {
 		session.delete("Board.deleteReply", replyNum);
+	}
+	
+	//댓글수정
+	public void updateReply(BoardReplyVO r_vo) {
+		session.update("Board.updateReply",r_vo);
 	}
 }
 
