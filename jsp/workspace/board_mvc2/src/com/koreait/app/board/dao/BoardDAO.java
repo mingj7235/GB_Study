@@ -79,13 +79,13 @@ public class BoardDAO {
 	}
 	
 	//댓글 삭제
-	public void deleteReply(int replyNum) {
-		session.delete("Board.deleteReply", replyNum);
+	public boolean deleteReply(int replyNum) {
+		return session.delete("Board.deleteReply", replyNum) == 1;
 	}
 	
 	//댓글 수정
-	public void updateReply(BoardReplyVO r_vo) {
-		session.update("Board.updateReply", r_vo);
+	public boolean updateReply(BoardReplyVO r_vo) {
+		return session.update("Board.updateReply", r_vo) == 1;
 	}
 }
 

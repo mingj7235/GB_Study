@@ -95,6 +95,7 @@
 	<script>
 		$(document).ready(function(){getList();});
 		
+		var check = false;
 		var pageContext = "${pageContext.request.contextPath}";
 		var boardNum = "${b_vo.getBoardNum()}";
 			
@@ -158,9 +159,52 @@
 			autosize($("textarea.re"));
 		} 
  		
- 		//삭제 Ajax
+ 		//댓글 삭제 Ajax
  		
-		
+ 		function deleteReply(replyNum){
+			$.ajax({
+				url : pageContext + "/board/BoardReplyDeleteOk.bo",
+				type : "post",
+				data : {"replyNum" : replyNum},
+				dataType : "text",
+				success : function(result){
+					alert(result);
+					getList();
+				}
+			});
+		}
+ 		
+ 		//댓글 수정 Ajax
+ 		 function updateReply(num){
+ 	         if(!check){
+ 	            var textarea = $("textarea#" + num);
+ 	            var a_ready = $("a#ready" + num);
+ 	            var a_ok = $("a#ok" + num);
+ 	      
+ 	            textarea.removeAttr("readonly");
+ 	            a_ready.hide();
+ 	            a_ok.show();
+ 	            check = true;
+ 	         }else{
+ 	            alert("수정 중인 댓글이 있습니다.");
+ 	         }
+ 	      }
+ 		
+ 		//댓글 수정 완료
+		function updateOkReply(replyNum, seq) {
+ 			var content = $("textarea#"+seq).val();
+			$.ajax({
+				url : pageContext + "/board/BoardReplyModifyOk.bo",
+				type : "post",
+				data : {"replyNum" : replyNum, "content" : content},
+				dataType : "text",
+				success : function(result) {
+					alert(result);
+					check = false;
+					getList();
+				}
+			});
+ 		}
 	</script>
 </html>
 

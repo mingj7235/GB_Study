@@ -1,5 +1,7 @@
 package com.koreait.app.board;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,18 +17,23 @@ public class BoardReplyDeleteOkAction implements Action {
 		resp.setCharacterEncoding("UTF-8");
 		
 		BoardDAO r_dao = new BoardDAO();
-		ActionForward forward = new ActionForward();
 		
-		int page = Integer.parseInt(req.getParameter("page"));
+		PrintWriter out = resp.getWriter();
+		
 		int replyNum = Integer.parseInt(req.getParameter("replyNum"));
-		int boardNum = Integer.parseInt(req.getParameter("boardNum"));
 		
-		r_dao.deleteReply(replyNum);
+		if(r_dao.deleteReply(replyNum)) {
+			out.println("삭제 성공");
+		}else {
+			out.println("삭제 식패");
+		}
 	
-		forward.setRedirect(true);
-		forward.setPath(req.getContextPath() + "/board/BoardView.bo?page=" + page + "&boardNum=" + boardNum);
+		out.close();
 		
-		return forward;
+		//forward.setRedirect(true);
+		//forward.setPath(req.getContextPath() + "/board/BoardView.bo?page=" + page + "&boardNum=" + boardNum);
+		
+		return null;
 	}
 
 }

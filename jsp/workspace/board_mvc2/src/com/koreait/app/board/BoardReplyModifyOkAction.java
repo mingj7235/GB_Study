@@ -1,5 +1,7 @@
 package com.koreait.app.board;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,22 +19,26 @@ public class BoardReplyModifyOkAction implements Action {
 		
 		BoardReplyVO r_vo = new BoardReplyVO();
 		BoardDAO r_dao = new BoardDAO();
-		ActionForward forward = new ActionForward();
 		
-		int page = Integer.parseInt(req.getParameter("page"));
-		int boardNum = Integer.parseInt(req.getParameter("boardNum"));
+		PrintWriter out = resp.getWriter();
+		
 		int replyNum = Integer.parseInt(req.getParameter("replyNum"));
-		String replyContent = req.getParameter("content" + req.getParameter("seq"));
+		String replyContent = req.getParameter("content");
+		
 		
 		r_vo.setReplyNum(replyNum);
 		r_vo.setReplyContent(replyContent);
 		
-		r_dao.updateReply(r_vo);
+		if(r_dao.updateReply(r_vo)) {
+			out.println("수정성공");
+		}else {
+			out.println("수정실패");
+		}
+		out.close();
+		//forward.setRedirect(true);
+		//forward.setPath(req.getContextPath() + "/board/BoardView.bo?page=" + page + "&boardNum=" + boardNum);
 		
-		forward.setRedirect(true);
-		forward.setPath(req.getContextPath() + "/board/BoardView.bo?page=" + page + "&boardNum=" + boardNum);
-		
-		return forward;
+		return null;
 	}
 }
 
