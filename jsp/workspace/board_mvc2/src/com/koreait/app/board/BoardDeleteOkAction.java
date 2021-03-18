@@ -18,7 +18,7 @@ public class BoardDeleteOkAction implements Action {
 		BoardDAO b_dao = new BoardDAO();
 		FilesDAO f_dao = new FilesDAO();
 		ActionForward forward = new ActionForward();
-		
+
 		//리눅스 서버로 출시 후 서비스 제공 시 업로드 경로는 아래와 같이 사용하여 작업한다. 
 		//req.getServletContext().getRealPath("/")
 		
@@ -37,6 +37,8 @@ public class BoardDeleteOkAction implements Action {
 				f.delete();
 			}
 		}
+		
+		
 		
 		f_dao.deleteFile(boardNum);
 		
