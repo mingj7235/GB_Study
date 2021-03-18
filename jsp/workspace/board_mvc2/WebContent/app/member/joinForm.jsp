@@ -15,6 +15,8 @@
                      <b><font size=5>회원가입 페이지</font></b>
                   </td>
                </tr>
+               
+              
                <tr height="40px">
                   <td align="center" width="100px">아이디</td>
                   <td><input type="text" name="memberId" style="width:280px;" />
