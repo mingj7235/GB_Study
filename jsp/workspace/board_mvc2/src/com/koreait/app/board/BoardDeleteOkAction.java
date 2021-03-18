@@ -27,9 +27,6 @@ public class BoardDeleteOkAction implements Action {
 		int page = Integer.parseInt(req.getParameter("page"));
 		
 		//파일 삭제(2개 로직 작성)
-//		김사원~ 게시글에 첨부파일 업데이트 되었으니까
-//		게시글 삭제 부분 첨부파일 삭제부분 추가해서 업데이트 좀 해줘~
-//		네 알겠습니다.
 		
 		for(FilesVO file : f_dao.getFileList(boardNum)) {
 			File f = new File(saveFolder, file.getFileName());
