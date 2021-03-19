@@ -51,6 +51,12 @@ public class MemberDAO {
    }
    
    //암호화
+   /**
+    * 
+    * @param pw
+    * @return
+    * 비밀번호 암호화 
+    */
    public String encrypt(String pw) {
       String en_pw = "";
       for (int i = 0; i < pw.length(); i++) {
@@ -60,6 +66,12 @@ public class MemberDAO {
    }
    
    //복호화
+   /**
+    * 
+    * @param en_pw
+    * @return
+    * 비밀번호 복호화 
+    */
    public String decrypt(String en_pw) {
       String de_pw = "";
       for (int i = 0; i < en_pw.length(); i++) {
