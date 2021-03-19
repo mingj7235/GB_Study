@@ -115,6 +115,12 @@ public class MemberDAO {
 	   return (Integer)session.selectOne("Member.login", member) == 1;
    }
    
+   /**
+    * 
+    * @param memberPhone
+    * @return
+    * 문자 인증 메소드 (sdk API)
+    */
    public String checkSms (String memberPhone) {
 	   String api_key = "NCSRIPIHAZ3LQLSK";
 	    String api_secret = "OWEK0BQ227DKKRGC3YXFGQJH1UZ1NW7A";
