@@ -17,7 +17,7 @@ public class MemberFrontController extends HttpServlet {
 	 * 영구화 목적으로 직렬화를 사용한다.
 	 * 직렬화 된 객체는 byte형태로 변환되어 있으며, 다시 사용하고 싶을 때에는 역직렬화를 통해서 객체로 변환된다.
 	 * 이 때 SUID(serialVersionUID)라는 값을 고정시켜 구분점으로 사용해서 사용자가 원하는 객체가 맞는 지 판단하게 된다.
-	 * 자주 변경되는 클래스 객체에는 사용하지 않는 것이 좋다.
+	 * 자주 변경되는 클래스 객체에는h 사용하지 않는 것이 좋다.
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -77,7 +77,9 @@ public class MemberFrontController extends HttpServlet {
 		}else if(command.equals("/member/MemberLogout.me")) {
 			try {
 				forward = new MemberLogoutAction().execute(req, resp);
-			} catch (Exception e) {;}
+			} catch (Exception e) {
+				e.printStackTrace();
+				;}
 		}else {
 			//만약 위의 모든 분기에 들어가지 않았다면, 요청한 URI가 잘못된 것이다.
 			//따라서 컨트롤러를 호출할 필요 없이 직접 404 오류 안내 페이지로 이동시켜준다.
@@ -110,5 +112,4 @@ public class MemberFrontController extends HttpServlet {
 
 
 
-
-
+ 
