@@ -23,7 +23,7 @@ public class FileDownloadAction implements Action {
 		resp.setCharacterEncoding("UTF-8");
 		
 		//요청된 파일이 저장되어 있는 경로
-		String savePath = "D:\\0900_gb_kmj\\jsp\\workspace\\board_mvc2\\WebContent\\app\\upload";
+		String savePath = "/Users/joshua/Desktop/JoshuaStudy/jsp/workspace/board_mvc2/WebContent/app/upload";
 		
 		//사용자가 다운로드를 요청한 파일의 이름을 전달받는다.
 		String fileName = req.getParameter("fileName");

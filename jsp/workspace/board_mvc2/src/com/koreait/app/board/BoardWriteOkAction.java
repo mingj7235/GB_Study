@@ -21,7 +21,7 @@ public class BoardWriteOkAction implements Action{
 		FilesDAO f_dao = new FilesDAO();
 		ActionForward forward = null;
 		
-		String saveFolder = "D:\\0900_gb_kmj\\jsp\\workspace\\board_mvc2\\WebContent\\app\\upload";
+		String saveFolder = "/Users/joshua/Desktop/JoshuaStudy/jsp/workspace/board_mvc2/WebContent/app/upload";
 		
 		int fileSize = 5 * 1024 * 1024; //5M
 		

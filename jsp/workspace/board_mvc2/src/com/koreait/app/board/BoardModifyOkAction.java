@@ -29,7 +29,7 @@ public class BoardModifyOkAction implements Action{
 		
 		MultipartRequest multi = null;
 		
-		String saveFolder = "D:\\0900_gb_kmj\\jsp\\workspace\\board_mvc2\\WebContent\\app\\upload";
+		String saveFolder = "/Users/joshua/Desktop/JoshuaStudy/jsp/workspace/board_mvc2/WebContent/app/upload";
 		int fileSize = 5 * 1024 * 1024;
 		
 		try {

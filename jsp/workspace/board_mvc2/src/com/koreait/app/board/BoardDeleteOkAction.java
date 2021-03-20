@@ -22,7 +22,7 @@ public class BoardDeleteOkAction implements Action {
 		//리눅스 서버로 출시 후 서비스 제공 시 업로드 경로는 아래와 같이 사용하여 작업한다. 
 		//req.getServletContext().getRealPath("/")
 		
-		String saveFolder = "D:\\0900_gb_kmj\\jsp\\workspace\\board_mvc2\\WebContent\\app\\upload";
+		String saveFolder = "/Users/joshua/Desktop/JoshuaStudy/jsp/workspace/board_mvc2/WebContent/app/upload";
 		int boardNum = Integer.parseInt(req.getParameter("boardNum"));
 		int page = Integer.parseInt(req.getParameter("page"));
 		
