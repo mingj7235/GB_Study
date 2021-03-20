@@ -17,6 +17,8 @@ function formSubmit(){
 	form.submit();
 }
 
+
+
 //외부에서 사용자가 입력한 id값을 전달받는다.
 function checkId(id){
 	//사용자가 id를 입력할 때 마다 Flag를 false로 초기화해준다.
