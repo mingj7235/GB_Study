@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>		
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Files">
+	<insert id="insertFile" parameterType="filesVO">
+		INSERT INTO TABLE_FILES VALUES(#{fileName}, #{boardNum})
+	</insert>
+	
+	<select id="getFileList" parameterType="_int" resultType="filesVO">
+		SELECT * FROM TABLE_FILES WHERE BOARDNUM = #{boardNum}
+	</select>
+	
+	<delete id="deleteFile" parameterType="_int">
+		DELETE FROM TABLE_FILES WHERE BOARDNUM = #{boardNum}
+	</delete>
+</mapper>
