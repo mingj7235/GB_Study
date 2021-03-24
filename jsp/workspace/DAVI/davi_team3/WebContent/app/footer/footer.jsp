@@ -35,7 +35,7 @@
 						<ul>
 							<li><a href="index.jsp">메인</a></li>
 							<li><a href="#">개인 식단 관리</a></li>
-							<li><a href="#">식단 인중샷</a></li>
+							<li><a href="#">식단 인증샷</a></li>
 							<li>
 								<span class="opener">치팅모임</span>
 								<ul>

@@ -11,7 +11,7 @@
 	<!-- Header -->
 	<header id="header">
 		<a href="index.jsp" class="logo"><strong>DAVI</strong> </a>
-		<ul class="actions small">
+		<ul class="actions small" style="display:flex; justify-content:flex-end;">
 			<!-- 세션의 아이디로그인 정보를 이용하여 if문의 조건 검색 -->
 			<c:set var="check" value="1" />
 			<c:if test="${check eq 1}">					
