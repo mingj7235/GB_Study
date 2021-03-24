@@ -63,13 +63,12 @@
 									<input type="text" name="memberId" id="memberId" value="" placeholder="이름" style="margin-bottom: 8px;"/>
 									
 									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>비밀번호</h4>
-									<input type="password" name="memberPw" id="memberPw" value="" placeholder="비밀번호" style="margin-bottom: 8px;"/>
+									<input type="password" name="memberId" id="memberId" value="" placeholder="비밀번호" style="margin-bottom: 8px;"/>
 									
 									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>비밀번호 확인</h4>
-									<input type="password" name="memberPw_re" id="memberPw_re" value="" placeholder="비밀번호 확인" style="margin-bottom: 8px;"/>
+									<input type="password" name="memberId" id="memberId" value="" placeholder="비밀번호 확인" style="margin-bottom: 8px;"/>
 									
 									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>전화번호 등록</h4>
-
 									<div style="display:flex; ">
 										<select name="memberPhoneHead" id="memberPhoneHead" style="width: 25%;margin-right: 5px; ">
 											<option value="010">010</option>
@@ -82,7 +81,6 @@
 									</div>
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
 										<h6 id="check_phone_result" style="width: 400px; margin-top: 10px;"></h6>
-
 									<div style="display:flex;">
 										<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 75%; margin-right: 5px"/>
 										<input type="button" value="인증번호확인" class="" style="width: 25%;padding: 0 2px;font-size: 0.7rem;" onclick=""/>
@@ -90,10 +88,6 @@
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
 										<h6 id="check_modifyNum_result" style="width: 400px; margin-top: 10px;"></h6>
 									<br>
-									
-									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>이메일</h4>
-									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="이메일" style="margin-bottom: 8px;"/>
-									
 									<!-- Break -->
 									<div class="col-12">
 										<select name="demo-category" id="demo-category">
