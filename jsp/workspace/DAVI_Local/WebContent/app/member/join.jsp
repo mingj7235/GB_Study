@@ -81,14 +81,14 @@
 										<input type="button" value="인증번호발송" class="primary" style="width: 25%;;padding: 0 2px;font-size: 0.7rem;" onclick=""/>
 									</div>
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
-										<h6 id="check_phone_result" style="width: 400px; margin-top: 10px;"></h6>
+										<h6 id="check_phone_result" style="width: 100%; margin-top: 10px;"></h6>
 
 									<div style="display:flex;">
 										<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 75%; margin-right: 5px"/>
 										<input type="button" value="인증번호확인" class="" style="width: 25%;padding: 0 2px;font-size: 0.7rem;" onclick=""/>
 									</div>
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
-										<h6 id="check_modifyNum_result" style="width: 400px; margin-top: 10px;"></h6>
+										<h6 id="check_modifyNum_result" style="width: 100%; margin-top: 10px;"></h6>
 									
 									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>이메일</h4>
 									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="이메일" style="margin-bottom: 8px;"/>
@@ -205,9 +205,6 @@
 										<label for="human"><span style ="color:#ffaec9">[필수]</span> 동의합니다.</label>
 									</div>
 									<hr style="width :100%; color: #ffaec9">
-							
-									
-									
 									
 									<!-- Break -->
 									<div class="col-12">
