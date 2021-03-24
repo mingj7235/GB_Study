@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE HTML>
 <!--
 	Editorial by Pixelarity
@@ -12,6 +13,41 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.report{
+				margin-bottom:10px;
+				color:#ffaec9;
+				font-weight:bold;
+			}
+			
+			.report span{
+				color:black;
+				margin-left:5px;
+				font-weight:100;
+			}
+			
+			.graph {
+				width:80%;
+			}
+			
+			.graph__description {
+			    display: flex;
+			    justify-content: space-between;
+			    margin-bottom: 10px;
+			}
+
+			.graph__bar{
+			    height: 3px;
+			    background-color: #D3D3D3;
+			    margin-bottom: 15px; 
+			}
+			
+			.graph__value{
+			    width: 100%;
+			    height: 3px;
+			    background-color: #ffaec9;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -23,16 +59,7 @@
 						<div class="inner">
 
 							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by Pixelarity</a>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-									</ul>
-								</header>
+								<c:import url="/app/header/header.jsp" />
 
 							<!-- Banner -->
 								<section id="banner">
@@ -47,12 +74,12 @@
 										</ul>
 									</div>
 									<span class="image object" style="width:50%;" >
-										<img src="images/비서.jpg" alt="" style="width:100%; height:400px; object-fit: contain;"/>
+										<img src="images/비서.PNG" alt="" style="width:100%; height:400px; object-fit: contain; border-radius:100%;"/>
 									</span>
 								</section>
 
 							<!-- Section -->
-								<section>
+								<section style="padding-top:60px;">
 									<header class="major">
 										<h2>나만의 다이어트 비서</h2>
 									</header>
@@ -60,66 +87,112 @@
 										<article>
 											<span class="icon fa-gem"></span>
 											<div class="content">
-												<h3>Portitor ullamcorper</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+												<h3>인증 Report</h3>
+												<p class="report">베스트 게시판 : <span>10개</span></p>
+												<p class="report">daily 인증 : <span>80회</span></p>
+												<p class="report">성공 후기 : <span>2개</span></p>
 											</div>
 										</article>
 										<article>
 											<span class="icon solid fa-paper-plane"></span>
 											<div class="content">
-												<h3>Sapien veroeros</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+												<h3>오늘의 팩폭</h3>
+												<p class="report">다이어트 하기로 했으면</p>
+												<p class="report">마음만 먹어야지</p>
+												<p class="report">자꾸 이것 저것 먹으면 되겠니?</p>
 											</div>
 										</article>
 										<article>
 											<span class="icon solid fa-rocket"></span>
 											<div class="content">
-												<h3>Quam lorem ipsum</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+												<h3>각오 & 목표</h3>
+												<p class="report">각오 : <span>날 무시하던 전남친에게 제대로 복수하기!</span></p>
+												<p class="report">목표 : <span>20kg 감량!!</span></p>
 											</div>
 										</article>
 										<article>
 											<span class="icon solid fa-signal"></span>
 											<div class="content">
-												<h3>Sed magna finibus</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+												<h3>다이어트 Report</h3>
+												<div class="graph">
+									              <div class="graph__description">
+									                <span>목표: 54kg</span>
+									                <span>70%</span>
+									              </div>
+									              <div class="graph__bar">
+									                <div class="graph__value" style="width: 70%"></div>
+									              </div>
+									            </div>
+												<div class="graph">
+									              <div class="graph__description">
+									                <span>인증 현황</span>
+									                <span>18/20 (90%)</span>
+									              </div>
+									              <div class="graph__bar">
+									                <div class="graph__value" style="width: 90%"></div>
+									              </div>
+									            </div>
 											</div>
 										</article>
 									</div>
 								</section>
 
 							<!-- Section -->
-								<section>
+								<section style="padding-top:60px;">
 									<header class="major">
 										<h2>베스트 인증 게시판</h2>
 									</header>
 									<div class="posts">
 										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">1st</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;20901</span>
+											</div>
 											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
 											<h3>Interdum aenean</h3>
 											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 										</article>
 										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">2nd</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;18902</span>
+											</div>
 											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
 											<h3>Nulla amet dolore</h3>
 											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 										</article>
 										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">3rd</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;16239</span>
+											</div>
 											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
 											<h3>Tempus ullamcorper</h3>
 											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 										</article>
 										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">4th</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;13289</span>
+											</div>
 											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
 											<h3>Sed etiam facilis</h3>
 											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 										</article>
 										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">5th</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;11092</span>
+											</div>
 											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
 											<h3>Feugiat lorem aenean</h3>
 											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 										</article>
 										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">6th</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;9999</span>
+											</div>
 											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
 											<h3>Amet varius aliquam</h3>
 											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
@@ -131,97 +204,7 @@
 					</div>
 
 				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
-									</ul>
-								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved.</p>
-								</footer>
-
-						</div>
-					</div>
-
+				<c:import url="/app/footer/footer.jsp" />
 			</div>
 
 		<!-- Scripts -->

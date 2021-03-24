@@ -36,27 +36,28 @@
 
 							<!-- Content -->
 								<section>
-									<header class="major">
-                        				<img src="${pageContext.request.contextPath}/images/logo_1.png" />
-                   					</header>
+									<a href="#" style="text-align: center; display: block;" onfocus="this.blur()" >
+                        				<img src="${pageContext.request.contextPath}/images/logo_2.png"/>
+									</a>
+								
 										<form method="post" action="#">
 														<div class="row gtr-uniform" style="text-align:center;">
-															<div class="col-6 col-12-xsmall">
-															<!-- <h3 style="margin:0;">아이디</h3> -->
+															<div class="col-12">
 															<br>
-																<input type="text" name="memberId" id="memberId"  placeholder="아이디를 입력하세요." style="width:100%; margin:0px auto;" />
 															<br>
-															<!-- <h3 style="margin:0;">비밀번호</h3> -->
+																<input type="text" name="memberId" id="memberId"  placeholder="아이디를 입력하세요." style="width:49%; margin:0px auto;" />
 															<br>
-																<input type="password" name="memberPw" id="memberPw" placeholder="비밀번호를 입력하세요." style="width:100%; margin:0px auto;"/>
+															<br>
+																<input type="password" name="memberPw" id="memberPw" placeholder="비밀번호를 입력하세요." style="width:49%; margin:0px auto;"/>
 															</div>
 
 															<!-- button -->
 															<div class="col-12">
-															<input type="submit" value="Send Message" class="primary" style="width:49%">
+															<br>
+															<input type="submit" value="Login" class="primary" style="width:49%">
+															<hr style="background-color: #ffaec9; height: 2px;">
 															</div>
 														</div>
-														<hr style="background-color: #ffaec9; height: 2px;">
 													</form>
 
 								</section>
