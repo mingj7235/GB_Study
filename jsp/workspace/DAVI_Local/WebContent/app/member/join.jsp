@@ -216,10 +216,10 @@
 									
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>성별</h5>
 									<div class="col-4 col-12-small" style ="width : 400px; ">
-										<input type="radio" id="memberGender" name="memberGender" value ="남" checked> 
-										<label for="priority-low">남</label>
-										<input type="radio" id="memberGender" name="memberGender" value ="여"> 
+										<input type="radio" id="memberGender" name="memberGender" value ="여" checked> 
 										<label for="priority-normal">여</label>
+										<input type="radio" id="memberGender" name="memberGender" value ="남"> 
+										<label for="priority-low">남</label>
 									</div>
 									
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>지역</h5>

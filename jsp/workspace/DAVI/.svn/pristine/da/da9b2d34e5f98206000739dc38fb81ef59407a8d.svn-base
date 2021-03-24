@@ -33,37 +33,27 @@
 							<h2>Menu</h2>
 						</header>
 						<ul>
-							<li><a href="index.html">Homepage</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="index.jsp">메인</a></li>
+							<li><a href="#">개인 식단 관리</a></li>
+							<li><a href="#">식단 인중샷</a></li>
 							<li>
-								<span class="opener">Submenu</span>
+								<span class="opener">치팅모임</span>
 								<ul>
-									<li><a href="#">Lorem Dolor</a></li>
-									<li><a href="#">Ipsum Adipiscing</a></li>
-									<li><a href="#">Tempus Magna</a></li>
-									<li><a href="#">Feugiat Veroeros</a></li>
+									<li><a href="#">서울/경기</a></li>
+									<li><a href="#">강원도</a></li>
+									<li><a href="#">충청도</a></li>
+									<li><a href="#">전라도</a></li>
+									<li><a href="#">경상도</a></li>
 								</ul>
 							</li>
-							<li><a href="#">Etiam Dolore</a></li>
-							<li><a href="#">Adipiscing</a></li>
-							<li>
-								<span class="opener">Another Submenu</span>
-								<ul>
-									<li><a href="#">Lorem Dolor</a></li>
-									<li><a href="#">Ipsum Adipiscing</a></li>
-									<li><a href="#">Tempus Magna</a></li>
-									<li><a href="#">Feugiat Veroeros</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Maximus Erat</a></li>
-							<li><a href="#">Sapien Mauris</a></li>
-							<li><a href="#">Amet Lacinia</a></li>
+							<li><a href="elements.html">자유게시판</a></li>
+							<li><a href="elements.html">홈 트레이닝</a></li>
+							
 						</ul>
 					</nav>
 
 				<!-- Section -->
-					<section>
+					<!-- <section>
 						<header class="major">
 							<h2>Ante interdum</h2>
 						</header>
@@ -84,14 +74,14 @@
 						<ul class="actions">
 							<li><a href="#" class="button">More</a></li>
 						</ul>
-					</section>
+					</section> -->
 
 				<!-- Section -->
 					<section>
 						<header class="major">
-							<h2>Get in touch</h2>
+							<h2>DAVI</h2>
 						</header>
-						<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<p>간단한 소개글</p>
 						<ul class="contact">
 							<li class="icon solid fa-envelope"><a href="#">대표 이메일</a></li>
 							<li class="icon solid fa-phone">대표 전화번호</li>
