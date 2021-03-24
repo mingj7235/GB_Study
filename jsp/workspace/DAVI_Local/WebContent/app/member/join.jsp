@@ -50,25 +50,31 @@
 				 -->
 				 <section>
 					<header class="major">
-						<img src="${pageContext.request.contextPath}/images/logo_1.png" />
+						<a href="${pageContext.request.contextPath}/index.jsp">
+							<img src="${pageContext.request.contextPath}/images/logo_1.png" />
+						</a>
 					</header>
-					<div class="features">
+					<!-- 본문 전체 div  -->
+					<div style="width:50%;">
 						<form method="post" action="#">
 						<div style="align-items: right">
 								<h5>(<span style ="color:#ffaec9;">*</span>)표시는 필수입니다.</h5>
 						</div>
 							<div class="row gtr-uniform">
-								<div class="col-6 col-12-xsmall">
-									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>아이디</h4>
-									<input type="text" name="memberId" id="memberId" value="" placeholder="이름" style="margin-bottom: 8px;"/>
+								<div class="col-6 col-12-xsmall" style="width: 100%;">
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>아이디</h5>
+									<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" style="margin-bottom: 8px;"/>
 									
-									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>비밀번호</h4>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>비밀번호</h5>
 									<input type="password" name="memberPw" id="memberPw" value="" placeholder="비밀번호" style="margin-bottom: 8px;"/>
 									
-									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>비밀번호 확인</h4>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>비밀번호 확인</h5>
 									<input type="password" name="memberPw_re" id="memberPw_re" value="" placeholder="비밀번호 확인" style="margin-bottom: 8px;"/>
+
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>이름</h5>
+									<input type="text" name="memberName" id="memberName" value="" placeholder="이름" style="margin-bottom: 8px;"/>
 									
-									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>전화번호 등록</h4>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>전화번호 등록</h5>
 
 									<div style="display:flex; ">
 										<select name="memberPhoneHead" id="memberPhoneHead" style="width: 25%;margin-right: 5px; ">
@@ -90,9 +96,10 @@
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
 										<h6 id="check_modifyNum_result" style="width: 100%; margin-top: 10px;"></h6>
 									
-									<h4 style="margin-bottom: 0px;"><span style ="color:#ffaec9;">*</span>이메일</h4>
-									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="이메일" style="margin-bottom: 8px;"/>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>이메일</h5>
+									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="abc1234@def.com" style="margin-bottom: 8px;"/>
 									
+									<hr style="width :100%; background-color: #ffaec9;">
 									<div class="col-12">
 										<textarea name="term" id="term" style ="width : 100%; height : 200px; resize: none;" readonly="readonly">
 시행일자 : 2021년 3월 24일
@@ -200,61 +207,40 @@
 								</textarea>
 									</div>
 									
-									<div class="col-6 col-12-small" style="margin-top: 10px; width : 200px;">
+									<div class="col-6 col-12-small" style="margin-top: 10px; width : 200px; ">
 										<input type="checkbox" id="human" name="human" checked>
 										<label for="human"><span style ="color:#ffaec9">[필수]</span> 동의합니다.</label>
 									</div>
-									<hr style="width :100%; color: #ffaec9">
+									<hr style="width :100%; background-color: #ffaec9;">
 									
-									<!-- Break -->
-									<div class="col-12">
-										<select name="demo-category" id="demo-category">
-											<option value="">- Category -</option>
-											<option value="1">Manufacturing</option>
-											<option value="1">Shipping</option>
-											<option value="1">Administration</option>
-											<option value="1">Human Resources</option>
-										</select>
+									
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>성별</h5>
+									<div class="col-4 col-12-small" style ="width : 400px; ">
+										<input type="radio" id="memberGender" name="memberGender" value ="남" checked> 
+										<label for="priority-low">남</label>
+										<input type="radio" id="memberGender" name="memberGender" value ="여"> 
+										<label for="priority-normal">여</label>
+									</div>
+									
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>지역</h5>
+										<div style="width: 100%;">
+											<div class="col-9" style="width: 100%; display: flex;">
+												<input type="text" name="memberZipcode" class="postcodify_postcode5" value="" readonly placeholder="- 우편번호 (검색버튼 클릭 후 검색)" style="width: 75%; margin-right: 5px;"/>
+												<input type="button" id="postcodify_search_button" value="검색" class="fit" style="width: 25%">
+											</div>
+										</div>
+									<input type="text" name="memberAddress" class="postcodify_address" placeholder="- 주소 (우편번호 검색 후 자동입력)" value="" style="width: 100%; margin-top: 10px;" readonly/>
+									<input type="text" name="memberAddressDetail" class="postcodify_details" placeholder="- 세부 주소" style="width: 100%; margin-top: 10px;"/>
+									<input type="text" name="memberAddressEtc" class="postcodify_details" placeholder="- 기타 주소" style="width: 100%; margin-top: 10px;"/>
+									<h6 style ="width: 100%; margin-top: 5px"></h6><br>	
+									
 									</div>
 								</div>
-								<!-- Break -->
-								<div class="col-4 col-12-small">
-									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-									<label for="demo-priority-low">Low</label>
-								</div>
-								<div class="col-4 col-12-small">
-									<input type="radio" id="demo-priority-normal" name="demo-priority">
-									<label for="demo-priority-normal">Normal</label>
-								</div>
-								<div class="col-4 col-12-small">
-									<input type="radio" id="demo-priority-high" name="demo-priority">
-									<label for="demo-priority-high">High</label>
-								</div>
-								<!-- Break -->
-								<div class="col-6 col-12-small">
-									<input type="checkbox" id="demo-copy" name="demo-copy">
-									<label for="demo-copy">Email me a copy</label>
-								</div>
-								<div class="col-6 col-12-small">
-									<input type="checkbox" id="demo-human" name="demo-human" checked>
-									<label for="demo-human">I am a human</label>
-								</div>
-								<!-- Break -->
-								<div class="col-12">
-									<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-								</div>
-								<!-- Break -->
-								<div class="col-12">
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</div>
-				</section>
-
+							</form>
+						</div>
+					</section>
+			</div>
+		</div>
 				
 							
 
@@ -349,8 +335,8 @@
 
 						</div>
 					</div>
-
-			</div>
+				
+	</div>
 
 		<!-- Scripts -->
 			<script>var contextPath = "${pageContext.request.contextPath}";</script>
@@ -360,6 +346,8 @@
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+			<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+			<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
 	</body>
 </html>
