@@ -241,8 +241,6 @@
 					</section>
 			</div>
 		</div>
-				
-							
 
 				<!-- Sidebar -->
 					<div id="sidebar">
