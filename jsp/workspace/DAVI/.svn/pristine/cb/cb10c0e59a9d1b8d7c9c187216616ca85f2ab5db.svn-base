@@ -37,7 +37,7 @@
 							<!-- Content -->
 								<section style="padding-top:3%;">
 								
-									<a href="${pageContext.request.contextPath}/index.jsp" style="text-align: center; display: block; margin-left:32%; margin-right:32%; border:0;">
+									<a href="${pageContext.request.contextPath}/index.jsp" style="text-align: center; display: block; margin:2% auto; border:0;">
 										<img src="${pageContext.request.contextPath}/images/logo_2.png"  style="max-width:100%; height:auto;"/>
 									</a>
 							
@@ -45,16 +45,16 @@
 										<form method="post" action="#">
 														<div class="row gtr-uniform" style="text-align:center;">
 															<div class="col-12">
-																<input type="text" name="memberId" id="memberId"  placeholder="아이디를 입력하세요." style="width:49%; margin-top: 3%;margin-left: 25.5%;" />
-																<input type="password" name="memberPw" id="memberPw" placeholder="비밀번호를 입력하세요." style="width:49%; margin-top: 3%;margin-left: 25.5%;"/>
+																<input type="text" name="memberId" id="memberId"  placeholder="아이디" style="width:30%; margin:1% auto;" />
+																<input type="password" name="memberPw" id="memberPw" placeholder="비밀번호" style="width:30%; margin:1% auto;"/>
 															</div>
 
 															<!-- button -->
-															<div class="col-12">
-															<input type="submit" value="Login" class="primary" style="width:49%; margin-top:1%; margin-bottom:1%;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png" style="margin-top:2%;"><a href="findId.jsp">아이디/비밀번호 찾기</a></div>
-															<hr style="background-color: #ffaec9; height: 2px; width:49%; margin-left:25.5%; margin-top:2%; margin-bottom:3%;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png">아직 DAVI의 회원이 아니신가요? > <a href="join.jsp">회원가입</a></div>
+															<div class="col-12" style="padding-top:0%;">
+															<input type="submit" value="Login" class="primary" style="width:30%; margin:1% auto;">
+															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png" style="margin-top:2%;"><a href="findId.jsp"> 아이디/비밀번호 찾기</a></div>
+															<hr style="background-color: #ffaec9; height: 3px; width:40%; margin:1% auto;">
+															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png"> 아직 DAVI의 회원이 아니신가요? > <a href="join.jsp">회원가입</a></div>
 															</div>
 														</div>
 													</form>

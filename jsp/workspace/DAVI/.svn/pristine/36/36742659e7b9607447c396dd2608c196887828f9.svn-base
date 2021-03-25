@@ -28,20 +28,20 @@
 
 							<!-- Content -->
 								<section>								
-									<h2 align="center" style="font-family: 'Sunflower', sans-serif;">회원 아이디 찾기</h2>	
+									<h2 align="center">회원 아이디 찾기</h2>	
 								
-										<form method="post" action="#">		
-											<hr>															
+										<form method="post" action="#">																												
 											<div class="row gtr-uniform" style="text-align:center;">
 												<div class="col-12">															
-													<input type="text" name="memberName" id="memberName"  placeholder="이름을 입력하세요" style="width:49%; margin:30px auto;" />															
-													<input type="password" name="memberEmail" id="memberEmail" placeholder="EMAIL을 입력하세요" style="width:49%; margin:10px auto;"/>
+													<input type="text" name="memberName" id="memberName"  placeholder="이름을 입력하세요" style="width:30%; margin:1% auto;" />															
+													<input type="password" name="memberEmail" id="memberEmail" placeholder="EMAIL을 입력하세요" style="width:30%; margin:1% auto;"/>
 												</div>
 
 												<!-- button -->
 												<div class="col-12">															
-												<input type="submit" value="ID 찾기" class="primary" style="width:49%;">
-												<hr style="background-color: #ffaec9; height: 2px;">												
+												<input type="submit" value="ID 찾기" class="primary" style="width:30%; margin:1% auto;">
+												<hr style="background-color: #ffaec9; height: 3px; width:40%; margin:1% auto;">
+												<div><h4>이름과 이메일을 입력하시면 가입하신 아이디를 알려드립니다.</h4></div>												
 												</div>												
 											</div>
 										</form>	
