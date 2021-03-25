@@ -9,8 +9,10 @@
 </head>
 <body>
 	<!-- Header -->
-	<header id="header">
-		<a href="index.jsp" class="logo"><strong>DAVI</strong> </a>
+	<header id="header">	
+		<a href="${pageContext.request.contextPath}/index.jsp" class="logo">
+		<img src="${pageContext.request.contextPath}/images/logo_header.png" width="60" height="27" />
+		</a>	
 		<ul class="actions small" style="display:flex; justify-content:flex-end;">
 			<!-- 세션의 아이디로그인 정보를 이용하여 if문의 조건 검색 -->
 			<c:set var="check" value="1" />
@@ -21,7 +23,7 @@
 			<c:if test="${check eq 2}">
 				<li><a href="#" class="button primary small">로그아웃</a></li>
 			</c:if>						
-		</ul>
+		</ul>		
 	</header>
 		
 </body>

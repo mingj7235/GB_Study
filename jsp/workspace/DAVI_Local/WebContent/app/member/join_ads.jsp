@@ -82,8 +82,8 @@
 						MEMBERADDRESSDETAIL VARCHAR2(500),
 						MEMBERADDRESSETC VARCHAR2(300)
 				 -->
-				 <section>
-						<a href="${pageContext.request.contextPath}/index.jsp" style="text-align: center; display: block; border-bottom: none; ">
+				 <section style="padding-top: 3%;">
+						<a href="${pageContext.request.contextPath}/index.jsp" style="text-align: center; display: block; border-bottom: none; margin-bottom: 20px;">
 							<img src="${pageContext.request.contextPath}/images/logo_2.png" />
 						</a>
 					<!-- 본문 전체 div  -->

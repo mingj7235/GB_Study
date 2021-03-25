@@ -33,7 +33,7 @@
 							<h2>Menu</h2>
 						</header>
 						<ul>
-							<li><a href="index.jsp">메인</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.jsp">메인</a></li>
 							<li><a href="#">개인 식단 관리</a></li>
 							<li><a href="#">식단 인증샷</a></li>
 							<li>
@@ -46,8 +46,8 @@
 									<li><a href="#">경상도</a></li>
 								</ul>
 							</li>
-							<li><a href="elements.html">자유게시판</a></li>
-							<li><a href="elements.html">홈 트레이닝</a></li>
+							<li><a href="${pageContext.request.contextPath}/elements.html">자유게시판</a></li>
+							<li><a href="${pageContext.request.contextPath}/elements.html">홈 트레이닝</a></li>
 							
 						</ul>
 					</nav>
