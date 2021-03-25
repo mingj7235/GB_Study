@@ -84,7 +84,7 @@
 										</ul>
 									</div>
 									<span class="image object" style="width:50%;" >
-										<img src="${pageContext.request.contextPath}/images/비서.PNG" alt="" style="width:100%; height:400px; object-fit: contain; border-radius:100%;"/>
+										<img src="${pageContext.request.contextPath}/images/비서.jpg" alt="" style="width:100%; height:400px; object-fit: contain; border-radius:100%;"/>
 									</span>
 								</section>
 
