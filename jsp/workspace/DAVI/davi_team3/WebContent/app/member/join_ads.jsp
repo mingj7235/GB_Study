@@ -14,6 +14,46 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<style>
+			.section {width:500px; height: 500px; margin: 20px auto;}
+			.section input[id*="slide"] {display:none;}
+			.section .slidewrap {max-width:1200px;margin:0 auto;}
+			.section .slidelist {white-space:nowrap;font-size:0;overflow:hidden;position:relative;}
+			.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
+			.section .slidelist > li > a {display:block;position:relative;}
+			.section .slidelist > li > a img {width:100%;}
+			.section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
+			.section .slidelist .textbox {position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%);line-height:1.6;text-align:center;}
+			.section .slidelist .textbox h3 {font-size:36px;color:#fff;;transform:translateY(30px);transition:all .5s;}
+			.section .slidelist .textbox p {font-size:16px;color:#fff;opacity:0;transform:translateY(30px);transition:all .5s;}
+			
+			/* input에 체크되면 슬라이드 효과 */
+			.section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
+			.section input[id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
+			.section input[id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
+		
+			/* input에 체크되면 텍스트 효과 */
+			.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+			.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+			.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+			.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+			.section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+			.section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+		
+			/* 좌,우 슬라이드 버튼 */
+			.slide-control > div {display:none;}
+			.section .left {left:5px;background:url('${pageContext.request.contextPath}/app/member/img/left.png') center center / 100% no-repeat; margin-right:50px; }
+			.section .right {right:5px;background:url('${pageContext.request.contextPath}/app/member/img/right.png') center center / 100% no-repeat;}
+			.section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {display:block;}
+			.section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {display:block;}
+			.section input[id="slide03"]:checked ~ .slidewrap .slide-control > div:nth-child(3) {display:block;}
+		
+			/* 페이징 */
+			.slide-pagelist {text-align:center;padding:5px;}
+			.slide-pagelist > li {display:inline-block;vertical-align:middle;}
+			.slide-pagelist > li > label {display:block;padding:8px 30px; border: 1px solid #888888;border-radius:30px;background:white;margin:20px 10px;cursor:pointer;}
+			.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {background:#ffaec9;}
+			.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {background:#ffaec9;}
+			.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {background:#ffaec9;}
 		</style>
 		
 	</head>
@@ -52,7 +92,7 @@
 						<div style="align-items: right; margin-bottom: 20px">
 								<h5>(<span style ="color:#ffaec9;">*</span>)표시는 필수입니다.</h5>
 						</div>
-							<div class="row gtr-uniform" style="">
+							<div class="row gtr-uniform" style="margin-right: 20px;">
 								<div class="col-6 col-12-xsmall" style="width: 100%;">
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 아이디</h5>
 									<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" style="margin-bottom: 20px;"/>
@@ -229,6 +269,70 @@
 									</div>
 								</div>
 							</form>
+								<div class="section" >
+								<input type="radio" name="slide" id="slide01" checked>
+								<input type="radio" name="slide" id="slide02">
+								<input type="radio" name="slide" id="slide03">
+								
+								<div class="slidewrap" style = "position: fixed; width : 400px; height: 400px; ">
+									
+									<ul class="slidelist">
+										<!-- 슬라이드 영역 -->
+										<li class="slideitem">
+											<a>
+												<div class="textbox">
+													<h3>첫번째 슬라이드</h3>
+													<p>첫번째 슬라이드 입니다.</p>
+												</div>
+												<img src="${pageContext.request.contextPath}/app/member/img/slide.jpg">
+											</a>
+										</li>
+										<li class="slideitem">
+											<a>
+												
+												<div class="textbox">
+													<h3>두번째 슬라이드</h3>
+													<p>두번째 슬라이드 입니다.</p>
+												</div>
+												<img src="${pageContext.request.contextPath}/app/member/img/slide.jpg">
+											</a>
+										</li>
+										<li class="slideitem">
+											<a>
+												
+												<div class="textbox">
+													<h3>두번째 슬라이드</h3>
+													<p>두번째 슬라이드 입니다.</p>
+												</div>
+												<img src="${pageContext.request.contextPath}/app/member/img/slide.jpg">
+											</a>
+										</li class="slideitem">
+							
+										<!-- 좌,우 슬라이드 버튼 -->
+										<div class="slide-control">
+											<div>
+												<label for="slide03" class="left"></label>
+												<label for="slide02" class="right"></label>
+											</div>
+											<div>
+												<label for="slide01" class="left"></label>
+												<label for="slide03" class="right"></label>
+											</div>
+											<div>
+												<label for="slide02" class="left"></label>
+												<label for="slide01" class="right"></label>
+											</div>
+										</div>
+							
+									</ul>
+									<!-- 페이징 -->
+									<ul class="slide-pagelist">
+										<li><label for="slide01"></label></li>
+										<li><label for="slide02"></label></li>
+										<li><label for="slide03"></label></li>
+									</ul>
+								</div>
+							</div>	
 						</div>
 					</section>
 				</div>

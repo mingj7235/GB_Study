@@ -51,9 +51,9 @@
 			.slide-pagelist {text-align:center;padding:5px;}
 			.slide-pagelist > li {display:inline-block;vertical-align:middle;}
 			.slide-pagelist > li > label {display:block;padding:8px 30px; border: 1px solid #888888;border-radius:30px;background:white;margin:20px 10px;cursor:pointer;}
-			.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {background:#509ed8;}
-			.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {background:#509ed8;}
-			.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {background:#509ed8;}
+			.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {background:#ffaec9;}
+			.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {background:#ffaec9;}
+			.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {background:#ffaec9;}
 		</style>
 		
 	</head>
@@ -87,12 +87,12 @@
 							<img src="${pageContext.request.contextPath}/images/logo_2.png" />
 						</a>
 					<!-- 본문 전체 div  -->
-					<div style="width:50%;">
+					<div style="display: flex; justify-content: center;">
 						<form method="post" action="#">
 						<div style="align-items: right; margin-bottom: 20px">
 								<h5>(<span style ="color:#ffaec9;">*</span>)표시는 필수입니다.</h5>
 						</div>
-							<div class="row gtr-uniform" style="text-align: center;">
+							<div class="row gtr-uniform" style="margin-right: 20px;">
 								<div class="col-6 col-12-xsmall" style="width: 100%;">
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 아이디</h5>
 									<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" style="margin-bottom: 20px;"/>
@@ -269,12 +269,12 @@
 									</div>
 								</div>
 							</form>
-								<div class="section">
+								<div class="section" >
 								<input type="radio" name="slide" id="slide01" checked>
 								<input type="radio" name="slide" id="slide02">
 								<input type="radio" name="slide" id="slide03">
 								
-								<div class="slidewrap" style = "position: fixed; width : 500px; height: 500px; ">
+								<div class="slidewrap" style = "position: fixed; width : 400px; height: 400px; ">
 									
 									<ul class="slidelist">
 										<!-- 슬라이드 영역 -->
