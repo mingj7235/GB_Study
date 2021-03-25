@@ -12,8 +12,18 @@
 		<title>Untitled</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 		<style>
+			body{
+				font-family: 'Sunflower', sans-serif;
+			}
+			
+			h1, h2, h3, h4 {
+				font-family: 'Sunflower', sans-serif;
+			}
+			
 			.report{
 				margin-bottom:10px;
 				color:#ffaec9;
@@ -74,14 +84,14 @@
 										</ul>
 									</div>
 									<span class="image object" style="width:50%;" >
-										<img src="images/비서.PNG" alt="" style="width:100%; height:400px; object-fit: contain; border-radius:100%;"/>
+										<img src="${pageContext.request.contextPath}/images/비서.PNG" alt="" style="width:100%; height:400px; object-fit: contain; border-radius:100%;"/>
 									</span>
 								</section>
 
 							<!-- Section -->
 								<section style="padding-top:60px;">
 									<header class="major">
-										<h2>나만의 다이어트 비서</h2>
+										<h2 style="padding-right:10px;">나만의 다이어트 비서</h2>
 									</header>
 									<div class="features">
 										<article>
@@ -139,10 +149,22 @@
 
 							<!-- Section -->
 								<section style="padding-top:60px;">
-									<header class="major">
-										<h2>베스트 인증 게시판</h2>
-									</header>
-									<div class="posts">
+									
+									<div class="headers" style="display:flex;">
+										<header id="best" class="major" style="margin-right:15px; cursor:pointer;">
+											<h3 style="padding-right:10px;">베스트 인증 게시판</h3>
+										</header>
+										<h3 style="margin-right:15px;">|</h3>
+										<header id="free" class="" style="margin-right:15px; cursor:pointer;">
+											<h3 style="padding-right:10px;">자유 게시판</h3>
+										</header>
+										<h3 style="margin-right:15px;">|</h3>
+										<header id="cheat" class="" style="margin-right:15px; cursor:pointer;">
+											<h3 style="padding-right:10px;">치팅 모임</h3>
+										</header>
+									</div>
+									
+									<div id="best_posts" class="posts">
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
 												<span style="color:black; font-size:1.8rem; font-weight:bold;">1st</span>
@@ -198,6 +220,132 @@
 											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
 										</article>
 									</div>
+									
+									<div id="free_posts" class="posts" style="display:none;">
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">
+													<span style="color:black; font-size:1.6rem; font-weight:bold;">노하우 -</span> 1st
+												</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;20901</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<h3>Interdum aenean</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">
+													<span style="color:black; font-size:1.6rem; font-weight:bold;">노하우 -</span> 2nd
+												</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;18902</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+											<h3>Nulla amet dolore</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">
+													<span style="color:black; font-size:1.6rem; font-weight:bold;">고민상담 -</span> 1st
+												</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;16239</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+											<h3>Tempus ullamcorper</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">
+													<span style="color:black; font-size:1.6rem; font-weight:bold;">고민상담 -</span> 2nd
+												</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;13289</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+											<h3>Sed etiam facilis</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">
+													<span style="color:black; font-size:1.6rem; font-weight:bold;">잡담 -</span> 1st
+												</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;11092</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+											<h3>Feugiat lorem aenean</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">
+													<span style="color:black; font-size:1.6rem; font-weight:bold;">잡담 -</span> 2nd
+												</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;9999</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
+											<h3>Amet varius aliquam</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+									</div>
+									
+									<div id="cheat_posts" class="posts" style="display:none;">
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.6rem; font-weight:bold;">서울/경기</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;20901</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<h3>Interdum aenean</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.6rem; font-weight:bold;">서울/경기</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;18902</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+											<h3>Nulla amet dolore</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.6rem; font-weight:bold;">강원도</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;16239</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+											<h3>Tempus ullamcorper</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.6rem; font-weight:bold;">충청도</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;13289</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+											<h3>Sed etiam facilis</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.6rem; font-weight:bold;">전라도</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;11092</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+											<h3>Feugiat lorem aenean</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+										<article>
+											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
+												<span style="color:black; font-size:1.6rem; font-weight:bold;">경상도</span>
+												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;9999</span>
+											</div>
+											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
+											<h3>Amet varius aliquam</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+										</article>
+									</div>
 								</section>
 
 						</div>
@@ -208,11 +356,12 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+			<script src="${pageContext.request.contextPath}/index.js"></script>
 
 	</body>
 </html>

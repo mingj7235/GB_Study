@@ -13,7 +13,16 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 		<style>
+		body{
+				font-family: 'Sunflower', sans-serif;
+			}
+			
+		h1, h2, h3, h4, h5, h6 {
+				font-family: 'Sunflower', sans-serif;
+			}
 		</style>
 		
 	</head>

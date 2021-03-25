@@ -13,7 +13,16 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 		<style>
+			body{
+					font-family: 'Sunflower', sans-serif;
+				}
+				
+			h1, h2, h3, h4, h5, h6 {
+					font-family: 'Sunflower', sans-serif;
+				}
 			.section {width:500px; height: 500px; margin: 20px auto;}
 			.section input[id*="slide"] {display:none;}
 			.section .slidewrap {max-width:1200px;margin:0 auto;}
@@ -116,14 +125,14 @@
 										</select>
 										<input type="text" name="memberPhoneMid" id="memberPhoneMid" value=""  style="width: 25%; height: 36px; margin-right: 5px;"/><br>
 										<input type="text" name="memberPhoneBottom" id="memberPhoneBottom" value=""  style="width: 25%; height: 36px; margin-right: 5px;"/><br>
-										<input type="button" value="인증번호발송" class="primary" style="width: 25%; height: 36px; padding: 0 2px;font-size: 0.7rem;" onclick=""/>
+										<input type="button" value="인증번호발송" class="primary" style="width: 25%; height: 36px; padding: 0 2px;font-size: 0.7rem; font-family: 'Sunflower', sans-serif;" onclick=""/>
 									</div>
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
 										<h6 id="check_phone_result" style="width: 100%; margin-top: 10px;"></h6>
 
 									<div style="display:flex; margin-bottom: 20px">
-										<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 77.8%; height: 36px; margin-right: 5px"/>
-										<input type="button" value="인증번호확인" class="" style="width: 25%; height: 36px;padding: 0 2px;font-size: 0.7rem;" onclick=""/>
+										<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 77.8%; height: 36px; margin-right: 5px;"/>
+										<input type="button" value="인증번호확인" class="" style="width: 25%; height: 36px;padding: 0 2px;font-size: 0.7rem; font-family: 'Sunflower', sans-serif;" onclick=""/>
 									</div>
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
 										<h6 id="check_modifyNum_result" style="width: 100%; margin-top: 10px;"></h6>
@@ -258,7 +267,7 @@
 										<div style="width: 100%;">
 											<div class="col-9" style="width: 100%; display: flex;">
 												<input type="text" name="memberZipcode" class="postcodify_postcode5" value="" readonly placeholder="- 우편번호 (검색버튼 클릭 후 검색)" style="width: 75%; margin-right: 5px;"/>
-												<input type="button" id="postcodify_search_button" value="검색" class="fit" style="width: 25%">
+												<input type="button" id="postcodify_search_button" value="검색" class="fit" style="width: 25%; font-family: 'Sunflower', sans-serif;">
 											</div>
 										</div>
 									<input type="text" name="memberAddress" class="postcodify_address" placeholder="- 주소 (우편번호 검색 후 자동입력)" value="" style="width: 100%; margin-top: 10px;" readonly/>
