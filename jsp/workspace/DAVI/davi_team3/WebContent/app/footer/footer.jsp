@@ -5,6 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+	.sunflower li{
+		font-family: 'Sunflower', sans-serif;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+</style>
 <title>footer</title>
 </head>
 <body>
@@ -30,16 +37,16 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<header class="major">
-							<h2>Menu</h2>
+							<h2 class="sunflower">Menu</h2>
 						</header>
-						<ul>
+						<ul class="sunflower">
 							<li><a href="${pageContext.request.contextPath}/index.jsp">메인</a></li>
 							<li><a href="#">개인 식단 관리</a></li>
 							<li><a href="#">식단 인증샷</a></li>
 							<li>
-								<span class="opener">치팅모임</span>
+								<span class="opener" >치팅모임</span>
 								<ul>
-									<li><a href="#">서울/경기</a></li>
+									<li style=""><a href="#">서울/경기</a></li>
 									<li><a href="#">강원도</a></li>
 									<li><a href="#">충청도</a></li>
 									<li><a href="#">전라도</a></li>

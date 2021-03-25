@@ -76,8 +76,11 @@
 						<div class="inner">
 
 							<!-- Header -->
-								<c:import url="/app/header/header.jsp" />		
-				
+								<header id="header">	
+									<a href="${pageContext.request.contextPath}/index.jsp" class="logo">
+									<img src="${pageContext.request.contextPath}/images/logo_header.png" width="60" height="27" />
+									</a>	
+								</header>
 				<!-- 회원가입 페이지시작  -->
 				<!-- 
 						MEMBERID VARCHAR2(300),
@@ -97,50 +100,13 @@
 						</a>
 					<!-- 본문 전체 div  -->
 					<div style="display: flex; justify-content: center;">
-						<form method="post" action="#">
-						<div style="align-items: right; margin-bottom: 20px">
+						<form method="post" action="#" style="padding: 0px 70px 0px 30px;">
+						<div style="align-items: right; margin-bottom: 20px; padding: 0px 30px;">
 								<h5>(<span style ="color:#ffaec9;">*</span>)표시는 필수입니다.</h5>
 						</div>
-							<div class="row gtr-uniform" style="margin-right: 20px;">
+							<div class="row gtr-uniform" style="margin-right: 20px; padding: 0px 30px;">
 								<div class="col-6 col-12-xsmall" style="width: 100%;">
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 아이디</h5>
-									<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" style="margin-bottom: 20px;"/>
-									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 비밀번호</h5>
-									<input type="password" name="memberPw" id="memberPw" value="" placeholder="비밀번호" style="margin-bottom: 20px;"/>
-									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 비밀번호 확인</h5>
-									<input type="password" name="memberPw_re" id="memberPw_re" value="" placeholder="비밀번호 확인" style="margin-bottom: 20px;"/>
-
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 이름</h5>
-									<input type="text" name="memberName" id="memberName" value="" placeholder="이름" style="margin-bottom: 20px;"/>
-									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 전화번호 등록</h5>
-
-									<div style="display:flex;">
-										<select name="memberPhoneHead" id="memberPhoneHead" style="width: 25%; height: 36px; margin-right: 5px; ">
-											<option value="010">010</option>
-											<option value="011">011</option>
-											<option value="016">016</option>
-										</select>
-										<input type="text" name="memberPhoneMid" id="memberPhoneMid" value=""  style="width: 25%; height: 36px; margin-right: 5px;"/><br>
-										<input type="text" name="memberPhoneBottom" id="memberPhoneBottom" value=""  style="width: 25%; height: 36px; margin-right: 5px;"/><br>
-										<input type="button" value="인증번호발송" class="primary" style="width: 25%; height: 36px; padding: 0 2px;font-size: 0.7rem; font-family: 'Sunflower', sans-serif;" onclick=""/>
-									</div>
-										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
-										<h6 id="check_phone_result" style="width: 100%; margin-top: 10px;"></h6>
-
-									<div style="display:flex; margin-bottom: 20px">
-										<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 77.8%; height: 36px; margin-right: 5px;"/>
-										<input type="button" value="인증번호확인" class="" style="width: 25%; height: 36px;padding: 0 2px;font-size: 0.7rem; font-family: 'Sunflower', sans-serif;" onclick=""/>
-									</div>
-										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
-										<h6 id="check_modifyNum_result" style="width: 100%; margin-top: 10px;"></h6>
-									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 이메일</h5>
-									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="abc1234@def.com" style="margin-bottom: 8px;"/>
-									
-									<hr style="width :100%; background-color: #ffaec9;">
+								
 									<div class="col-12">
 										<textarea name="term" id="term" style ="width : 100%; height : 200px; resize: none;" readonly="readonly">
 시행일자 : 2021년 3월 24일
@@ -247,12 +213,51 @@
 본 약관은 2020년 11월 16일부터 적용하고, 2016년 5월 2일부터 시행되던 종전의 약관은 본 약관으로 대체합니다.
 								</textarea>
 									</div>
-									
 									<div class="col-6 col-12-small" style="margin-top: 10px; width : 100%; ">
 										<input type="checkbox" id="human" name="human" checked>
-										<label for="human"><span style ="color:#ffaec9">[필수]</span> 동의합니다.</label>
+										<label for="human"><span style ="color:#ffaec9">*</span> 동의합니다.</label>
 									</div>
 									<hr style="width :100%; background-color: #ffaec9;">
+									
+									
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 아이디</h5>
+									<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" style="margin-bottom: 20px;"/>
+									
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 비밀번호</h5>
+									<input type="password" name="memberPw" id="memberPw" value="" placeholder="비밀번호" style="margin-bottom: 20px;"/>
+									
+									<!-- <h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 비밀번호 확인</h5>
+									<input type="password" name="memberPw_re" id="memberPw_re" value="" placeholder="비밀번호 확인" style="margin-bottom: 20px;"/>
+									-->
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 닉네임</h5>
+									<input type="text" name="memberName" id="memberName" value="" placeholder="이름" style="margin-bottom: 20px;"/>
+									
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 전화번호 등록</h5>
+
+									<div style="display:flex;">
+										<select name="memberPhoneHead" id="memberPhoneHead" style="width: 25%; height: 36.66px; margin-right: 5px; ">
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+										</select>
+										<input type="text" name="memberPhoneMid" id="memberPhoneMid" value=""  style="width: 25%; height: 36.66px; margin-right: 5px;"/><br>
+										<input type="text" name="memberPhoneBottom" id="memberPhoneBottom" value=""  style="width: 25%; height: 36.66px; margin-right: 5px;"/><br>
+										<input type="button" value="인증번호발송" class="primary" style="width: 25%; height: 36px; padding: 0 2px;font-size: 0.7rem; font-family: 'Sunflower', sans-serif;" onclick=""/>
+									</div>
+										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
+										<h6 id="check_phone_result" style="width: 100%; margin-top: 10px;"></h6>
+
+									<div style="display:flex; margin-bottom: 20px">
+										<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 77.8%; height: 36.66px; margin-right: 5px;"/>
+										<input type="button" value="인증번호확인" class="" style="width: 25%; height: 36.66px;padding: 0 2px;font-size: 0.7rem; font-family: 'Sunflower', sans-serif;" onclick=""/>
+									</div>
+										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
+										<h6 id="check_modifyNum_result" style="width: 100%; margin-top: 10px;"></h6>
+									
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 이메일</h5>
+									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="abc1234@def.com" style="margin-bottom: 8px;"/>
+									
+									
 									
 									
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 성별</h5>

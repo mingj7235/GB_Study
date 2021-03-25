@@ -28,11 +28,10 @@
 
 							<!-- Content -->
 								<section>								
-									<a href="#" style="text-align: center; display: block;" onfocus="this.blur()" >
-                        				<img src="${pageContext.request.contextPath}/images/logo_2.png"/>
-									</a>									
+									<h2 align="center" style="font-family: 'Sunflower', sans-serif;">회원 아이디 찾기</h2>	
 								
-										<form method="post" action="#">
+										<form method="post" action="#">		
+											<hr>															
 											<div class="row gtr-uniform" style="text-align:center;">
 												<div class="col-12">															
 													<input type="text" name="memberName" id="memberName"  placeholder="이름을 입력하세요" style="width:49%; margin:30px auto;" />															

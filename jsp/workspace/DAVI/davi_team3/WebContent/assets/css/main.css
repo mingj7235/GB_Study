@@ -1,5 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap");
 
 /*
 	Editorial by Pixelarity
@@ -70,6 +71,7 @@ input, select, textarea {
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
+	
 }
 
 /* Basic */
@@ -3605,3 +3607,8 @@ input, select, textarea {
 			margin-top: 0;
 			padding-top: 0;
 		}
+		
+input {
+	
+	font-family: 'Sunflower', sans-serif;
+}

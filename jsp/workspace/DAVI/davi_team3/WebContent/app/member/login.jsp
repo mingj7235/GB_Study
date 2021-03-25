@@ -13,6 +13,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+		<style>
+			 body{
+				font-family: 'Sunflower', sans-serif;
+			} 
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -45,8 +52,9 @@
 															<!-- button -->
 															<div class="col-12">
 															<input type="submit" value="Login" class="primary" style="width:49%; margin-top:1%; margin-bottom:1%;">
-															<hr style="background-color: #ffaec9; height: 2px; width:49%; margin-left:25.5%; margin-top:3%; margin-bottom:3%;">
-															<div>아직 DAVI의 회원이 아니시라면 <a href="join.jsp">회원가입</a> 후 이용해 주세요.</div>
+															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png" style="margin-top:3%;"><a href="findId.jsp">아이디/비밀번호 찾기</a></div>
+															<hr style="background-color: #ffaec9; height: 2px; width:49%; margin-left:25.5%; margin-top:1%; margin-bottom:3%;">
+															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png">아직 DAVI의 회원이 아니시라면 <a href="join.jsp">회원가입</a> 후 이용해 주세요.</div>
 															</div>
 														</div>
 													</form>
