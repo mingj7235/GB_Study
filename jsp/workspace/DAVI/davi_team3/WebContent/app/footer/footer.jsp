@@ -5,41 +5,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
+<!-- <style>
 	.sunflower li{
 		font-family: 'Sunflower', sans-serif;
-		font-weight: bold;
-		font-size: 1.2em;
+		font-weight: bold;		
 	}
-</style>
+</style> -->
 <title>footer</title>
 </head>
 <body>
 <!-- Sidebar -->
 		<div id="sidebar">
 			<div class="inner">
-
-				<!-- Search -->
-					
-					<ul class="actions">
-						<!-- 세션의 아이디로그인 정보를 이용하여 if문의 조건 검색 -->
-						<c:set var="check" value="1" />
-						<c:if test="${check eq 1}">					
-							<li><a href="#" class="button primary">로그인</a></li>&nbsp;
-							<li><a href="#" class="button">회원가입</a></li>
-						</c:if>
-						<c:if test="${check eq 2}">
-							<li><a href="#" class="button primary">로그아웃</a></li>
-						</c:if>
-						
-					</ul>
+				
 
 				<!-- Menu -->
 					<nav id="menu">
 						<header class="major">
 							<h2 class="sunflower">Menu</h2>
 						</header>
-						<ul class="sunflower">
+						<ul>
 							<li><a href="${pageContext.request.contextPath}/index.jsp">메인</a></li>
 							<li><a href="#">개인 식단 관리</a></li>
 							<li><a href="#">식단 인증샷</a></li>

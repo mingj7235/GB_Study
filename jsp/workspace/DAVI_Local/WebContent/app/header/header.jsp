@@ -5,6 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <title>header</title>
 </head>
 <body>
@@ -15,13 +19,13 @@
 		</a>	
 		<ul class="actions small" style="display:flex; justify-content:flex-end;">
 			<!-- 세션의 아이디로그인 정보를 이용하여 if문의 조건 검색 -->
-			<c:set var="check" value="1" />
+			<c:set var="check" value="2" />
 			<c:if test="${check eq 1}">					
-				<li><a href="#" class="button primary small">로그인</a></li>&nbsp;
-				<li><a href="#" class="button small">회원가입</a></li>
+				<li><a href="#" >로그인</a></li>&nbsp;
+				<li><a href="#" >회원가입</a></li>
 			</c:if>
 			<c:if test="${check eq 2}">
-				<li><a href="#" class="button primary small">로그아웃</a></li>
+				(#)님 환영합니다.<li><a href="#">로그아웃</a></li>
 			</c:if>						
 		</ul>		
 	</header>

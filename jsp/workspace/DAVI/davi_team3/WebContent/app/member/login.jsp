@@ -52,9 +52,9 @@
 															<!-- button -->
 															<div class="col-12">
 															<input type="submit" value="Login" class="primary" style="width:49%; margin-top:1%; margin-bottom:1%;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png" style="margin-top:3%;"><a href="findId.jsp">아이디/비밀번호 찾기</a></div>
-															<hr style="background-color: #ffaec9; height: 2px; width:49%; margin-left:25.5%; margin-top:1%; margin-bottom:3%;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png">아직 DAVI의 회원이 아니시라면 <a href="join.jsp">회원가입</a> 후 이용해 주세요.</div>
+															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png" style="margin-top:2%;"><a href="findId.jsp">아이디/비밀번호 찾기</a></div>
+															<hr style="background-color: #ffaec9; height: 2px; width:49%; margin-left:25.5%; margin-top:2%; margin-bottom:3%;">
+															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png">아직 DAVI의 회원이 아니신가요? > <a href="join.jsp">회원가입</a></div>
 															</div>
 														</div>
 													</form>

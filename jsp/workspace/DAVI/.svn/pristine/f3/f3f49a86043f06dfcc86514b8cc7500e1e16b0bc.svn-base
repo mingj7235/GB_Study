@@ -1,5 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap");
 
 /*
 	Editorial by Pixelarity
@@ -30,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;}
 
 body {
-	line-height: 1;
+	line-height: 1;	
 }
 
 ol, ul {
@@ -117,7 +118,8 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: #7f888f;
-		font-family: "Open Sans", sans-serif;
+		/* font-family: "Open Sans", sans-serif; */
+		font-family: 'Sunflower', sans-serif;
 		font-size: 13pt;
 		font-weight: 400;
 		line-height: 1.65;
@@ -181,7 +183,8 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #3d4449;
-		font-family: "Roboto Slab", serif;
+		/* font-family: "Roboto Slab", serif; */
+		font-family: 'Sunflower', sans-serif;
 		font-weight: 700;
 		line-height: 1.5;
 		margin: 0 0 1em 0;
@@ -1788,7 +1791,8 @@ input, select, textarea {
 	}
 
 	header p {
-		font-family: "Roboto Slab", serif;
+		/* font-family: "Roboto Slab", serif; */
+		font-family: 'Sunflower', sans-serif;
 		font-size: 1em;
 		font-weight: 400;
 		letter-spacing: 0.075em;
@@ -2492,7 +2496,8 @@ input, select, textarea {
 		color: #ffaec9 !important;
 		cursor: pointer;
 		display: inline-block;
-		font-family: "Roboto Slab", serif;
+		/* font-family: "Roboto Slab", serif; */
+		font-family: 'Sunflower', sans-serif;
 		font-size: 0.8em;
 		font-weight: 700;
 		height: 3.5em;
@@ -3193,7 +3198,7 @@ input, select, textarea {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
+				font-family: 'Font Awesome 5 Free';				
 				font-weight: 900;
 			}
 
@@ -3347,7 +3352,8 @@ input, select, textarea {
 		#header .logo {
 			border-bottom: 0;
 			color: inherit;
-			font-family: "Roboto Slab", serif;
+			/* font-family: "Roboto Slab", serif; */
+			font-family: 'Sunflower', sans-serif;
 			font-size: 1.125em;
 		}
 
@@ -3507,8 +3513,9 @@ input, select, textarea {
 		-ms-user-select: none;
 		user-select: none;
 		color: #3d4449;
-		font-family: "Roboto Slab", serif;
-		font-weight: 400;
+		/* font-family: "Roboto Slab", serif; */
+		font-family: 'Sunflower', sans-serif;
+		font-weight: bold;
 		letter-spacing: 0.075em;
 		list-style: none;
 		margin-bottom: 0;
@@ -3605,3 +3612,6 @@ input, select, textarea {
 			margin-top: 0;
 			padding-top: 0;
 		}
+input{
+	font-family: 'Sunflower', sans-serif;
+}
