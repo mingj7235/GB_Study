@@ -76,11 +76,7 @@
 						<div class="inner">
 
 							<!-- Header -->
-								<header id="header">	
-									<a href="${pageContext.request.contextPath}/index.jsp" class="logo">
-									<img src="${pageContext.request.contextPath}/images/logo_header.png" width="60" height="27" />
-									</a>	
-								</header>
+								<c:import url="/app/header/header.jsp" />
 				<!-- 회원가입 페이지시작  -->
 				<!-- 
 						MEMBERID VARCHAR2(300),
@@ -230,7 +226,7 @@
 									<input type="password" name="memberPw_re" id="memberPw_re" value="" placeholder="비밀번호 확인" style="margin-bottom: 20px;"/>
 									-->
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 닉네임</h5>
-									<input type="text" name="memberName" id="memberName" value="" placeholder="이름" style="margin-bottom: 20px;"/>
+									<input type="text" name="memberName" id="memberName" value="" placeholder="닉네임" style="margin-bottom: 20px;"/>
 									
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 전화번호 등록</h5>
 
@@ -246,8 +242,9 @@
 									</div>
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
 										<h6 id="check_phone_result" style="width: 100%; margin-top: 10px;"></h6>
-
-									<div style="display:flex; margin-bottom: 20px">
+									
+									<!-- 인증번호 확인 input tag는 인증번호가 날아갈때 display none을 false로 변경 -->
+									<div style="display:flex; margin-bottom: 20px; display: none;">
 										<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 77.8%; height: 36.66px; margin-right: 5px;"/>
 										<input type="button" value="인증번호확인" class="" style="width: 25%; height: 36.66px;padding: 0 2px;font-size: 0.7rem; font-family: 'Sunflower', sans-serif;" onclick=""/>
 									</div>
@@ -255,7 +252,7 @@
 										<h6 id="check_modifyNum_result" style="width: 100%; margin-top: 10px;"></h6>
 									
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 이메일</h5>
-									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="abc1234@def.com" style="margin-bottom: 8px;"/>
+									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="abc1234@def.com" style="margin-bottom: 20px;"/>
 									
 									
 									
@@ -279,11 +276,20 @@
 									<input type="text" name="memberAddressDetail" class="postcodify_details" placeholder="- 세부 주소" style="width: 100%; margin-top: 10px;"/>
 									<input type="text" name="memberAddressEtc" class="postcodify_details" placeholder="- 기타 주소" style="width: 100%; margin-top: 10px;"/>
 									<h6 style ="width: 100%; margin-top: 5px"></h6><br>	
+									<!-- <div class="" style = "display:flex; justify-content:center;">
+										<input type="button" value="Sign up" class="primary" style = "width: 300px;" onclick="#"/>
+										<input type="reset" value="Reset" style = "width: 300px; "/>
+									</div> -->
+									
+									<div style="display: flex; justify-content: center;">
+										<input type="submit" value="회원가입" class="primary" style="margin: 0px 10px;"/>
+										<input type="button" value="메인으로" style="margin: 0px 10px;"/>
+									</div>
 									
 									</div>
 								</div>
 							</form>
-								<div class="section"  >
+								<div class="section" >
 								<input type="radio" name="slide" id="slide01" checked>
 								<input type="radio" name="slide" id="slide02">
 								<input type="radio" name="slide" id="slide03">
