@@ -311,7 +311,7 @@
 												
 												<div class="textbox">
 													<h3>광고 3</h3>
-													<p>세번째 광고 페이</p>
+													<p>세번째 광고 페이지</p>
 												</div>
 												<img src="${pageContext.request.contextPath}/app/member/img/slide.jpg" style="height: 700px;">
 											</a>
