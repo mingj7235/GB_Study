@@ -40,34 +40,32 @@
 						MEMBERADDRESSETC VARCHAR2(300)
 				 -->
 				 <section>
-					<header class="major">
-						<a href="${pageContext.request.contextPath}/index.jsp">
-							<img src="${pageContext.request.contextPath}/images/logo_1.png" />
+						<a href="${pageContext.request.contextPath}/index.jsp" style="text-align: center; display: block; border-bottom: none; ">
+							<img src="${pageContext.request.contextPath}/images/logo_2.png" />
 						</a>
-					</header>
 					<!-- 본문 전체 div  -->
 					<div style="width:50%;">
 						<form method="post" action="#">
-						<div style="align-items: right">
+						<div style="align-items: right; margin-bottom: 20px">
 								<h5>(<span style ="color:#ffaec9;">*</span>)표시는 필수입니다.</h5>
 						</div>
-							<div class="row gtr-uniform">
+							<div class="row gtr-uniform" style="text-align: center;">
 								<div class="col-6 col-12-xsmall" style="width: 100%;">
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>아이디</h5>
-									<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" style="margin-bottom: 8px;"/>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 아이디</h5>
+									<input type="text" name="memberId" id="memberId" value="" placeholder="아이디" style="margin-bottom: 20px;"/>
 									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>비밀번호</h5>
-									<input type="password" name="memberPw" id="memberPw" value="" placeholder="비밀번호" style="margin-bottom: 8px;"/>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 비밀번호</h5>
+									<input type="password" name="memberPw" id="memberPw" value="" placeholder="비밀번호" style="margin-bottom: 20px;"/>
 									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>비밀번호 확인</h5>
-									<input type="password" name="memberPw_re" id="memberPw_re" value="" placeholder="비밀번호 확인" style="margin-bottom: 8px;"/>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 비밀번호 확인</h5>
+									<input type="password" name="memberPw_re" id="memberPw_re" value="" placeholder="비밀번호 확인" style="margin-bottom: 20px;"/>
 
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>이름</h5>
-									<input type="text" name="memberName" id="memberName" value="" placeholder="이름" style="margin-bottom: 8px;"/>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 이름</h5>
+									<input type="text" name="memberName" id="memberName" value="" placeholder="이름" style="margin-bottom: 20px;"/>
 									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>전화번호 등록</h5>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 전화번호 등록</h5>
 
-									<div style="display:flex; ">
+									<div style="display:flex;">
 										<select name="memberPhoneHead" id="memberPhoneHead" style="width: 25%;margin-right: 5px; ">
 											<option value="010">010</option>
 											<option value="011">011</option>
@@ -80,14 +78,14 @@
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
 										<h6 id="check_phone_result" style="width: 100%; margin-top: 10px;"></h6>
 
-									<div style="display:flex;">
+									<div style="display:flex; margin-bottom: 20px">
 										<input type="text" name="phoneIdentifyNum" id="phoneIdentifyNum" value="" placeholder="인증번호 입력" style="width: 75%; margin-right: 5px"/>
 										<input type="button" value="인증번호확인" class="" style="width: 25%;padding: 0 2px;font-size: 0.7rem;" onclick=""/>
 									</div>
 										<!-- 인증번호 발송 후 db조회 후에 dom으로 꽂기  -->
 										<h6 id="check_modifyNum_result" style="width: 100%; margin-top: 10px;"></h6>
 									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>이메일</h5>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 이메일</h5>
 									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="abc1234@def.com" style="margin-bottom: 8px;"/>
 									
 									<hr style="width :100%; background-color: #ffaec9;">
@@ -198,22 +196,22 @@
 								</textarea>
 									</div>
 									
-									<div class="col-6 col-12-small" style="margin-top: 10px; width : 200px; ">
+									<div class="col-6 col-12-small" style="margin-top: 10px; width : 100%; ">
 										<input type="checkbox" id="human" name="human" checked>
 										<label for="human"><span style ="color:#ffaec9">[필수]</span> 동의합니다.</label>
 									</div>
 									<hr style="width :100%; background-color: #ffaec9;">
 									
 									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>성별</h5>
-									<div class="col-4 col-12-small" style ="width : 400px; ">
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 성별</h5>
+									<div class="col-4 col-12-small" style ="width : 100%; margin-bottom: 20px">
 										<input type="radio" id="memberGender" name="memberGender" value ="여" checked> 
 										<label for="priority-normal">여</label>
 										<input type="radio" id="memberGender" name="memberGender" value ="남"> 
 										<label for="priority-low">남</label>
 									</div>
 									
-									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span>지역</h5>
+									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 지역</h5>
 										<div style="width: 100%;">
 											<div class="col-9" style="width: 100%; display: flex;">
 												<input type="text" name="memberZipcode" class="postcodify_postcode5" value="" readonly placeholder="- 우편번호 (검색버튼 클릭 후 검색)" style="width: 75%; margin-right: 5px;"/>
@@ -230,7 +228,11 @@
 							</form>
 						</div>
 					</section>
+							<div>
+							<input type="text" name="memberAddress" class="postcodify_address" placeholder="- 주소 (우편번호 검색 후 자동입력)" value="" style="width: 100%; margin-top: 10px;" readonly/>
+							</div>
 			</div>
+			
 		</div>
 
 				<!-- Sidebar -->
