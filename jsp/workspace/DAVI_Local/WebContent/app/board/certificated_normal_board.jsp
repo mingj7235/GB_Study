@@ -49,13 +49,20 @@
 					<div style="width:70%;"> 
 						<!-- 일반게시판 글쓰기 아웃라인 -->
 						<div style="height: 80px; border: 1px solid green; margin-top: 30px">
-						
+							<div style="display:flex; justify-content: center;">
+								<div>profile</div>
+								<div>input tag - content</div>
+							</div>
+							<div style="display:flex; justify-content: center;">
+								<div>attach photo</div>
+								<div>something</div>
+							</div>
 						</div>
 					
 						<!-- 일반게시판 전체 아웃라인 -->
 						<div style="height: 1000px; border: 1px solid red; margin-top: 10px; margin-bottom: 50px;">
 							<!-- 작성자 -->
-							<div class="board_basic" style="display : flex; justify-content: center; height: 50px;">
+							<div class="board_basic" style="display : flex; justify-content: center; height: 30px;">
 								<div style="border: solid 1px blue; width: 20%;" >profile photo</div>
 								<div style="border: solid 1px blue; width: 60%;">user name</div>
 								<div style="border: solid 1px blue; width: 20%;">ellipsis</div>
@@ -72,14 +79,18 @@
 								<img src="#" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,.7);">
 							</div>
 							
-							<!-- 아이콘들 (좋아요, 댓글등) -->
-							<div class="board_basic" style="height: 50px">
-							icons
+							<!-- 아이콘들 (다이아몬드, 댓글아이콘등) -->
+							<div class="board_basic" style="display : flex; justify-content: center; height: 50px">
+								<div>diamond icon</div>
+								<div>comments icon</div>
 							</div>
 							
 							<!-- 좋아요 숫자  -->
-							<div class="board_basic" style="height: 30px">
-							like
+							<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
+								<div>좋아요</div>
+								<div id="diamond_num">#</div>
+								<div>개</div>
+								
 							</div>
 							
 							<!-- 본문  -->					
@@ -110,17 +121,16 @@
 							
 							<!-- 댓글 입력 칸 -->
 							
+							<div>
+								
+							</div>
 							
-						
 						</div>
+						
 					</div>
-					
 				</div>
-
-
-
-
-
+				
+				<!-- board body end -->
 
 				</div>
 			</div>
