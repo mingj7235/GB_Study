@@ -68,7 +68,7 @@
 						</div>
 					
 						<!-- 일반게시판 전체 아웃라인 -->
-						<div style="height: 1000px; border: 1px solid red; margin-top: 10px; margin-bottom: 50px;">
+						<div style="height: 85%; border: 1px solid red; margin-top: 10px; margin-bottom: 50px;">
 							<!-- 작성자 -->
 							<div class="board_basic" style="display : flex; justify-content: center; height: 30px;">
 								<div style="border: solid 1px blue; width: 20%;" >profile photo</div>
@@ -132,7 +132,7 @@
 							<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
 								<div>profile</div>
 								<div style="display :flex; justify-content: space-between;">
-									<input type="text"/>
+									<input type="text" placeholder="댓글을 작성해주세요"/>
 									<a type="button">게시</a>
 								</div>
 							</div>
