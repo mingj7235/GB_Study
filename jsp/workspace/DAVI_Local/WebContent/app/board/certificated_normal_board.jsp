@@ -23,6 +23,12 @@
 			h1, h2, h3, h4, h5, h6 {
 					font-family: 'Sunflower', sans-serif;
 				}
+				
+			.board_basic {
+					border : 1px solid black; 
+			
+				}
+			
 		</style>
 		
 	</head>
@@ -40,11 +46,46 @@
 				
 				<!-- body -->
 				<div style="display: flex; justify-content: center;">
-					<!-- 일반게시판 전체 아웃라인 -->
-					<div style="width:70%; height: 800px; border: 1px solid red; margin-top: 30px;">
-											
+					<div style="width:70%;"> 
+						<!-- 일반게시판 글쓰기 아웃라인 -->
+						<div style="height: 100px; border: 1px solid green; margin-top: 30px">
+						
+						</div>
 					
-					
+						<!-- 일반게시판 전체 아웃라인 -->
+						<div style="height: 1000px; border: 1px solid red; margin-top: 10px; margin-bottom: 50px;">
+							<!-- 작성자 -->
+							<div class="board_basic" style="height: 50px;">
+							writer
+							</div>
+							
+							<!-- 게시판 제목 -->
+							<div class="board_basic" style="height: 50px;">
+							title
+							</div>
+							
+							<!-- 사진 -->
+							<div class="board_basic" style="position:relative; width:100%; height: 0; padding-bottom:100%; border:solid 1px red;">
+								<img src="#" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,.7);">
+							</div>
+							
+							<!-- 아이콘들 (좋아요, 댓글등) -->
+							<div class="board_basic" style="height: 50px">
+							icons
+							</div>
+							
+							<!-- 좋아요 숫자  -->
+							<div class="board_basic" style="height: 30px">
+							like
+							</div>
+							
+							<!-- 본문  -->					
+							<div class="board_basic" style="hei">
+							contents
+							</div>
+							
+						
+						</div>
 					</div>
 					
 				</div>
