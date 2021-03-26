@@ -48,19 +48,22 @@
 				<div style="display: flex; justify-content: center;">
 					<div style="width:70%;"> 
 						<!-- 일반게시판 글쓰기 아웃라인 -->
-						<div style="height: 100px; border: 1px solid green; margin-top: 30px">
+						<div style="height: 80px; border: 1px solid green; margin-top: 30px">
 						
 						</div>
 					
 						<!-- 일반게시판 전체 아웃라인 -->
 						<div style="height: 1000px; border: 1px solid red; margin-top: 10px; margin-bottom: 50px;">
 							<!-- 작성자 -->
-							<div class="board_basic" style="height: 50px;">
-							writer
+							<div class="board_basic" style="display : flex; justify-content: center; height: 50px;">
+								<div style="border: solid 1px blue;">profile photo</div>
+								<div style="border: solid 1px blue;">user name</div>
+								<div style="border: solid 1px blue;">elipsis</div>
+								
 							</div>
 							
 							<!-- 게시판 제목 -->
-							<div class="board_basic" style="height: 50px;">
+							<div class="board_basic" style="height: 30px;">
 							title
 							</div>
 							
@@ -80,8 +83,11 @@
 							</div>
 							
 							<!-- 본문  -->					
-							<div class="board_basic" style="hei">
-							contents
+							<div class="board_basic" style="display : flex; justify-content: center; height: 30px">
+								<div style="border: solid 1px blue; width: 20%;">user name</div>
+								<div style="border: solid 1px blue; width: 60%;">contents</div>
+								<div style="border: solid 1px blue; widht: 20%;">more</div>
+
 							</div>
 							
 						
