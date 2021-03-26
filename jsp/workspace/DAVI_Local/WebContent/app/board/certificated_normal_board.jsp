@@ -56,9 +56,9 @@
 						<div style="height: 1000px; border: 1px solid red; margin-top: 10px; margin-bottom: 50px;">
 							<!-- 작성자 -->
 							<div class="board_basic" style="display : flex; justify-content: center; height: 50px;">
-								<div style="border: solid 1px blue;">profile photo</div>
-								<div style="border: solid 1px blue;">user name</div>
-								<div style="border: solid 1px blue;">elipsis</div>
+								<div style="border: solid 1px blue; width: 20%;" >profile photo</div>
+								<div style="border: solid 1px blue; width: 60%;">user name</div>
+								<div style="border: solid 1px blue; width: 20%;">ellipsis</div>
 								
 							</div>
 							
@@ -83,12 +83,33 @@
 							</div>
 							
 							<!-- 본문  -->					
-							<div class="board_basic" style="display : flex; justify-content: center; height: 30px">
+							<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
 								<div style="border: solid 1px blue; width: 20%;">user name</div>
 								<div style="border: solid 1px blue; width: 60%;">contents</div>
-								<div style="border: solid 1px blue; widht: 20%;">more</div>
-
+								<div style="border: solid 1px blue; width: 20%;">ellipsis</div>
 							</div>
+							
+							<!-- 댓글 -->
+							
+							<%--  
+							<c:if test="">
+								<c:forEach>
+							
+							--%>
+									<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
+										<div style="border: solid 1px blue; width: 20%;">user name</div>
+										<div style="border: solid 1px blue; width: 70%;">comments</div>
+										<div style="border: solid 1px blue; width: 10%;">icon</div>
+									</div>
+
+							<%--  
+							</c:forEach>
+								</c:if>
+							
+							--%>
+							
+							<!-- 댓글 입력 칸 -->
+							
 							
 						
 						</div>
