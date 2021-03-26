@@ -28,6 +28,14 @@
 					border : 1px solid black; 
 			
 				}
+				
+			input[type="text"], 
+			input[type="text"]:focus{
+				border:0;
+				border-bottom: solid 1px #ffaec9;
+				border-radius:0;
+				box-shadow: none;
+			}
 			
 		</style>
 		
@@ -48,10 +56,10 @@
 				<div style="display: flex; justify-content: center;">
 					<div style="width:70%;"> 
 						<!-- 일반게시판 글쓰기 아웃라인 -->
-						<div style="height: 80px; border: 1px solid green; margin-top: 30px">
+						<div style="height: 80px; margin-top: 30px; background-color: #F0E2D9;">
 							<div style="display:flex; justify-content: center;">
 								<div>profile</div>
-								<div>input tag - content</div>
+								<input type="text" placeholder="게시글을 작성해보세요"/>
 							</div>
 							<div style="display:flex; justify-content: center;">
 								<div>attach photo</div>
@@ -121,8 +129,12 @@
 							
 							<!-- 댓글 입력 칸 -->
 							
-							<div>
-								
+							<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
+								<div>profile</div>
+								<div style="display :flex; justify-content: space-between;">
+									<input type="text"/>
+									<a type="button">게시</a>
+								</div>
 							</div>
 							
 						</div>
