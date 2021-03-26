@@ -1969,8 +1969,8 @@ input, select, textarea {
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: #3d4449;
-			border-color: #3d4449;
+			background: #ffaec9;
+			border-color: #ffaec9;
 			color: #ffffff;
 			content: '\f00c';
 		}

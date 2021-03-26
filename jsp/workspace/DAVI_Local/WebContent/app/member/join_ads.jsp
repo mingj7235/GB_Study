@@ -255,8 +255,6 @@
 									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="abc1234@def.com" style="margin-bottom: 20px;"/>
 									
 									
-									
-									
 									<h5 style="margin-bottom: 5px;"><span style ="color:#ffaec9;">*</span> 성별</h5>
 									<div class="col-4 col-12-small" style ="width : 100%; margin-bottom: 20px">
 										<input type="radio" id="memberGender" name="memberGender" value ="여" checked> 
@@ -276,11 +274,7 @@
 									<input type="text" name="memberAddressDetail" class="postcodify_details" placeholder="- 세부 주소" style="width: 100%; margin-top: 10px;"/>
 									<input type="text" name="memberAddressEtc" class="postcodify_details" placeholder="- 기타 주소" style="width: 100%; margin-top: 10px;"/>
 									<h6 style ="width: 100%; margin-top: 5px"></h6><br>	
-									<!-- <div class="" style = "display:flex; justify-content:center;">
-										<input type="button" value="Sign up" class="primary" style = "width: 300px;" onclick="#"/>
-										<input type="reset" value="Reset" style = "width: 300px; "/>
-									</div> -->
-									
+
 									<div style="display: flex; justify-content: center;">
 										<input type="submit" value="회원가입" class="primary" style="margin: 0px 10px;"/>
 										<input type="button" value="메인으로" style="margin: 0px 10px;"/>
