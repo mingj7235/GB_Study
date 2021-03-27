@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<style>
 			body{
 					font-family: 'Sunflower', sans-serif;
@@ -61,10 +62,13 @@
 								<img src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;"/>
 								<input type="text" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; padding: 5px; margin: 5px;"/>
 							</div>
-							<div style="display:flex; justify-content: center;">
-								<div>attach photo</div>
-								<div>something</div>
-							</div>
+							<a href="#" style="display:flex; justify-content: center; border-bottom: none;">
+								<!-- 사진 업로드하는 방법 넣기 -->
+									<div style="color:#ffaec9;">
+										<i class="fas fa-images"></i>
+									</div>	
+									<div style="color:#9FA3A6; margin-left: 3px;">사진 올리기</div>
+							</a>
 						</div>
 					
 						<!-- 일반게시판 전체 아웃라인 -->
