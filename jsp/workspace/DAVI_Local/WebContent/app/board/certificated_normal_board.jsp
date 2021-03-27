@@ -38,6 +38,10 @@
 				box-shadow: none;
 			}
 			
+			.profile {
+				border-radius: 40%;
+			}
+			
 		</style>
 		
 	</head>
@@ -59,35 +63,39 @@
 						<!-- 일반게시판 글쓰기 아웃라인 -->
 						<div style="height: 80px; margin-top: 30px; border: 1px solid #F0E2D9;">
 							<div style="display:flex; justify-content: center;">
-								<img src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;"/>
-								<input type="text" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; padding: 5px; margin: 5px;"> 
+								<img class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;"/>
+								<textarea placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; resize:none; height:40px; padding: 5px; margin: 5px;"></textarea>
 								<input type="button" value="등록" style="margin:5px;">
 							</div>
 								<!-- 사진 업로드하는 방법 넣기 -->
 								<div style="display:flex; justify-content: center;">
 									<a href="#" style="display:flex; justify-content: center; width:30%; border-bottom: none; color:#ffaec9;">
-											<i class="fas fa-images"></i>
+											<div style="margin: 1px;"><i class="fas fa-images"></i></div>
 											<div style="color:#9FA3A6; margin-left: 3px;">사진 첨부하기</div>
 									</a>
 								</div>
 					
 						<!-- 일반게시판 전체 아웃라인 -->
-						<div style="height: 85%; border: 1px solid red; margin-top: 10px; margin-bottom: 50px;">
+						<div style="height: 85%; margin-top: 20px; margin-bottom: 50px; border: 1px solid #f0e2d9;">
 							<!-- 작성자 -->
-							<div class="board_basic" style="display : flex; justify-content: center; height: 30px;">
-								<div style="border: solid 1px blue; width: 20%;" >profile photo</div>
-								<div style="border: solid 1px blue; width: 60%;">user name</div>
-								<div style="border: solid 1px blue; width: 20%;">ellipsis</div>
+							<div style="display : flex; justify-content: center; height: 30px;">
+								<div style="width:10%;">
+								<img class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style="margin:5px; width: 35px; height: 35px;"/>
+								</div>
+								<div style="width:10%; padding-top: 10px;">(#)</div>
+								<div style="width:80%; text-align: right; padding-top: 10px; padding-right: 10px; color:#ffaec9;">
+									<i class="fas fa-ellipsis-h"></i>
 								
+								</div>
 							</div>
 							
 							<!-- 게시판 제목 -->
-							<div class="board_basic" style="height: 30px;">
-							title
+							<div style="height: 30px; padding-top: 5px; margin:5px;">
+								<p3>글 제목</p3>
 							</div>
 							
 							<!-- 사진 -->
-							<div class="board_basic" style="position:relative; width:100%; height: 0; padding-bottom:100%; border:solid 1px red;">
+							<div style="position:relative; width:100%; height: 0; padding-bottom:100%; ">
 								<img src="#" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,.7);">
 							</div>
 							
