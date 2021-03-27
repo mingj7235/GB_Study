@@ -58,8 +58,8 @@
 						<!-- 일반게시판 글쓰기 아웃라인 -->
 						<div style="height: 80px; margin-top: 30px; background-color: #F0E2D9;">
 							<div style="display:flex; justify-content: center;">
-								<div>profile</div>
-								<input type="text" placeholder="게시글을 작성해보세요"/>
+								<div style="padding: 5px; margin:5px;">profile</div>
+								<input type="text" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; padding: 5px; margin: 5px;"/>
 							</div>
 							<div style="display:flex; justify-content: center;">
 								<div>attach photo</div>
