@@ -56,9 +56,9 @@
 				<div style="display: flex; justify-content: center;">
 					<div style="width:70%;"> 
 						<!-- 일반게시판 글쓰기 아웃라인 -->
-						<div style="height: 80px; margin-top: 30px; background-color: #F0E2D9;">
+						<div style="height: 80px; margin-top: 30px; border: 1px solid #F0E2D9;">
 							<div style="display:flex; justify-content: center;">
-								<div style="padding: 5px; margin:5px;">profile</div>
+								<img src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;"/>
 								<input type="text" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; padding: 5px; margin: 5px;"/>
 							</div>
 							<div style="display:flex; justify-content: center;">
