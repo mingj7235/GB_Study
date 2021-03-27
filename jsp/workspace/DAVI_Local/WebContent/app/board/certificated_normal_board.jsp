@@ -60,16 +60,16 @@
 						<div style="height: 80px; margin-top: 30px; border: 1px solid #F0E2D9;">
 							<div style="display:flex; justify-content: center;">
 								<img src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;"/>
-								<input type="text" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; padding: 5px; margin: 5px;"/>
+								<input type="text" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; padding: 5px; margin: 5px;"> 
+								<input type="button" value="등록" style="margin:5px;">
 							</div>
-							<a href="#" style="display:flex; justify-content: center; border-bottom: none;">
 								<!-- 사진 업로드하는 방법 넣기 -->
-									<div style="color:#ffaec9;">
-										<i class="fas fa-images"></i>
-									</div>	
-									<div style="color:#9FA3A6; margin-left: 3px;">사진 올리기</div>
-							</a>
-						</div>
+								<div style="display:flex; justify-content: center;">
+									<a href="#" style="display:flex; justify-content: center; width:30%; border-bottom: none; color:#ffaec9;">
+											<i class="fas fa-images"></i>
+											<div style="color:#9FA3A6; margin-left: 3px;">사진 첨부하기</div>
+									</a>
+								</div>
 					
 						<!-- 일반게시판 전체 아웃라인 -->
 						<div style="height: 85%; border: 1px solid red; margin-top: 10px; margin-bottom: 50px;">
