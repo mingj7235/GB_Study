@@ -103,7 +103,7 @@
 							
 							<!-- 사진 -->
 							<div style="position:relative; width:100%; height: 0; padding-bottom:100%; ">
-								<img src="#" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(255,174,201);">
+								<img src="${pageContext.request.contextPath}/images/logo_3.png" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(255,174,201);">
 							</div>
 							
 							<!-- 아이콘들 (다이아몬드, 댓글아이콘등) -->
@@ -127,10 +127,10 @@
 							<!-- 본문  -->					
 							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
 								<div id="" style="width: 20%;">글쓴이 </div>
-								<div id="" style="width: 60%;">본문내용</div>
+								<div id="" style="width: 70%;">본문내용</div>
 								<textarea rows="" cols="" style="display: none;">본문내용</textarea>
-								<div id="" style="width: 20%; text-align: right;">
-									<i class="far fa-plus-square" onclick="#"></i>
+								<div id="" style="width: 10%; text-align: right; margin: 0 5px;">
+									<i class="far fa-plus-square" onclick="#" style="cursor: pointer;"></i>
 								</div>
 							</div>
 							
@@ -144,7 +144,7 @@
 									<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
 										<div style="width: 20%;">댓글쓴이</div>
 										<div style="width: 70%;">댓글</div>
-										<div style="width: 10%;">icon</div>
+										<input type="button" value="게시" style="box-shadow: none; width: 10%; margin: 0 5px; color: rgba(var(--d69,0,149,246),0.3) !important;">
 									</div>
 
 							<%--  
@@ -157,10 +157,8 @@
 							
 							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
 								<div style="width: 20%; padding-top: 5px;">접속아이디 </div>
-								<div style="display :flex; justify-content: space-between; width: 80%;">
-									<input type="text" placeholder="댓글을 작성해주세요" style="width:80%; border:0; border-bottom: 1px solid #ffaec9;"/>
-									<input type="button" value="등록" style="width:20%; margin: 0 5px;">
-								</div>
+								<input type="text" placeholder="댓글을 작성해주세요" style="width:70%; border:0; border-bottom: 1px solid #ffaec9;"/>
+								<input type="button" value="등록" style="width:10%; margin: 0 5px; box-shadow: none; color: rgba(var(--d69,0,149,246),0.3) !important">
 							</div>
 							
 						</div><!-- end 일반게시판 게시물 div박스-->
