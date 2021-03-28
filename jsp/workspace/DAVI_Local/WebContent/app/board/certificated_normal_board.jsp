@@ -42,6 +42,8 @@
 				border-radius: 40%;
 			}
 			
+			
+			
 		</style>
 		
 	</head>
@@ -63,28 +65,31 @@
 						<!-- 일반게시판 글쓰기 아웃라인 -->
 						<div style="height: 80px; margin-top: 30px; border: 1px solid #F0E2D9;">
 							<div style="display:flex; justify-content: center;">
-								<img class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;"/>
-								<textarea placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; resize:none; height:40px; padding: 5px; margin: 5px;"></textarea>
-								<input type="button" value="등록" style="margin:5px;">
+								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;
+									cursor: pointer;" onclick="#"/>
+								<textarea id="" name="" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; resize:none; height:40px; padding: 5px; margin: 5px;"></textarea>
+								<input id="" name="" type="button" value="등록" style="margin:5px;">
 							</div>
-								<!-- 사진 업로드하는 방법 넣기 -->
-								<div style="display:flex; justify-content: center;">
-									<a href="#" style="display:flex; justify-content: center; width:30%; border-bottom: none; color:#ffaec9;">
-											<div style="margin: 1px;"><i class="fas fa-images"></i></div>
-											<div style="color:#9FA3A6; margin-left: 3px;">사진 첨부하기</div>
-									</a>
-								</div>
+								<!-- 사진 업로드 -->
+							<div style="display:flex; justify-content: center;">
+								<a href="#" style="display:flex; justify-content: center; width:30%; border-bottom: none; color:#ffaec9;">
+									<div style="margin: 1px;"><i class="fas fa-images"></i></div>
+									<div style="color:#9FA3A6; margin-left: 3px;">사진 첨부하기</div>
+								</a>
+							</div>
+						</div>
 					
 						<!-- 일반게시판 전체 아웃라인 -->
 						<div style="height: 85%; margin-top: 20px; margin-bottom: 50px; border: 1px solid #f0e2d9;">
 							<!-- 작성자 -->
 							<div style="display : flex; justify-content: center; height: 30px;">
 								<div style="width:10%;">
-								<img class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style="margin:5px; width: 35px; height: 35px;"/>
+								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style="margin:5px; width: 35px; height: 35px;
+									cursor: pointer;" onclick="#"/> <!-- 프로필 사진 클릭시 해당 계정으로 이동 -->
 								</div>
-								<div style="width:10%; padding-top: 10px;">(#)</div>
+								<span id="" style="width:10%; padding-top: 10px;">(#)</span>
 								<div style="width:80%; text-align: right; padding-top: 10px; padding-right: 10px; color:#ffaec9;">
-									<i class="fas fa-ellipsis-h"></i>
+									<i class="fas fa-ellipsis-h" onclick="#" style="cursor: pointer;"></i>
 								
 								</div>
 							</div>
@@ -100,24 +105,31 @@
 							</div>
 							
 							<!-- 아이콘들 (다이아몬드, 댓글아이콘등) -->
-							<div class="board_basic" style="display : flex; justify-content: center; height: 50px">
-								<div>diamond icon</div>
-								<div>comments icon</div>
+							<div style="display : flex; justify-content: flex-start; height: 35px; padding: 5px;">
+								<div>
+									<img src="${pageContext.request.contextPath}/images/mini_logo.png" onclick="#" style="cursor: pointer;">
+								</div>
+								<div>
+									<!-- comment input must fill it -->
+									<i class="fas fa-comment-h" style="cursor: pointer;" onclick="#"></i>
+								</div>
 							</div>
-							
+							 
 							<!-- 좋아요 숫자  -->
-							<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
+							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
 								<div>좋아요</div>
 								<div id="diamond_num">#</div>
 								<div>개</div>
-								
 							</div>
 							
 							<!-- 본문  -->					
-							<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
-								<div style="border: solid 1px blue; width: 20%;">user name</div>
-								<div style="border: solid 1px blue; width: 60%;">contents</div>
-								<div style="border: solid 1px blue; width: 20%;">ellipsis</div>
+							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
+								<div id="" style="width: 20%;">글쓴이 </div>
+								<div id="" style="width: 60%;">본문내용</div>
+								<textarea rows="" cols="" style="display: none;">본문내용</textarea>
+								<div id="" style="width: 20%; text-align: right; color:#ffaec9; ">
+									<i class="#"></i><!-- 플러스 버튼 (본문내용 확대) -->
+								</div>
 							</div>
 							
 							<!-- 댓글 -->
@@ -127,10 +139,10 @@
 								<c:forEach>
 							
 							--%>
-									<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
-										<div style="border: solid 1px blue; width: 20%;">user name</div>
-										<div style="border: solid 1px blue; width: 70%;">comments</div>
-										<div style="border: solid 1px blue; width: 10%;">icon</div>
+									<div style="display : flex; justify-content: flex-start; height: 30px">
+										<div style="width: 20%;">user name</div>
+										<div style="width: 70%;">comments</div>
+										<div style="width: 10%;">icon</div>
 									</div>
 
 							<%--  
@@ -145,13 +157,14 @@
 								<div>profile</div>
 								<div style="display :flex; justify-content: space-between;">
 									<input type="text" placeholder="댓글을 작성해주세요"/>
-									<a type="button">게시</a>
+									<input type="button" value="등록">
 								</div>
 							</div>
 							
-						</div>
+						</div><!-- 일반게시판 게시물 div박 -->
 						
 					</div>
+						
 				</div>
 				
 				<!-- board body end -->
