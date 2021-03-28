@@ -75,7 +75,9 @@
 								<!-- 사진 업로드 -->
 							<div style="display:flex; justify-content: center;">
 								<a href="#" style="display:flex; justify-content: center; width:30%; border-bottom: none; color:#ffaec9;">
-									<div style="margin: 1px;"><i class="fas fa-images"></i></div>
+									<div style="margin: 1px;">
+										<i class="fas fa-images"></i>
+									</div>
 									<div style="color:#9FA3A6; margin-left: 3px;">사진 첨부하기</div>
 								</a>
 							</div>
