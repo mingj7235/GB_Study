@@ -113,7 +113,6 @@
 									<%-- <img src="${pageContext.request.contextPath}/images/mini_logo.png" onclick="#" style="cursor: pointer;"> --%>
 								</div>
 								<div style="font-size: 0.95rem;">
-									<!-- comment input must fill it -->
 									<i class="far fa-comment fa-lg" style="cursor: pointer; color : #ffaec9; margin-left: 9px;" onclick="#"></i>
 								</div>
 							</div>
@@ -131,7 +130,7 @@
 								<div id="" style="width: 70%;">본문내용</div>
 								<textarea rows="" cols="" style="display: none;">본문내용</textarea>
 								<div id="" style="width: 10%; text-align: right; margin: 0 5px;">
-									<i class="far fa-plus-square" onclick="#" style="cursor: pointer;"></i>
+									<i class="far fa-plus-square" onclick="#" style="cursor: pointer; color: #ffaec9;"></i>
 								</div>
 							</div>
 							
