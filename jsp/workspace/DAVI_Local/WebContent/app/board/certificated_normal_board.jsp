@@ -108,12 +108,13 @@
 							
 							<!-- 아이콘들 (다이아몬드, 댓글아이콘등) -->
 							<div style="display : flex; justify-content: flex-start; height: 35px; padding: 5px;">
-								<div>
-									<img src="${pageContext.request.contextPath}/images/mini_logo.png" onclick="#" style="cursor: pointer;">
+								<div style="font-size: 0.9rem; padding-top: 2px;">
+									<i class="far fa-gem fa-lg" style="cursor: pointer; color : #ffaec9" onclick="#"></i>
+									<%-- <img src="${pageContext.request.contextPath}/images/mini_logo.png" onclick="#" style="cursor: pointer;"> --%>
 								</div>
-								<div>
+								<div style="font-size: 0.95rem;">
 									<!-- comment input must fill it -->
-									<i class="fas fa-comment-h" style="cursor: pointer;" onclick="#"></i>
+									<i class="far fa-comment fa-lg" style="cursor: pointer; color : #ffaec9; margin-left: 9px;" onclick="#"></i>
 								</div>
 							</div>
 							 
