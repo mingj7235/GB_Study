@@ -42,7 +42,9 @@
 				border-radius: 40%;
 			}
 			
+			.board_main_box {
 			
+			}
 			
 		</style>
 		
@@ -101,7 +103,7 @@
 							
 							<!-- 사진 -->
 							<div style="position:relative; width:100%; height: 0; padding-bottom:100%; ">
-								<img src="#" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,.7);">
+								<img src="#" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(255,174,201);">
 							</div>
 							
 							<!-- 아이콘들 (다이아몬드, 댓글아이콘등) -->
@@ -127,8 +129,8 @@
 								<div id="" style="width: 20%;">글쓴이 </div>
 								<div id="" style="width: 60%;">본문내용</div>
 								<textarea rows="" cols="" style="display: none;">본문내용</textarea>
-								<div id="" style="width: 20%; text-align: right; color:#ffaec9; ">
-									<i class="#"></i><!-- 플러스 버튼 (본문내용 확대) -->
+								<div id="" style="width: 20%; text-align: right;">
+									<i class="far fa-plus-square" onclick="#"></i>
 								</div>
 							</div>
 							
@@ -139,9 +141,9 @@
 								<c:forEach>
 							
 							--%>
-									<div style="display : flex; justify-content: flex-start; height: 30px">
-										<div style="width: 20%;">user name</div>
-										<div style="width: 70%;">comments</div>
+									<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
+										<div style="width: 20%;">댓글쓴이</div>
+										<div style="width: 70%;">댓글</div>
 										<div style="width: 10%;">icon</div>
 									</div>
 
@@ -153,15 +155,15 @@
 							
 							<!-- 댓글 입력 칸 -->
 							
-							<div class="board_basic" style="display : flex; justify-content: flex-start; height: 30px">
-								<div>profile</div>
-								<div style="display :flex; justify-content: space-between;">
-									<input type="text" placeholder="댓글을 작성해주세요"/>
-									<input type="button" value="등록">
+							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
+								<div style="width: 20%; padding-top: 5px;">접속아이디 </div>
+								<div style="display :flex; justify-content: space-between; width: 80%;">
+									<input type="text" placeholder="댓글을 작성해주세요" style="width:80%; border:0; border-bottom: 1px solid #ffaec9;"/>
+									<input type="button" value="등록" style="width:20%; margin: 0 5px;">
 								</div>
 							</div>
 							
-						</div><!-- 일반게시판 게시물 div박 -->
+						</div><!-- end 일반게시판 게시물 div박스-->
 						
 					</div>
 						
@@ -183,8 +185,11 @@
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-			<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 			<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+			<script>
+				var check = false;
+			
+			</script>
 
 	</body>
 </html>
