@@ -193,7 +193,7 @@
 					document.getElementById("wrapper").style.opacity = "0.3%"; */
 					
 					var width = '700';
-				    var height = '500';
+				    var height = '510';
 				    var left = Math.ceil(( window.screen.width - width )/2);
 				    var top = Math.ceil(( window.screen.height - height )/2); 
 				    window.open('${pageContext.request.contextPath}/app/board/certificated_normal_board_write.jsp', 'popup-test', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );

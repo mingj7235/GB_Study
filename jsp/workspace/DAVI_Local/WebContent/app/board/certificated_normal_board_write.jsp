@@ -64,9 +64,9 @@
 					<h1>게시물 만들기</h1>
 				</div>
 				<div style="display: flex; justify-content: center;">
-						<div style="width: 80%; height: 400px; border: 1px solid #F0E2D9;">
+						<div style="width: 80%; height: 420px; border: 1px solid #F0E2D9;">
 							<!-- 게시글 작성자 프로필, 닉네임, 제목 -->
-							<div style="display : flex; justify-content: center; height: 30px;">
+							<div style="display : flex; justify-content: center; height: 40px;">
 								<div style="width:10%;">
 								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style="margin:5px; width: 35px; height: 35px;
 									cursor: pointer;" onclick="#"/> <!-- 프로필 사진 클릭시 해당 계정으로 이동 -->
@@ -76,14 +76,19 @@
 									<i class="fas fa-ellipsis-h" onclick="#" style="cursor: pointer;"></i>
 								</div>	
 							</div>
-						
+
+							<!-- 게시글 제 -->
 							<div style="display:flex; justify-content: center;">
-								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;
-									cursor: pointer;" onclick="#"/>
-								<textarea id="" name="" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; 
-									resize:none; height:40px; padding: 5px; margin: 5px;" readonly="readonly" onclick="popup()"></textarea>
-								<input id="" name="" type="button" value="등록" style="margin:5px;">
+								<textarea id="" name="" placeholder="게시글 제목" style="border:0; border-bottom: 1px solid #ffaec9; 
+									resize:none; height:40px; padding: 5px; margin: 5px;"></textarea>
 							</div>
+						
+							<!-- 게시글 본문 -->
+							<div style="display:flex; justify-content: center;">
+								<textarea id="" name="" placeholder="게시글을 작성해보세요 :)" style="border:0; border-bottom: 1px solid #ffaec9; 
+									resize:none; height:250px; padding: 5px; margin: 5px;"></textarea>
+							</div>
+							
 								<!-- 사진 업로드 -->
 							<div style="display:flex; justify-content: center;">
 								<a href="#" style="display:flex; justify-content: center; width:30%; border-bottom: none; color:#ffaec9;">
@@ -92,6 +97,10 @@
 									</div>
 									<div style="color:#9FA3A6; margin-left: 3px;">사진 첨부하기</div>
 								</a>
+							</div>
+							<div style="display:flex; justify-content: center;">
+								<input id="" name="" type="button" value="미리보기" style="box-shadow: none; font-size: 1em;" onclick="">
+								<input id="" name="" type="button" value="인증하기" style="box-shadow: none; font-size: 1em;" onclick="">
 							</div>
 						</div>
 							
