@@ -13,8 +13,12 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/pgwslider.css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="flexslider.css" type="text/css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script src="jquery.flexslider.js"></script>
 		<style>
 			body{
 				font-family: 'Sunflower', sans-serif;
@@ -74,18 +78,25 @@
 							<!-- Banner -->
 								<section id="banner">
 									<div class="content">
-										<header>
-											<h1>DAVI</h1>
-											<p style="text-transform:none; color:black;">Diet Assistant for better VIsion</p>
-										</header>
-										<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-										<ul class="actions">
-											<li><a href="#" class="button big">start</a></li>
-										</ul>
+										<div style="">
+											<ul class="pgwSlider">
+											    <li><img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_caramel.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
+											    <li><img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_cheesecake_brownie.jpg" alt="Montréal, QC, Canada" ></li>
+											    <li>
+											        <img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_donut.jpg">
+											        <span>Shanghai, China</span>
+											    </li>
+											    <li>
+											        <a href="http://www.nyc.gov" target="_blank">
+											            <img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_lemon.jpg">
+												    <span>New York, NY, USA</span>
+											        </a>
+											    </li>
+											    <li><img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_caramel.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
+											    <li><img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_caramel.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
+											</ul>
+										</div>	
 									</div>
-									<span class="image object" style="width:50%;" >
-										<img src="${pageContext.request.contextPath}/images/비서.jpg" alt="" style="width:100%; height:400px; object-fit: contain; border-radius:100%;"/>
-									</span>
 								</section>
 
 							<!-- Section -->
@@ -129,7 +140,7 @@
 									                <span>목표: 54kg</span>
 									                <span>70%</span>
 									              </div>
-									              <div class="graph__bar">
+									               <div class="graph__bar">
 									                <div class="graph__value" style="width: 70%"></div>
 									              </div>
 									            </div>
@@ -224,9 +235,7 @@
 									<div id="free_posts" class="posts" style="display:none;">
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
-												<span style="color:black; font-size:1.8rem; font-weight:bold;">
-													<span style="color:black; font-size:1.6rem; font-weight:bold;">노하우 -</span> 1st
-												</span>
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">1st</span>
 												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;20901</span>
 											</div>
 											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
@@ -235,9 +244,7 @@
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
-												<span style="color:black; font-size:1.8rem; font-weight:bold;">
-													<span style="color:black; font-size:1.6rem; font-weight:bold;">노하우 -</span> 2nd
-												</span>
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">2nd</span>
 												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;18902</span>
 											</div>
 											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
@@ -246,9 +253,7 @@
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
-												<span style="color:black; font-size:1.8rem; font-weight:bold;">
-													<span style="color:black; font-size:1.6rem; font-weight:bold;">고민상담 -</span> 1st
-												</span>
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">3rd</span>
 												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;16239</span>
 											</div>
 											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
@@ -257,9 +262,7 @@
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
-												<span style="color:black; font-size:1.8rem; font-weight:bold;">
-													<span style="color:black; font-size:1.6rem; font-weight:bold;">고민상담 -</span> 2nd
-												</span>
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">4th</span>
 												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;13289</span>
 											</div>
 											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
@@ -268,9 +271,7 @@
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
-												<span style="color:black; font-size:1.8rem; font-weight:bold;">
-													<span style="color:black; font-size:1.6rem; font-weight:bold;">잡담 -</span> 1st
-												</span>
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">5th</span>
 												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;11092</span>
 											</div>
 											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
@@ -279,9 +280,7 @@
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
-												<span style="color:black; font-size:1.8rem; font-weight:bold;">
-													<span style="color:black; font-size:1.6rem; font-weight:bold;">잡담 -</span> 2nd
-												</span>
+												<span style="color:black; font-size:1.8rem; font-weight:bold;">6th</span>
 												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;9999</span>
 											</div>
 											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
@@ -361,7 +360,12 @@
 			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/pgwslider.js"></script>
 			<script src="${pageContext.request.contextPath}/index.js"></script>
-
+			<script>
+				$(document).ready(function() {
+				    $('.pgwSlider').pgwSlider();
+				});
+			</script>
 	</body>
 </html>

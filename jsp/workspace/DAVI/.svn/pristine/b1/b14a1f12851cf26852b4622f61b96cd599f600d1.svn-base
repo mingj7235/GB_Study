@@ -59,34 +59,12 @@
 						<div class="inner">
 
 							<!-- Header -->
-								<c:import url="/app/header/header.jsp" />
 				
 				<!-- body -->
 				<div style="display: flex; justify-content: center;">
-					<article style="width:60%; margin-bottom: 60px;"> 
-						<!-- 일반게시판 글쓰기 아웃라인 -->
-						<form action="#">
-							<div style="height: 10%; margin-top: 30px; border: 1px solid #F0E2D9;">
-								<div style="display:flex; justify-content: center;">
-									<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;
-										cursor: pointer;" onclick="#"/>
-									<textarea id="" name="" placeholder="게시글을 작성해보세요" style="border:0; border-bottom: 1px solid #ffaec9; 
-										resize:none; height:40px; padding: 5px; margin: 5px;" readonly="readonly" onclick="popup()"></textarea>
-									<input id="" name="" type="submit" value="등록" style="margin:5px;">
-								</div>
-									<!-- 사진 업로드 -->
-								<div style="display:flex; justify-content: center;">
-									<a href="#" style="display:flex; justify-content: center; width:30%; border-bottom: none; color:#ffaec9;">
-										<div style="margin: 1px;">
-											<i class="fas fa-images"></i>
-										</div>
-										<div style="color:#9FA3A6; margin-left: 3px;">사진 첨부하기</div>
-									</a>
-								</div>
-							</div>
-						</form>
+					<article style="width:80%; margin-bottom: 60px;"> 
 						<!-- 일반게시판 전체 아웃라인 -->
-						<div style="height: 85%; margin-top: 20px; padding-bottom:30px; border: 1px solid #f0e2d9;">
+						<div style="margin-top: 50px; padding-bottom:30px; border: 1px solid #f0e2d9;">
 							<!-- 작성자 -->
 							<div style="display : flex; justify-content: center; height: 30px;">
 								<div style="width:10%;">
@@ -131,39 +109,13 @@
 							<!-- 본문  -->					
 							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
 								<div id="" style="width: 20%;">글쓴이 </div>
-								<div id="mainPreview" style="width: 70%;">본문내용</div>
-								<textarea id="mainDetail" style="display: none;">본문내용</textarea>
+								<div id="" style="width: 70%;">본문내용</div>
+								<textarea rows="" cols="" style="display: none;">본문내용</textarea>
 								<div id="" style="width: 10%; text-align: right; margin: 0 5px;">
-									<i class="far fa-plus-square" onclick="mainDetail()" style="cursor: pointer; color: #ffaec9;"></i>
+									<i class="far fa-plus-square" onclick="#" style="cursor: pointer; color: #ffaec9;"></i>
 								</div>
 							</div>
 							
-							<!-- 댓글 -->
-							
-							<%--  
-							<c:if test="">
-								<c:forEach>
-							
-							--%>
-									<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
-										<div style="width: 20%;">댓글쓴이</div>
-										<div style="width: 70%;">댓글</div>
-										<input type="button" value="게시" style="box-shadow: none; width: 10%; margin: 0 5px; color: rgba(var(--d69,0,149,246),0.3) !important;">
-									</div>
-
-							<%--  
-							</c:forEach>
-								</c:if>
-							
-							--%>
-							
-							<!-- 댓글 입력 칸 -->
-							
-							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
-								<div style="width: 20%; padding-top: 5px;">접속아이디 </div>
-								<input type="text" placeholder="댓글을 작성해주세요" style="width:70%; border:0; border-bottom: 1px solid #ffaec9;"/>
-								<input type="button" value="등록" style="width:10%; margin: 0 5px; box-shadow: none; color: rgba(var(--d69,0,149,246),0.3) !important">
-							</div>
 							
 						</div><!-- end 일반게시판 게시물 div박스-->
 						
@@ -176,7 +128,6 @@
 				</div>
 			</div>
 				<!-- Sidebar -->
-				<c:import url="/app/footer/footer.jsp" />		
 			</div>
 
 		<!-- Scripts -->
@@ -188,35 +139,6 @@
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 			<script>
-				function popup() {
-					/* 배경화면 투명도를 낮추기  */
-					/* document.getElementById("wrapper").style.backgroundColor = "black";
-					document.getElementById("wrapper").style.opacity = "0.3%"; */
-					
-					var width = '700';
-				    var height = '510';
-				    var left = Math.ceil(( window.screen.width - width )/2);
-				    var top = Math.ceil(( window.screen.height - height )/2); 
-				    window.open('${pageContext.request.contextPath}/app/board/certificated_normal_board_write.jsp', '게시물 작성', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
-					
-				}
-				var diamondCheck = false;
-				
-				function changeDiamond() {
-					if(!diamondCheck) {
-						document.
-						/* display를 none으로 변경하고 다른 icon을 가져와서(채워져있는 다이아몬드 ) */
-						diamondCheck = true;
-						
-					}
-						
-				}
-				
-				var mainDetailCheck = false;
-				function mainDetail(){
-					
-					
-				}
 				
 			
 			</script>

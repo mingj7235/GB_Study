@@ -12,8 +12,22 @@
 		<title>자유게시판</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />		
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<style>
+		@media screen and (max-width: 620px) {
+			.th1{
+				width:20%;
+			}
+			.th2{
+				width:60%;
+			}
+			.th3{
+				width:20%;
+			}			
+		}
+		</style>		
 	</head>
+	
 	<body class="is-preload">
 
 		<!-- Wrapper -->
@@ -28,7 +42,7 @@
 								<style>	
 								table {
 									margin: 0 auto 1em auto;
-									width: 70%;		
+									width: 60%;		
 									align-items: center;															
 								}
 															
@@ -58,23 +72,23 @@
 										<table>
 											<thead>
 												<tr>
-													<th>분류</th>
-													<th>제목</th>
-													<th>닉네임</th>
+													<th class="th1" width="15%">분류</th>
+													<th class="th2" width="70%">제목</th>
+													<th class="th3" width="15%">닉네임</th>
 												</tr>
 											</thead>
 											<tbody>
 												
 												<tr>
-													<td width="15%">강원/경기</td>													
-													<td id="title"><a href="${pageContext.request.contextPath}/index.jsp" class="aboard" width="70%">아무데나 클릭하면 메인으로</a></td>													
-													<td width="15%">우리다라</td>													
+													<td>강원/경기</td>													
+													<td id="title"><a href="${pageContext.request.contextPath}/index.jsp" class="aboard">아무데나 클릭하면 메인으로</a></td>													
+													<td>우리다라</td>													
 												</tr>
 																								
 												<tr>
-													<td width="15%">서울</td>													
-													<td id="title"><a href="#" class="aboard" width="70%">두번째 제목</a></td>													
-													<td width="15%">홍길동</td>													
+													<td>서울</td>													
+													<td id="title"><a href="#" class="aboard">두번째 제목</a></td>													
+													<td>홍길동</td>													
 												</tr>																							
 											<tfoot>
 												<tr>

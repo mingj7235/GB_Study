@@ -63,7 +63,8 @@
 				<div style="display: flex; justify-content: center; margin:10px 0; padding-top: 5px;">
 					<h1>게시물 만들기</h1>
 				</div>
-				<div style="display: flex; justify-content: center;">
+				<form action="#">
+					<div style="display: flex; justify-content: center;">
 						<div style="width: 80%; height: 420px; border: 1px solid #F0E2D9;">
 							<!-- 게시글 작성자 프로필, 닉네임, 제목 -->
 							<div style="display : flex; justify-content: center; height: 40px;">
@@ -100,15 +101,15 @@
 							</div>
 							<div style="display:flex; justify-content: center;">
 								<input id="" name="" type="button" value="미리보기" style="box-shadow: none; font-size: 1em;" onclick="preview()">
-								<input id="" name="" type="button" value="인증하기" style="box-shadow: none; font-size: 1em;" onclick="">
+								<input id="" name="" type="submit" value="인증하기" style="box-shadow: none; font-size: 1em;" onclick="">
 							</div>
 						</div>
 							
 					</div><!-- end 일반게시판 게시물 div박스-->
-						
-				</div>
-						
+				</form>
 			</div>
+						
+		</div>
 				
 				<!-- board body end -->
 

@@ -9,7 +9,7 @@
 -->
 <html>
 	<head>
-		<title>미리보기</title>
+		<title>게시물 작성 </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
@@ -58,15 +58,15 @@
 					<div id="main">
 						<div class="inner">
 
-							<!-- Header -->
 				
 				<!-- body -->
+				<div style="display: flex; justify-content: center; margin:10px 0; padding-top: 5px;">
+					<h1>게시물 만들기</h1>
+				</div>
 				<div style="display: flex; justify-content: center;">
-					<article style="width:80%; margin-bottom: 60px;"> 
-						<!-- 일반게시판 전체 아웃라인 -->
-						<div style="margin-top: 50px; padding-bottom:30px; border: 1px solid #f0e2d9;">
-							<!-- 작성자 -->
-							<div style="display : flex; justify-content: center; height: 30px;">
+						<div style="width: 80%; height: 420px; border: 1px solid #F0E2D9;">
+							<!-- 게시글 작성자 프로필, 닉네임, 제목 -->
+							<div style="display : flex; justify-content: center; height: 40px;">
 								<div style="width:10%;">
 								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style="margin:5px; width: 35px; height: 35px;
 									cursor: pointer;" onclick="#"/> <!-- 프로필 사진 클릭시 해당 계정으로 이동 -->
@@ -74,60 +74,46 @@
 								<div id="" style="width:10%; padding-top: 10px; margin-left: 5px;">(#)</div>
 								<div style="width:80%; text-align: right; padding-top: 10px; padding-right: 10px; color:#ffaec9;">
 									<i class="fas fa-ellipsis-h" onclick="#" style="cursor: pointer;"></i>
-								
-								</div>
+								</div>	
 							</div>
-							
-							<!-- 게시판 제목 -->
-							<div style="height: 30px; padding-top: 5px; margin:5px;">
-								<p3>글 제목</p3>
+
+							<!-- 게시글 제 -->
+							<div style="display:flex; justify-content: center;">
+								<textarea id="" name="" placeholder="게시글 제목" style="border:0; border-bottom: 1px solid #ffaec9; 
+									resize:none; height:40px; padding: 5px; margin: 5px;"></textarea>
 							</div>
-							
-							<!-- 사진 -->
-							<div style="position:relative; width:100%; height: 0; padding-bottom:100%; ">
-								<img src="${pageContext.request.contextPath}/images/logo_3.png" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; ">
-							</div>
-							
-							<!-- 아이콘들 (다이아몬드, 댓글아이콘등) -->
-							<div style="display : flex; justify-content: flex-start; height: 35px; padding: 5px;">
-								<div style="font-size: 0.9rem; padding-top: 2px;">
-									<i class="far fa-gem fa-lg" style="cursor: pointer; color : #ffaec9" onclick="changeDiamond()"></i>
-									<i class="" style="display: none;"></i>
-								</div>
-								<div style="font-size: 0.95rem;">
-									<i class="far fa-comment fa-lg" style="cursor: pointer; color : #ffaec9; margin-left: 9px;" onclick="#"></i>
-								</div>
-							</div>
-							 
-							<!-- 좋아요 숫자  -->
-							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
-								<div>좋아요</div>
-								<div id="diamond_num" style="color: #ffaec9;">#</div>
-								<div>개</div>
-							</div>
-							
-							<!-- 본문  -->					
-							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
-								<div id="" style="width: 20%;">글쓴이 </div>
-								<div id="" style="width: 70%;">본문내용</div>
-								<textarea rows="" cols="" style="display: none;">본문내용</textarea>
-								<div id="" style="width: 10%; text-align: right; margin: 0 5px;">
-									<i class="far fa-plus-square" onclick="#" style="cursor: pointer; color: #ffaec9;"></i>
-								</div>
-							</div>
-							
-							
-						</div><!-- end 일반게시판 게시물 div박스-->
 						
-					</article>
+							<!-- 게시글 본문 -->
+							<div style="display:flex; justify-content: center;">
+								<textarea id="" name="" placeholder="게시글을 작성해보세요 :)" style="border:0; border-bottom: 1px solid #ffaec9; 
+									resize:none; height:250px; padding: 5px; margin: 5px;"></textarea>
+							</div>
+							
+								<!-- 사진 업로드 -->
+							<div style="display:flex; justify-content: center;">
+								<a href="#" style="display:flex; justify-content: center; width:30%; border-bottom: none; color:#ffaec9;">
+									<div style="margin: 1px;">
+										<i class="fas fa-images"></i>
+									</div>
+									<div style="color:#9FA3A6; margin-left: 3px;">사진 첨부하기</div>
+								</a>
+							</div>
+							<div style="display:flex; justify-content: center;">
+								<input id="" name="" type="button" value="미리보기" style="box-shadow: none; font-size: 1em;" onclick="preview()">
+								<input id="" name="" type="button" value="인증하기" style="box-shadow: none; font-size: 1em;" onclick="">
+							</div>
+						</div>
+							
+					</div><!-- end 일반게시판 게시물 div박스-->
 						
 				</div>
+						
+			</div>
 				
 				<!-- board body end -->
 
 				</div>
 			</div>
-				<!-- Sidebar -->
 			</div>
 
 		<!-- Scripts -->
@@ -139,7 +125,14 @@
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 			<script>
+			function preview() {
+				var width = '500';
+			    var height = '700';
+			    var left = Math.ceil(( window.screen.width - width )/2);
+			    var top = Math.ceil(( window.screen.height - height )/2); 
+			    window.open('${pageContext.request.contextPath}/app/board/certificated_normal_board_preview.jsp', '미리보기', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
 				
+			}
 			
 			</script>
 
