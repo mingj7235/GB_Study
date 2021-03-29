@@ -63,7 +63,7 @@
 				
 				<!-- body -->
 				<div style="display: flex; justify-content: center;">
-					<div style="width:70%;"> 
+					<div style="width:60%;"> 
 						<!-- 일반게시판 글쓰기 아웃라인 -->
 						<div style="height: 80px; margin-top: 30px; border: 1px solid #F0E2D9;">
 							<div style="display:flex; justify-content: center;">
@@ -91,7 +91,7 @@
 								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style="margin:5px; width: 35px; height: 35px;
 									cursor: pointer;" onclick="#"/> <!-- 프로필 사진 클릭시 해당 계정으로 이동 -->
 								</div>
-								<span id="" style="width:10%; padding-top: 10px;">(#)</span>
+								<div id="" style="width:10%; padding-top: 10px;">(#)</div>
 								<div style="width:80%; text-align: right; padding-top: 10px; padding-right: 10px; color:#ffaec9;">
 									<i class="fas fa-ellipsis-h" onclick="#" style="cursor: pointer;"></i>
 								
@@ -105,14 +105,14 @@
 							
 							<!-- 사진 -->
 							<div style="position:relative; width:100%; height: 0; padding-bottom:100%; ">
-								<img src="${pageContext.request.contextPath}/images/logo_3.png" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(255,174,201);">
+								<img src="${pageContext.request.contextPath}/images/logo_3.png" style="display:inline-block; width:100%; height:100%; position:absolute; top:0; left:0; ">
 							</div>
 							
 							<!-- 아이콘들 (다이아몬드, 댓글아이콘등) -->
 							<div style="display : flex; justify-content: flex-start; height: 35px; padding: 5px;">
 								<div style="font-size: 0.9rem; padding-top: 2px;">
-									<i class="far fa-gem fa-lg" style="cursor: pointer; color : #ffaec9" onclick="#"></i>
-									<%-- <img src="${pageContext.request.contextPath}/images/mini_logo.png" onclick="#" style="cursor: pointer;"> --%>
+									<i class="far fa-gem fa-lg" style="cursor: pointer; color : #ffaec9" onclick="changeDiamond()"></i>
+									<i class="" style="display: none;"></i>
 								</div>
 								<div style="font-size: 0.95rem;">
 									<i class="far fa-comment fa-lg" style="cursor: pointer; color : #ffaec9; margin-left: 9px;" onclick="#"></i>
@@ -122,7 +122,7 @@
 							<!-- 좋아요 숫자  -->
 							<div style="display : flex; justify-content: flex-start; height: 30px; padding: 5px;">
 								<div>좋아요</div>
-								<div id="diamond_num">#</div>
+								<div id="diamond_num" style="color: #ffaec9;">#</div>
 								<div>개</div>
 							</div>
 							
@@ -185,9 +185,18 @@
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-			<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 			<script>
-				var check = false;
+				var diamondCheck = false;
+				
+				function changeDiamond() {
+					if(!diamondCheck) {
+						document.getelementbyclass("fa-gem").
+						/* display를 none으로 변경하고 다른 icon을 가져와서(채워져있는 다이아몬드 ) */
+						diamondCheck = true;
+						
+					}
+						
+				}
 			
 			</script>
 

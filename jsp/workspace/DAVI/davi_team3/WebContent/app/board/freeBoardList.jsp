@@ -28,7 +28,7 @@
 								<style>	
 								table {
 									margin: 0 auto 1em auto;
-									width: 80%;		
+									width: 70%;		
 									align-items: center;															
 								}
 															
