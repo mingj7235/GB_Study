@@ -63,7 +63,7 @@
 				
 				<!-- body -->
 				<div style="display: flex; justify-content: center;">
-					<div style="width:60%; height: 850px;"> 
+					<article style="width:60%;"> 
 						<!-- 일반게시판 글쓰기 아웃라인 -->
 						<div style="height: 10%; margin-top: 30px; border: 1px solid #F0E2D9;">
 							<div style="display:flex; justify-content: center;">
@@ -166,7 +166,7 @@
 							
 						</div><!-- end 일반게시판 게시물 div박스-->
 						
-					</div>
+					</article>
 						
 				</div>
 				
@@ -192,8 +192,8 @@
 					/* document.getElementById("wrapper").style.backgroundColor = "black";
 					document.getElementById("wrapper").style.opacity = "0.3%"; */
 					
-					var width = '650';
-				    var height = '380';
+					var width = '700';
+				    var height = '450';
 				    var left = Math.ceil(( window.screen.width - width )/2);
 				    var top = Math.ceil(( window.screen.height - height )/2); 
 				    window.open('${pageContext.request.contextPath}/app/board/certificated_normal_board_write.jsp', 'popup-test', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
