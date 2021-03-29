@@ -187,20 +187,19 @@
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 			<script>
-				var diamondCheck = false;
-				
 				function popup() {
+					/* 배경화면 투명도를 낮추기  */
+					/* document.getElementById("wrapper").style.backgroundColor = "black";
+					document.getElementById("wrapper").style.opacity = "0.3%"; */
 					
 					var width = '650';
 				    var height = '380';
-				 
 				    var left = Math.ceil(( window.screen.width - width )/2);
 				    var top = Math.ceil(( window.screen.height - height )/2); 
-				 
 				    window.open('${pageContext.request.contextPath}/app/board/certificated_normal_board_write.jsp', 'popup-test', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
-				 
-
+					
 				}
+				var diamondCheck = false;
 				
 				function changeDiamond() {
 					if(!diamondCheck) {
