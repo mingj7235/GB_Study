@@ -92,7 +92,7 @@
 								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style="margin:5px; width: 35px; height: 35px;
 									cursor: pointer;" onclick="#"/> <!-- 프로필 사진 클릭시 해당 계정으로 이동 -->
 								</div>
-								<div id="" style="width:10%; padding-top: 10px; margin-left: 5px;">(#)</div>
+								<div id="" style="width:10%; padding-top: 10px;">(#)</div>
 								<div style="width:80%; text-align: right; padding-top: 10px; padding-right: 10px; color:#ffaec9;">
 									<i class="fas fa-ellipsis-h" onclick="#" style="cursor: pointer;"></i>
 								
@@ -190,16 +190,7 @@
 				var diamondCheck = false;
 				
 				function popup() {
-					
-					var width = '650';
-				    var height = '380';
-				 
-				    var left = Math.ceil(( window.screen.width - width )/2);
-				    var top = Math.ceil(( window.screen.height - height )/2); 
-				 
-				    window.open('${pageContext.request.contextPath}/app/board/certificated_normal_board_write.jsp', 'popup-test', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
-				 
-
+					window.open("https://www.naver.com", "popup", "width=600, height=400");
 				}
 				
 				function changeDiamond() {
