@@ -99,7 +99,7 @@
 								</a>
 							</div>
 							<div style="display:flex; justify-content: center;">
-								<input id="" name="" type="button" value="미리보기" style="box-shadow: none; font-size: 1em;" onclick="">
+								<input id="" name="" type="button" value="미리보기" style="box-shadow: none; font-size: 1em;" onclick="preview()">
 								<input id="" name="" type="button" value="인증하기" style="box-shadow: none; font-size: 1em;" onclick="">
 							</div>
 						</div>
@@ -125,7 +125,14 @@
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 			<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 			<script>
+			function preview() {
+				var width = '500';
+			    var height = '700';
+			    var left = Math.ceil(( window.screen.width - width )/2);
+			    var top = Math.ceil(( window.screen.height - height )/2); 
+			    window.open('${pageContext.request.contextPath}/app/board/certificated_normal_board_preview.jsp', '미리보기', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
 				
+			}
 			
 			</script>
 
