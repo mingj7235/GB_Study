@@ -9,7 +9,7 @@
 -->
 <html>
 	<head>
-		<title>인증게시판</title>
+		<title>게시물 작성 </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
@@ -60,10 +60,23 @@
 
 				
 				<!-- body -->
+				<div style="display: flex; justify-content: center; margin:10px 0; padding-top: 5px;">
+					<h1>게시물 만들기</h1>
+				</div>
 				<div style="display: flex; justify-content: center;">
-					<div style="width:60%; height: 850px;"> 
-						<!-- 일반게시판 글쓰기 아웃라인 -->
-						<div style="height: 10%; margin-top: 30px; border: 1px solid #F0E2D9;">
+						<div style="width: 80%; height: 400px; border: 1px solid #F0E2D9;">
+							<!-- 게시글 작성자 프로필, 닉네임, 제목 -->
+							<div style="display : flex; justify-content: center; height: 30px;">
+								<div style="width:10%;">
+								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style="margin:5px; width: 35px; height: 35px;
+									cursor: pointer;" onclick="#"/> <!-- 프로필 사진 클릭시 해당 계정으로 이동 -->
+								</div>
+								<div id="" style="width:10%; padding-top: 10px; margin-left: 5px;">(#)</div>
+								<div style="width:80%; text-align: right; padding-top: 10px; padding-right: 10px; color:#ffaec9;">
+									<i class="fas fa-ellipsis-h" onclick="#" style="cursor: pointer;"></i>
+								</div>	
+							</div>
+						
 							<div style="display:flex; justify-content: center;">
 								<img id="" name="" class="profile" src="${pageContext.request.contextPath}/images/logo_3.png" alt="" style=" margin:5px; width: 35px; height: 35px;
 									cursor: pointer;" onclick="#"/>
@@ -81,13 +94,12 @@
 								</a>
 							</div>
 						</div>
-					
 							
-						</div><!-- end 일반게시판 게시물 div박스-->
-						
-					</div>
+					</div><!-- end 일반게시판 게시물 div박스-->
 						
 				</div>
+						
+			</div>
 				
 				<!-- board body end -->
 
