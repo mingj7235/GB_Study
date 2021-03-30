@@ -12,13 +12,10 @@
 		<title>Untitled</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/pgwslider.css" />
+    	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+    	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/zaccordion.css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="flexslider.css" type="text/css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-		<script src="jquery.flexslider.js"></script>
 		<style>
 			body{
 				font-family: 'Sunflower', sans-serif;
@@ -61,6 +58,21 @@
 			    height: 3px;
 			    background-color: #ffaec9;
 			}
+			
+			.article {
+				/* opacity: 0.1; */			
+			}
+			
+			.slide-img {
+				max-width: 100%;
+			}
+			
+			@media screen and (max-width: 1400px) {
+				.slide-img {
+					max-width: 100%;
+					height: 320px !important;
+				}
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -76,36 +88,45 @@
 								<c:import url="/app/header/header.jsp" />
 
 							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<div style="">
-											<ul class="pgwSlider">
-											    <li><img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_caramel.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
-											    <li><img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_cheesecake_brownie.jpg" alt="Montréal, QC, Canada" ></li>
-											    <li>
-											        <img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_donut.jpg">
-											        <span>Shanghai, China</span>
-											    </li>
-											    <li>
-											        <a href="http://www.nyc.gov" target="_blank">
-											            <img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_lemon.jpg">
-												    <span>New York, NY, USA</span>
-											        </a>
-											    </li>
-											    <li><img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_caramel.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
-											    <li><img src="${pageContext.request.contextPath}/app/member/img/kitchen_adventurer_caramel.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
-											</ul>
-										</div>	
-									</div>
+								<section style="padding:2% 0;">
+									<header style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:0.5%; margin:2% 0 1.3% 0;">
+										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:3em; color:#e9b0df;">오직 나만의 다이어트 비서</h1>
+										<p style="font-weight:bold;">혼자서하는 다이어트 그만! 이제 다비의 관리를 받아보세요~</p>
+									</header>
+										<div id="container">
+											<div id="examples" style="margin-top:2%; display:flex; justify-content:center;">
+												<ul id="example1">
+													<li>
+														<img src="${pageContext.request.contextPath}/app/member/img/diet01.PNG" width="600" height="400" alt="" class="slide-img"/>
+													</li>
+													<li>
+														<img src="${pageContext.request.contextPath}/app/member/img/diet02.PNG" width="600" height="400" alt="" class="slide-img"/>
+													</li>
+													<li>
+														<img src="${pageContext.request.contextPath}/app/member/img/diet03.PNG" width="600" height="400" alt="" class="slide-img"/>
+													</li>
+													<li>
+														<img src="${pageContext.request.contextPath}/app/member/img/diet01.PNG" width="600" height="400" alt="" class="slide-img"/>
+													</li>
+													<li>
+														<img src="${pageContext.request.contextPath}/app/member/img/diet02.PNG" width="600" height="400" alt="" class="slide-img"/>
+													</li>
+													<li>
+														<img src="${pageContext.request.contextPath}/app/member/img/diet03.PNG" width="600" height="400" alt="" class="slide-img"/>
+													</li>
+												</ul>
+											</div>
+										</div>
 								</section>
 
 							<!-- Section -->
-								<section style="padding-top:60px;">
-									<header class="major">
-										<h2 style="padding-right:10px;">나만의 다이어트 비서</h2>
+								<section style="padding:6% 10%;">
+									<header style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:0.5%;">
+										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:3em;">다비의 Daily 보고서</h1>
+										<p>매일매일 관리받아보세요!</p>
 									</header>
-									<div class="features">
-										<article>
+									<div class="features" style="border:20px solid #FCEEF5; padding:4% 4% 4% 0;">
+										<article class="article">
 											<span class="icon fa-gem"></span>
 											<div class="content">
 												<h3>인증 Report</h3>
@@ -114,16 +135,16 @@
 												<p class="report">성공 후기 : <span>2개</span></p>
 											</div>
 										</article>
-										<article>
+										<article class="article">
 											<span class="icon solid fa-paper-plane"></span>
 											<div class="content">
-												<h3>오늘의 팩폭</h3>
+												<h3>다비의 한마디</h3>
 												<p class="report">다이어트 하기로 했으면</p>
 												<p class="report">마음만 먹어야지</p>
 												<p class="report">자꾸 이것 저것 먹으면 되겠니?</p>
 											</div>
 										</article>
-										<article>
+										<article class="article">
 											<span class="icon solid fa-rocket"></span>
 											<div class="content">
 												<h3>각오 & 목표</h3>
@@ -131,7 +152,7 @@
 												<p class="report">목표 : <span>20kg 감량!!</span></p>
 											</div>
 										</article>
-										<article>
+										<article class="article">
 											<span class="icon solid fa-signal"></span>
 											<div class="content">
 												<h3>다이어트 Report</h3>
@@ -159,9 +180,8 @@
 								</section>
 
 							<!-- Section -->
-								<section style="padding-top:60px;">
-									
-									<div class="headers" style="display:flex;">
+								<section style="padding:4% 10% 4% 6%;">
+									<div class="headers" style="display:flex; margin-bottom:2%;">
 										<header id="best" class="major" style="margin-right:15px; cursor:pointer;">
 											<h3 style="padding-right:10px;">베스트 인증 게시판</h3>
 										</header>
@@ -175,15 +195,15 @@
 										</header>
 									</div>
 									
-									<div id="best_posts" class="posts">
-										<article>
+									<div id="best_posts" class="posts" style="width:100%; margin:auto; padding:3% 6em 3% 0; border:20px solid #FCEEF5;">
+										<article style="">
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
 												<span style="color:black; font-size:1.8rem; font-weight:bold;">1st</span>
 												<span class="icon fa-gem" style="color:#ffaec9; font-size:1rem; padding-bottom:5px;">&nbsp;20901</span>
 											</div>
 											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
 											<h3>Interdum aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.</p>
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
@@ -192,7 +212,7 @@
 											</div>
 											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
 											<h3>Nulla amet dolore</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.</p>
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
@@ -201,7 +221,7 @@
 											</div>
 											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
 											<h3>Tempus ullamcorper</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.</p>
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
@@ -210,7 +230,7 @@
 											</div>
 											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
 											<h3>Sed etiam facilis</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.</p>
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
@@ -219,7 +239,7 @@
 											</div>
 											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
 											<h3>Feugiat lorem aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.</p>
 										</article>
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
@@ -228,10 +248,9 @@
 											</div>
 											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
 											<h3>Amet varius aliquam</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum.</p>
 										</article>
 									</div>
-									
 									<div id="free_posts" class="posts" style="display:none;">
 										<article>
 											<div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:flex-end;">
@@ -346,12 +365,10 @@
 										</article>
 									</div>
 								</section>
-
+							
 						</div>
 					</div>
-
-				<!-- Sidebar -->
-				<c:import url="/app/footer/footer.jsp" />
+					<c:import url="/app/footer/footer.jsp" />
 			</div>
 
 		<!-- Scripts -->
@@ -360,12 +377,42 @@
 			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-			<script src="${pageContext.request.contextPath}/assets/js/pgwslider.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/zaccordion.js"></script>
 			<script src="${pageContext.request.contextPath}/index.js"></script>
 			<script>
-				$(document).ready(function() {
-				    $('.pgwSlider').pgwSlider();
+				/*jslint sloppy: true, white: true */
+				/*globals $, document*/
+				var windowWidth = $( window ).width();
+				console.log(windowWidth);
+				
+				$(document).ready(function () {
+					var exampleEl = $("#example1"),
+						navigationEl;
+	
+					navigationEl = $('<ul/>')
+						.insertAfter(exampleEl);
+					
+					if(windowWidth > 1400){
+					exampleEl
+						.zAccordion({
+							auto: true,  //Disable the (automatic) slideshow
+							timeout:3000,
+							slideWidth: 600,
+							width: 1100,
+							height: 400
+						});
+					}else{
+						exampleEl
+						.zAccordion({
+							auto: true,  //Disable the (automatic) slideshow
+							timeout:3000,
+							slideWidth: 500,
+							width: 750,
+							height: 320
+						});
+					}
 				});
-			</script>
+		</script>
 	</body>
 </html>

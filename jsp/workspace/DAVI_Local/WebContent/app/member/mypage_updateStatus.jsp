@@ -9,7 +9,7 @@
 -->
 <html>
 	<head>
-		<title>내 정보 변경</title>
+		<title>내 정보 수정</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
@@ -44,11 +44,6 @@
 				border-bottom: solid 1px #ffaec9 !important;
 				border-radius:0;
 				box-shadow: none;
-			}
-
-			
-			input[type="button"]{
-				font-size:0.9rem;
 			}
 			
 			.fas{

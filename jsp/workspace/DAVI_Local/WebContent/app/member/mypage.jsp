@@ -54,8 +54,10 @@
 												<input type="button" value="내 정보 수정" class="primary" style="width:30%; margin:1% auto;" onclick="popupUpdate()">
 											</div>
 											<div>
-												<input type="button" value="비밀번호 변경 " class="primary" style="width:30%; margin:1% auto;" onclick="popupCheckPw()">
+												<input type="button" value="비밀번호 변경 " class="primary" style="width:30%; margin:1% auto;" onclick="popupChangePw()">
 											</div>
+											<hr style="width: 30%; margin: 1% auto;">
+											
 										</div>
 								</section>
 
@@ -82,12 +84,12 @@
 			    window.open('${pageContext.request.contextPath}/app/member/mypage_updateStatus.jsp', '게시물 작성', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
 			}
 			
-			function popupCheckPw () {
+			function popupChangePw () {
 				var width = '700';
 			    var height = '600';
 			    var left = Math.ceil(( window.screen.width - width )/2);
 			    var top = Math.ceil(( window.screen.height - height )/2); 
-			    window.open('${pageContext.request.contextPath}/app/member/mypage_checkPw.jsp', '게시물 작성', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
+			    window.open('${pageContext.request.contextPath}/app/member/mypage_changePw_popup.jsp', '게시물 작성', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
 			}
 			
 			</script>
