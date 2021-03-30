@@ -33,10 +33,13 @@
 				display: flex;
 				justify-content: center;
 				margin-bottom:40px;
+				
 			}
 			
 			input[type="text"], input[type="text"]:focus,
-			input[type="password"], input[type="password"]:focus{
+			input[type="password"], input[type="password"]:focus,
+			input[type="email"], input[type="email"]:focus,
+			textarea, textarea:focus{
 				border:0 !important;
 				border-bottom: solid 1px #ffaec9 !important;
 				border-radius:0;
@@ -53,7 +56,7 @@
 			}
 			
 			::placeholder {
-				font-size:0.8em;
+				font-size:1.1em;
 			}
 		</style>
 	</head>
@@ -67,7 +70,7 @@
 						<div class="inner">
 
 							<!-- Header -->
-							<c:import url="/app/header/header.jsp" />
+							
 								
 							<!-- Content -->
 							<div style="display:flex; flex-direction:column; align-items:center;">
@@ -78,49 +81,56 @@
 								<form method="post" action="#" style="width:45%;">
 									
 									<div class="join-unit">
-										<div class="join-unit_input" style="width:40%;">
-											<input type="text" name="memberId" id="memberId" placeholder="아이디"/>
+										<div class="join-unit_input" style="width:80%;">
+											<input type="text" name="memberId" id="memberId" placeholder="닉네임"/>
 										</div>
 									</div>
 									
 									<div class="join-unit">
-										<div class="join-unit_input" style="width:40%;">
-											<input type="password" name="memberId" id="memberId" placeholder="비밀번호"/>
-										</div>
-									</div>
-
-									<div class="join-unit">
-										<div class="join-unit_input" style="width:40%;">
-											<input type="password" name="memberId" id="memberId" placeholder="비밀번호 확인"/>
+										<div class="join-unit_input" style="width:80%;">
+											<input type="email" name="memberId" id="memberId" placeholder="이메일 주소"/>
 										</div>
 									</div>
 									
 									<div class="join-unit">
-										<div class="join-unit_input" style="width:40%;">
-											<input type="text" name="memberId" id="memberId"/>
+										<div class="join-unit_input" style="width:80%;">
+											<input type="text" name="memberId" id="memberId" placeholder="휴대폰 번호"/>
 										</div>
 									</div>
 									
 									<div class="join-unit">
-										<div class="join-unit_input" style="width:40%;">
-											<input type="text" name="memberId" id="memberId" placeholder="- 를 제외하고 입력하세요"/>
+										<div class="join-unit_input" style="width:80%;">
+											<input type="text" name="memberId" id="memberId" placeholder="신장 (165)"/>
 										</div>
 									</div>
 									
 									<div class="join-unit">
-										<div class="join-unit_input" style="width:40%;">
-											<input type="text" name="memberId" id="memberId" placeholder="abcd@efg.com"/>
+										<div class="join-unit_input" style="width:80%;">
+											<input type="text" name="memberId" id="memberId" placeholder="체중 (50)"/>
 										</div>
 									</div>
 									
+									<div class="join-unit">
+										<div class="join-unit_input" style="width:80%;">
+											<textarea rows="" cols="" style="resize: none;" placeholder="각오"></textarea>
+											<!-- <input type="text" name="memberId" id="memberId" placeholder="각오"/> -->
+										</div>
+									</div>
+									
+									<div class="join-unit">
+										<div class="join-unit_input" style="width:80%;">
+											<textarea rows="" cols="" style="resize: none;" placeholder="목표"></textarea>
+											<!-- <input type="text" name="memberId" id="memberId" placeholder="목표"/> -->
+										</div>
+									</div>
 									
 									<hr style="width:100%; border-bottom: solid 3px #ffaec9; margin-top:10%; margin-bottom:8%;">
 									
 									<div class="btns">
 										<div class="col-12">
 											<ul class="actions" style="width:100%; display:flex; justify-content:center;">
-												<li><input type="button" value="관리받기" class="primary" style="width:150px;" /></li>
-												<li><input type="button" value="취소" style="width:150px;"/></li>
+												<li><input type="submit" value="변경하기" class="primary" style="width:150px;" /></li>
+												<li><input type="reset" value="취소" style="width:150px;"/></li>
 											</ul>
 										</div>
 									</div>
@@ -132,7 +142,6 @@
 					</div>
 
 				<!-- Sidebar -->
-					<c:import url="/app/footer/footer.jsp" />
 
 			</div>
 
