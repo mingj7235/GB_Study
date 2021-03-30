@@ -38,6 +38,14 @@
 				box-shadow: none;
 			}
 			
+			.board_content:focus {
+				border:0;
+				border-bottom: solid 1px #ffaec9;
+				border-radius:0;
+				box-shadow: none;
+			
+			}
+			
 			.profile {
 				border-radius: 40%;
 			}
@@ -80,13 +88,13 @@
 
 							<!-- 게시글 제 -->
 							<div style="display:flex; justify-content: center;">
-								<textarea id="" name="" placeholder="게시글 제목" style="border:0; border-bottom: 1px solid #ffaec9; 
+								<textarea class="board_content" id="" name="" placeholder="게시글 제목" style="border:0; border-bottom: 1px solid #ffaec9; 
 									resize:none; height:40px; padding: 5px; margin: 5px;"></textarea>
 							</div>
 						
 							<!-- 게시글 본문 -->
 							<div style="display:flex; justify-content: center;">
-								<textarea id="" name="" placeholder="게시글을 작성해보세요 :)" style="border:0; border-bottom: 1px solid #ffaec9; 
+								<textarea class="board_content" id="" name="" placeholder="게시글을 작성해보세요 :)" style="border:0; border-bottom: 1px solid #ffaec9; 
 									resize:none; height:250px; padding: 5px; margin: 5px;"></textarea>
 							</div>
 							

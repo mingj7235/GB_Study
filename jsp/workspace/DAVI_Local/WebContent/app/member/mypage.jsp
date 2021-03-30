@@ -9,16 +9,26 @@
 -->
 <html>
 	<head>
-		<title>로그인</title>
+		<title>마이 페이지</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
 		<style>
 			 body{
 				font-family: 'Sunflower', sans-serif;
 			} 
+			
+			.title{
+				font-size: 3rem;
+				font-family: 'Cute Font', cursive;
+				color: #ffaec9;
+				margin-bottom: 3%;
+			}
+			
 		</style>
 	</head>
 	<body class="is-preload">
@@ -37,29 +47,17 @@
 							<!-- Content -->
 								<section style="padding-top:3%;">
 										<div style="display: flex; justify-content: center;">
-											<p3>마이페이지</p3>
-										
+											<p class="title">마이 페이지 </p>
 										</div>
-										
-							
-								
-										<form method="post" action="#">
-														<div class="row gtr-uniform" style="text-align:center;">
-															<div class="col-12">
-																<input type="text" name="memberId" id="memberId"  placeholder="아이디" style="width:30%; margin:1% auto;" />
-																<input type="password" name="memberPw" id="memberPw" placeholder="비밀번호" style="width:30%; margin:1% auto;"/>
-															</div>
-
-															<!-- button -->
-															<div class="col-12" style="padding-top:0%;">
-															<input type="submit" value="Login" class="primary" style="width:30%; margin:1% auto;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png" style="margin-top:2%;"><a href="findId.jsp"> 아이디/비밀번호 찾기</a></div>
-															<hr style="background-color: #ffaec9; height: 3px; width:40%; margin:1% auto;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png"> 아직 DAVI의 회원이 아니신가요? > <a href="join.jsp">회원가입</a></div>
-															</div>
-														</div>
-													</form>
-
+										<div style="text-align: center;">
+											<hr style="width: 30%; margin: 1% auto;">
+											<div>
+												<input type="button" value="내 정보 수정" class="primary" style="width:30%; margin:1% auto;" onclick="#">
+											</div>
+											<div>
+												<input type="button" value="비밀번호 변경 " class="primary" style="width:30%; margin:1% auto;" onclick="#">
+											</div>
+										</div>
 								</section>
 
 						</div>

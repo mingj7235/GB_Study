@@ -9,16 +9,52 @@
 -->
 <html>
 	<head>
-		<title>로그인</title>
+		<title>내 정보 변경</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
 		<style>
 			 body{
 				font-family: 'Sunflower', sans-serif;
 			} 
+			
+			.title{
+				font-size: 3rem;
+				font-family: 'Cute Font', cursive;
+				color: #ffaec9;
+				margin-bottom: 3%;
+			}
+			
+			.join-unit{
+				display: flex;
+				justify-content: center;
+				margin-bottom:40px;
+			}
+			
+			input[type="text"], input[type="text"]:focus,
+			input[type="password"], input[type="password"]:focus{
+				border:0 !important;
+				border-bottom: solid 1px #ffaec9 !important;
+				border-radius:0;
+				box-shadow: none;
+			}
+
+			
+			input[type="button"]{
+				font-size:0.9rem;
+			}
+			
+			.fas{
+				font-size:1.3rem;
+			}
+			
+			::placeholder {
+				font-size:0.8em;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -31,35 +67,66 @@
 						<div class="inner">
 
 							<!-- Header -->
-								<c:import url="/app/header/header.jsp" />
-					
-
+							<c:import url="/app/header/header.jsp" />
+								
 							<!-- Content -->
-								<section style="padding-top:3%;">
-								
-									<a href="${pageContext.request.contextPath}/index.jsp" style="text-align: center; display: block; margin:2% auto; border:0;">
-										<img src="${pageContext.request.contextPath}/images/logo_2.png"  style="max-width:100%; height:auto;"/>
-									</a>
-							
-								
-										<form method="post" action="#">
-														<div class="row gtr-uniform" style="text-align:center;">
-															<div class="col-12">
-																<input type="text" name="memberId" id="memberId"  placeholder="아이디" style="width:30%; margin:1% auto;" />
-																<input type="password" name="memberPw" id="memberPw" placeholder="비밀번호" style="width:30%; margin:1% auto;"/>
-															</div>
+							<div style="display:flex; flex-direction:column; align-items:center;">
+								<div style="margin:5% 0;">
+									<p class="title">내 정보 수정</p>
+								</div>
+								<hr style="width:45%; border-bottom: solid 3px #ffaec9; margin-top:0; margin-bottom:4%;">
+								<form method="post" action="#" style="width:45%;">
+									
+									<div class="join-unit">
+										<div class="join-unit_input" style="width:40%;">
+											<input type="text" name="memberId" id="memberId" placeholder="아이디"/>
+										</div>
+									</div>
+									
+									<div class="join-unit">
+										<div class="join-unit_input" style="width:40%;">
+											<input type="password" name="memberId" id="memberId" placeholder="비밀번호"/>
+										</div>
+									</div>
 
-															<!-- button -->
-															<div class="col-12" style="padding-top:0%;">
-															<input type="submit" value="Login" class="primary" style="width:30%; margin:1% auto;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png" style="margin-top:2%;"><a href="findId.jsp"> 아이디/비밀번호 찾기</a></div>
-															<hr style="background-color: #ffaec9; height: 3px; width:40%; margin:1% auto;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png"> 아직 DAVI의 회원이 아니신가요? > <a href="join.jsp">회원가입</a></div>
-															</div>
-														</div>
-													</form>
-
-								</section>
+									<div class="join-unit">
+										<div class="join-unit_input" style="width:40%;">
+											<input type="password" name="memberId" id="memberId" placeholder="비밀번호 확인"/>
+										</div>
+									</div>
+									
+									<div class="join-unit">
+										<div class="join-unit_input" style="width:40%;">
+											<input type="text" name="memberId" id="memberId"/>
+										</div>
+									</div>
+									
+									<div class="join-unit">
+										<div class="join-unit_input" style="width:40%;">
+											<input type="text" name="memberId" id="memberId" placeholder="- 를 제외하고 입력하세요"/>
+										</div>
+									</div>
+									
+									<div class="join-unit">
+										<div class="join-unit_input" style="width:40%;">
+											<input type="text" name="memberId" id="memberId" placeholder="abcd@efg.com"/>
+										</div>
+									</div>
+									
+									
+									<hr style="width:100%; border-bottom: solid 3px #ffaec9; margin-top:10%; margin-bottom:8%;">
+									
+									<div class="btns">
+										<div class="col-12">
+											<ul class="actions" style="width:100%; display:flex; justify-content:center;">
+												<li><input type="button" value="관리받기" class="primary" style="width:150px;" /></li>
+												<li><input type="button" value="취소" style="width:150px;"/></li>
+											</ul>
+										</div>
+									</div>
+									
+								</form>
+							</div>		
 
 						</div>
 					</div>
