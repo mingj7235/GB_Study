@@ -130,7 +130,7 @@
 										<div class="col-12">
 											<ul class="actions" style="width:100%; display:flex; justify-content:center;">
 												<li><input type="submit" value="변경하기" class="primary" style="width:150px;" /></li>
-												<li><input type="reset" value="취소" style="width:150px;"/></li>
+												<li><input type="button" value="취소" style="width:150px;"onclick="winClose()"/></li>
 											</ul>
 										</div>
 									</div>
@@ -151,6 +151,11 @@
 			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+			<script>
+				function winClose() {
+					 window.open('','_self').close();
+				}
+			</script>
 
 	</body>
 </html>

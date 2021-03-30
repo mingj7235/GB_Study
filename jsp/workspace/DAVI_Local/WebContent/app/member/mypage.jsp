@@ -15,7 +15,6 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
 		<style>
 			 body{
@@ -85,10 +84,10 @@
 			
 			function popupCheckPw () {
 				var width = '700';
-			    var height = '800';
+			    var height = '600';
 			    var left = Math.ceil(( window.screen.width - width )/2);
 			    var top = Math.ceil(( window.screen.height - height )/2); 
-			    window.open('${pageContext.request.contextPath}/app/member/mypage_updateStatus.jsp', '게시물 작성', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
+			    window.open('${pageContext.request.contextPath}/app/member/mypage_checkPw.jsp', '게시물 작성', 'width='+ width +', height='+ height +', left=' + left + ', top='+ top );
 			}
 			
 			</script>

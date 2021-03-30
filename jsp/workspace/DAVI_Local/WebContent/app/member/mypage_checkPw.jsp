@@ -15,10 +15,27 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
 		<style>
 			 body{
 				font-family: 'Sunflower', sans-serif;
 			} 
+			
+			.title{
+				font-size: 3rem;
+				font-family: 'Cute Font', cursive;
+				color: #ffaec9;
+				margin-bottom: 3%;
+			}
+			
+			input[type="password"], input[type="password"]:focus {
+				border:0 !important;
+				border-bottom: solid 1px #ffaec9 !important;
+				border-radius:0;
+				box-shadow: none;
+			}
+			
+			
 		</style>
 	</head>
 	<body class="is-preload">
@@ -35,28 +52,32 @@
 
 							<!-- Content -->
 								<section style="padding-top:3%;">
-								
-									<a href="${pageContext.request.contextPath}/index.jsp" style="text-align: center; display: block; margin:2% auto; border:0;">
-										<img src="${pageContext.request.contextPath}/images/logo_2.png"  style="max-width:100%; height:auto;"/>
-									</a>
-							
-								
+									<div style="display: flex; justify-content: center;">
+										<p class="title">비밀번호 변경</p>
+									</div>
+									
 										<form method="post" action="#">
-														<div class="row gtr-uniform" style="text-align:center;">
-															<div class="col-12">
-																<input type="text" name="memberId" id="memberId"  placeholder="아이디" style="width:30%; margin:1% auto;" />
-																<input type="password" name="memberPw" id="memberPw" placeholder="비밀번호" style="width:30%; margin:1% auto;"/>
-															</div>
-
-															<!-- button -->
-															<div class="col-12" style="padding-top:0%;">
-															<input type="submit" value="Login" class="primary" style="width:30%; margin:1% auto;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png" style="margin-top:2%;"><a href="findId.jsp"> 아이디/비밀번호 찾기</a></div>
-															<hr style="background-color: #ffaec9; height: 3px; width:40%; margin:1% auto;">
-															<div><img src="${pageContext.request.contextPath}/images/mini_logo.png"> 아직 DAVI의 회원이 아니신가요? > <a href="join.jsp">회원가입</a></div>
-															</div>
-														</div>
-													</form>
+											<div class="row gtr-uniform" style="text-align:center;">
+												<div class="col-12">
+													<input type="password" name="memberPw" id="memberPw" placeholder="기존 비밀번호" style="width:30%; margin:1% auto;"/>
+												</div>
+												<div class="col-12">
+													<input type="password" name="memberPw" id="memberPw" placeholder="새 비밀번호" style="width:30%; margin:3% auto 1% auto;"/>
+												</div>
+												<div class="col-12">
+													<input type="password" name="memberPw" id="memberPw" placeholder="새 비밀번호 확인" style="width:30%; margin:0 auto 1% auto; "/>
+												</div>
+												<div class="col-12" style="padding-top:0%;">
+													<input type="submit" value="비밀번호 변경" class="primary" style="width:30%; margin:1% auto;">
+												</div>
+												<div class="col-12" style="padding-top:0%;">
+													<input type="button" value="취소" class="" style="width:30%; margin:1% auto 3% auto;" onclick="winClose()">
+												</div>
+											</div>
+											<div style="display: flex; justify-content: center;" id="google_recaptha">
+												<div class="g-recaptcha" data-sitekey="6Lf-kZQaAAAAABHmNQ793nhzjcBQTN-fY2BJZvwE"></div>
+											</div>
+										</form>
 
 								</section>
 
@@ -72,6 +93,12 @@
 			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+			<script src='https://www.google.com/recaptcha/api.js'></script>
+			<script>
+				function winClose() {
+					 window.open('','_self').close();
+				}
+			</script>
 
 	</body>
 </html>
