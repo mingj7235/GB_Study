@@ -36,10 +36,11 @@
 
 							<!-- Content -->
 								<section style="padding-top:3%;">
-								
-									<a href="${pageContext.request.contextPath}/index.jsp" style="text-align: center; display: block; margin:2% auto; border:0;">
-										<img src="${pageContext.request.contextPath}/images/logo_2.png"  style="max-width:100%; height:auto;"/>
-									</a>
+										<div style="display: flex; justify-content: center;">
+											<p3>마이페이지</p3>
+										
+										</div>
+										
 							
 								
 										<form method="post" action="#">
