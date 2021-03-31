@@ -97,22 +97,22 @@
 											<div id="examples" style="margin-top:2%; display:flex; justify-content:center;">
 												<ul id="example1">
 													<li>
-														<img src="${pageContext.request.contextPath}/app/member/img/diet01.PNG" width="600" height="400" alt="" class="slide-img"/>
+														<img src="https://cdn.discordapp.com/attachments/821644547493986328/826634189184172073/1.jpg" width="750" height="500" alt="" class="slide-img"/>
 													</li>
 													<li>
-														<img src="${pageContext.request.contextPath}/app/member/img/diet02.PNG" width="600" height="400" alt="" class="slide-img"/>
+														<img src="https://cdn.discordapp.com/attachments/821644547493986328/826628746726998066/ver2.jpg" width="750" height="500" alt="" class="slide-img"/>
 													</li>
 													<li>
-														<img src="${pageContext.request.contextPath}/app/member/img/diet03.PNG" width="600" height="400" alt="" class="slide-img"/>
+														<img src="https://cdn.discordapp.com/attachments/821644547493986328/826634191960801320/3.jpg" width="750" height="500" alt="" class="slide-img"/>
 													</li>
 													<li>
-														<img src="${pageContext.request.contextPath}/app/member/img/diet01.PNG" width="600" height="400" alt="" class="slide-img"/>
+														<img src="https://cdn.discordapp.com/attachments/821644547493986328/826628750594015332/ver2.png" width="750" height="500" alt="" class="slide-img"/>
 													</li>
 													<li>
-														<img src="${pageContext.request.contextPath}/app/member/img/diet02.PNG" width="600" height="400" alt="" class="slide-img"/>
+														<img src="https://cdn.discordapp.com/attachments/821644547493986328/826634192133423134/2.png" width="750" height="500" alt="" class="slide-img"/>
 													</li>
 													<li>
-														<img src="${pageContext.request.contextPath}/app/member/img/diet03.PNG" width="600" height="400" alt="" class="slide-img"/>
+														<img src="https://cdn.discordapp.com/attachments/821644547493986328/826628752942694430/ver2.jpg" width="750" height="500" alt="" class="slide-img"/>
 													</li>
 												</ul>
 											</div>
@@ -393,14 +393,14 @@
 					navigationEl = $('<ul/>')
 						.insertAfter(exampleEl);
 					
-					if(windowWidth > 1400){
+					if(windowWidth > 1450){
 					exampleEl
 						.zAccordion({
 							auto: true,  //Disable the (automatic) slideshow
 							timeout:3000,
-							slideWidth: 600,
-							width: 1100,
-							height: 400
+							slideWidth: 750,
+							width: 1300,
+							height: 500
 						});
 					}else{
 						exampleEl

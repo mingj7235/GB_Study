@@ -47,15 +47,7 @@
 										
 								
 									<div class="features" >
-										<article class="article">
-											<span class="icon fa-gem"></span>
-											<div class="content">
-												<h3>인증 Report</h3>
-												<p class="report">베스트 게시판 : <span>10개</span></p>
-												<p class="report">daily 인증 : <span>80회</span></p>
-												<p class="report">성공 후기 : <span>2개</span></p>
-											</div>
-										</article>
+										
 										<article class="article">
 											<span class="icon solid fa-paper-plane"></span>
 											<div class="content">
@@ -72,21 +64,10 @@
 												<p class="report">각오 : <span>날 무시하던 전남친에게 제대로 복수하기!</span></p>
 												<p class="report">목표 : <span>20kg 감량!!</span></p>
 											</div>
-										</article>										
-										<article class="article">
-											<span class="icon solid fa-signal"></span>
-											<div class="content">
-												<h3>키 & 몸무게</h3>
-												<p class="report">키 : <span>170</span></p>
-												<p class="report">몸무게 : <span>50kg</span></p>
-											</div>
-										</article>										
+										</article>									
+																		
 										
-									</div>
-								
-								</section>
-								<section>
-									<h2 align="center">다이어트 Report</h2>									
+									</div>						
 							      <!-- 라인 차트 생성할 영역 -->
 							          <div id="chart_div" ></div>							     
 								</section>

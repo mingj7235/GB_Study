@@ -64,7 +64,7 @@ h1, h2, h3, h4 {
 				<c:import url="/app/header/header.jsp" />
 
 				<!-- Section -->
-				<div style="width:90%; display:flex; justify-content:space-between; align-items:center;margin:7% auto; padding:0 10%;">
+				<div style="width:90%; display:flex; justify-content:space-between; align-items:center;margin:3% auto; padding:0 10%;">
 					<div style="width:40%; margin-right:6%;">
 						<h3 style="color: #ffb642;">
 						RECIPE:
@@ -84,7 +84,8 @@ h1, h2, h3, h4 {
 					</div>
 				</div>
 				
-				<div style="display:flex; justify-content:center;">
+				<hr style="width:80%; margin:3% auto; background-color:#ffaec9; height:2px;">
+				<div style=" width:90%; display:flex; justify-content:space-between; margin:0 auto; padding:0 10%;">
 					<div style="margin-right:6%;">
 						<h3>재료</h3>
 						<ul style="list-style-type:square; font-size:1.1rem;">
@@ -112,8 +113,11 @@ h1, h2, h3, h4 {
 						</ol>
 					</div>
 				</div>
-					<div style="margin-top:10%;">
-					</div>
+				
+
+				
+				
+					
 			</div>
 		</div>
 
