@@ -1,0 +1,9 @@
+@charset "UTF-8";
+/* Just some styles to set the page layout. */
+#container {width:100%;margin:0 auto;padding-bottom:40px;}
+#examples {margin-top:60px;}
+pre {font-family:"Courier New", Courier, monospace;font-size:11px;margin:20px 0 100px 0;border:1px dashed #ddd;padding:10px;background:#f6f6f6;}
+pre.html {margin:10px 0;}
+.clear {clear:both;}
+code {font-family: monospace;}
+li {list-style-position: inside;}
