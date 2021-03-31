@@ -72,7 +72,7 @@
 													<input type="submit" value="비밀번호 변경" class="primary" style="width:30%; margin:1% auto;">
 												</div>
 												<div class="col-12" style="padding-top:0%;">
-													<input type="button" value="취소" class="" style="width:30%; margin:1% auto 3% auto;" onclick="winClose()">
+													<input type="button" value="뒤로가기" class="" style="width:30%; margin:1% auto 3% auto;" onclick="">
 												</div>
 											</div>
 											<div style="display: flex; justify-content: center;" id="google_recaptha">

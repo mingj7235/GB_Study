@@ -156,7 +156,7 @@
       <Context docBase="board_mvc2" path="/board_mvc2" reloadable="true" source="org.eclipse.jst.jee.server:board_mvc2"/>
       
       
-     <Context docBase="mvc_model2_review" path="/mvc_model2_review" reloadable="true" source="org.eclipse.jst.jee.server:mvc_model2_review"/><Context docBase="myFrontProject_main" path="/myFrontProject_main" reloadable="true" source="org.eclipse.jst.jee.server:myFrontProject_main"/></Host>
+     <Context docBase="mvc_model2_review" path="/mvc_model2_review" reloadable="true" source="org.eclipse.jst.jee.server:mvc_model2_review"/><Context docBase="myFrontProject_main" path="/myFrontProject_main" reloadable="true" source="org.eclipse.jst.jee.server:myFrontProject_main"/><Context docBase="davi_team3" path="/davi_team3" reloadable="true" source="org.eclipse.jst.jee.server:davi_team3"/></Host>
     </Engine>
   </Service>
 </Server>
