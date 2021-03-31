@@ -90,31 +90,37 @@
 							<!-- main section -->
 								<section style="padding:6% 10%;">
 									<header style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:0.5%;">
-										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:3em;">다비의 Daily 보고서</h1>
-										<p>매일매일 관리받아보세요!</p>
+										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:3em;">다비와 함께 운동할까요?</h1>
+										<p>유명 유투버들과 함께하는 홈 트레이닝 !  </p>
 									</header>
 								</section>
-							
+								
+							<!-- section -->
 								<section style="padding:6% 10%;">
 									<header style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:0.5%;">
-										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:3em;">다비의 Daily 보고서</h1>
-										<p>매일매일 관리받아보세요!</p>
+										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:2em;">1. 땅끄부부 </h1>
+										<p>보기만 해도 운동하고 싶게 만드는 땅끄부부의 즐거운 케미!</p>
+									</header>
+									
+									<div style=" ">
+										썸네일
+									</div>
+									
+								</section>
+
+							<!-- Section -->
+								<section style="padding:6% 10%;">
+									<header style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:0.5%;">
+										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:2em;">2. 힙으뜸 </h1>
+										<p>스쿼트 대한민국 1인자 힙으뜸과 함께 신나게 홈트를! </p>
 									</header>
 								</section>
 
 							<!-- Section -->
 								<section style="padding:6% 10%;">
 									<header style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:0.5%;">
-										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:3em;">다비의 Daily 보고서</h1>
-										<p>매일매일 관리받아보세요!</p>
-									</header>
-								</section>
-
-							<!-- Section -->
-								<section style="padding:6% 10%;">
-									<header style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:0.5%;">
-										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:3em;">다비의 Daily 보고서</h1>
-										<p>매일매일 관리받아보세요!</p>
+										<h1 style="padding-right:10px; margin-bottom:1.5%; font-size:2em;">3. 빵느</h1>
+										<p>요일별로 규칙적인 </p>
 									</header>
 								</section>
 							
