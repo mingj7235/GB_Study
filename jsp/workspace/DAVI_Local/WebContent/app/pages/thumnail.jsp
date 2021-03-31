@@ -261,10 +261,16 @@
 			  box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
 			}
 
+
+
+
 			/*Header*/
 			h1, h2{text-shadow:none; text-align:center;}
 			h1{ color: #666; text-transform:uppercase;  font-size:36px;}
 			h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
+			
+			
+			
 			
 			/*ANIMATION*/
 			#slider-wrap ul, #pagination-wrap ul li{
@@ -274,6 +280,8 @@
 			  -ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
 			  transition: all 0.3s cubic-bezier(1,.01,.32,1); 
 			}
+
+						
 			
 		</style>
 	</head>
@@ -347,7 +355,7 @@
 										<img src="https://fakeimg.pl/350x200/960a96/000?text=11111">
 										             </li>
 										             
-										             <!-- <li>
+										             <li>
 										                <div>
 										                    <h3>Slide #2</h3>
 										                    <span>Sub-title #2</span>
@@ -377,7 +385,7 @@
 										                    <span>Sub-title #5</span>
 										                </div>
 										<img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
-										             </li> -->
+										             </li>
 										             
 										             
 										          </ul>
