@@ -90,12 +90,10 @@
 			.thum_div_frame {
 				width: 70%;
 				height: 200px;
-				border : 1px solid black;
 			}
 			.detail_div_frame {
 				width: 70%;
 				height: 400px;
-				border : 1px solid black;
 			}
 			
 			.link_div_frame{
@@ -119,6 +117,10 @@
 				margin : 0;
 			}
 			
+			.thunmbnail_images {
+				width:216px;
+			}
+			
 			/* 슬라이드 css */
 			*{margin:0; padding:0; list-style:none;}
 			a{text-decoration:none; color:#666;}
@@ -127,17 +129,16 @@
 			
 			
 			#slide-wrapper{
-			  width:600px;
-			  margin:50px auto;
-			  height:400px;
+			  width:100%;
+			  height:200px;
 			  position:relative;
 			  color:#fff;
 			  text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;  
 			}
 			
 			#slider-wrap{
-			  width:600px;
-			  height:400px;
+			  width:100%;
+			  height:200px;
 			  position:relative;
 			  overflow:hidden;
 			}
@@ -154,8 +155,6 @@
 			#slider-wrap ul#slider li{
 			  float:left;
 			  position:relative;
-			  width:600px;
-			  height:400px; 
 			}
 			
 			#slider-wrap ul#slider li > div{
@@ -227,7 +226,7 @@
 			/*bar*/
 			#pagination-wrap{
 			  min-width:20px;
-			  margin-top:350px;
+			  margin-top: 170px;
 			  margin-left: auto; 
 			  margin-right: auto;
 			  height:15px;
@@ -340,19 +339,11 @@
 										      <div id="slider-wrap">
 										          <ul id="slider">
 										             <li>
-										                <div>
-										                    <h3>Slide #1</h3>
-										                    <span>Sub-title #1</span>
-										                </div>                
-										<img src="https://fakeimg.pl/350x200/960a96/000?text=11111">
+										<img class="thunmbnail_images" src="https://i.ytimg.com/vi/2Uv1B3kjCOI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCjHUx-YwnUHULAZzAw77daLoVvzg">
 										             </li>
 										             
-										             <!-- <li>
-										                <div>
-										                    <h3>Slide #2</h3>
-										                    <span>Sub-title #2</span>
-										                </div>
-										<img src="https://fakeimg.pl/350x200/D27328/000?text=22222">
+										             <li>
+										<img class="thunmbnail_images" src="https://i.ytimg.com/vi/M-tD4VhczYA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDSHofPUtcjxJLnWqYTe8dXYiZATg">
 										             </li>
 										             
 										             <li>
@@ -377,7 +368,7 @@
 										                    <span>Sub-title #5</span>
 										                </div>
 										<img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
-										             </li> -->
+										             </li>
 										             
 										             
 										          </ul>
