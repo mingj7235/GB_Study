@@ -72,7 +72,7 @@
 	// Sidebar.
 		var $sidebar = $('#sidebar'),
 			$sidebar_inner = $sidebar.children('.inner');
-
+		
 		// Inactive by default on <= large.
 			breakpoints.on('<=large', function() {
 				$sidebar.addClass('inactive');
@@ -80,6 +80,12 @@
 
 			breakpoints.on('>large', function() {
 				$sidebar.removeClass('inactive');
+				console.log($sidebar.attr('class'));
+				if($sidebar.attr('class') == 'off'){
+					$sidebar.addClass('inactive');
+				}else{
+					$sidebar.removeClass('inactive');
+				}
 			});
 
 		// Hack: Workaround for Chrome/Android scrollbar position bug.

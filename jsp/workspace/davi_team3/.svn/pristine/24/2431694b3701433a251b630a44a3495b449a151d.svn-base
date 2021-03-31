@@ -25,6 +25,10 @@
 			width: 100%;
 			object-fit: contain;
 			}
+			
+			.columChartP{
+			margin: 0 0 1em 0;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -67,9 +71,22 @@
 										</article>									
 																		
 										
-									</div>						
+									</div>							
 							      <!-- 라인 차트 생성할 영역 -->
-							          <div id="chart_div" ></div>							     
+							          <div id="chart_div" ></div>
+							          <div class="row">
+							          	<div class="col-8"> 
+								          	<div id="chart_div2" ></div>						     
+							          	</div>
+							          	<div class="col-4"> 
+							          		<p class="columChartP" style="padding:1em 0 0 0">18.5미만 : 저체중</p>
+							          		<p class="columChartP">18.5이상~23미만: 정상</p>
+							          		<p class="columChartP">23이상~25미만 과체중</p>
+							          		<p class="columChartP">23이상~30미만 경도비반</p>
+							          		<p class="columChartP">30이상 고도비만</p>
+							          	</div>
+							          </div>						     
+							          							     
 								</section>
 								<section>
 									<h2 align="center">이주의 식단</h2>
@@ -238,6 +255,6 @@
 			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 			<script src="https://www.gstatic.com/charts/loader.js"></script>
-			<script src="${pageContext.request.contextPath}/app/dietary/lineChart.js"></script>
+			<script src="${pageContext.request.contextPath}/app/dietary/chart.js"></script>
 	</body>
 </html>

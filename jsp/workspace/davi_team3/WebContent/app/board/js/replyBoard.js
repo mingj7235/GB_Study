@@ -1,23 +1,21 @@
 //댓글 등록
-$("#btnReply").click(function() {
-	var replytext = $("#replytext").val(); //댓글 내용
-	var bno = "${dto.bno}"; //게시물 번호
+function replyOk(bulletinNum) {
+	var replyContent = $("#writeReply").val(); //댓글 내용	
 	var param = {
-		"replytext" : replytext,
-		"bno" : bno
-	};
-	//var param="replytext="+replytext+"&bno="+bno;
+			"replytext" : replyContent,
+			"bulletinNum" : bulletinNum
+	};	
 	$.ajax({
 		type : "post", //데이터를 보낼 방식
 		url : "", //데이터를 보낼 url
-		data : content, //보낼 데이터
-
+		data : param, //보낼 데이터
+		
 		success : function() { //데이터를 보내는것이 성공했을시 출력되는 메시지
 			alert("댓글이 등록되었습니다.");
-			listReply2(); //댓글 목록 출력
+			listReply(); //댓글 목록 출력
 		}
-	});
-});
+	});	
+}
 
 //댓글 목록 출력
 function listReply(){
@@ -30,3 +28,18 @@ function listReply(){
         }
     });
 }
+
+function replyAnd(num, level) {
+	var WID = 15;	
+	$("#replyLevel" + num).addClass("replyLevel-" + (level+1));
+	//document.id.style.marginLeft = WID*level + 'px';
+}
+
+function replyAnswer(num, level) {	
+	$("article #replyLevel" + num).each(function(index, item) {		
+		$(this).addClass("replyLevel-" + level);		
+	});
+	
+	$("#replyAnswer" + num).show();
+}
+

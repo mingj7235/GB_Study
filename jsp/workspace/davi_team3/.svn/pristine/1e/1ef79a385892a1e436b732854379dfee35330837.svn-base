@@ -117,7 +117,7 @@
 				margin : 0;
 			}
 			
-			.thunmbnail_images {
+			.thumbnail_images {
 				width:216px;
 			}
 			
@@ -144,7 +144,7 @@
 			}
 			
 			#slider-wrap ul#slider{
-			  width:100%;
+			  width:2000px;
 			  height:100%;
 			  
 			  position:absolute;
@@ -339,11 +339,13 @@
 										      <div id="slider-wrap">
 										          <ul id="slider">
 										             <li>
-										<img class="thunmbnail_images" src="https://i.ytimg.com/vi/2Uv1B3kjCOI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCjHUx-YwnUHULAZzAw77daLoVvzg">
+										             <a href="https://www.youtube.com/watch?v=t70t-sklypk">
+										<img class="thumbnail_images" src="https://i.ytimg.com/vi/2Uv1B3kjCOI/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCjHUx-YwnUHULAZzAw77daLoVvzg">
+										             </a>
 										             </li>
 										             
 										             <li>
-										<img class="thunmbnail_images" src="https://i.ytimg.com/vi/M-tD4VhczYA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDSHofPUtcjxJLnWqYTe8dXYiZATg">
+										<img class="thumbnail_images" src="https://i.ytimg.com/vi/M-tD4VhczYA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDSHofPUtcjxJLnWqYTe8dXYiZATg">
 										             </li>
 										             
 										             <li>
@@ -351,7 +353,7 @@
 										                    <h3>Slide #3</h3>
 										                    <span>Sub-title #3</span>
 										                </div>
-										<img src="https://fakeimg.pl/350x200/FF607F/000?text=33333">
+										<img class="thumbnail_images" src="https://i.ytimg.com/vi/M0qtCqwVskU/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCMDnQFfLq2L9NErhWcaBqOPDjudA">
 										             </li>
 										             
 										             <li>
@@ -359,7 +361,7 @@
 										                    <h3>Slide #4</h3>
 										                    <span>Sub-title #4</span>
 										                </div>
-										<img src="https://fakeimg.pl/350x200/0A6E0A/000?text=44444">
+										<img class="thumbnail_images" src="https://i.ytimg.com/vi/UYHfk45Yi2c/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCha0vWRbibrVG6R70YFcJOv7hC6Q">
 										             </li>
 										             
 										             <li>
@@ -367,7 +369,7 @@
 										                    <h3>Slide #5</h3>
 										                    <span>Sub-title #5</span>
 										                </div>
-										<img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
+										<img class="thumbnail_images" src="https://i.ytimg.com/vi/t70t-sklypk/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAdeJlLhQ_T-yBCNrbldHBjg3lTAA">
 										             </li>
 										             
 										             
@@ -479,7 +481,7 @@
 			//number of slides
 			var totalSlides = $('#slider-wrap ul li').length;
 			//get the slide width
-			var sliderWidth = $('#slider-wrap').width();
+			var sliderWidth = $('.thumbnail_images').width();
 
 
 			$(document).ready(function(){
@@ -489,7 +491,7 @@
 			   BUILD THE SLIDER
 			  *****************/
 			  //set width to be 'x' times the number of slides
-			  $('#slider-wrap ul#slider').width(sliderWidth*totalSlides);
+			  $('#slider-wrap ul#slider').width(2000);
 			  
 			    //next slide  
 			  $('#next').click(function(){

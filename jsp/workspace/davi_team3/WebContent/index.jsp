@@ -368,7 +368,9 @@
 							
 						</div>
 					</div>
-					<c:import url="/app/footer/footer.jsp" />
+					<div id="sidebar" class="off">
+						<c:import url="/app/footer/footer_index.jsp" />
+					</div>
 			</div>
 
 		<!-- Scripts -->
@@ -399,7 +401,7 @@
 							auto: true,  //Disable the (automatic) slideshow
 							timeout:3000,
 							slideWidth: 750,
-							width: 1300,
+							width: 1200,
 							height: 500
 						});
 					}else{

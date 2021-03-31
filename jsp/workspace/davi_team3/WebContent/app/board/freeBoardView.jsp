@@ -16,9 +16,28 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/app/board/summernote/summernote-lite.css">
 	</head>
 	<style>
-		textarea{
-		resize: none;
+		.replyArti{
+			border-top: 1px solid #ffaec9;
+		}	
+		
+		.replycontent{
+			resize: none;
+			border: none;
 		}
+		
+		.replyLevel-0{
+			margin-left: 0px;
+		}	
+		.replyLevel-1{
+			margin-left: 15px;
+		}	
+		.replyLevel-2{
+			margin-left: 30px;
+		}	
+		.replyLevel-3{
+			margin-left: 45px;
+		}
+		
 	</style>
 	<body class="is-preload">
 
@@ -66,43 +85,100 @@
 												<a href="javascript:freeBoardViewForm.submit()">수정완료</a>
 												</div>									
 											</div>
+											<c:set var="replyNumber" value="1" />
+											<c:set var="replyLevel" value="1" />
 											<!-- 반복문으로 댓글 뿌리기 -->
-											<article style="margin-top:10px;">
+											<c:forEach var="replyArr" items="">
+												<article class="replyArti">
+													<div class="row">
+														<div  class="col-10">	
+															<div>															
+																<textarea name="readReply" class="replycontent" readonly>
+	첫번째 댓글
+	내용내용
+																</textarea>
+															</div>																						
+														</div>											
+														<div class="col-2" style="margin-top:15px;">														
+															<a href="#" >수정하기</a><br>
+															<a href="#" >삭제하기</a><br>
+															
+															<a href="javascript:replyAnswer(${replyNumber}, ${replyLevel})" >답변하기</a><br>
+														</div>												
+													</div>
+													<article id="replyAnswer${replyNumber}" class="replyArti" style="display: none;">
+														<h5 id="replyLevel${replyNumber}" style="margin-top:20px;">댓글 작성</h5>	
+														<div class="row" style="margin-top:5px">
+															<div class="col-10">
+																<div id="replyLevel${replyNumber}">
+																	<textarea name="writeReply" class="replycontent" placeholder="이곳에 입력하세요"></textarea>
+																</div>
+															</div>
+															<div class="col-2" style="margin-top:30px;">
+																<c:if test="${true}">
+																	<a href="#" >입력하기</a>
+																</c:if>											
+															</div>											
+														</div>										
+													</article>
+												</article>
+											</c:forEach>
+											<!-- 여기까지 1번째댓글 -->	
+											<article class="replyArti">
 												<div class="row">
-													<div  class="col-10">																							
-													<textarea name="readReply" rows="3" cols="" readonly></textarea>
-													</div>											
-													<div class="col-2" style="margin-top:15px;">
-														
-														<a href="#" >수정하기</a><br>
-														<a href="#" >삭제하기</a><br>
-														
-														<a href="#" >답변하기</a><br>
-													</div>												
-												</div>
-											</article>	
-											<article>
-												<div class="row">
-													<div  class="col-10 commentBox">																							
-													<textarea name="readReply" rows="3" cols="" readonly></textarea>
+													<div  class="col-10 commentBox">
+														<div style="margin-left: 15px;">
+															<textarea name="readReply" class="replycontent" readonly>
+첫번째 댓글에 댓글
+내용용
+내용용
+내용용내용용내용용내용용내용용내용용내용용내용용내용용내용용내용용내용용내용용
+내용용
+내용용
+내용용
+내용용
+내용용
+내용용
+내용용
+															</textarea>														
+														</div>																						
 													</div>											
 													<div class="col-2" style="margin-top:20px;">
 														
 														<a href="#" >수정하기</a><br>
 														<a href="#" >삭제하기</a><br>
-														<a href="#" >답변하기</a><br>
+														<a href="javascript:replyAnswer(${replyNumber+1}, ${replyLevel+1})" >답변하기</a><br>
 													</div>												
 												</div>
-											</article>	
+												<article id="replyAnswer${replyNumber+1}" class="replyArti" style="display: none;">
+													<h5 id="replyLevel${replyNumber+1}" style="margin-top:20px">댓글 작성</h5>	
+													<div class="row" style="margin-top:5px">
+														<div class="col-10">
+															<div id="replyLevel${replyNumber + 1}">
+																<textarea name="writeReply" class="replycontent" placeholder="이곳에 입력하세요"></textarea>
+															</div>
+														</div>
+														<div class="col-2" style="margin-top:30px;">
+															<c:if test="${true}">
+																<a href="#" >입력하기</a>
+															</c:if>											
+														</div>											
+													</div>										
+												</article>
+											</article>													
+											<article class="replyArti">
 												<h5 style="margin-top:20px">댓글 작성</h5>	
-											<div class="row" style="margin-top:5px">
-												<div class="col-10">
-													<textarea name="writeReply" rows="3" cols="" placeholder="댓글작성"></textarea>
-												</div>
-												<div class="col-2" style="margin-top:30px;">
-													<a href="#" >입력하기</a>											
-												</div>											
-											</div>										
+												<div class="row" style="margin-top:5px">
+													<div class="col-10">
+														<textarea name="writeReply" class="replycontent" placeholder="이곳에 입력하세요"></textarea>
+													</div>
+													<div class="col-2" style="margin-top:30px;">
+														<c:if test="${true}">
+															<a href="javascript:replyOk(${bulletinNum})" >입력하기</a>
+														</c:if>											
+													</div>											
+												</div>										
+											</article>
 																														
 										</form>
 									</div>					
@@ -126,9 +202,16 @@
 			<script src="${pageContext.request.contextPath}/app/board/summernote/lang/summernote-ko-KR.js"></script>
 			<!-- 써머노트 로딩과 설정변경 파일 js -->
 			<script src="${pageContext.request.contextPath}/app/board/summernote/summernoteBasic.js"></script>		
-			<script src="${pageContext.request.contextPath}/app/board/summernote/summernoteAdd.js"></script>					
+			<script src="${pageContext.request.contextPath}/app/board/summernote/summernoteAdd.js"></script>
+								
+			<script src="${pageContext.request.contextPath}/app/board/js/replyBoard.js"></script>	
+			
+			<!-- textarea 자동 높이 조절 -->				
+			<script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>					
 				
 			<script>
+			
+			autosize($("textarea"));
 			$(document).ready(function () {
 			summernoteView();			
 			writeDisable();			
