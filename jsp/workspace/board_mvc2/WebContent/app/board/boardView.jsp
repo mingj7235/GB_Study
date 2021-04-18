@@ -165,7 +165,7 @@
 			$.ajax({
 				url : pageContext + "/board/BoardReplyDeleteOk.bo",
 				type : "post",
-				data : {"replyNum" : replyNum},
+				data : {"replyNum" : replyNum}, 
 				dataType : "text",
 				success : function(result){
 					alert(result);

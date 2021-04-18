@@ -38,6 +38,7 @@ public class BoardReplyListAction implements Action{
 			arReply.add(reply);
 		}
 		out.println(arReply.toJSONString());
+		System.out.println(arReply.toJSONString());
 		out.close();
 		return null;
 	}

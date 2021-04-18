@@ -67,6 +67,7 @@
 	</select>
 	
 	<!-- 댓글 -->
+	<!-- 객체를 파라미터 타입으로 가져오면, 자동적으로 알리아스에 등록된 vo로 들어가게되어 알맞는 필드값을 매핑해서 꽂는다. -->
 	<insert id="insertReply" parameterType="boardReplyVO">
 		INSERT INTO TABLE_REPLY 
 		VALUES(REPLY_SEQ.NEXTVAL, #{boardNum}, #{memberId}, #{replyContent})	

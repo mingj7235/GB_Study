@@ -48,7 +48,7 @@ function checkId(id){
 }
 
 //키 이벤트 함수
-$("input[name='memberId']").keyup(function(event){
+$("input[name='memberId']").blur(function(event){
 	var id = $("input[name='memberId']").val();
 	checkId(id);
 });
