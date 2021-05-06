@@ -155,19 +155,98 @@ STS (Spring Tool Suite) 설치 (요거가 프레임워크임)
 	   Alt + shift + n > Spring Legacy Project
  	  > Spring MVC Project 클릭 > 프로젝트명 : ex00
  	  > Next > 패키지명 : com.koreait.controller > Finish	
+
+	pom.xml에서 환경을 맞춰줘야한다. 
+
+	프로젝트 우클릭 -< maven -> update project -> forced update
+
+	pom.xml을 수정하면 업데이트를 항상해야한다
+
+- 버전관리
+[pom.xml]
+   12번째 줄 '3.1.1.RELEASE'에서 5.0.7.RELEASE로 변경
+   11번째 줄 java version 1.8로 변경
+   139번째 줄 2.5.1을 3.5.1로 변경
+   141, 142번째 줄 1.6에서 1.8로 변경
+   저장한 후 > 프로젝트 우클릭 > Maven > update project > Force 체크후 Finish
+
+   ※만약 프로젝트에 오류 발생 시 
+   C:\Users\여러분계정폴더\.m2\repository 폴더 삭제 후 이클립스 재실행
 	
 
+Lombok 라이브러리 설치 
+	이클립스와 스프링 플러그인만으로도 스프링 개발이 가능하지만,
+	Lombok(롬복)을 이용하면 Java개발 시 getter/setter, toString(), 생성자등을 자동으로 생성해주므로
+	설치가 필요하다. 
+	Lombok을 설치하는 순간 jsp 배운사람과 안배운 사람의 차이가 생긴다.
+	왜냐하면, 스프링은 눈에 안보이기때문이다. 그렇기에 jsp를 배워야 안보여도 이게 뭔지 안다.
+	스프링만 안다면 그냥 쓰면 되기때문에 바보개발자라고 불리기도한다. 
+	https://projectlombok.org/download
+
+맥-> 터미널 -> java -jar lombok.jar의 경로
+	이후에 이클립스를 닫고 터미널 실행 -> eclipse의 경로를 넣어준다. -> update -> quit -> 터미널 끝
+
+   https://projectlombok.org/download
+   cmd창 열기 > java -jar [다운받은 .jar파일 드래그 앤 드롭] >
+   specify   location클릭 후 eclipse.exe경로로 설정 >
+   install 클릭 > 끝
+
+
+설치되었는지 확인 : 이클립스 경로에 lombok.jar가 들어가있으면 성공
+------------------------------------------------------------------------------------
+[스프링 프로젝트 기본 구성 요소]
+
+src/main/java : 작성되는 코드의 경로
+src/main/resources : 실행할 때 참고하는 기본 경로 
+src/test/java : 테스트 코드를 넣는 경로
+src/test/resources : 테스트 관련 설정 파일 보관 경로 
+
+웹과 관련된 스프링 설정 파일 (Resources, View Resolver)
+	src/main/webapp/WEB-INF/spring/appServlet>sevlet-context.xml
+
+스프링 설정 파일 (Bean, IoC컨테이너)
+	src/main/webapp/WEB-INF/spring/root-context.xml	
+
+	->bean을 관리하는 xml 파일
+	->즉, 객체들을 스캔해놓는 파일 
+
+Tomcat의 web.xml파일 (Front Controller, DispatcherServlet)
+	src/main/webapp/WEB-INF/web.xml
+
+	-> 프론트 컨트롤러로 보낼수있는놈
+
+템플릿 프로젝트의 jsp파일 경로
+	src/main/webapp/WEB-INF/views
+
+Maven이 사용하는 pom.xml
+	[project]/pom.xml
+
+------------------------------------------------------------------------------------
+의존성 주입 테스트
+	레스토랑 객체를 만들고 셰프 객체를 주입하는 예제
+	- 생성자, setter메소드를 이용한 주입으로 의존성 주입 구현.
+	- 설정 방식은 XML, 어노테이션을 이용해서 처리
+------------------------------------------------------------------------------------
 
 
 
 
+---------------------
+클래스 만들고, 어노테이션 쓰고, 루트컨텍스트에서 그 어노테이션을 스캔해주고 beans graph에서 확인 !! 오...
 
 
-
-
-
-
-
+--------------------------
+스프링 프레임워크 동작 시 생기는 일  => 이클립스 ex00 페키지 참고하자! 
+	- 스프링 프레임워크가 시작되면 먼저 스프링이 사용하는 메모리 영역을 만든다. 
+		이것이 Context이다.
+	- 스프링은 자신이 객체를 생성하고 관리해야 하는 객체들에 대한 설정이 필요하고
+	  이 설정 파일이 바로 root-context.xml이다.
+	- root-context.xml에 설정되어 있는 <context:component-scan>태그의 내용을 통해서 
+	  com.koreait.sample패키지를 스캔하기 시작한다. (ex00/root-context.xml ①참고)
+	- 해당 패키지에 있는 클래스들 중에서 스프링이 사용하는 @Component라는 어노테이션이
+	  존재하는 클래스의 인스턴스를 생성한다. (ex00/com.koreait.sample ② 참고)
+	- Restaurant 객체는 Chef객체가 필요하다는 어노테이션(@Autowired) 설정이 있으므로,
+	  Chef객체의 레퍼런스를 Restaurant 객체에 주입한다. (ex00/com.koreait.sample.Restuarant.java ③ 참고)
 
 
 
