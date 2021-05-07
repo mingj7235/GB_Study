@@ -2,10 +2,47 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 객체를 추가할때는 bean태그를 통해 ㅊ객체를 추가한다. -->
+	<!-- HikariConfig hikariConfig = new HikariConfig() 를 밑에와 같이 표현한것이다. -->
+	<!-- hikariConfig.setDriverClassName("") 즉, 안에 필드들을 넣는것을 property태그를 통해 안에 필드를 넣어주는것 -->
+	<!-- hikariConfig.setJdbcUrl("") 즉, 안에 필드들을 넣는것을 property태그를 통해 안에 필드를 넣어주는것 -->
+	<!-- hikariConfig.setUserName("") 즉, 안에 필드들을 넣는것을 property태그를 통해 안에 필드를 넣어주는것 -->
+	<!-- context.xml 에 있는 Datasource들을 여기에 선언해주는것이다. connection pool을 설정하기 위함이다.  -->
+	<!-- root-context에 선언하는 이유는, 객체로 사용하기위해서다. -->
+	<!-- config를 해서 설정해야한다. -->
+	<!-- 중요한 개념이다 커넥션풀 !! 설정!!! -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+		<property name="username" value="hr"/>
+		<property name="password" value="hr"/>
+	</bean>
+	
+	<!-- config를 해서 설정이 되었다면 이제 dataSource를 선언해준다.  -->
+	<!-- dataSource로 getConnection을 가져와야 연결할 수 있다. 커넥션풀도 다쓰면 닫아줘야한다. 
+		커넥션풀은 close를 쓰면 반납해준다. destroy-method는 이 연결을 파괴하기위해서 어떤메소드쓸래? 이거다. -->
+	<!-- constructor를 쓰는이유는 생성자로 가져오는것이다. config를 생성자에 넣는것임  -->	
+	<!-- DataSource dataSource = new DataSource(hikariConfig) << 이걸 밑과 같이 표현한 것이다.  -->
+	<!-- constructor인데 arg즉, 인자를 받겠다. hikariConfig를 인자로 받아서 초기화하는것임!! -->
+	
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+	
+	<!-- 마이바티스는 setter로 초기화하므로 property사용  -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- 쿼리문을 여기서 스캔하는 것이다.  -->
+	<mybatis-spring:scan base-package="com.koreait.mapper"/>
 	
 	<!-- ① -->
 	<context:component-scan base-package="com.koreait.sample"></context:component-scan>
