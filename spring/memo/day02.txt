@@ -35,6 +35,52 @@ myBatis는 117 부터139까지
 마이바티스는 dataSource를 참조한다. 
 
 
+SQL문을 항상 인터페이스에 매핑
+
+개발할때 내가 사용할 쿼리문을 찾아서 인터페이스를 찾는다!!
+그 인터페이스를 주입하면된다 
+
+
+---------------------------------------------------------
+[선생님 필기]
+
+MVC model2 를 사용하는 이유
+	- ★분업 (모듈화)
+	- 유지보수
+	- 페이지가 많아서 
+
+(Spring MVC) Front-Controller 패턴
+
+		   HandlerMapping
+	①		↕②		③			④
+Client	↔	DispatcherServlet(main)       ↔     HandlerAdapter	↔	Controller	
+            ⑥		↕⑤
+		    ViewResolver
+
+	사용자가 URL로 요청한다.
+	DispatcherServlet이 HandlerMapping을 통해 컨트롤을 찾는다
+	controller를 실행시키기위해서 HandlerAdapter를 통해 controller를 실행시킨다.
+	그 리턴값을 가져와서 viewResolver 통해 .jsp로 resp 한다. 
+	**client가 요청한 url을 web.xml을 통해 들어오는것이다!!! servlet은 web.xml을 통해 오기때문이다. 
+	appServlet은 dispatcherServlet을 거쳐가도록 설정되어있다. 
+
+
+	1. 사용자의 모든!! Request는 Front-Controller인 DispatcherServlet을 통해 처리한다. (web.xml 참고)
+	2. HandlerMapping은 Request의 처리를 담당하는 컨트롤러를 찾기 위해 존재한다. (@controller 라고 어노테이션이 된것중에서만 매핑한다)
+	   HandlerMapping 인터페이스를 구현한 여러객체중 @RequestMapping, @Controller 어노테이션이 적용된 것을
+	   기준으로 판단하며, 적절한 컨트롤러가 찾아졌다면 HandlerAdapter를 이용해서 해당 컨트롤러를 동작시킨다.
+	3. Controller는 Request를 처리하는 비지니스로직을 작성하며, View에 전달해야 하는 데이터는 주로 
+	   Model객체에 담아서 전달한다. 이에 대한 처리는 ViewResolver를 이용하게 된다. 
+	4. ViewResolver는 Controller가 리턴한 결과를 어떤 View에서 처리하는 것이 좋을 지 해석하는 역할이다.
+	   (servlet-context.xml 참고  => @controller들로 번역된것을 .jsp로 resolve한다. 라고 써있음) 
+	5. 만들어진 응답은 DispatcherServlet을 통해서 전송된다. 
+
+Spring MVC Controller 특징
+	- HttpServletRequest, HttpServletResponse를 거의 사용할 필요 없이 기능을 구현할 수 있다. 
+	- 다양한 타입의 파라미터 처리, 다양한 타입의 리턴 타입 사용 가능 (.jsp로 리턴뿐아니라, 실제 문자열을 리턴하게도 제공함)
+	- GET방식, POST 방식 등 전송 방식에 대한 처리를 어노테이션으로 처리 가능
+	- 상속/ 인터페이스 방식 대신 어노테이션만으로도 설정 가능
+
 
 
 

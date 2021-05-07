@@ -19,8 +19,10 @@
 	<!-- config를 해서 설정해야한다. -->
 	<!-- 중요한 개념이다 커넥션풀 !! 설정!!! -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"/> -->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"/>
 		<property name="username" value="hr"/>
 		<property name="password" value="hr"/>
 	</bean>
@@ -39,6 +41,7 @@
 	<!-- 마이바티스는 setter로 초기화하므로 property사용  -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath:/META-INF/com/koreait/mapper/**/*.xml"/>
 	</bean>
 	
 	<!-- 쿼리문을 여기서 스캔하는 것이다.  -->
