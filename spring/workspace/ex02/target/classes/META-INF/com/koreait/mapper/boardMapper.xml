@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.koreait.mapper.BoardMapper">
+	<select id="getList" resultType="com.koreait.domain.BoardVO">
+		<![CDATA[
+			SELECT * FROM TBL_BOARD WHERE BNO > 0
+		]]>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER) 
+		VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<!-- selectKey테그가 먼저 실행되어야하므로 before를 넣어주는것이다.
+		selectKey에서 bno를 셀렉해주고, 이걸 밑의 insert문의 #{bno}자리에 넣어주는것이다.
+		select먼저하고 bno라는 필드에 값을 집어넣고, 그다음에 다시 insert문으로 하는것이다. 
+		
+		이방법은 ! 
+		PK값을 미리 SQL을 통해서 처리해 두고 지정한 이름으로 결과를 보관하는 방식이다.
+		SQL을 한 번 더 실행하는 부담이 있기는 하지만 자동으로 추가되는 PK값을 확인해야 하는 상황에서는
+		유용하게 사용될 수 있다. 
+		
+	 -->
+	<insert id="insertSelectKey_bno">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			SELECT SEQ_BOARD.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER) 
+		VALUES(#{bno}, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<select id="read" resultType="com.koreait.domain.BoardVO">
+		SELECT * FROM TBL_BOARD WHERE BNO = #{bno}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM TBL_BOARD WHERE BNO = #{bno}
+	</delete>
+</mapper>
