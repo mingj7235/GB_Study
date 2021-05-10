@@ -41,8 +41,10 @@ public class SampleController {
 	
 	//Controller는 파라미터 타입에 따라 자동으로 매핑된다. 
 	@GetMapping("/ex01")
-	public String ex01(SampleDTO dto) {
+	public String ex01(SampleDTO dto, Model model) {
 		log.info(dto);
+		//addAtrribute(object value) 를 사용하면 해당 객체의 클래스 타입에서 앞글자가 소문자로 바뀐 단어가 Key가 된다.
+		//model.addAttribute(dto);
 		return "ex01";
 	}
 	
