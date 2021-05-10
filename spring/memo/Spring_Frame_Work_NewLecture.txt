@@ -13,3 +13,73 @@ MVC <- DI
 인증과 권한 <- Servlet Filter
 	↕
 느슨한 결합력과 인터페이스 
+
+2강 느슨한 결합력과 인터페이스
+
+참고> 자바 객체지향 33강 링크 
+https://www.youtube.com/watch?v=YZzpGtpW2h0&list=PLq8wAnVUcTFV4ZjRbyGnw6T1tgmYDLM3P&index=86
+
+3강 DI 
+	스프링 프레임워크 코어기능 : 종속 객체를 생성 조립해주는 도구
+
+	Dependency Injection (부품 조립!)
+	
+	dependency : 부품 이라고 생각하자. (종속관계니까)
+	
+	그 dependency를 injection 시키는 것이다. 
+--------------------------------
+	B b = new B (); -> Dependency
+	A a = new A ();
+	
+	a.setB(b);  -> Injection ! 꽂는것임 !!
+
+	즉, 조립형으로 사용하는것이다. 
+	부품을 쉽게 교체할수있다. 
+---------------------------
+	Injection의 두가지가 있다. 
+		1. Setter Injection -> setter를 통해서 조립하는것
+			B b = new B();
+			A a = new A();
+			a.setB(b);
+
+		2. Construction Injection -> 생성자를 통해서 조립하는것
+			B b = new B();
+			A a = new A(b);
+
+	즉, 스프링의 가장 기본적이고 핵심적인 기능이자 이유가 DI 이다. 
+
+	DI는 결국 부품을 조립해준다. Dependency Injection !
+
+
+4강 IoC 컨테이너 (Inversion of Control)
+	컨테이너의 용도 : 프로그램 주문 내역을 담아 놓는것 ! 이라고 이해하자
+
+	왜 부품 컨테이너라고 하지않고 IoC 컨테이너라고 하는건가?
+	
+	작은 부품먼저 만들어지고 큰 부품에 그것을 결합시킨다.
+	더 큰 부품에 더 작은 부품을 조립하는 것이다.
+	
+	일체화된 부품들은 가장 큰것부터 만들고 그 안에 작은것들을 만드는 것인데,
+	결합형 프로그램은 작은 부품부터 만들어진다. 작은걸 만들고 큰것에 결합을 하는것이다.
+	즉, 역순이다! Inversion of Control 이다! 
+
+	결국 Dependency가 역순으로 조립된다. 이런 부품들을 담는 컨테이너를 IoC 컨테이너 라고 하는것이다.
+
+	이 컨테이너는 단순히 부품을 담는게 아니라 결합하여 조립까지 되어있는 컨테이너이다. 
+
+	*Maven 과정 듣기 (뉴렉쳐 강의에 있기에 참조하자)
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
