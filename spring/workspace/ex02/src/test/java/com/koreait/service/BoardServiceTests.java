@@ -30,15 +30,16 @@ public class BoardServiceTests {
 		log.info(service);
 	}*/
 	
-/*	@Test
+	@Test
 	public void testList() {
 		service.getList();
-	}*/
-	
-	@Test
-	public void testRegister() {
-		BoardVO board = new BoardVO();
-		
-		service.register(board);
 	}
+	
+	
+//	@Test
+//	public void testRegister() {
+//		BoardVO board = new BoardVO();
+//		
+//		service.register(board);
+//	}
 }

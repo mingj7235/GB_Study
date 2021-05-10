@@ -48,7 +48,56 @@ Spring 개인 정리
 		-> mybatis-spring:scan 태그를 통해 스캔한다.
 	- web.xml파일 : web.xml 
 		DispatcherServlet즉 front controller의 역할을 한다. 
-	-Maven이 사용하는 pom.xml : 스프링 프레임워크 설정 담ㅇ당
+	-Maven이 사용하는 pom.xml : 스프링 프레임워크 설정 담당
+
+3) Front-Controller 패턴 (Spring MVC 모델)
+
+		   HandlerMapping
+	①		↕②		③			④
+Client	↔	DispatcherServlet(main)       ↔     HandlerAdapter	↔	Controller	
+            ⑥		↕⑤
+		    ViewResolver
+
+	1. 사용자의 모든 요청(request)는 DispatcherServlet을 통해 처리한다. (web.xml에서 설정되어있음)
+	2. HandlerMapping은 Request의 처리를 담당하는 컨트롤러를 찾기 위해 존재한다. 
+	즉, @controller라고 된 것 중에서 매핑을 한다.
+	HandlerMapping 인터페이스를 구현한 여러객체중 @RequestMapping, @Controller 적용된것 기준!
+	적절한 컨트롤러가 찾아졌다면 HanlderAdapter를 이용해서 해당 Controller를 동작시킨다.
+	3. Controller는 Request를 처리하는 비지니스 로직을 작성하며, view에 전달해야하는 데이터는
+	주로 Model객체에 담아서 전달한다. (Model을 통해 addAttribute로 담아서 jsp에 전달한다는의미)
+	4. ViewResolver는 Controller가 리턴한 결과를 어떤 View에서 처리하는 것이 좋을지 해석하는 역할이다. 
+	(servlet-context.xml : Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory)
+	5. 만들어진 응답은 다시 DispatcherServlet을 통해 사용자에게 전송된다. 
+
+	*Spring MVC Controller의 특징
+		- HttpServletRequest, HttpServletResponse를 거의 사용할 필요없이 기능을 구현할 수 있다.
+		- 다양한 타입의 파라미터 처리, 다양한 타입의 리턴타입 사용가능(기본)
+		- GET, POST방식등 전송 방식에 대한 처리가 어노테이션으로 처리가능하다.
+		- 상속/ 인터페이스 방식 대신에 어노테이션만으로도 설정가능하다. (간단한 쿼리는 이렇게사용)
+
+** Model객체
+	Model객체는 컨트롤러에서 생성된 데이터를 JSP에 전달하는 역할을 한다. 
+	기본 자료형의 경우에는 파라미터로 선언하더라도 하면까지 전달되지 않으므로
+	Model 객체를 선언한 후, model.addAttribute를 통해서 키, 밸류값을 지정한후 jsp로 넘긴다.
+	jsp에서 사용시 el문을 통해 사용한다.
+
+4) 예외처리 (500, 404예외 -> ex01에있음)
+
+
+5)의존성 주입 (추가공부)
+	객체를 주입받는 다는 것은 외부에서 생성된 객체를 인터페이스를 통해서 넘겨받는 것이다.
+	이렇게하면 결합도를 낮출수있다. 즉, 느슨한 결합을 위한것이다. 
+
+	스프링 IoC 컨테이너란?
+		- BeanFactory, ApplicationContext : IoC에서 가장중요한 인터페이스
+		- IoC컨테이너란 어플리케이션 컴포넌트의 중앙 저장소를 말한다.
+		- Bean 설정 소스로부터 Bean 정이를 읽어들이고, 빈을 구성하고 제공한다.
+		- Bean들의 의존관계를 설정한다. (즉, 객체의 생성을 책임지고, 의존성을관리한다)
+
+	IoC 사용목적
+	- 
+
+
 
 
 

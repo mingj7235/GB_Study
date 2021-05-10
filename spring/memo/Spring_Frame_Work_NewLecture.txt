@@ -1,0 +1,15 @@
+https://www.youtube.com/watch?v=XtXHIDnzS9c&list=PLq8wAnVUcTFWxnsrMu5kS_jt_o8gpEiTR
+
+1강 Spring소개와 학습안내
+
+Dependency Injection
+Transaction ManageMent
+	=> 이 두가지가 spring의 핵심이다. 
+
+Java SE에 Spring을 얹어서 웹개발을 하는 것이다. 
+
+MVC <- DI
+트랜잭션  <- AOP
+인증과 권한 <- Servlet Filter
+	↕
+느슨한 결합력과 인터페이스 
