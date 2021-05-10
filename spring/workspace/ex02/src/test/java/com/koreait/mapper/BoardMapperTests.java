@@ -21,7 +21,7 @@ public class BoardMapperTests {
 	@Test
 	public void testDelete () {
 		long bno = 2L;
-		log.info(mapper.delete(bno));
+		log.info("delete count : " + mapper.delete(bno));
 	}
 	
 	//read 테스트
