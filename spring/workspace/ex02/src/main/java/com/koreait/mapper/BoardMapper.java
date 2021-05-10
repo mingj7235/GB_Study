@@ -22,4 +22,6 @@ public interface BoardMapper {
 	//delete() 선언후 테스트 : 게시글 삭제
 	//게시글 삭제 시 1 이상의 값 리턴, 없으면 0 리턴
 	public int delete (long bno);
+	
+	public int update (BoardVO board);
 }

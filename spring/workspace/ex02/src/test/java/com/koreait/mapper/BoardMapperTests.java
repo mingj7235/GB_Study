@@ -18,11 +18,23 @@ public class BoardMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
 	
-	@Test
+/*	@Test
+	public void update () {
+		BoardVO board = new BoardVO();
+		board.setBno(3L);
+		board.setTitle("수정된 글제목");
+		board.setContent("수정된 글 내용");
+		board.setWriter("admin");
+		
+		log.info("UPDATE COUNT : " + mapper.update(board));
+	}*/
+	
+	
+/*	@Test
 	public void testDelete () {
 		long bno = 2L;
 		log.info("delete count : " + mapper.delete(bno));
-	}
+	}*/
 	
 	//read 테스트
 /*	@Test
@@ -58,9 +70,9 @@ public class BoardMapperTests {
 		log.info(board);
 	}
 */	
-/*	@Test
+	@Test
 	public void testGetList () {
 		//람다식
 		mapper.getList().forEach(board -> log.info(board));
-	}*/
+	}
 }
