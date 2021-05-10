@@ -26,7 +26,7 @@
 프레임워크의 장점
 	개발에 필요한 구조를 이미 코드로 마들어 놓았기 때문에,
 	실력이 부족한 개발자라 하더라도 반쯤 완성한 상태에서 필요한 부분을 
-	조립하는 형태의 갭라이 가능하다. 회사입장에서는 프레임워크를 사용하면
+	조립하는 형태의 개발이 가능하다. 회사입장에서는 프레임워크를 사용하면
 	일정한 품질이 보장되는 결과물을 얻을 수 있고, 
 	개발자 입장에서는 완성된 구조에 자신이 맡은 코드를 개발해서 넣기 때문에 개발시간을 단축할 수 있다.
 
@@ -140,7 +140,7 @@ STS (Spring Tool Suite) 설치 (요거가 프레임워크임)
 
 	- eclipse 플러그인
    		이클립스 실행 > Help > Install New Software
- 		  > http://download.springsource.com/release/TOOLS/update/e4.8/
+ 		  > http://download.springsource.com/release/TOOLS/update/e4.8/ (4.8은 이클립스photon버전의 넘버링이다.)
   		 > Add > Name : STS > Ok >  Select All > Next > Next > progress 창 확인
 
 - 프로젝트 생성 (Maven, pom : Project Object Model)
@@ -183,7 +183,7 @@ Lombok 라이브러리 설치
 	스프링만 안다면 그냥 쓰면 되기때문에 바보개발자라고 불리기도한다. 
 	https://projectlombok.org/download
 
-맥-> 터미널 -> java -jar lombok.jar의 경로
+맥-> 터미널 -> java -jar lombok.jar의 경로(lombok.jar를 가져와도된다)
 	이후에 이클립스를 닫고 터미널 실행 -> eclipse의 경로를 넣어준다. -> update -> quit -> 터미널 끝
 
    https://projectlombok.org/download

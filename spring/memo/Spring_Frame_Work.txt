@@ -1,0 +1,71 @@
+Spring 개인 정리
+
+1) 스프링 프레임 워크의 특징
+	- POJO 기반의 구성. (Plain Old Java Object) 즉. 자바를 사용한다!
+		자바에서 일반적으로 객체를 구성하는 방식을 스프링에서도 그대로사용
+	
+	- 의존성 주입을 통한 객체간의 관계 구성 (DI : Dependency Injection) 
+		의존성 : 하나의 객체가 다른 객체 없이 제대로된 역할을 할수 없음을 의미함. 
+			즉, 한 객체가 다른 객체를 의존한다. 
+		
+		주입 : 외부에서 밀어 넣는 것을 의미함.
+			어떤 객체가 필요한 객체를 외부에서 밀어 넣는 것을 의미한다.
+			
+
+		Dependency Injection을 사용하는 이유는 
+		스프링이 의존성을 주입하여 결합성을 느슨하게 하기 위함이다. 
+
+		의존성 주입방식을 사용하기 위해서는 ApplicationContext가 필요하다.
+		스프링프레임워크에서는 필요한 객체들을 생성(메모리에할당)하고,
+		필요한 객체들을 주입해주는 역할을 한다. 
+
+		ApplicationContext가 관리하는 객체들을 빈(Bean)이라고 부르고,
+		빈과 빈 사이의 의존 관계를 처리하는 방식으로 XML 설정을 하고
+		어노테이션을 통해 설정한다. 
+
+		ApplicationContext를 통해서 XML이 JVM에 객체를 선언한다. 
+
+	-AOP (Aspect-Oriented Programming) 
+		: 관점지향 프로그래밍, 즉 개발자 관점에서 개발할 수 있도록 하는 관점 지향 프로그래밍.
+		백엔더 개발자가 비지니스로직에만 집중할 수 있게 해준다. 
+
+		횡단관심사 (비지니스로직은 아니지만 반드시 처리가 필요한 부분)을 분리해서 제작할수있다.
+		횡단관심사를 비지니스로직에서 분리시켜서 클래스에서 메소드로 선언후에
+		그 위에 어떤 클래스, 어떤 메소드가 실행되면 실행해! 라고 알려주도록 프로그래밍이가능하다.
+
+2) 스프링 프로젝트 기본 구성 요소
+	- src/main/java : 작성되는 코드의 경로
+	- src/main/resources : 실행할때 참고하는 기본경로 (log파일, mapper.xml등)
+	- src/test/java : 테스트 코드를 넣는 경로
+	- src/test/resources : 테스트 관련 설정 파일 보관 경로
+
+	- 웹 관련 스프링 설정 파일 : servlet-context.xml 
+		resources 관련 설정, view resolver 즉 jsp관련 설정등
+	- 스프링 설정 파일 : root-context.xml
+		bean을 관리하는 xml파일이다. 즉 객체들을 스캔한다.
+		-> context:component-scan 테그를 통해 객체를 스캔한다.
+		쿼리문을 관리하는 xml파일이다. 메소드화 시켜놓은 쿼리를 스캔한다.
+		-> mybatis-spring:scan 태그를 통해 스캔한다.
+	- web.xml파일 : web.xml 
+		DispatcherServlet즉 front controller의 역할을 한다. 
+	-Maven이 사용하는 pom.xml : 스프링 프레임워크 설정 담ㅇ당
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
