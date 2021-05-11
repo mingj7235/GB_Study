@@ -54,7 +54,7 @@ Spring 개인 정리
 
 		   HandlerMapping
 	①		↕②		③			④
-Client	↔	DispatcherServlet(main)       ↔     HandlerAdapter	↔	Controller	
+Client	↔	DispatcherServlet(main)       ↔     HandlerAdapter	↔	Controller	↔	DB
             ⑥		↕⑤
 		    ViewResolver
 

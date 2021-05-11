@@ -1,0 +1,26 @@
+프레젠테이션 계층의 구현과 테스트
+※ 학습 목표 : WAS를 직접 실행하지 않고 Controller를 테스트할 수 있다. (스프링은 WAS에 의존적이지 않다.)
+
+
+컨트롤 위해서 기획 !
+
+[Task		URL		Method		Parameter	Form	URL이동]
+
+전체목록		/board/list	GET						
+등록처리		/board/register	POST		모든 항목		필요	이동필요(목록으로)		
+조회		/board/read	GET		bno			
+삭제처리		/board/remove	GET		bno			이동필요(목록으로)
+수정처리		/board/modify	POST		모든 항목		필요	이동필요(목록으로)
+
+---------------------------------------------------------------------------------------------------------------------
+
+mapper.xml -> [MyBatis] ->Mapper 인터페이스 -> Service 인터페이스 -> 컨트롤러
+   sql문           
+
+mapper.xml과 Mapper 인터페이스 사이에서 MyBatis가 관여해서 동작한다.
+인터페이스에있는 메소드를 통해서 sql문을 실행하는데 MyBatis를 통해서 실행한다.
+prepareStatement를 MyBatis가 실행시켜줘서 쿼리문이 실행되는 것이다.
+prepareStatement("sql문") 즉, 이것은 sql문을 담기위해서 prepareStatement가 존재하는것이다.
+sql문을 실행하기위해서 담는것이다. 
+이 준비된 sql을 실행하기 위해서 excuteQuery() 혹은 excuteUpdate()를 사용하여 실행해주는 것이다. 
+즉, jdbc때 직접했던것들을 mybatis가 자동으로 해주는 것이다. 
