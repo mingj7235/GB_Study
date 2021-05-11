@@ -41,7 +41,7 @@
 	                                          <td class="bno">${board.bno}</td> <!-- board.getBno()를 써도되지만, 자동으로 매핑해서 가져온다. -->
 	                                          <td class="title">${board.title}</td>
 	                                          <td class="writer">${board.writer}</td>
-	                                          <td class="regDate">${board.regdate}</td>
+	                                          <td class="regDate">${board.regDate}</td>
 	                                          <td class="updateDate">${board.updateDate}</td>
          									</tr>
          								</c:forEach>
