@@ -36,6 +36,14 @@ public class BoardControllerTests {
       this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build(); 
    }
    
+   @Test
+   public void testGetList() throws Exception{
+	   log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
+			   .param("pageNum", "1")
+			   .param("amount", "20"))
+			   .andReturn().getModelAndView().getModelMap());
+   }
+   
 //   @Test
 //   public void testRegister() throws Exception{
 //      log.info(mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
@@ -79,11 +87,11 @@ public class BoardControllerTests {
    
    
    //삭제 처리와 테스트 구현
-   @Test
-   public void testRemove () throws Exception {
-	   log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/remove")
-			   .param("bno", "21")).andReturn().getFlashMap());
-   }
+//   @Test
+//   public void testRemove () throws Exception {
+//	   log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/remove")
+//			   .param("bno", "21")).andReturn().getFlashMap());
+//   }
    
    
    

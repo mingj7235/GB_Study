@@ -10,6 +10,31 @@
       <meta name="description" content="" />
       <meta name="keywords" content="" />
       <link rel="stylesheet" href="/resources/assets/css/main.css" />
+      <style>
+      	.big-width {
+      		display : block;
+      	}
+      	
+      	.small-width {
+      		display : none;
+      	}
+      
+      
+      	@media(max-width : 918px){
+      		.writer {display:none;}
+      		.regDate {display:none;}
+      		.updateDate {display:none;}
+      		.big-width {
+      			display : none;
+      		}
+      	
+      		.small-width {
+      			display : block;
+      		}
+      	}
+      	
+      </style>
+      
    </head>
    <body class="is-preload">
       <!-- Main -->
@@ -50,7 +75,47 @@
                                     </tbody>
                                     <tfoot>
                                     </tfoot>
+							<!-- 현재페이지가 지금페이지와 같다면 숫자에 a테그를 넣으면안된다.  -->
                                  </table>
+	                                 <div class="big-width" style ="text-align: center;">
+	                                 	<c:if test="${pageMaker.prev}">
+	                                 		<a class="changePage" href="${1}"><code>&lt;&lt;</code></a>
+	                                 		<a class="changePage" href="${pageMaker.startPage -1}"><code>&lt;</code></a>
+	                                 	</c:if>
+	                                 
+										<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+											<c:choose>
+												<c:when test="${num eq pageMaker.cri.pageNum}">
+													<code>${num}</code>
+												</c:when>
+												<c:otherwise>
+													<a class="changePage" href="${num}"><code>${num}</code></a>
+												</c:otherwise>
+											</c:choose>	
+										</c:forEach>
+	                                 	<c:if test="${pageMaker.next}">
+	                                 		<a class="changePage" href="${pageMaker.endPage + 1}"><code>&gt;</code></a>
+	                                 		<a class="changePage" href="${pageMaker.realEnd}"><code>&gt;&gt;</code></a>
+	                                 	</c:if>
+	                                 </div>
+	                                 
+	                                 <div class="small-width" style ="text-align: center;">
+	                                 	<c:if test="${pageMaker.cri.pageNum > 1}">
+	                                 		<a class="changePage" href="${1}"><code>&lt;&lt;</code></a>
+	                                 		<a class="changePage" href="${pageMaker.cri.pageNum - 1}"><code>&lt;</code></a>
+	                                 	</c:if>
+										<code>${pageMaker.cri.pageNum}</code>
+	                                 	<c:if test="${pageMaker.cri.pageNum <pageMaker.realEnd}">
+	                                 		<a class="changePage" href="${pageMaker.cri.pageNum + 1}"><code>&gt;</code></a>
+	                                 		<a class="changePage" href="${pageMaker.realEnd}"><code>&gt;&gt;</code></a>
+	                                 	</c:if>
+	                                 </div>
+	                                 
+	                                 <!-- 페이지를 넘기는걸 눌렀을때 pageNum과 amount를 새로 넘기기위해서 form태그를 사용해서 넘긴다. 밑에 js에서 작업한다.  -->
+	                                 <form id="actionForm" action="/board/list">
+	                                 	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+	                                 	<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+	                                 </form>
                               </div>
                         </div>
                      </div>
@@ -66,6 +131,15 @@
          <script src="/resources/assets/js/main.js"></script>
    </body>
    <script>
+   
+   		$(".changePage").on("click", function (e){
+   			e.preventDefault(); //누른것의 기본의 이벤트는 막아지는 것이다. 내가 지정해준것만 이벤트처리해줘야한다.
+   			var actionForm = $("#actionForm");
+   			var pageNum = $(this).attr("href"); //이것이 바로 그 클릭이벤트를 눌렀을때 이동할 페이지 !!
+   			actionForm.find("input[name='pageNum']").val(pageNum);
+   			actionForm.submit();
+   		})  
+   
    		//alert("${result}");
    		var result = "${result}"
    		$(document).ready(function(){

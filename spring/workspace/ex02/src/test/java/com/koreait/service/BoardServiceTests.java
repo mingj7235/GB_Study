@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.koreait.domain.BoardVO;
+import com.koreait.domain.Criteria;
 import com.koreait.persistence.JDBCTests;
 
 import lombok.Setter;
@@ -24,6 +25,11 @@ public class BoardServiceTests {
 	@Setter(onMethod_ = @Autowired)
 	private BoardService service;
 	
+//	@Test
+//	public void testPaging() {
+//		service.getList(new Criteria(1, 30) )
+//	}
+//	
 /*	@Test
 	public void testExist() {
 		assertNotNull(service);
@@ -41,17 +47,17 @@ public class BoardServiceTests {
 //	}
 	
 	//수정하는법
-	@Test
-	public void testModify () {
-		BoardVO board = service.get(3L);
-		
-		//수정할 게시물 없으면 막아주기 
-		if(board == null) {return;}
-		board.setTitle("수정된 제목");
-		
-		log.info(service.modify(board));
-		
-	}
+//	@Test
+//	public void testModify () {
+//		BoardVO board = service.get(3L);
+//		
+//		//수정할 게시물 없으면 막아주기 
+//		if(board == null) {return;}
+//		board.setTitle("수정된 제목");
+//		
+//		log.info(service.modify(board));
+//		
+//	}
 	
 //	@Test
 //	public void testRemove () {

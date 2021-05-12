@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.koreait.domain.BoardVO;
+import com.koreait.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -17,6 +18,14 @@ import lombok.extern.log4j.Log4j;
 public class BoardMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
+	
+	
+	@Test
+	public void testGetListWithPaging() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(1);
+		mapper.getListWithPaging(cri).forEach(board -> log.info(board.getBno()));
+	}
 	
 /*	@Test
 	public void update () {
@@ -70,9 +79,9 @@ public class BoardMapperTests {
 		log.info(board);
 	}
 */	
-	@Test
+/*	@Test
 	public void testGetList () {
 		//람다식
 		mapper.getList().forEach(board -> log.info(board));
-	}
+	}*/
 }

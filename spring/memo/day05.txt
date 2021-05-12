@@ -137,6 +137,80 @@ public class BoardController {
 }
 
 =====================================================
+<화면 페이징 처리>
+
+ORDER BY 보다 인덱스를 사용하면 정렬을 생략할 수 있다.  (ORDER BY는 너무느리다.)
+인덱스라는 존재가 이미 정렬된 구조이므로 이를 이용해서 별도의 정렬을 하지 않는다. 
+예를 들어 데이터베이스 테이블을 하나의 책이라고 하면, 인덱스는 각 페이지 번호를 의미한다. 
+이를 통해서 원하는 내용을 위에서부터 혹은 반대로 찾아나가는 것을 스캔(SCAN)이라고 한다. 
+
+    인덱스
+BNO	ROWID	|	ROWID	BNO	TITLE	CONTENT
+1	AAAE8A	|	AAAE8A	1
+2	AAAE8B	|	AAAE8B	2
+3	AAAE8C	|	AAAE8D	555
+....	....
+555	AAAE8D		AAAE8C	2
+....	...
+1000	AAAE8E
+
+힌트(Hint) : /*+ hint */ 
+
+	힌트 문법은 select를 할때 주로 쓴다. 
+	SELECT문에 실행하고 싶은 계획을 전달할 때 사용하는 문법이다. 
+	HINT는 잘못쓰면 오류가 나지 않고 무시를 한다. 
+	즉, 잘못 작성되어도 실행할 때에는 무시되며 별도의 오류는 발생하지 않는다. 
+	/*+ 로 시작하며 */로 마친다. 
+	또한 뒤에 컬럼명을 작성할 때 쉼표(,)를 사용하지 않는다. 
+
+	페이징 처리에서는 이미 정렬된 인덱스를 내림차순으로 가져오는 문법을
+	힌트 내에 작성해준다. 별도의 정렬이 필요 없어지므로 속도가 향상된다. 
+
+	<select id="getListWithPaging" resultType="com.koreait.domain.BoardVO">
+		<![CDATA[
+			SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM, BNO, TITLE, CONTENT, WRITER, REGEDATE, UPDATEDATE
+			FROM TBL_BOARD
+		]]>
+	</select>
+
+**	INDEX_DESC(TBL_BOARD PK_BOARD) 여기서 PK값을 쓰는것이다!!
+	엄청 빠르다이건!
+
+	오름차순으로하려면 INDEX(테이블이름 PK이름) 이렇게해주면된다!
+
+<select id="getListWithPaging" resultType="com.koreait.domain.BoardVO">
+		<![CDATA[
+			SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
+			FROM 
+				(SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
+				FROM TBL_BOARD 
+				WHERE ROWNUM <= #{pageNum} * #{amount}) 
+			WHERE RN > (#{pageNum - 1} *{amount})
+		]]>
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

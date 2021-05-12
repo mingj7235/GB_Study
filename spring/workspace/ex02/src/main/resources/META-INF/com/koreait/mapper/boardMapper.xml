@@ -8,6 +8,22 @@
 		]]>
 	</select>
 	
+	<select id="getListWithPaging" resultType="com.koreait.domain.BoardVO">
+		<![CDATA[
+			SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
+			FROM 
+				(SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
+				FROM TBL_BOARD 
+				WHERE ROWNUM <= #{pageNum} * #{amount}) 
+			WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	
+	<!-- * 은 너무 느리다. 그래서 컬럼을 쓸때 다 일일이 써주는것이 좋다. *는 잘 안쓰는것이다. 테스트할때만 사용한다. 컬럼명을 다 적어준다.  -->
+	<select id="getTotal" resultType="_int">
+		SELECT COUNT(BNO) FROM TBL_BOARD
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER) 
 		VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{writer})
