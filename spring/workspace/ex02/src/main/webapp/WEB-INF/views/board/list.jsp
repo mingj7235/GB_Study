@@ -23,7 +23,9 @@
                         <p>게시판 목록</p>
                      </header>
                            <!-- Table -->
-                              <h3><a href="" class="button small">글 등록</a></h3>
+                           				<!-- board컨트롤러의 register를 요청하는것이다. 이거는 디폴트가 get으로 가기때문에
+                           					컨트롤러에 get방식으로 register를 하나 더 만들어 놓는것이다. 페이지이동용으로!-->
+                              <h3><a href="/board/register" class="button small">글 등록</a></h3>
                               <div class="table-wrapper">
                                  <table>
                                     <thead>
@@ -39,7 +41,7 @@
          								<c:forEach var="board" items="${list}">
          									<tr class="tBody">
 	                                          <td class="bno">${board.bno}</td> <!-- board.getBno()를 써도되지만, 자동으로 매핑해서 가져온다. -->
-	                                          <td class="title">${board.title}</td>
+	                                          <td class="title"><a href="/board/get?bno=${board.bno}">${board.title}</a></td>
 	                                          <td class="writer">${board.writer}</td>
 	                                          <td class="regDate">${board.regDate}</td>
 	                                          <td class="updateDate">${board.updateDate}</td>
@@ -63,4 +65,15 @@
          <script src="/resources/assets/js/util.js"></script>
          <script src="/resources/assets/js/main.js"></script>
    </body>
+   <script>
+   		//alert("${result}");
+   		var result = "${result}"
+   		$(document).ready(function(){
+   			if(result=='' || isNaN(result)){
+   				return;
+   			}
+   			alert("게시글" + result + "번이 등록되었습니다.");
+   		})
+   		
+   </script>
 </html>
