@@ -27,12 +27,16 @@ public class BoardController {
    
    @GetMapping("/list")
    public void list(Criteria cri, Model model) {
-      log.info("list");
+	 //void로 리턴한다는건 views/board/list.jsp 라는 의미다. 요청을 이렇게 했기 때문이다.
+	 //void로 리턴하면 이 경로로 요청한 jsp의 주소를 리턴한다. 자동으로!!
+	   
+	   log.info("list");
+      
       model.addAttribute("list", service.getList(cri));
       model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal()));
    }
    
-   @GetMapping("/register")
+   @GetMapping("/register")//get방식일때는 여기로, post는 밑으로! 방식이 다르면 방식대로 꽂힌다. 이름이 같아도! 이건 페이지이동용
    public void register() {}
    
    @PostMapping("/register")

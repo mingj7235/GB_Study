@@ -82,6 +82,13 @@ Client	↔	DispatcherServlet(main)       ↔     HandlerAdapter	↔	Controller	�
 	jsp에서 사용시 el문을 통해 사용한다.
 
 4) 예외처리 (500, 404예외 -> ex01에있음)
+	web.xml의 throwExceptionIfNoHandlerFound 처리
+		=> default값은 false이다.
+		=> 디폴트인 false인 경우 DispatcherServlet은 예외를 던지지 않고
+		응답상태로 404를 띄운다. 즉 @ControllerAdvice까지 전달안된다는것이다.
+		=> 만약 default servlet handling이 설정되어있으면
+		unresolved요청은 항상 default servlet으로 가고 404는 뜨지 않는다.
+		즉, true값으로 바꿔준다면 @ControllerAdvice에서 핸들링이 가능하다.
 
 
 5)의존성 주입 (추가공부)

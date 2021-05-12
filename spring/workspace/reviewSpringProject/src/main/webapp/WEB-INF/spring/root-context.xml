@@ -16,8 +16,6 @@
    <!-- hikariConfig.username("") -->
    <!-- hikariConfig.password("") -->
    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-      <!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
-         <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"/> -->
       <property name="driverClassName"
          value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
       <property name="jdbcUrl"
@@ -35,7 +33,7 @@
       class="org.mybatis.spring.SqlSessionFactoryBean">
       <property name="dataSource" ref="dataSource" />
       <property name="mapperLocations"
-         value="classpath:/META-INF/com/koreait/mapper/**/*.xml" />
+         value="classpath:/META-INF/com/joshua/mapper/**/*.xml" />
       
       <!-- 언더바가 쓰여진것을 카멜표기법으로 바꿔주는 설정 -->
       <property name="configuration">
@@ -43,11 +41,9 @@
             <property name="mapUnderscoreToCamelCase" value="true"/>
          </bean>
       </property>
-     <!--  <property name="configLocation" 
-      	 value ="classpath:/META-INF/com/koreait/config/MapperConfig.xml"/> -->
    </bean>
-   <mybatis-spring:scan base-package="com.koreait.mapper"/>
-   <context:component-scan base-package="com.koreait.service"/>
-   <context:component-scan base-package="com.koreait.exception"/>
+   <mybatis-spring:scan base-package="com.joshua.mapper"/>
+   <context:component-scan base-package="com.joshua.service"/>
+   <!-- <context:component-scan base-package="com.joshua.exception"/> -->
    
 </beans>

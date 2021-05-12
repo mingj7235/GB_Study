@@ -178,6 +178,7 @@ BNO	ROWID	|	ROWID	BNO	TITLE	CONTENT
 
 	오름차순으로하려면 INDEX(테이블이름 PK이름) 이렇게해주면된다!
 
+
 <select id="getListWithPaging" resultType="com.koreait.domain.BoardVO">
 		<![CDATA[
 			SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
