@@ -29,13 +29,13 @@
 					<!-- 단일 항목 중 조건식이 참이라면 알맞는 쿼리문이 작성된다. -->
 						<choose>
 							<when test="type=='T'.toString()">
-								(TITLE LIKE '%'||#{검색한 문자열 값}||'%')
+								(TITLE LIKE '%'||#{keyword}||'%')
 							</when>
 							<when test="type=='C'.toString()">
-								(CONTENT LIKE '%'||#{검색한 문자열 값}||'%')
+								(CONTENT LIKE '%'||#{keyword}||'%')
 							</when>
 							<when test="type=='W'.toString()">
-								(WRITER LIKE '%'||#{검색한 문자열 값}||'%')
+								(WRITER LIKE '%'||#{keyword}||'%')
 							</when>
 						</choose>
 					</trim>
