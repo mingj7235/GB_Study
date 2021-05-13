@@ -8,13 +8,51 @@
 		]]>
 	</select>
 	
+	<!-- 동적쿼리를 include처럼 재사용의 목적으로 사용하는법 -->
+	<sql id="criteria">
+	<!-- [3] -->
+	<!-- Mapper 인터페이스로부터 전달받은 Criteria객체안의 type과 keyword둘다 null이 아니라면 -->
+		<if test="type != null and keyword != null"> <!-- 즉 검색했을 때!  -->
+			<!-- [7] -->
+			<!-- trim 태그 안에 있는 쿼리문을 기준으로 가장 앞에 있는 OR을 없애준다.  -->
+			<!-- trim 태그 안에 있는 쿼리문 뒤에는 페이징 처리 조건식이 한개 더 있기 때문에 마지막에 (suffix) AND를 붙여준다.  -->
+			<trim prefix="(" suffix=") AND" prefixOverrides="OR"> <!-- 맨 앞의 or을 제거해주기 위함이다.  -->
+			<!-- [4] -->
+			<!-- Criteria에 선언된 getTypeArr() 메소드를 호출하여 단일항목이 들어있는 배열의 길이만큼 반복해준다. -->
+			<!-- 각각의 단일 항목들이 item속성에 있는 type변수에 들어가게 된다.  -->
+			<!-- 예: "TW"는 2칸 문자열 배열이며, 2번 반복된다. Criteria.java의[2]번 참조--> 
+				<foreach item="type" collection="typeArr">
+					<!-- [6] -->
+					<!-- 작성된 쿼리문마다 맨 앞에 (prefix) OR을 붙여준다.  -->
+					<trim prefix="OR">
+					<!-- [5] -->
+					<!-- 단일 항목 중 조건식이 참이라면 알맞는 쿼리문이 작성된다. -->
+						<choose>
+							<when test="type=='T'.toString()">
+								(TITLE LIKE '%'||#{검색한 문자열 값}||'%')
+							</when>
+							<when test="type=='C'.toString()">
+								(CONTENT LIKE '%'||#{검색한 문자열 값}||'%')
+							</when>
+							<when test="type=='W'.toString()">
+								(WRITER LIKE '%'||#{검색한 문자열 값}||'%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+	
 	<select id="getListWithPaging" resultType="com.koreait.domain.BoardVO">
-		<![CDATA[
 			SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
 			FROM 
 				(SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
 				FROM TBL_BOARD 
-				WHERE ROWNUM <= #{pageNum} * #{amount}) 
+				WHERE 
+				<include refid="criteria"/> <!-- sql태그를 사용해서 동적쿼리를 재사용하기위해 사용한다.  -->
+			<![CDATA[	
+				ROWNUM <= #{pageNum} * #{amount}) 
 			WHERE RN > (#{pageNum} - 1) * #{amount}
 		]]>
 	</select>

@@ -1,0 +1,123 @@
+검색 처리
+  	제목 / 내용 / 작성자 : 단일 항목. 이거는 쉽다)
+ 	제목 or 내용, 제목 or 작성자, 내용 or 작성자, 제목 or 내용 or 작성자 : 다중 항목. 이게 어렵다
+
+	이걸 쿼리 하나로 해결할 수 있다. 
+
+	동적쿼리 : MyBatis에서도 조건문을 사용하여 동적으로 쿼리를 작동시키는것
+
+MyBatis의 동적 태그들
+	if
+	choose(when, otherwise)
+	where
+	trim
+	foreach
+
+** || (파이프 연산자) : 컨케이트네이션 -> DBMS에서는 +를 이걸로 사용한다. 즉 연결!
+	
+[if]
+	-검색 조건이 'T' : 제목 항목에서 키워드를 검색 (제목이 T)
+	(jstl과 비슷함)
+	<if test="type == 'T'.toString()">
+		TITLE LIKE '%'||#{keyword}||'%'
+	</if>
+	-검색 조건이 'C' : 내용 항목에서 키워드를 검색 (내용이 C)
+	(jstl과 비슷함)
+	<if test="type == 'C'.toString()">
+		CONTENT LIKE '%'||#{keyword}||'%'
+	</if>
+	-검색 조건이 'W' : 작성자 항목에서 키워드를 검색 (작성자가 W)
+	(jstl과 비슷함)
+	<if test="type == 'W'.toString()">
+		WRITER LIKE '%'||#{keyword}||'%'
+	</if>
+
+[choose]
+	<choose>
+		<when test="type == 'T'.toString()">
+			TITLE LIKE '%'||#{keyword}||'%'
+		</when>
+	
+		<when test="type == 'C'.toString()">
+			CONTENT LIKE '%'||#{keyword}||'%'
+		</when>
+
+		<when test="type == 'W'.toString()">
+			WRITER LIKE '%'||#{keyword}||'%'
+		</when>
+
+		<otherwise> 
+			TITLE LIKE '%'||#{keyword}||'%' or CONTENT LIKE '%'||#{keyword}||'%' or WRITER LIKE '%'||#{keyword}||'%'
+		</otherwise>
+	</choose>
+
+[where]
+	SELECT * FROM TBL_TABLE
+	<where>
+		<if test="bno != null">
+			BNO = #{bno}
+		</if>
+	</where>
+
+[trim] : 필요한걸 붙여주거나 필요없는걸 지워주는것이 trim이다. 자동으로 조건식이 있으면 기능하고 없으면 기능하지않는다.
+		trim은 조건식이 있는지 없는지를 먼저 따진다. 
+
+	SELECT * FROM TBL_BOARD
+	<where>
+		<if test="bno != null">
+			BNO = #{bno}
+		</if>
+		<trim prefixOverrides="AND"> **AND라는 애는 앞에 조건식이 있으면 붙고, 없으면 무시해라! 즉, 필요하면 붙이고 필요없으면 지운다.
+						overrides는 무시한다! 라는의미이므로 붙이지 않는다는 것이다. 
+			ROWNUM = 1
+		</trim>		
+	</where>
+	
+	*결과값 (bno가 null일때)	
+		SELECT * FROM TBL_BOARD WHERE ROWNUM = 1
+	*결과값 (bno가 null이 아닐때)
+		SELECT * FROM TBL_BOARD WHERE BNO = #{bno} AND ROWNUM = 1
+
+[foreach]
+	List, 배열, Map등을 이용해서 루프를 처리한다. 
+
+	*파라미터
+	Map<String, String> map = new HashMap<>();
+	map.put("T", "PS5");
+	map.put("C", "판매");
+
+	*쿼리
+	SELECT *  FROM TBL_BOARD
+	<if 널이 아닐 때>
+	    <trim prefix="WHERE(" suffix=")" prefixOverrides="OR"> //가장 앞에 있으면 무시해라! prefix의 의미가 앞이라는 의미임
+		<foreach item="value" idex="key" collection ="map"> //위에서 전달한 파라미터 map
+			<trim prefix="OR"> //이거는 무조건 or을 붙이겠다는 것이다. 여기서 무조건 붙이고 위에서 trim에서 짤라주면된다.
+			<if test="key == 'T'.toString()" >
+				TITLE = #{value}
+			</if>
+			<if test="key == 'C'.toString()" >
+				CONTENT = #{value}
+			</if>
+			<if test="key == 'W'.toString()" >
+				WRITER = #{value}
+			</if>
+			</trim>
+		</foreach>
+	    </trim>
+	</if>
+
+	*결과값
+	SELECT * FROM TBL_TABLE WHERE(TITLE='건담' OR CONTENT='판매')
+
+
+
+
+
+
+
+
+
+
+
+
+

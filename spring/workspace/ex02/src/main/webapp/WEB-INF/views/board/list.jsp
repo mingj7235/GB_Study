@@ -66,7 +66,7 @@
          								<c:forEach var="board" items="${list}">
          									<tr class="tBody">
 	                                          <td class="bno">${board.bno}</td> <!-- board.getBno()를 써도되지만, 자동으로 매핑해서 가져온다. -->
-	                                          <td class="title"><a href="/board/get?bno=${board.bno}">${board.title}</a></td>
+	                                          <td class="title"><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${board.title}</a></td>
 	                                          <td class="writer">${board.writer}</td>
 	                                          <td class="regDate">${board.regDate}</td>
 	                                          <td class="updateDate">${board.updateDate}</td>

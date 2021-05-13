@@ -22,10 +22,13 @@
                      <h1>Board</h1>
                      <p>게시글 등록</p>
                   </header>
-               <h3><a href="/board/list" class="button small">목록 보기</a></h3>
+                  		<!-- controller에서 (/get, /modify해놓은 get 메소드에서 )cri를 받아서 보낸다. -->
+               <h3><a href="/board/list?pageNum=${cri.pageNum}&amount=${cri.amount}" class="button small">목록 보기</a></h3>
                   <div class="content">
                      <div class="form">
                         <form action="/board/remove">
+                        	 <input type="hidden" name="pageNum" value="${cri.pageNum}">
+	                         <input type="hidden" name="amount" value="${cri.amount}">
                            <div class="fields">
                               <div class="field">
                                  <h4>번호</h4>
@@ -46,7 +49,7 @@
                            </div>
                            <ul class="actions special">
                               <li>
-                                 <input type="button" class="button" value="수정" onclick="location.href='/board/modify?bno=${board.bno}'"/>
+                                 <input type="button" class="button" value="수정" onclick="location.href='/board/modify?bno=${board.bno}&pageNum=${cri.pageNum}&amount=${cri.amount}'"/>
                                  <input type="submit" class="button" value="삭제"/>
                               </li>
                            </ul>
