@@ -70,7 +70,8 @@ https://www.youtube.com/watch?v=YZzpGtpW2h0&list=PLq8wAnVUcTFV4ZjRbyGnw6T1tgmYDL
 	*Maven 과정 듣기 (뉴렉쳐 강의에 있기에 참조하자)
 	
 	
-
+5강 Dependency를 직접 Injection 하기
+	
 
 
 
