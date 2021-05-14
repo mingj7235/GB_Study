@@ -23,13 +23,15 @@
                         <p>게시글 수정</p>
                      </header>
                            <!-- Table -->
-                              <h3><a href="/board/list?pageNum=${cri.pageNum}&amount=${cri.amount}" class="button small">목록 보기</a></h3>
+                              <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
                   <div class="content">
                      <div class="form">
                         <form method="post" action="/board/modify">
                         	<!-- form 태그가 post 방식이므로 input 히든으로 보낸다.  -->
                         	 <input type="hidden" name="pageNum" value="${cri.pageNum}">
 	                         <input type="hidden" name="amount" value="${cri.amount}">
+                        	 <input type="hidden" name="keyword" value="${cri.keyword}">
+	                         <input type="hidden" name="type" value="${cri.type}">
                            <div class="fields">
                               <div class="field">
                                  <h4>번호</h4>

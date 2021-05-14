@@ -60,7 +60,7 @@
                            <!-- Table -->
                            				<!-- board컨트롤러의 register를 요청하는것이다. 이거는 디폴트가 get으로 가기때문에
                            					컨트롤러에 get방식으로 register를 하나 더 만들어 놓는것이다. 페이지이동용으로!-->
-                              <h3><a href="/board/register" class="button small">글 등록</a></h3>
+                              <h3><a href="/board/register${pageMaker.cri.getListLink()}" class="button small">글 등록</a></h3>
                               <div class="table-wrapper">
                                  <table>
                                     <thead>
@@ -76,7 +76,7 @@
          								<c:forEach var="board" items="${list}">
          									<tr class="tBody">
 	                                          <td class="bno">${board.bno}</td> <!-- board.getBno()를 써도되지만, 자동으로 매핑해서 가져온다. -->
-	                                          <td class="title"><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${board.title}</a></td>
+	                                          <td class="title"><a href="/board/get${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a></td>
 	                                          <td class="writer">${board.writer}</td>
 	                                          <td class="regDate">${board.regDate}</td>
 	                                          <td class="updateDate">${board.updateDate}</td>

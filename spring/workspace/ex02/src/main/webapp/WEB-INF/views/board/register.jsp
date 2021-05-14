@@ -23,7 +23,7 @@
                         <p>게시글 등록</p>
                      </header>
                            <!-- Table -->
-                              <h3><a href="/board/list" class="button small">목록 보기</a></h3>
+                              <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
                   <div class="content">
                      <div class="form">
                      	<!-- 얘는 register를 찾는데 post방식으로 컨트롤러에서 찾는다.  -->

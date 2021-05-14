@@ -1,5 +1,7 @@
 package com.koreait.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -36,4 +38,41 @@ public class Criteria {
 		//type을 배열로 split을 통해서 배열로만들어주는것이다. 
 		
 	}
+	
+	public String getListLink() {
+		//쿼리스트링을 만들어주는 라이브러리 즉, jsp에있는 get형식 뒤에 붙는 쿼리스트링을 이걸로 끝낸다!
+		//?가 앞에 붙는다.
+		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
+				.queryParam("pageNum", this.pageNum)
+				.queryParam("amount", this.amount)
+				.queryParam("keyword", this.getKeyword())
+				.queryParam("type", this.getType());
+		
+		return builder.toUriString();
+						
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

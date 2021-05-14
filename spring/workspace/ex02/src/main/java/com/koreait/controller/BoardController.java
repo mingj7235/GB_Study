@@ -38,7 +38,7 @@ public class BoardController {
    }
    
    @GetMapping("/register")//get방식일때는 여기로, post는 밑으로! 방식이 다르면 방식대로 꽂힌다. 이름이 같아도! 이건 페이지이동용
-   public void register() {}
+   public void register(@ModelAttribute("cri") Criteria cri) {log.info(cri);}
    
    @PostMapping("/register")
    public String register(BoardVO board, /*Model model*/ RedirectAttributes rttr) {
@@ -92,6 +92,8 @@ public class BoardController {
       //따라서 반드시 해당 객체의 생성자에 전달할 필드명과 일치하도록 설정해주어야 한다.  
       rttr.addAttribute("pageNum", cri.getPageNum());
       rttr.addAttribute("amount", cri.getAmount());
+      rttr.addAttribute("keyword", cri.getKeyword());
+      rttr.addAttribute("type", cri.getType());
       
       return "redirect:/board/list";
    }
@@ -106,6 +108,8 @@ public class BoardController {
       }
       rttr.addAttribute("pageNum", cri.getPageNum());
       rttr.addAttribute("amount", cri.getAmount());
+      rttr.addAttribute("keyword", cri.getKeyword());
+      rttr.addAttribute("type", cri.getType());
       return "redirect:/board/list";
    }
 }
