@@ -33,7 +33,8 @@ public class BoardController {
 	   log.info("list");
       
       model.addAttribute("list", service.getList(cri));
-      model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal()));
+      //getTotal(Criteria) : type과 keyword가 전달되면 검색된 게시글의 건수이며, 검색하지 않으면 전체 게시글의 건수이다. 
+      model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
    }
    
    @GetMapping("/register")//get방식일때는 여기로, post는 밑으로! 방식이 다르면 방식대로 꽂힌다. 이름이 같아도! 이건 페이지이동용

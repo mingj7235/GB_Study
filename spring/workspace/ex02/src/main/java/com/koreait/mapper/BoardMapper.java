@@ -15,7 +15,9 @@ public interface BoardMapper {
 //	cri를 담아서 전달해서 boardmapper.xml에서 찾을수 있도록 하는것이다.(pageNum, amount를 찾을수있도록함) 
 	public List<BoardVO> getListWithPaging (Criteria cri);
 	
-	public int getTotal();
+	public int getTotal(Criteria cri);
+	
+	public int getSearchTotal();
 	
 	public void insert (BoardVO board);
 	

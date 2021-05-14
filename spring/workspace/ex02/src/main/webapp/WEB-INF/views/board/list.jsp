@@ -36,6 +36,11 @@
       		.small-width {
       			display : block;
       		}
+      		
+      		select {width: 100%; }
+      		input[name='keyword'] {width:100%; }
+      		.search {width:100%;} 
+      		
       	}
       	
       </style>
@@ -120,6 +125,8 @@
 	                                 <form id="actionForm" action="/board/list">
 	                                 	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 	                                 	<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+	                                 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
+	                                 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	                                 </form>
 	                                 
 	                                 <form action="/board/list" id="searchForm">
@@ -128,16 +135,17 @@
 	                                 			<div style="text-align: center">
 		                                 			<!-- criteria의 필드인 type이 매핑되는것임 -->
 		                                 			<select name="type">
-		                                 				<option value ="">검색 기준</option>
-		                                 				<option value ="T">제목</option>
-		                                 				<option value ="C">내용</option>
-		                                 				<option value ="W">작성자</option>
-		                                 				<option value ="TC">제목 또는 내용</option>
-		                                 				<option value ="TW">제목 또는 작성자</option>
-		                                 				<option value ="TCW">전체</option>
+		                                 				<!-- 검색한 후에 selected 를 유지시키기위해서! 검색하고나서도 유지하기위해서다 -->
+		                                 				<option value ="" ${pageMaer.cri.type==null ? 'selected' : ''}>검색 기준</option>
+		                                 				<option value ="T" ${pageMaer.cri.type=='T' ? 'selected' : ''}>제목</option>
+		                                 				<option value ="C" ${pageMaer.cri.type=='C' ? 'selected' : ''}>내용</option>
+		                                 				<option value ="W" ${pageMaer.cri.type=='W' ? 'selected' : ''}>작성자</option>
+		                                 				<option value ="TC" ${pageMaer.cri.type=='TC' ? 'selected' : ''}>제목 또는 내용</option>
+		                                 				<option value ="TW" ${pageMaer.cri.type=='TW' ? 'selected' : ''}>제목 또는 작성자</option>
+		                                 				<option value ="TCW" ${pageMaer.cri.type=='TCW' ? 'selected' : ''}>전체</option>
 		                                 			</select>
 		                                 			<!-- criteria의 필드인 keyword가 매핑 -->
-		                                 			<input id="keyword" type="text" name="keyword">
+		                                 			<input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}">
 		                                 			<a class="search button primary icon solid fa-search" href="javascript:void(0)">검색</a>
 		                                 			
 		                                 		</div>
@@ -173,7 +181,7 @@
    				alert("키워드를 선택하세요.");
    				return false;
    			}
-   			searchFrom.submit();
+   			searchForm.submit();
    			
    		})
    			

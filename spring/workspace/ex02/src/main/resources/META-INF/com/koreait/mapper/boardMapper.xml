@@ -45,22 +45,38 @@
 	</sql>
 	
 	<select id="getListWithPaging" resultType="com.koreait.domain.BoardVO">
-			SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
-			FROM 
-				(SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
-				FROM TBL_BOARD 
-				WHERE 
-				<include refid="criteria"/> <!-- sql태그를 사용해서 동적쿼리를 재사용하기위해 사용한다.  -->
-			<![CDATA[	
-				ROWNUM <= #{pageNum} * #{amount}) 
-			WHERE RN > (#{pageNum} - 1) * #{amount}
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
+		FROM 
+			(SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
+			FROM TBL_BOARD 
+			WHERE 
+			<include refid="criteria"/> <!-- sql태그를 사용해서 동적쿼리를 재사용하기위해 사용한다.  -->
+		<![CDATA[	
+			ROWNUM <= #{pageNum} * #{amount}) 
+		WHERE RN > (#{pageNum} - 1) * #{amount}
 		]]>
 	</select>
 	
+	
+	
+	
+	<!-- 검색된 게시물의 전체 개수 -->
 	<!-- * 은 너무 느리다. 그래서 컬럼을 쓸때 다 일일이 써주는것이 좋다. *는 잘 안쓰는것이다. 테스트할때만 사용한다. 컬럼명을 다 적어준다.  -->
-	<select id="getTotal" resultType="_int">
-		SELECT COUNT(BNO) FROM TBL_BOARD
-	</select>
+	<!--검색된 게시물의 전체 개수를 파악해주는 첫번째 방법  criteria에있는 and를 없애줄 생각을 해야한다. -->
+ 	<select id="getTotal" resultType="_int">
+		SELECT COUNT(BNO) FROM TBL_BOARD 
+		<where>
+			<trim suffixOverrides="AND"> 
+				<include refid="criteria"/> 
+			</trim>
+		</where>
+	</select> 
+ 	
+ 	<!-- <select id="getTotal" resultType="_int">
+		SELECT COUNT(BNO) FROM TBL_BOARD 
+		<include refid="criteria"/>
+		<![CDATA[BNO > 0]]> 
+	</select> 검색된 게시물의 전체개수를 파악해주는 두번째 방법 -->
 	
 	<insert id="insert">
 		INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER) 
