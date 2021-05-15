@@ -2,7 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- Exam exam = new NewlecExam(); -->
 		
@@ -51,5 +53,45 @@
 		<property name="exam" ref="exam"/>	
 	</bean>
 	
+	<!-- <bean id="exams" class="java.util.ArrayList">
+		ArrayList의 생성자에 collection을 담을 수 있는 것을 이용하여
+			setter를 사용하지 못하므로 생성자로 add 메소드를 생성해준다. 
+		
+		<constructor-arg>
+			컬렉션이므로 list태그를 연다
+			<list>
+				1) 직접 이렇게 bean을 열어서 생성할수도있고
+				<bean class="springNewLecture.di.entity.NewlecExam" 
+						p:kor="1" p:eng="2" p:math="3" p:com="5"/>
+				2) 이렇게 참조해서 위에서 만든 exam 을 가져다 쓸수도있다. (42번줄)
+				<ref bean ="exam"/>
+			</list>
+		</constructor-arg>
+	</bean> -->
+	
+	
+	<!-- 그런데 위와같이 (56~70) 컬렉션은 항상 생성자에 또다른 컬렉션을 추가하여 생성해야하는가?
+		아니다. Namespaces에서 util을 체크하여 
+		xmlns:util="http://www.springframework.org/schema/util"을 활성화하여 사용
+	 -->
+	<!-- 실제로 객체를 만들어주는 util을 사용하여 선언할수있다. -->
+	<util:list id="exams" list-class="java.util.ArrayList"> 
+		<bean class="springNewLecture.di.entity.NewlecExam" 
+				p:kor="1" p:eng="2" p:math="3" p:com="5"/>
+		<ref bean ="exam"/>
+	</util:list>
 	
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
