@@ -37,16 +37,16 @@ public class Program {
 		
 		Exam exam = context.getBean(Exam.class);
 		System.out.println(exam.toString());
-		ExamConsole console = context.getBean(ExamConsole.class);
 		
+		ExamConsole console = context.getBean(ExamConsole.class);
 		console.print();
 		
-		List<Exam> exams = (List<Exam>) context.getBean("exams"); //new ArrayList<>();
+		//List<Exam> exams = (List<Exam>) context.getBean("exams"); //new ArrayList<>();
 		//exams.add(new NewlecExam(1,1,1,1));
 		
-		for(Exam e : exams) {
-			System.out.println(e);
-		}
+//		for(Exam e : exams) {
+//			System.out.println(e);
+//		}
 				
 		
 	}

@@ -3,8 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	
+	<!-- 어노테이션을 한게 있으니까 스프링아 찾아봐라! 라고 해주는 것이다.
+		이걸해줘야 스프링이 어노테이션을 찾기 시작한다. 
+	 -->
+	<context:annotation-config/>
 	
 	<!-- Exam exam = new NewlecExam(); -->
 		
@@ -50,7 +58,11 @@
 		<!-- setExam을 호출하는 것인데 묵시적으로 set을 생략해준다. setExam이 exam으료 바뀐것 -->
 		<!-- ref : 위에서 bean으로 추가해놓은 exam객체가 참조형이므로 ref에값에 exam을 넣는것 -->
 		<!-- 두개의  exam은 모두 다르다!!  -->
-		<property name="exam" ref="exam"/>	
+		
+		<!-- 
+			이제 어노테이션하는 방법을 사용해서 지울것임.
+		 -->
+		<!-- <property name="exam" ref="exam"/>	 -->
 	</bean>
 	
 	<!-- <bean id="exams" class="java.util.ArrayList">
