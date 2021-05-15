@@ -12,7 +12,15 @@
 	<!-- 어노테이션을 한게 있으니까 스프링아 찾아봐라! 라고 해주는 것이다.
 		이걸해줘야 스프링이 어노테이션을 찾기 시작한다. 
 	 -->
-	<context:annotation-config/>
+		<!-- <context:annotation-config/>
+			그런데 이녀석은 component-scan을 해주면 자동적으로 되므로,
+				component-scan을 통해 객체를스캔해주면 필요없다. 어노테이션도 자동적으로 찾기때문에
+				autowired를 찾게된다.
+	 	-->	
+	
+	<context:component-scan base-package="springNewLecture.di.ui, springNewLecture.di.entity">
+	
+	</context:component-scan>
 	
 	
 	<!-- Exam exam = new NewlecExam(); -->
@@ -55,7 +63,7 @@
 		p:kor="15" p:eng="20" p:math="30" p:com="50"/>
 	
 	<!-- ExamConsole console = new GridExamConsole(); -->
-	<bean id="console" class="springNewLecture.di.ui.InlineExamConsole">
+	<!-- <bean id="console" class="springNewLecture.di.ui.InlineExamConsole"/> -->
 		<!-- console.setExam(exam); -->
 		<!-- setExam을 호출하는 것인데 묵시적으로 set을 생략해준다. setExam이 exam으료 바뀐것 -->
 		<!-- ref : 위에서 bean으로 추가해놓은 exam객체가 참조형이므로 ref에값에 exam을 넣는것 -->
@@ -64,7 +72,6 @@
 			이제 어노테이션하는 방법을 사용해서 지울것임.
 		 -->
 		<!-- <property name="exam" ref="exam"/>	 -->
-	</bean>
 	
 	<!-- <bean id="exams" class="java.util.ArrayList">
 		ArrayList의 생성자에 collection을 담을 수 있는 것을 이용하여
@@ -93,6 +100,7 @@
 				p:kor="1" p:eng="2" p:math="3" p:com="5"/>
 		<ref bean ="exam"/>
 	</util:list> -->
+	
 	
 </beans>
 

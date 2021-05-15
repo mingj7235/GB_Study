@@ -2,16 +2,19 @@ package springNewLecture.di.ui;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import springNewLecture.di.entity.Exam;
 
+@Component("console")
+//xml에서는 id로 부여한것을 이렇게 어노테이션에서는 파라미터에 담는다.
 public class InlineExamConsole implements ExamConsole {
 	
-	@Autowired (required = false)
+	@Autowired /*(required = false)*/
 		//required를 false를 주면 xml에서 그 찾는 객체가 없는경우에도
 		//실행이된다. 즉, 옵션을 주고싶을때, 분기를 줘서 처리가능하다.
 		//원래는 이 옵션을 주지않으면 오류가 난다. 
-	@Qualifier("exam1")
+	//@Qualifier("exam1")
 	//기본생성자를 통해서 인젝션이 되는것이므로
 	//기본생성자가 없으면 인젝션이 되지않는다.
 	

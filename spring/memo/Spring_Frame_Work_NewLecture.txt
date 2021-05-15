@@ -173,7 +173,19 @@ Collection을 DI 하는 방법
 
 
 
+@Component 를 의미론적으로 이름을 갖도록 한 어노테이션이있다
+	@Controller
+	@Service
+	@Repository
 
+	구체적인 역할을 명시화 할 수 있다. 
+
+
+<JAVA Configuration >
+
+XML파일을 JAVA 파일로 만드는것
+즉, 설정을 JAVA로 하는것 !!
+@Configuration 어노테이션을 주고 Config관련 JAVA 클래스를 만든다. 
 
 
 

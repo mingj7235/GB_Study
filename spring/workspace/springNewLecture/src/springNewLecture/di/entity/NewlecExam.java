@@ -1,8 +1,13 @@
 package springNewLecture.di.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+
+
 public class NewlecExam implements Exam {
 	
+	@Value("20")
 	private int kor;
+	@Value("10")
 	private int eng;
 	private int math;
 	private int com;
