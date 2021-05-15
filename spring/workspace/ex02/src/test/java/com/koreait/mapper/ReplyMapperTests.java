@@ -15,6 +15,7 @@ import com.koreait.domain.ReplyVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import oracle.net.aso.r;
 
 //SpringRunner는 SpringJUnit4ClassRunner의 자식이며
 //4.3버전 이상부터 사용가능한 확장판이다.
@@ -31,7 +32,7 @@ public class ReplyMapperTests {
 	//게시글 번호 배열
 	//테스트용으로 bno을 보내준다.
 
-	private Long[] arBno = {3670011L,3670010L, 3670009L, 3670008L, 3670007L};
+	private Long[] arBno = {3670020L,3670001L, 3670008L, 3670007L, 3670006L};
 //	
 
 //	@Test
@@ -49,7 +50,20 @@ public class ReplyMapperTests {
 //	}
 	
 //	@Test
+//	public void testDelete () {
+//		log.info(mapper.delete(4L));
+//	}
+	
+	
+//	@Test
 //	public void testGetListWithPaging() {
+//		mapper.getListWithPaging(arBno[0]).forEach(reply -> log.info(reply));
+//		
+//	}
+	
+	//그 게시물의 전체 댓글 목록 불러오기
+//	@Test
+//	public void testGetListWithPaging () {
 //		mapper.getListWithPaging(arBno[0]).forEach(reply -> log.info(reply));
 //		
 //	}
@@ -59,10 +73,10 @@ public class ReplyMapperTests {
 //	public void testRead() {
 //		log.info(mapper.read(1L));
 //
-	@Test
-	public void testRead () {
-		log.info(mapper.read(2L));
-	}
+//	@Test
+//	public void testRead () {
+//		log.info(mapper.read(2L));
+//	}
 	
 	
 //	@Test
@@ -79,16 +93,32 @@ public class ReplyMapperTests {
 //			mapper.insert(reply);
 //		});
 //	}
+
+//	@Test
+//	public void testListfor () {
+//		List<BoardVO> boards = board.getListWithPaging(new Criteria(1, 5));
+//		
+//		IntStream.rangeClosed(1, 10).forEach(i -> {
+//			ReplyVO reply = new ReplyVO();
+//			reply.setReply("추가된 댓글" + i);
+//			reply.setReplyer("추가된 댓글쓴사람" + i);
+//			reply.setBno(boards.get(i % 5).getBno());
+//			mapper.insert(reply);
+//		});
+//	}
+	
 	
 //	@Test
 //	public void testInsert () {
 //		
 //		ReplyVO reply = new ReplyVO();
 //		reply.setBno(arBno[1]);
-//		reply.setReply("댓글입니다.");
-//		reply.setReplyer("댓글달사람");
+//		for (int i = 0; i < 5; i++) {
+//			reply.setReply("댓글입니다" + i);
+//			reply.setReplyer("댓글달사람" +i);
+//			log.info(mapper.insert(reply));
+//		}
 //		
-//		log.info(mapper.insert(reply));
 //	}
 	
 //	
