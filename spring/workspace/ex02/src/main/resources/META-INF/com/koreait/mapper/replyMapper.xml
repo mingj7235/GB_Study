@@ -2,15 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.koreait.mapper.ReplyMapper"> <!-- mapper.java와 연결해주는것임 -->
+
+
+
 	<insert id="insert">
 		INSERT INTO TBL_REPLY (RNO, BNO, REPLY, REPLYER) 
 		VALUES(SEQ_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
 	</insert>
 	
+<!-- 	 <select id="read" resultType="com.koreait.domain.ReplyVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE FROM TBL_REPLY 
+		WHERE RNO = #{rno}	
+	</select> -->
+	
+	<!-- 댓글 상세보기 -->
 	<select id="read" resultType="com.koreait.domain.ReplyVO">
 		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE FROM TBL_REPLY 
 		WHERE RNO = #{rno}	
 	</select>
+	
 	
 	<select id="getListWithPaging" resultType="com.koreait.domain.ReplyVO">
 		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE FROM TBL_REPLY 
@@ -25,6 +35,6 @@
 		UPDATE TBL_REPLY 
 		SET REPLY = #{reply}, UPDATEDATE = SYSDATE 
 		WHERE RNO = #{rno}
-	</update>
+	</update> 
 	
 </mapper>

@@ -48,17 +48,21 @@ public class ReplyMapperTests {
 //		log.info(mapper.delete(1L));
 //	}
 	
-	@Test
-	public void testGetListWithPaging() {
-		mapper.getListWithPaging(arBno[0]).forEach(reply -> log.info(reply));
-		
-	}
+//	@Test
+//	public void testGetListWithPaging() {
+//		mapper.getListWithPaging(arBno[0]).forEach(reply -> log.info(reply));
+//		
+//	}
 	
 	
 //	@Test
 //	public void testRead() {
 //		log.info(mapper.read(1L));
-//	}
+//
+	@Test
+	public void testRead () {
+		log.info(mapper.read(2L));
+	}
 	
 	
 //	@Test
@@ -75,6 +79,18 @@ public class ReplyMapperTests {
 //			mapper.insert(reply);
 //		});
 //	}
+	
+//	@Test
+//	public void testInsert () {
+//		
+//		ReplyVO reply = new ReplyVO();
+//		reply.setBno(arBno[1]);
+//		reply.setReply("댓글입니다.");
+//		reply.setReplyer("댓글달사람");
+//		
+//		log.info(mapper.insert(reply));
+//	}
+	
 //	
 //	@Test
 //	public void testMapper() {
