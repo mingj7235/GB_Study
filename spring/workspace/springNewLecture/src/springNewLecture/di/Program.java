@@ -3,6 +3,7 @@ package springNewLecture.di;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import springNewLecture.di.entity.Exam;
 import springNewLecture.di.ui.ExamConsole;
 
 public class Program {
@@ -10,6 +11,7 @@ public class Program {
 		
 		/* 스프링에게 지시하는 방법으로 코드를 변경 -> 그 지시서가 바로 xml이다.
 		Exam exam = new NewlecExam();
+		Exam exam = new NewlecExam(10, 10, 10, 10); //생성자로 값을 생성하는것
 //		ExamConsole console = new InlineExamConsole(exam); //이게 의존성주입이다. exam을 조립한다. 
 															//이걸 내가 직접하려면 코드를 이렇게 작성해야하는데, 이걸 대신해주는게 spring이다. 
 		ExamConsole console = new GridExamConsole();	//이 작업을 spring이 대신해줄것이다. 
@@ -29,6 +31,8 @@ public class Program {
 		
 		//ExamConsole console = (ExamConsole) context.getBean("console");
 		
+		Exam exam = context.getBean(Exam.class);
+		System.out.println(exam.toString());
 		ExamConsole console = context.getBean(ExamConsole.class);
 		
 		console.print();
