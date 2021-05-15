@@ -39,17 +39,28 @@ public class Criteria {
 		
 	}
 	
-	public String getListLink() {
-		//쿼리스트링을 만들어주는 라이브러리 즉, jsp에있는 get형식 뒤에 붙는 쿼리스트링을 이걸로 끝낸다!
-		//?가 앞에 붙는다.
+//	public String getListLink() {
+//		//쿼리스트링을 만들어주는 라이브러리 즉, jsp에있는 get형식 뒤에 붙는 쿼리스트링을 이걸로 끝낸다!
+//		//?가 앞에 붙는다.
+//		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
+//				.queryParam("pageNum", this.pageNum)
+//				.queryParam("amount", this.amount)
+//				.queryParam("keyword", this.getKeyword())
+//				.queryParam("type", this.getType());
+//		
+//		return builder.toUriString();
+//						
+//	}
+	
+	public String getListLink () {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
 				.queryParam("pageNum", this.pageNum)
 				.queryParam("amount", this.amount)
-				.queryParam("keyword", this.getKeyword())
-				.queryParam("type", this.getType());
+				.queryParam("keyword", this.keyword)
+				.queryParam("type", this.type);
 		
 		return builder.toUriString();
-						
+		
 	}
 	
 	
