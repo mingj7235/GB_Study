@@ -71,7 +71,15 @@ https://www.youtube.com/watch?v=YZzpGtpW2h0&list=PLq8wAnVUcTFV4ZjRbyGnw6T1tgmYDL
 	
 	
 5강 Dependency를 직접 Injection 하기
-	
+
+8강
+
+Spring의 지시서를 조립해주는 녀석이 ApplicationContext다. 이건 인터페이스
+
+	ClassPathXmlApplicationContext : 클래스의 경로 -> 이게 가장 보편적이다. 
+	FileSystemXmlApplicationContext : 파일 시스템의 경로
+	XmlWebApplicationContext : 웹에서 경로를 찾음
+	AnnotationConfigApplicationContext : 어노테이션으로 경로를 찾음
 
 
 

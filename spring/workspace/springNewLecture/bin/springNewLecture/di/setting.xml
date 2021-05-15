@@ -2,6 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-
+	
+	<!-- Exam exam = new NewlecExam(); -->
+	<bean id="exam" class="springNewLecture.di.entity.NewlecExam" />
+	
+	<!-- ExamConsole console = new GridExamConsole(); -->
+	<bean id="console" class="springNewLecture.di.ui.GridExamConsole">
+		<!-- console.setExam(exam); -->
+		<!-- setExam을 호출하는 것인데 묵시적으로 set을 생략해준다. setExam이 exam으료 바뀐것 -->
+		<!-- ref : 위에서 bean으로 추가해놓은 exam객체가 참조형이므로 ref에값에 exam을 넣는것 -->
+		<!-- 두개의  exam은 모두 다르다!!  -->
+		<property name="exam" ref="exam"/>	
+	</bean>
+	
+	
 </beans>
