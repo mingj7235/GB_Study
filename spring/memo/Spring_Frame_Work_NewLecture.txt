@@ -207,6 +207,25 @@ Proxy 개념
 
 	스프링에서는 코드 변경과 수정을 DI로 해결해서 매우 쉽다. 
 
+AOP를 하기위해서는
+	core concern, cross-cutting concern, proxy 3가지가 자유롭게 왔다갔다 해야한다. 
+	스프링에서는 IoC컨테이너에서 그 작업이 자유롭게 이루어진다. 
+	
+스프링에서는 cross-cutting concern (횡단관심사)를 4가지로 분류한다.
+
+	Before: 앞에만 필요한것
+	After returnning : 끝에만 필요한것
+	After throwing : 예외를 처리하는것
+	Around : 앞뒤 모두에서 필요한것
+
+
+
+
+
+
+
+
+
 
 
 
