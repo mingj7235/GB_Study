@@ -19,6 +19,7 @@ public class Program {
 		Exam exam = (Exam) context.getBean("exam"); //setting.xml에있는 proxy bean을 가져온다.
 		
 		System.out.printf("total is %d\n", exam.total()); //빵또아처럼 AOP로 꽂은 로직
+		System.out.println();
 		System.out.printf("avg is %f\n", exam.avg()); //빵또아처럼 AOP로 꽂은 로직
 		
 		

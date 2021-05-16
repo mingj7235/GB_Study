@@ -212,12 +212,17 @@ AOP를 하기위해서는
 	스프링에서는 IoC컨테이너에서 그 작업이 자유롭게 이루어진다. 
 	
 스프링에서는 cross-cutting concern (횡단관심사)를 4가지로 분류한다.
-
+	-> Advice 라고한다. 
 	Before: 앞에만 필요한것
 	After returnning : 끝에만 필요한것
 	After throwing : 예외를 처리하는것
 	Around : 앞뒤 모두에서 필요한것
 
+
+AOP 구현방식
+	포인트컷
+	조인 포인트 : 조인하게 될 메서드 포인트
+	위빙 : 뜨게질하다. 위빙이 일어난다고 한다. 
 
 
 

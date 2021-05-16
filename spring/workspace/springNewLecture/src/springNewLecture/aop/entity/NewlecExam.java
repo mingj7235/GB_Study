@@ -8,7 +8,7 @@ public class NewlecExam implements Exam {
 	private int com;
 	
 	public NewlecExam() {
-
+		
 	}
 	
 	//생성자로 초기화하기
