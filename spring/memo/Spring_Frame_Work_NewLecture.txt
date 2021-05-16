@@ -202,8 +202,10 @@ Aspect Oriented Programming : 즉, 관점 지향적 !
 	
 		
 
+Proxy 개념
+	Proxy클래스에 구현되는 cross-cutting concern
 
-
+	스프링에서는 코드 변경과 수정을 DI로 해결해서 매우 쉽다. 
 
 
 
