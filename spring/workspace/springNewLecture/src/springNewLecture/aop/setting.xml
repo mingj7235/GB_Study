@@ -9,9 +9,12 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<bean id="target" class="springNewLecture.aop.entity.NewlecExam" 
-		p:kor="1" p:eng="1" p:math="1" p:com="1"/>
+		p:kor="120" p:eng="1" p:math="1" p:com="1"/>
 	<bean id="logAroundAdvice" class="springNewLecture.aop.advice.LogAroundAdvice"/><!-- log를 출력하기 위한  advice 즉, 핸들러--> 
 	<bean id="logBeforeAdvice" class="springNewLecture.aop.advice.LogBeforeAdvice"/>
+	<bean id="logAfterReturningAdvice" class="springNewLecture.aop.advice.LogAfterReturningAdvice"/>
+	<bean id="logAfterThrowingAdvice" class="springNewLecture.aop.advice.LogAfterThrowingAdvice"/>
+	
 	<bean id="exam" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<!-- proxy에는 두가지 설정이 필요하다.
 			실제 타겟의 객체,
@@ -25,6 +28,8 @@
 		 		<!-- advice를 list로 이렇게 설정해줄 수 있다. -->
 		 		<value>logAroundAdvice</value>
 		 		<value>logBeforeAdvice</value>
+		 		<value>logAfterReturningAdvice</value>
+		 		<value>logAfterThrowingAdvice</value>
 		 	</list>
 		 </property>
 		 
