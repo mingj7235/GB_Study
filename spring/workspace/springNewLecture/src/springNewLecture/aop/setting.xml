@@ -8,11 +8,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
-	<bean id="exam" class="springNewLecture.aop.entity.NewlecExam" 
+	<bean id="target" class="springNewLecture.aop.entity.NewlecExam" 
 		p:kor="1" p:eng="1" p:math="1" p:com="1"/>
 	<bean id="logAroundAdvice" class="springNewLecture.aop.advice.LogAroundAdvice"/><!-- log를 출력하기 위한  advice 즉, 핸들러--> 
 	<bean id="logBeforeAdvice" class="springNewLecture.aop.advice.LogBeforeAdvice"/>
-	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<bean id="exam" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<!-- proxy에는 두가지 설정이 필요하다.
 			실제 타겟의 객체,
 			그 타겟의 곁다리 업무 (InvocationHandler)
@@ -22,7 +22,9 @@
 		 <property name="target" ref="target"/> <!-- 1. 타겟에 대한 설정 -->
 		 <property name="interceptorNames"> <!-- 2. 곁다리 업무에 관한, 즉 advice에 대한 설정 -->
 		 	<list>
+		 		<!-- advice를 list로 이렇게 설정해줄 수 있다. -->
 		 		<value>logAroundAdvice</value>
+		 		<value>logBeforeAdvice</value>
 		 	</list>
 		 </property>
 		 
