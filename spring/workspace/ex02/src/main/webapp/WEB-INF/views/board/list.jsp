@@ -195,7 +195,7 @@
    		})  
    
    		//alert("${result}");
-   		var result = "${result}"
+   		var result = "${result}";
    		$(document).ready(function(){
    			if(result=='' || isNaN(result)){
    				return;

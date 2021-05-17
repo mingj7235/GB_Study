@@ -25,7 +25,10 @@
 		WHERE BNO = #{bno}
 	</select> -->
 	
-	<!-- 그 게시글의 댓글 목록 불러오기 -->
+	<!-- 그 게시글의 댓글 목록 불러오기 
+		hint를 써서 이제 페이징을 해줘야한다. 
+		Criteria가 필요하다. -> start, end 연산이 필요함. 
+	-->
 	<select id="getListWithPaging" resultType="com.koreait.domain.ReplyVO">
 		SELECT BNO, RNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE FROM TBL_REPLY 
 		WHERE BNO = #{bno}		
