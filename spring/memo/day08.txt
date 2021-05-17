@@ -47,3 +47,9 @@ Reply service, impl, test 서버에서 실험하기 , replycontroller,
 
 크롬 확장 프로그램! talend api tester
 주의 : http 로 바꿔야함!
+
+json 라이브러리 ->pom.xml에 추가함
+
+@ResponseBody : 바디의 return값을 응답하겠다!라는 것임
+즉, RestController 어노테이션을 안쓰고 Controller어노테이션을 쓴후에
+메소드 위에 ReponseBody 어노테이션을 써준다.
