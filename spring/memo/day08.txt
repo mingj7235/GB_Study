@@ -53,3 +53,11 @@ json 라이브러리 ->pom.xml에 추가함
 @ResponseBody : 바디의 return값을 응답하겠다!라는 것임
 즉, RestController 어노테이션을 안쓰고 Controller어노테이션을 쓴후에
 메소드 위에 ReponseBody 어노테이션을 써준다.
+
+댓글 수정할때 PUT, PATCH 방식
+
+
+
+차주 spring over,
+Android, github expectation 
+
