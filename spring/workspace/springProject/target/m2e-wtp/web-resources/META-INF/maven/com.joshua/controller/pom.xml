@@ -58,7 +58,6 @@
          <version>2.8.2</version>
       </dependency>
 
-
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
