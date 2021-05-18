@@ -17,8 +17,6 @@ public interface BoardService {
 	//전체 게시글 개수
 	public int getTotal(Criteria cri);
 	
-
-	
 	//게시물 수정
 	public boolean modify (BoardVO board);
 	
