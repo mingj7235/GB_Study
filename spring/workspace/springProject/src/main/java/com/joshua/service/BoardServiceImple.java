@@ -38,6 +38,22 @@ public class BoardServiceImple implements BoardService{
 		mapper.insertSelectKey_bno(board);
 	}
 	
+	@Override
+	public BoardVO getBoard(long bno) {
+		return mapper.read(bno);
+	}
+	
+	
+	@Override
+	public int delete(long bno) {
+		return mapper.delete(bno);
+	}
+	
+	@Override
+	public int update(BoardVO board) {
+		return mapper.update(board);
+	}
+	
 
 	
 	

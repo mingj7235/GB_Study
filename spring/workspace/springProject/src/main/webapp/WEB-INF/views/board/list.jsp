@@ -47,7 +47,7 @@
 				<!-- Intro -->
 					<section id="intro" class="wrapper featured style1">
 						<div class="inner">
-							<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+							<span class="image"><img src="/resources/images/pic01.jpg" alt="" /></span>
 							<div class="content">
 								<header>
 									<h1>Reflex</h1>

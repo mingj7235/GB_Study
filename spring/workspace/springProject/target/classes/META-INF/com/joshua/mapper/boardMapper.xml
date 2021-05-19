@@ -65,4 +65,39 @@
    		VALUES (#{bno}, #{title}, #{content}, #{writer})
    </insert>
    
+   <select id="read" resultType="com.joshua.domain.BoardVO">
+	SELECT * FROM TBL_LIGHTBOARD WHERE BNO = #{bno}
+   </select>
+   
+   <delete id="delete">
+   	DELETE FROM TBL_LIGHTBOARD WHERE BNO = #{bno}
+   </delete>
+	   
+   <update id="update">
+   	UPDATE TBL_LIGHTBOARD 
+   	SET TITLE = #{title}, CONTENT = #{content} , UPDATEDATE = SYSDATE,
+   	WHERE BNO = #{bno}
+   </update>
+   
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

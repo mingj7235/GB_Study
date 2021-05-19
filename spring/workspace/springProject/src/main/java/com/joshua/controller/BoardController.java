@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.joshua.domain.BoardVO;
@@ -39,13 +40,53 @@ public class BoardController {
 	
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
-		
 		service.register(board);
-		
-		//응답페이지로 board번호를 넘긴다. post방식이므로 redirect되므로 이렇게 보낸다.
 		rttr.addFlashAttribute("result", board.getBno());
 		return "redirect:/board/list";
 	}
 	
+	@GetMapping({"/get", "/update"})
+	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+		model.addAttribute("board", service.getBoard(bno));
+	}
+	
+	
+	@PostMapping("/update")
+	public String update(BoardVO board, Criteria cri, RedirectAttributes rttr) {
+		
+		if(service.update(board) > 1) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		rttr.addAttribute("type", cri.getType());
+		
+		return "redirect:/board/list";
+	}
+	
+	@GetMapping("/remove")
+	public String remove(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
+		
+		if(service.delete(bno) > 1) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		rttr.addAttribute("type", cri.getType());
+		
+		return "redirect:/board/list";
+	}
 	
 }
+
+
+
+
+
+
+
+
+

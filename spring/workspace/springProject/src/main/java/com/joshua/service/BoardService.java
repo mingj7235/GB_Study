@@ -15,5 +15,10 @@ public interface BoardService {
 	
 	public void register(BoardVO board);
 	
+	public BoardVO getBoard (long bno);
+	
+	public int delete (long bno);
+	
+	public int update(BoardVO board);
 	
 }
