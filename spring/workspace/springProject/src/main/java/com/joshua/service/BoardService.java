@@ -9,11 +9,11 @@ public interface BoardService {
 	
 	public List<BoardVO> getList();
 	
-	//override
 	public List<BoardVO> getList(Criteria cri);
+	
+	public int getTotal (Criteria cri);
 	
 	public void register(BoardVO board);
 	
-	public int getTotal (Criteria cri);
 	
 }

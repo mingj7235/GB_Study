@@ -22,9 +22,15 @@ public class BoardServiceImple implements BoardService{
 	public List<BoardVO> getList() {
 		return mapper.getList();
 	}
+	
 	@Override
-	public List<BoardVO> getList(Criteria cri) {
-		return mapper.getListWithPaging(cri);
+		public List<BoardVO> getList(Criteria cri) {
+			return mapper.getListWithPaging(cri);
+		}
+	
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotal(cri);
 	}
 	
 	@Override
@@ -32,10 +38,6 @@ public class BoardServiceImple implements BoardService{
 		mapper.insertSelectKey_bno(board);
 	}
 	
-	@Override
-	public int getTotal(Criteria cri) {
-		return mapper.getTotal(cri);
-	}
 
 	
 	

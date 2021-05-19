@@ -1,5 +1,7 @@
 package com.joshua.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -23,6 +25,17 @@ public class Criteria {
 	
 	public String [] getTypeArr() {
 		return type == null ? new String[] {}: type.split("");
+	}
+	
+	public String getListLink () {
+		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
+				.queryParam("pageNum", this.pageNum)
+				.queryParam("amount", this.amount)
+				.queryParam("keyword", this.keyword)
+				.queryParam("type", this.type);
+		
+		return builder.toUriString();
+				
 	}
 	
 }
