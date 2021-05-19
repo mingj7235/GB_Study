@@ -20,12 +20,13 @@ public class BoardMapperTests {
 	private BoardMapper mapper;
 	
 	
-//	@Test
-//	public void testGetListWithPaging() {
-//		Criteria cri = new Criteria();
-//		cri.setPageNum(1);
-//		mapper.getListWithPaging(cri).forEach(board -> log.info(board.getBno()));
-//	}
+	@Test
+	public void testGetListWithPaging() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(1);
+		mapper.getListWithPaging(cri).forEach(board -> log.info(board.getBno()));
+		
+	}
 	
 /*	@Test
 	public void update () {
@@ -39,12 +40,12 @@ public class BoardMapperTests {
 	}*/
 	
 	
-	@Test
-	public void testDelete () {
-		long bno = 2L;
-		log.info("delete count : " + mapper.delete(3670011L));
-//		log.info("delete count : " + mapper.delete(bno));
-	}
+//	@Test
+//	public void testDelete () {
+//		long bno = 2L;
+//		log.info("delete count : " + mapper.delete(3670011L));
+////		log.info("delete count : " + mapper.delete(bno));
+//	}
 	
 	//read 테스트
 /*	@Test
