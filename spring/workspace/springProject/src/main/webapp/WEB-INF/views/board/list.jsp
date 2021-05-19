@@ -13,6 +13,16 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
+		<style>
+		a {
+			border-bottom: none;
+		
+		}
+		
+		
+		</style>
+		
+		
 	</head>
 	<body class="is-preload">
 
@@ -73,7 +83,7 @@
                         <h1>Board</h1>
                         <p>게시판 목록</p>
                      </header>
-                              <h3><a href="" class="button small">글 등록</a></h3>
+                              <h3><a href="/board/register${pageMaker.cri.getListLink()}" class="button small">글 등록</a></h3>
                               <div class="table-wrapper">
                                  <table>
                                     <thead>
@@ -88,7 +98,7 @@
                                     <tbody>
          								<c:forEach var="board" items="${list}">
          									<tr class="tBody">
-	                                          <td class="bno">${board.bno}</td> <!-- board.getBno()를 써도되지만, 자동으로 매핑해서 가져온다. -->
+	                                          <td class="bno">${board.bno}</td> 
 	                                          <td class="title"><a href="/board/get${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a></td>
 	                                          <td class="writer">${board.writer}</td>
 	                                          <td class="regDate">${board.regDate}</td>
@@ -99,6 +109,52 @@
                                     <tfoot>
                                     </tfoot>
                                  </table>
+                                 
+                                 <div class="big-width" style="text-align: center;">
+                                 	<c:if test="${pageMaker.prev}">
+                                 		<a class="changePage" href="${1}"><code>&lt;&lt;</code></a>
+                                 		<a class="changePage" href="${pageMaker.startPage-1 }"><code>&lt;</code></a>
+                                 	</c:if>
+                                 	
+                                 	<c:forEach var="num" begin="${pageMaker.startPage}" end ="${pageMaker.endPage}">
+                                 		<c:choose>
+                                 			<c:when test="${num eq pageMaker.cri.pageNum}">
+                                 				<code>${num}</code>
+                                 			</c:when>
+                                 			<c:otherwise>
+                                 				<a class="changePage" href="${num}"><code>${num}</code></a>
+                                 			</c:otherwise>
+                                 		</c:choose>
+                                 	</c:forEach>
+                                 	<c:if test="${pageMaker.next}">
+                                 		<a class="changePage" href="${pageMaker.cri.endPage + 1}"><code>&gt;</code></a>
+                                 		<a class="changePage" href="${pageMaker.cri.realEnd}"><code>&gt;&gt;</code></a>
+                                 	</c:if>
+                                 </div>
+                                 
+                                 <div class="small-width" style="text-align: center;">
+                                 	<c:if test="${pageMaker.prev}">
+                                 		<a class="changePage" href="${1}"><code>&lt;&lt;</code></a>
+                                 		<a class="changePage" href="${pageMaker.startPage-1 }"><code>&lt;</code></a>
+                                 	</c:if>
+                                 	
+                                 	<code>
+                                 	${pageMaker.cri.pageNum}
+                                 	</code>
+                                 	
+                                 	<c:if test="${pageMaker.next}">
+                                 		<a class="changePage" href="${pageMaker.cri.endPage + 1}"><code>&gt;</code></a>
+                                 		<a class="changePage" href="${pageMaker.cri.realEnd}"><code>&gt;&gt;</code></a>
+                                 	</c:if>
+                                 </div>
+                                 
+                                 <form id="changeForm" action="/board/list">
+                                 	<input type="hidden" name="pageNum" value ="${pageMaker.cri.pageNum}">
+                                 	<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+                                 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+                                 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
+                                 </form>
+                                 
                               </div>
                         </div>
 					</section>
@@ -148,4 +204,27 @@
 			<script src="/resources/assets/js/main.js"></script>
 
 	</body>
+	<script>
+	
+	/* 여기 이 로직을 잘 이해할것. 페이지 넘기는 로직인데, href값을 가져오고, 그값을 변경하여 input에 담아 넘 */
+	$(".changePage").on("click", function (e) {
+		e.preventDefault();
+		var changeForm = $("#changeForm");
+		var pageNum = $(this).attr("href");
+		changeForm.find("input[name='pageNum']").val(pageNum);
+		changeForm.submit();
+	})
+	
+	
+	</script>
 </html>
+
+
+
+
+
+
+
+
+
+
