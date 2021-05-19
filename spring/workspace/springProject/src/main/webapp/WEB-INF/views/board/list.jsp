@@ -19,6 +19,34 @@
 		
 		}
 		
+		.big-width {
+			display : block;
+		}
+		
+		.small-width {
+			display : none;
+		}
+		
+		@media(max-width : 918px) {
+			.writer {
+				display : none;
+			}
+			.regDate {
+				display : none;
+			}
+			.updateDate {
+				display : none;
+			}
+			.big-width {
+				display : none;
+			}
+			.small-width {
+				display : block;
+			}
+			
+		
+		}
+		
 		
 		</style>
 		
