@@ -68,7 +68,12 @@
          <script src="/resources/assets/js/breakpoints.min.js"></script>
          <script src="/resources/assets/js/util.js"></script>
          <script src="/resources/assets/js/main.js"></script>
+         <script src="/resources/assets/js/reply.js"></script>
    </body>
-   
+   <script>
+   	$(document).ready(function() {
+   		console.log(replyService.name);
+   	});
+   </script>
    
 </html>

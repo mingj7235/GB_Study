@@ -47,6 +47,13 @@
 		
 		}
 		
+		@media(max-width : 1200px) {
+			#header {
+				display : none;
+			}
+		
+		}
+		
 		
 		</style>
 		
