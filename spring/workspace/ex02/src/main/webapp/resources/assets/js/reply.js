@@ -27,17 +27,73 @@ var replyService = (function() {
 								그런데, googlejson에서는 JSON.stringify 라는 라이브러리를 제공하여서 key값과 value값에
 								쌍따옴표를 붙여줘서 문자열로 만들어줌. (datatype은 내가 전달받을 데이터 )*/
 			contentType :"application/json; charset=utf-8",/**전달할  데이터 타입 */
-			success : function () { /** success는 callback */
-				
+			success : function (result) { /** success는 callback / success를 담아줄 매개변수 -> result */
+				if(callback) { /** callback이 전달되었는지 판단. if문에들어오면 boolean타입이 된다*/
+					callback (result);
+				}
 			},
-			error : function () /** error는 error를 */{
+			error : function (xhr, status, er) /** error는 error를 */{
+				if(error) {
+					error(er);
+				}
 				
 			}
 			
 		});	
 	}
 	
-	return {add : add}
+	function getList (param, callback, error) {
+		
+		/** 구글 제이슨에 있는 것이다 간단하다. get은 get방식이라는 의미이다. 1번째는 url, 2번째는 success(callback) 그 후에 fail을서서 error를 잡는다.*/
+		
+		var bno = param.bno;
+		var page = param.page || 1; /** param.page가 전달이안되면 1이다 라는 의미 */
+		$.getJSON ("/replies/list/" + bno + "/" + page +".json", /** json데이터화 하기위해서 .json을 붙여준다. 디폴트가 xml형식이다. */ 
+			function(data){
+				if(callback) {
+					callback(data);
+				}
+			}).fail(function(xhr, status, err){
+				if(error) {
+					error(err);
+				}
+			});
+	}
+	
+	//댓글 삭제
+	function removeReply (param, callback, error) {
+		var rno = param.rno;
+		$.getJSON ("/replies/" + rno + ".json",
+			function(data) {
+				if(callback) {
+					callback(data);
+				}
+			}).fail(function(xhr, status, err) {
+				if(error) {
+					error(err);
+				}
+			});
+	} 
+	
+	return {add : add, getList : getList}
 	
 	/*return {name : "AAAA"}*//** replyService의 리턴값이 제이슨형식이*/
 })() /*function을 선언하자마자 바로 실행한다.*/ ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

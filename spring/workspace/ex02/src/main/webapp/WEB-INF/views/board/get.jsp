@@ -72,8 +72,37 @@
    </body>
    <script>
    	$(document).ready(function() {
-   		console.log(replyService.name);
+   		/* console.log(replyService.name); */
+   		console.log("----------");
+   		console.log("JS TEST");
+   															/* jsp에서는 el문을 그대로 사용가능하다,  */
+   															
+   															/* 매개변수 json, callback, error (error는 안넘) */
+   		/* replyService.add({reply : "JS TEST", replyer:"tester", bno : "${board.bno}"}, 
+   				function(result){ 
+   					alert("RESULT : " + result);
+   		});  */
+   		
+   		
+   		/* replyService.getList ({bno : "${board.bno}", page:1},
+   			function(data) {
+   				console.log(data);
+   		}); */
+   		
+   		replyService.removeReply ({rno : 1},
+   			function(data) {
+   				console.log(data);
+   		});
+   		
    	});
    </script>
    
 </html>
+
+
+
+
+
+
+
+
