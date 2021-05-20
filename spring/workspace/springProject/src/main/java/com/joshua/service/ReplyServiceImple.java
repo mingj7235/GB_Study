@@ -1,7 +1,10 @@
 package com.joshua.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.joshua.domain.Criteria;
 import com.joshua.domain.ReplyVO;
 import com.joshua.mapper.ReplyMapper;
 
@@ -23,5 +26,20 @@ public class ReplyServiceImple implements ReplyService{
 	@Override
 	public ReplyVO getReply(long rno) {
 		return mapper.read(rno);
+	}
+	
+	@Override
+	public List<ReplyVO> getListWithPaging(Criteria cri, long bno) {
+		return mapper.getListWithPaging(cri, bno);
+	}
+	
+	@Override
+	public int update(ReplyVO reply) {
+		return mapper.update(reply);
+	}
+	
+	@Override
+	public int delete(long rno) {
+		return mapper.delete(rno);
 	}
 }
