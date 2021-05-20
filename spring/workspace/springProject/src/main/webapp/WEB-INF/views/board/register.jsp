@@ -83,33 +83,24 @@
                   <!-- Elements -->
                      <header class="major">
                         <h1>Board</h1>
-                        <p>게시판 상세보기</p>
+                        <p>게시판 등록</p>
                      </header>
                               <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
                               <div class="content">
                               	<div class="form">
-                              		<form action="board/remove">
-                              			<input type="hidden" name="pageNum" value="${cri.pageNum}">
-                              			<input type="hidden" name="amount" value="${cri.amount}">
-                              			<input type="hidden" name="keyword" value="${cri.keyword}">
-                              			<input type="hidden" name="type" value="${cri.type}">
-                              		
+                              		<form id="regForm" method="post" action="board/register">
                               			<div class="fields">
                               				<div class="field">
-                              					<h3>No.</h3>
-                              					<input name="bno" type="text" value="${board.bno}" readonly/>
-                              				</div>
-                              				<div class="field">
                               					<h3>Title.</h3>
-                              					<input name="title" type="text" value="${board.title}" readonly/>
+                              					<input name="title" type="text" value="${board.title}"/>
                               				</div>
                               				<div class="field">
                               					<h3>Content</h3>
-                              					<textarea name="content" style="resize: none"rows="6" readonly>${board.content}</textarea>
+                              					<textarea rows="6" name="content"></textarea>
                               				</div>
                               				<div class="field">
                               					<h3>Writer</h3>
-                              					<input name="writer" type="text" value="${board.writer}" readonly/>
+                              					<input name="writer" type="text" value="${board.writer}"/>
                               				</div>
                               			</div>
                               			<ul class="actions special">

@@ -54,7 +54,7 @@ public class BoardController {
 	@PostMapping("/update")
 	public String update(BoardVO board, Criteria cri, RedirectAttributes rttr) {
 		
-		if(service.update(board) > 1) {
+		if(service.update(board) > 0) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
@@ -69,7 +69,7 @@ public class BoardController {
 	@GetMapping("/remove")
 	public String remove(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
 		
-		if(service.delete(bno) > 1) {
+		if(service.delete(bno) > 0) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());

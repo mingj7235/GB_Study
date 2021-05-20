@@ -136,13 +136,13 @@
 		                                 			<!-- criteria의 필드인 type이 매핑되는것임 -->
 		                                 			<select name="type">
 		                                 				<!-- 검색한 후에 selected 를 유지시키기위해서! 검색하고나서도 유지하기위해서다 -->
-		                                 				<option value ="" ${pageMaer.cri.type==null ? 'selected' : ''}>검색 기준</option>
-		                                 				<option value ="T" ${pageMaer.cri.type=='T' ? 'selected' : ''}>제목</option>
-		                                 				<option value ="C" ${pageMaer.cri.type=='C' ? 'selected' : ''}>내용</option>
-		                                 				<option value ="W" ${pageMaer.cri.type=='W' ? 'selected' : ''}>작성자</option>
-		                                 				<option value ="TC" ${pageMaer.cri.type=='TC' ? 'selected' : ''}>제목 또는 내용</option>
-		                                 				<option value ="TW" ${pageMaer.cri.type=='TW' ? 'selected' : ''}>제목 또는 작성자</option>
-		                                 				<option value ="TCW" ${pageMaer.cri.type=='TCW' ? 'selected' : ''}>전체</option>
+		                                 				<option value ="" ${pageMaker.cri.type==null ? 'selected' : ''}>검색 기준</option>
+		                                 				<option value ="T" ${pageMaker.cri.type=='T' ? 'selected' : ''}>제목</option>
+		                                 				<option value ="C" ${pageMaker.cri.type=='C' ? 'selected' : ''}>내용</option>
+		                                 				<option value ="W" ${pageMaker.cri.type=='W' ? 'selected' : ''}>작성자</option>
+		                                 				<option value ="TC" ${pageMaker.cri.type=='TC' ? 'selected' : ''}>제목 또는 내용</option>
+		                                 				<option value ="TW" ${pageMaker.cri.type=='TW' ? 'selected' : ''}>제목 또는 작성자</option>
+		                                 				<option value ="TCW" ${pageMaker.cri.type=='TCW' ? 'selected' : ''}>전체</option>
 		                                 			</select>
 		                                 			<!-- criteria의 필드인 keyword가 매핑 -->
 		                                 			<input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}">

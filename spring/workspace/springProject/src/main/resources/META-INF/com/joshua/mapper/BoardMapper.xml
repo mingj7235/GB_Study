@@ -75,7 +75,7 @@
 	   
    <update id="update">
    	UPDATE TBL_LIGHTBOARD 
-   	SET TITLE = #{title}, CONTENT = #{content} , UPDATEDATE = SYSDATE,
+   	SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}, UPDATEDATE = SYSDATE 
    	WHERE BNO = #{bno}
    </update>
    

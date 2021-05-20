@@ -55,6 +55,20 @@
                                  <input type="submit" class="button" value="삭제"/>
                               </li>
                            </ul>
+                           
+                           <!-- 댓글부분-->
+                           <ul class="icons">
+                           		<li>
+                           			<span class="icon solid fa-envelope"></span>
+                           			<strong>댓글</strong>
+                           		</li>
+                           </ul>
+                           
+                           <ul class="replies">
+                           
+                           </ul>
+                           
+                           
                         </form>
                      </div>
                               </div>
@@ -71,10 +85,11 @@
          <script src="/resources/assets/js/reply.js"></script>
    </body>
    <script>
-   	$(document).ready(function() {
+   //테스트
+   	//$(document).ready(function() { 
    		/* console.log(replyService.name); */
-   		console.log("----------");
-   		console.log("JS TEST");
+   		/* console.log("----------");
+   		console.log("JS TEST"); */
    															/* jsp에서는 el문을 그대로 사용가능하다,  */
    															
    															/* 매개변수 json, callback, error (error는 안넘) */
@@ -84,17 +99,34 @@
    		});  */
    		
    		
-   		/* replyService.getList ({bno : "${board.bno}", page:1},
+/*    		replyService.getList ({bno : "${board.bno}", page:2},
    			function(data) {
    				console.log(data);
+   		});  */
+   		
+   		/* replyService.remove(1, function (result) {
+   			if(result == "success") {
+	   			alert("DELETE:" result);
+   			}
+   		}.function(err) {
+   			alert("error");
+   		}
+   		) */
+   		
+/*    		replyService.modify({rno : 1, reply : "Modified Reply"}, function(result) {
+   			alert("Modifiy : " + result);
    		}); */
    		
-   		replyService.removeReply ({rno : 1},
-   			function(data) {
-   				console.log(data);
-   		});
+   		/* replyService.get(1, function (result){
+   			console.log(result);
+   		}) */
    		
-   	});
+   	//}); 
+   </script>
+   
+   <script>
+   
+   
    </script>
    
 </html>

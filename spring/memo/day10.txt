@@ -1,1 +1,1323 @@
-메소드는 저장공간이다. 이걸 잊지말자 ! 메소드는 저장공간. 
+list.jsp
+ 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Board</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <link rel="stylesheet" href="/resources/assets/css/main.css" />
+      <style>
+      .big-width {
+      display : block;
+      }
+      
+      .small-width {
+      display : none;
+      }
+.table-wrapper {overflow-x:hidden !important;}      
+      
+      select {width: 25%; display:inline;}
+      input[name='keyword'] {width:54%; display:inline;}
+      .search {width:20%;} 
+      
+      @media(max-width : 918px){
+      .writer {display:none;}
+      .regDate {display:none;}
+      .updateDate {display:none;}
+      .big-width {
+      display : none;
+      }
+      
+      .small-width {
+      display : block;
+      }
+       
+      select {width: 100%; }
+      input[name='keyword'] {width:100%; }
+      .search {width:100%;} 
+       
+      }
+      
+      </style>
+      
+   </head>
+   <body class="is-preload">
+      <!-- Main -->
+         <div id="main">
+            <div class="wrapper">
+               <div class="inner">
+ 
+                  <!-- Elements -->
+                     <header class="major">
+                        <h1>Board</h1>
+                        <p>게시판 목록</p>
+                     </header>
+                           
+                              
+<h3><a href="/board/register${pageMaker.cri.getListLink()}" class="button small">글 등록</a></h3>
+                              <div class="table-wrapper">
+                                 <table>
+                                    <thead>
+                                       <tr class="tHead">
+                                          <th class="bno">번호</th>
+                                          <th class="title">제목</th>
+                                          <th class="writer">작성자</th>
+                                          <th class="regDate">작성일</th>
+                                          <th class="updateDate">수정일</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+         <c:forEach var="board" items="${list}">
+         <tr class="tBody">
+                                          <td class="bno">${board.bno}</td>                                           <td class="title"><a href="/board/get${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a></td>
+                                          <td class="writer">${board.writer}</td>
+                                          <td class="regDate">${board.regDate}</td>
+                                          <td class="updateDate">${board.updateDate}</td>
+         </tr>
+         </c:forEach>
+                                    </tbody>
+                                    <tfoot>
+                                    </tfoot>
+<!-- 현재페이지가 지금페이지와 같다면 숫자에 a테그를 넣으면안된다.  -->
+                                 </table>
+                                <div class="big-width" style ="text-align: center;">
+                                <c:if test="${pageMaker.prev}">
+                                <a class="changePage" href="${1}"><code>&lt;&lt;</code></a>
+                                <a class="changePage" href="${pageMaker.startPage -1}"><code>&lt;</code></a>
+                                </c:if>
+                                 
+<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+<c:choose>
+<c:when test="${num eq pageMaker.cri.pageNum}">
+<code>${num}</code>
+</c:when>
+<c:otherwise>
+<a class="changePage" href="${num}"><code>${num}</code></a>
+</c:otherwise>
+</c:choose>
+</c:forEach>
+                                <c:if test="${pageMaker.next}">
+                                <a class="changePage" href="${pageMaker.endPage + 1}"><code>&gt;</code></a>
+                                <a class="changePage" href="${pageMaker.realEnd}"><code>&gt;&gt;</code></a>
+                                </c:if>
+                                </div>
+                                 
+                                <div class="small-width" style ="text-align: center;">
+                                <c:if test="${pageMaker.cri.pageNum > 1}">
+                                <a class="changePage" href="${1}"><code>&lt;&lt;</code></a>
+                                <a class="changePage" href="${pageMaker.cri.pageNum - 1}"><code>&lt;</code></a>
+                                </c:if>
+<code>${pageMaker.cri.pageNum}</code>
+                                <c:if test="${pageMaker.cri.pageNum <pageMaker.realEnd}">
+                                <a class="changePage" href="${pageMaker.cri.pageNum + 1}"><code>&gt;</code></a>
+                                <a class="changePage" href="${pageMaker.realEnd}"><code>&gt;&gt;</code></a>
+                                </c:if>
+                                </div>
+                                 
+                                <!-- 페이지를 넘기는걸 눌렀을때 pageNum과 amount를 새로 넘기기위해서 form태그를 사용해서 넘긴다. 밑에 js에서 작업한다.  -->
+                                <form id="actionForm" action="/board/list">
+                                <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+                                <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+                                <input type="hidden" name="type" value="${pageMaker.cri.type}">
+                                <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+                                </form>
+                                 
+                                <form action="/board/list" id="searchForm">
+                                <div class="fields">
+                                <div class="field">
+                                <div style="text-align: center">
+                                <!-- criteria의 필드인 type이 매핑되는것임 -->
+                                <select name="type">
+                                <!-- 검색한 후에 selected 를 유지시키기위해서! 검색하고나서도 유지하기위해서다 -->
+                                <option value ="" ${pageMaker.cri.type==null ? 'selected' : ''}>검색 기준</option>
+                                <option value ="T" ${pageMaker.cri.type=='T' ? 'selected' : ''}>제목</option>
+                                <option value ="C" ${pageMaker.cri.type=='C' ? 'selected' : ''}>내용</option>
+                                <option value ="W" ${pageMaker.cri.type=='W' ? 'selected' : ''}>작성자</option>
+                                <option value ="TC" ${pageMaker.cri.type=='TC' ? 'selected' : ''}>제목 또는 내용</option>
+                                <option value ="TW" ${pageMaker.cri.type=='TW' ? 'selected' : ''}>제목 또는 작성자</option>
+                                <option value ="TCW" ${pageMaker.cri.type=='TCW' ? 'selected' : ''}>전체</option>
+                                </select>
+                                <!-- criteria의 필드인 keyword가 매핑 -->
+                                <input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}">
+                                <a class="search button primary icon solid fa-search" href="javascript:void(0)">검색</a>
+                                  
+                                </div>
+                                </div>
+                                </div>
+                                </form>
+                              </div>
+                        </div>
+                     </div>
+                  </div> 
+ 
+      <!-- Scripts -->
+      <!-- resources로 바로 접근하는 이유는 servlet-context.xml에 선언되어있기 때문이다.  -->
+         <script src="/resources/assets/js/jquery.min.js"></script>
+         <script src="/resources/assets/js/jquery.dropotron.min.js"></script>
+         <script src="/resources/assets/js/browser.min.js"></script>
+         <script src="/resources/assets/js/breakpoints.min.js"></script>
+         <script src="/resources/assets/js/util.js"></script>
+         <script src="/resources/assets/js/main.js"></script>
+   </body>
+   <script>
+   
+   $("a.search").on("click", function(e){
+   e.preventDefault();
+   var searchForm = $("#searchForm");
+    
+   /* 조건식에 val()이들어가면 값이 있는지업는지 boolean타입으로 됨 */
+   if(!searchForm.find("option:selected").val()) { //사용자가 사용하면 selected가 붙는다. html 문법이다.
+   alert("검색 종류를 선택하세요.");
+   return false;
+   }
+   if(!searchForm.find("input[name='keyword']").val()) {
+   alert("키워드를 선택하세요.");
+   return false;
+   }
+   searchForm.submit();
+    
+   })
+    
+   
+   $(".changePage").on("click", function (e){
+   e.preventDefault(); //누른것의 기본의 이벤트는 막아지는 것이다. 내가 지정해준것만 이벤트처리해줘야한다.
+   var actionForm = $("#actionForm");
+   var pageNum = $(this).attr("href"); //이것이 바로 그 클릭이벤트를 눌렀을때 이동할 페이지 !!
+   actionForm.find("input[name='pageNum']").val(pageNum);
+   actionForm.submit();
+   })  
+   
+   //alert("${result}");
+   var result = "${result}";
+   $(document).ready(function(){
+   if(result=='' || isNaN(result)){
+   return;
+   }
+   alert("게시글" + result + "번이 등록되었습니다.");
+   })
+    
+   </script>
+</html>
+ 
+ 
+ 
+get.jsp
+ 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Board</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <link rel="stylesheet" href="/resources/assets/css/main.css" />
+   </head>
+   <body class="is-preload">
+      <!-- Main -->
+         <div id="main">
+            <div class="wrapper">
+               <div class="inner">
+ 
+                  <!-- Elements -->
+                  <header class="major">
+                     <h1>Board</h1>
+                     <p>게시글 등록</p>
+                  </header>
+                  <!-- controller에서 (/get, /modify해놓은 get 메소드에서 )cri를 받아서 보낸다. -->
+               <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
+                  <div class="content">
+                     <div class="form">
+                        <form action="/board/remove">
+                         <input type="hidden" name="pageNum" value="${cri.pageNum}">
+                        <input type="hidden" name="amount" value="${cri.amount}">
+                         <input type="hidden" name="type" value="${cri.type}">
+                        <input type="hidden" name="keyword" value="${cri.keyword}">
+                           <div class="fields">
+                              <div class="field">
+                                 <h4>번호</h4>
+                                 <input name="bno" type="text" value="${board.bno}" readonly/>
+                              </div>
+                              <div class="field">
+                                 <h4>제목</h4>
+                                 <input name="title" type="text" value="${board.title}" readonly/>
+                              </div>
+                              <div class="field">
+                                 <h4>내용</h4>
+                                 <textarea name="content" rows="6" style="resize:none" readonly>${board.content}</textarea>
+                              </div>
+                              <div class="field">
+                                 <h4>작성자</h4>
+                                 <input name="writer" type="text" value="${board.writer}" readonly/>
+                              </div>
+                           </div>
+                           <ul class="actions special">
+                              <li>
+				<input type="button" class="button" value="수정" 
+					onclick="location.href='/board/modify${cri.getListLink()}&bno=${board.bno}'"/>
+                                 <input type="submit" class="button" value="삭제"/>
+                              </li>
+                           </ul>
+                           
+                           <!-- 댓글부분-->
+                           <ul class="icons">
+                           <li>
+                           <span class="icon solid fa-envelope"></span>
+                           <strong>댓글</strong>
+                           </li>
+                           </ul>
+                           
+                           <ul class="replies">
+                           
+                           </ul>
+                           
+                           
+                        </form>
+                     </div>
+                              </div>
+                        </div>
+                     </div>
+                  </div> 
+      <!-- Scripts -->
+         <script src="/resources/assets/js/jquery.min.js"></script>
+         <script src="/resources/assets/js/jquery.dropotron.min.js"></script>
+         <script src="/resources/assets/js/browser.min.js"></script>
+         <script src="/resources/assets/js/breakpoints.min.js"></script>
+         <script src="/resources/assets/js/util.js"></script>
+         <script src="/resources/assets/js/main.js"></script>
+         <script src="/resources/assets/js/reply.js"></script>
+   </body>
+   <script>
+   //테스트
+   //$(document).ready(function() { 
+   /* console.log(replyService.name); */
+   /* console.log("----------");
+   console.log("JS TEST"); */
+   /* jsp에서는 el문을 그대로 사용가능하다,  */
+    
+   /* 매개변수 json, callback, error (error는 안넘) */
+   /* replyService.add({reply : "JS TEST", replyer:"tester", bno : "${board.bno}"}, 
+   function(result){ 
+   alert("RESULT : " + result);
+   });  */
+    
+    
+/*    replyService.getList ({bno : "${board.bno}", page:2},
+   function(data) {
+   console.log(data);
+   });  */
+    
+   /* replyService.remove(1, function (result) {
+   if(result == "success") {
+  alert("DELETE:" result);
+   }
+   }.function(err) {
+   alert("error");
+   }
+   ) */
+    
+/*    replyService.modify({rno : 1, reply : "Modified Reply"}, function(result) {
+   alert("Modifiy : " + result);
+   }); */
+    
+   /* replyService.get(1, function (result){
+   console.log(result);
+   }) */
+    
+   //}); 
+   </script>
+   
+   <script>
+   
+   
+   </script>
+   
+</html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+modify.jsp
+ 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Board</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <link rel="stylesheet" href="/resources/assets/css/main.css" />
+   </head>
+   <body class="is-preload">
+      <!-- Main -->
+         <div id="main">
+            <div class="wrapper">
+               <div class="inner">
+ 
+                  <!-- Elements -->
+                     <header class="major">
+                        <h1>Board</h1>
+                        <p>게시글 수정</p>
+                     </header>
+                           <!-- Table -->
+                              <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
+                  <div class="content">
+                     <div class="form">
+                        <form method="post" action="/board/modify">
+                        <!-- form 태그가 post 방식이므로 input 히든으로 보낸다.  -->
+                         <input type="hidden" name="pageNum" value="${cri.pageNum}">
+                        <input type="hidden" name="amount" value="${cri.amount}">
+                         <input type="hidden" name="keyword" value="${cri.keyword}">
+                        <input type="hidden" name="type" value="${cri.type}">
+                           <div class="fields">
+                              <div class="field">
+                                 <h4>번호</h4>
+                                 <input name="bno" type="text" value="${board.bno}" readonly/>
+                              </div>
+                              <div class="field">
+                                 <h4>*제목</h4>
+                                 <input name="title" type="text" value="${board.title}"/>
+                              </div>
+                              <div class="field">
+                                 <h4>*내용</h4>
+                                 <textarea name="content" rows="6" style="resize:none">${board.content}</textarea>
+                              </div>
+                              <div class="field">
+                                 <h4>작성자</h4>
+                                 <input name="writer" type="text" value="${board.writer}" readonly/>
+                              </div>
+                           </div>
+                           <ul class="actions special">
+                              <li>
+                                 <input type="submit" class="button" value="수정 완료"/>
+                              </li>
+                           </ul>
+                        </form>
+                     </div>
+                              </div>
+                        </div>
+                     </div>
+                  </div>  
+         <script src="/resources/assets/js/jquery.min.js"></script> 
+         <script src="/resources/assets/js/browser.min.js"></script>
+         <script src="/resources/assets/js/breakpoints.min.js"></script>
+         <script src="/resources/assets/js/util.js"></script>
+         <script src="/resources/assets/js/main.js"></script>
+   </body>
+</html>
+Register.jsp
+ 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Board</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <link rel="stylesheet" href="/resources/assets/css/main.css" />
+   </head>
+   <body class="is-preload">
+      <!-- Main -->
+         <div id="main">
+            <div class="wrapper">
+               <div class="inner">
+ 
+                  <!-- Elements -->
+                     <header class="major">
+                        <h1>Board</h1>
+                        <p>게시글 등록</p>
+                     </header>
+                           <!-- Table -->
+                              <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
+                  <div class="content">
+                     <div class="form">
+                     <!-- 얘는 register를 찾는데 post방식으로 컨트롤러에서 찾는다.  -->
+                        <form id="regForm" action="/board/register" method="post">
+                           <div class="fields">
+                              <div class="field">
+                                 <h4>제목</h4>
+                                 <input name="title" placeholder="Title" type="text" />
+                              </div>
+                              <div class="field">
+                                 <h4>내용</h4>
+                                 <textarea name="content" rows="6" placeholder="Content" style="resize:none"></textarea>
+                              </div>
+                              <div class="field">
+                                 <h4>작성자</h4>
+                                 <input name="writer" placeholder="Writer" type="text" />
+                              </div>
+                           </div>
+                           <ul class="actions special">
+                              <li><input type="submit" class="button" value="등록" /></li>
+                           </ul>
+                        </form>
+                     </div>
+                              </div>
+                        </div>
+                     </div>
+                  </div> 
+      <!-- Scripts -->
+         <script src="/resources/assets/js/jquery.min.js"></script>
+         <script src="/resources/assets/js/jquery.dropotron.min.js"></script>
+         <script src="/resources/assets/js/browser.min.js"></script>
+         <script src="/resources/assets/js/breakpoints.min.js"></script>
+         <script src="/resources/assets/js/util.js"></script>
+         <script src="/resources/assets/js/main.js"></script>
+   </body>
+</html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+BoardController.java
+ 
+package com.koreait.controller;
+ 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+ 
+import com.koreait.domain.BoardVO;
+import com.koreait.domain.Criteria;
+import com.koreait.domain.PageDTO;
+import com.koreait.service.BoardService;
+import com.koreait.service.BoardServiceImple;
+ 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+ 
+@Controller
+@Log4j
+@RequestMapping("/board/*")
+@AllArgsConstructor
+public class BoardController {
+   private BoardService service;
+   
+   @GetMapping("/list")
+   public void list(Criteria cri, Model model) {
+//void로 리턴한다는건 views/board/list.jsp 라는 의미다. 요청을 이렇게 했기 때문이다.
+//void로 리턴하면 이 경로로 요청한 jsp의 주소를 리턴한다. 자동으로!!
+   
+   log.info("list");
+      
+      model.addAttribute("list", service.getList(cri));
+      //getTotal(Criteria) : type과 keyword가 전달되면 검색된 게시글의 건수이며, 검색하지 않으면 전체 게시글의 건수이다. 
+      model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
+   }
+   
+   @GetMapping("/register")//get방식일때는 여기로, post는 밑으로! 방식이 다르면 방식대로 꽂힌다. 이름이 같아도! 이건 페이지이동용
+   public void register(@ModelAttribute("cri") Criteria cri) {log.info(cri);}
+   
+   @PostMapping("/register")
+   public String register(BoardVO board, /*Model model*/ RedirectAttributes rttr) {
+      log.info("register : " + board);
+      service.register(board);
+//      model.addAttribute("result", board.getBno());
+      //새롭게 등록된 번호를 .jsp에 전달하기 위해서는
+      //request객체에 담아야 한다. 하지만 redirect방식으로 전송할 때에는
+      //request가 초기화 된다. 따라서 세션에 있는 Flash영역에 담아놓고
+      //초기화된 request객체에 전달해주면 결과값을 안전하게 이동시킬 수 있다.
+      //이 때 RedirectAttributes를 이용한다.
+      rttr.addFlashAttribute("result", board.getBno());
+      
+      //'redirect:' 접두어를 사용하면 스프링 MVC가 내부적으로
+      //response.sendRedirect()를 처리해준다.
+      return "redirect:/board/list";
+   }
+   
+   //조회 처리와 테스트 구현
+   @GetMapping({"/get", "/modify"})
+   //RequestParam은 객체와 일반 변수가 동시에 있을 때 분리하기 위해 작성한다.
+   public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+      model.addAttribute("board", service.get(bno));
+      
+   }
+   
+   //※ 수정과 삭제는 성공 시 result에 success를 담아서 view에 전달하기
+   //수정 처리와 테스트 구현
+   @PostMapping("/modify")
+   public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) {
+      log.info("modify : " + board);
+      
+      
+      if(service.modify(board)) {
+         rttr.addFlashAttribute("result", "success");
+      }
+//    flash는 1개밖에 못담는다. 약간 임시방편의 느낌이다. 
+      //세션의 느낌인데 이것이 많아지면 목적과 다르다 그래서 제한을 둔것이다. 1번의 요청과 응답때 한번만써야한다.
+      //Flash는세션의 남용을 방지하고자 1개의 파라미터만 전달 할 수있다.
+      //따라서 여러개를 전달할 때에는 컬렉션에 담아서 넘기거나
+      //URL에 붙여서 전달하는 RedirectAttributes 객체의 addAttribute()를 사용하여 보내야한다. 
+//      rttr.addFlashAttribute("pageNum", cri.getPageNum());
+//      rttr.addFlashAttribute("amount", cri.getAmount());
+      
+      //rttr의 addAttribute는 get방식으로 보내준다. 즉, 자동으로  쿼리스트링처럼 보내준다.
+      //주의!!  redirect는 무조건 get방식일수밖에없다. 즉 list(get방식) 으로 리턴해주는거니까!!
+      //항상 컨트롤러에 있는 클래스타입의 매개변수는 생성자를 통해서 파라미터 값으로 초기화 한다.
+      //만약 전달받은 파라미터 값에 매핑되는 생성자가 없다면 값을 전달받을 수 없다.
+      //rttr.addAttribute("cri", cri);
+      
+      //따라서 반드시 해당 객체의 생성자에 전달할 필드명과 일치하도록 설정해주어야 한다.  
+      rttr.addAttribute("pageNum", cri.getPageNum());
+      rttr.addAttribute("amount", cri.getAmount());
+      rttr.addAttribute("keyword", cri.getKeyword());
+      rttr.addAttribute("type", cri.getType());
+      
+      return "redirect:/board/list";
+   }
+   
+   
+   //삭제 처리와 테스트 구현
+   @GetMapping("/remove")
+   public String remove(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
+      log.info("remove : " + bno);
+      if(service.remove(bno)) {
+         rttr.addFlashAttribute("result", "success");
+      }
+      rttr.addAttribute("pageNum", cri.getPageNum());
+      rttr.addAttribute("amount", cri.getAmount());
+      rttr.addAttribute("keyword", cri.getKeyword());
+      rttr.addAttribute("type", cri.getType());
+      return "redirect:/board/list";
+   }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ReplyController.java (only code)
+ 
+package com.koreait.controller;
+ 
+ 
+ 
+import java.util.List;
+ 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+ 
+import com.koreait.domain.Criteria;
+import com.koreait.domain.ReplyVO;
+import com.koreait.service.ReplyService;
+ 
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+ 
+@RequestMapping("/replies/")
+@RestController //restcontroller는 자동으로 view resolver로 가지 않는다.즉, return을 내마음대로 할수 있다.
+//각 메소드의 리턴은 ViewResolver로 가지 않으므로 매소드의 return값을 그대로 리턴한다. (뒤에 .jsp가 붙지않는다.)
+@Log4j
+public class ReplyController {
+@Setter (onMethod_ = @Autowired)
+private ReplyService service;
+//댓글 작성
+@PostMapping (value ="/new", consumes ="application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+public ResponseEntity<String> register (@RequestBody ReplyVO reply) {
+log.info("등록된 댓글 : " + reply);
+return service.register(reply) == 1 ? new ResponseEntity<>("success", HttpStatus.OK) :
+new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+}
+//댓글 목록
+@GetMapping (value ="/list/{bno}/{page}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+public ResponseEntity<List<ReplyVO>> getList (@PathVariable("bno") Long bno,@PathVariable ("page") int page) {
+log.info("list");
+Criteria cri = new Criteria(page, 5);
+log.info(cri);
+return new ResponseEntity<List<ReplyVO>>(service.getListWithPaging(cri, bno), HttpStatus.OK);
+}
+//댓글 조회
+@GetMapping (value="/{rno}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_ATOM_XML_VALUE}) 
+public ResponseEntity<ReplyVO> get (@PathVariable("rno") Long rno) {
+log.info("get");
+return new ResponseEntity<ReplyVO>(service.get(rno), HttpStatus.OK);
+}
+//댓글 수정
+@RequestMapping (method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{rno}", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+public ResponseEntity<String> update (@RequestBody ReplyVO reply, @PathVariable("rno") Long rno) {
+reply.setRno(rno);
+return service.modify(reply) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK) : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+}
+ 
+//댓글 삭제
+@DeleteMapping (value = "/{rno}", produces = {MediaType.TEXT_PLAIN_VALUE})
+public ResponseEntity<String> delete (@PathVariable("rno") Long rno) {
+log.info("delete");
+return service.remove(rno) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK): new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+}
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ReplyController.java (w/ detail)
+ 
+ 
+package com.koreait.controller;
+ 
+ 
+import java.util.List;
+ 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+ 
+import com.koreait.domain.Criteria;
+import com.koreait.domain.ReplyVO;
+import com.koreait.service.ReplyService;
+ 
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+ 
+@RequestMapping("/replies/")
+@RestController //restcontroller는 자동으로 view resolver로 가지 않는다.즉, return을 내마음대로 할수 있다.
+//각 메소드의 리턴은 ViewResolver로 가지 않으므로 매소드의 return값을 그대로 리턴한다. (뒤에 .jsp가 붙지않는다.)
+@Log4j
+public class ReplyController {
+@Setter (onMethod_ = @Autowired)
+private ReplyService service;
+//댓글 등록
+//브라우저에서 JSON타입으로 데이터를 전송하고(consumes) 서버에서는 댓글의 처리 결과에 따라 문자열로 결과를 리턴한다 (produces).
+//consumes : Ajax를 통해 전달 받은 데이터의 타입
+//produces : Ajax의 success:function(result)에 있는 result로 전달할 데이터의 타입! 
+//@ResponseBody : @Controller에서 Body를 응답하기 위해서는 (viewResolver를 가지 않게 하기 위해서 ) 사용된다. 
+// 즉, 내맘대로 이제 return 값을 조율할 수있다. Restcontroller 대신 controller를 사용하고 메소드의 리턴값을 그대로사용하고 싶을 때
+//ResponseBody 어노테이션을 붙여서 사용한다. 
+@PostMapping(value="/new", consumes="application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+//consumes :외부에서 전달받을 데이터 //produces 는 제공을 하겠다.! 즉 응답할 타입이다.
+//REST이기때문에 기존서버가 아니라 다른 서버에서 운영함. 데이터만 가져올것이기때문에 Ajax를 사용한다. 
+//data를 json으로 
+//responseentity는 응답할 값과 상태코드를 보내주는 것이다.
+//ResponseEntity : 서버의 상태코드, 응답 메세지등을 담을 수 있는 타입. TEXT로 응답하므로 String으로 리턴한다. (TEXT_PLAIN_VALUE)
+//@RequestBody 를 적용하여 JSON데이터를 ReplyVO타입으로 변환하도록 지정한다. 
+public ResponseEntity<String> create (@RequestBody ReplyVO reply) { //@RequestBody는 외부에서 전달받은 json을 ReplyVO로 파싱해주는것이다.
+int insertCnt = 0;
+log.info("ReplyVO:" + reply);
+insertCnt = service.register(reply);
+log.info("reply insert count : " + insertCnt);
+return insertCnt == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : //성공했을때 즉 200 ok! ajax로 응답하는것이다.
+new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); //500 서버에러 !! 즉, insert가 안되었을 때 
+/* RestController라는 어노테이션을 사용했기에 return이 그대로 return이 되는 것이다. (viewresolver를 통해 .jsp가 붙지않는다.)
+* json으로 요청을 받고, text로 응답하는 것이다. 
+* 응답할 데이터 타입을, 즉 리턴 제네릭을 String으로 했고, 받는 json데이터를 파싱하기 위해 @RequestBody를 사용하여 reply로 파싱한다. 
+* 리턴은 httpstatus를 통해 성공과 에러를 보내준다. 
+* 
+* => uri를 요청하면 바로 인서트가 된다. 페이지 이동이 필요없다. 데이터만 전송되고 ajax를 사용하기때문에 !
+* uri 즉, 인터넷만 되면 바로 바로 접근이 가능하다. 접근이 매우 좋다!
+* 테스트는 브라우저로 테스트한다. 
+*/
+}
+//게시글 댓글 전체 조회
+//consumes은 필요없다. get방식으로 보내기때문에 json으로 받을 필요가 없다. 
+//produces를 xml로 하기
+@GetMapping (value="/pages/{bno}/{page}", produces= {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+//해당 게시글의 댓글 페이지가 나오는 것이다. JSON파일로! 이게 REST방식이다
+public ResponseEntity<List<ReplyVO>> getList (@PathVariable("bno") Long bno, @PathVariable("page") int page) { //해당 게시글의 전체 댓글을 불러오기 위해 하는것임
+//bno, page는 uri로 받는 것이다. uri에 중괄호를 쳐놓은건 변수의 선언이다.
+//@GetMapping (value="/pages/{bno}/{page}" -> 변수의 선언!!
+//이 path에 있는 변수를 넣는 것이다. 그래서 @PathVariable를 사용하여 꽂아주는 것이다.
+log.info("getList....");
+Criteria cri = new Criteria(page, 10); //왜 여기서 왜 주입을 안하고 다시 선언해주는가? 
+//메소드 안이거나 어떤 필드안에서는 new 해줘야한다.
+log.info(cri);
+return new ResponseEntity<List<ReplyVO>>(service.getListWithPaging(cri, bno), HttpStatus.OK);
+}
+//댓글조회
+/* @GetMapping (value="/{rno}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+public ResponseEntity<ReplyVO> get (@PathVariable("rno") Long rno) {
+return new ResponseEntity<ReplyVO> (service.get(rno), HttpStatus.OK);
+}*/
+@GetMapping (value="/{rno}", produces= {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+public ResponseEntity<ReplyVO> get (@PathVariable("rno") Long rno) {
+log.info("get : " + rno);
+return new ResponseEntity<ReplyVO> (service.get(rno), HttpStatus.OK);
+}
+//댓글 수정
+//PUT : 자원 전체 수정, 자원 내 모든 필드를 전달해야 한다. 일부만 전달할 경우 전달 되지 않은 필드는 모두 초기화 처리가 된다. 
+//PATCH : 자원 일부 수정, 수정할 필드만 전송한다. 전송하지 않은 필드는 그대로 유지된다. 
+//일반적으로 PATCH방법을 많이쓴다. 왜냐하면 PUT은 전달하지 않을때 null이 되므로! 
+//여러개의 메소드(전달방식)를 한번에 받을 때 requestmapping을 하는것
+//즉, put과 patch 방식 모두를 받기 위해서 Requestmapping으로 어노테이션한다. 
+//uri만 받으면 뭘 수정할지 알게된다.  //수정하기위해서 받을게 많다. (consumes)
+   @RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value="/{rno}", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
+   public ResponseEntity<String> modify(@RequestBody ReplyVO reply, @PathVariable("rno") Long rno){
+      reply.setRno(rno);
+      
+      log.info("rno : " + rno);
+      log.info("modify : " + reply);
+      
+      return service.modify(reply) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK) :
+         new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+   }
+   
+   //댓글 삭제 
+   @DeleteMapping (value="/{rno}", produces=MediaType.TEXT_PLAIN_VALUE)
+   //deletemapping을 사용하므로써, Delete에서만 쓸수있는걸 사용할 수 있게된다.
+   //get, post 다 써도되는데, DeleteMapping을 사용하는 것은 이것에 포커스 하기 때문이다. 
+   public ResponseEntity<String> delete (@PathVariable("rno") long rno) {
+   
+   log.info("rno: " + rno);
+   
+   return service.remove(rno) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK) :
+   new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+   }
+}
+ 
+ 
+ 
+ 
+ 
+/*package com.koreait.controller;
+ 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+ 
+import com.koreait.domain.ReplyVO;
+import com.koreait.service.ReplyService;
+ 
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+ 
+@RequestMapping("/replies/")
+@RestController   //각 메소드의 리턴은 ViewResolver로 가지 않는다.
+@Log4j
+public class ReplyController {
+   @Setter(onMethod_=@Autowired)
+   private ReplyService service;
+   
+   //댓글 등록
+   //브라우저에서 JSON타입으로 데이터를 전송하고 서버에서는 댓글의 처리 결과에 따라 문자열로 결과를 리턴한다.
+   //consumes : Ajax를 통해 전달받은 데이터의 타입
+   //produces : Ajax의 success:function(result)에 있는 result로 전달할 데이터의 타입
+   @PostMapping(value="/new", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
+   //ResponseEntity : 서버의 상태코드, 응답 메세지등을 담을 수 있는 타입.
+   //@RequestBody를 적용하여 JSON데이터를 ReplyVO타입으로 변환하도록 지정한다.
+   public ResponseEntity<String> create(@RequestBody ReplyVO reply){
+      int insertCnt = 0;
+      log.info("ReplyVO : " + reply);
+      insertCnt = service.register(reply);
+      log.info("Reply INSERT COUNT : " + insertCnt);
+      return insertCnt == 1 ? new ResponseEntity<>("success", HttpStatus.OK) 200 OK:
+         new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); 500 Server Error
+   }
+}*/
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+BoardMapper.xml
+ 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.koreait.mapper.BoardMapper">
+<select id="getList" resultType="com.koreait.domain.BoardVO">
+<![CDATA[
+SELECT * FROM TBL_BOARD WHERE BNO > 0
+]]>
+</select>
+<!-- 동적쿼리를 include처럼 재사용의 목적으로 사용하는법 -->
+<sql id="criteria">
+<!-- [3] -->
+<!-- Mapper 인터페이스로부터 전달받은 Criteria객체안의 type과 keyword둘다 null이 아니라면 -->
+<if test="type != null and keyword != null"> <!-- 즉 검색했을 때!  -->
+<!-- [7] -->
+<!-- trim 태그 안에 있는 쿼리문을 기준으로 가장 앞에 있는 OR을 없애준다.  -->
+<!-- trim 태그 안에 있는 쿼리문 뒤에는 페이징 처리 조건식이 한개 더 있기 때문에 마지막에 (suffix) AND를 붙여준다.  -->
+<trim prefix="(" suffix=") AND" prefixOverrides="OR"> <!-- 맨 앞의 or을 제거해주기 위함이다.  -->
+<!-- [4] -->
+<!-- Criteria에 선언된 getTypeArr() 메소드를 호출하여 단일항목이 들어있는 배열의 길이만큼 반복해준다. -->
+<!-- 각각의 단일 항목들이 item속성에 있는 type변수에 들어가게 된다.  -->
+<!-- 예: "TW"는 2칸 문자열 배열이며, 2번 반복된다. Criteria.java의[2]번 참조--> 
+<foreach item="type" collection="typeArr">
+<!-- [6] -->
+<!-- 작성된 쿼리문마다 맨 앞에 (prefix) OR을 붙여준다.  -->
+<trim prefix="OR">
+<!-- [5] -->
+<!-- 단일 항목 중 조건식이 참이라면 알맞는 쿼리문이 작성된다. -->
+<choose>
+<when test="type=='T'.toString()">
+(TITLE LIKE '%'||#{keyword}||'%')
+</when>
+<when test="type=='C'.toString()">
+(CONTENT LIKE '%'||#{keyword}||'%')
+</when>
+<when test="type=='W'.toString()">
+(WRITER LIKE '%'||#{keyword}||'%')
+</when>
+</choose>
+</trim>
+</foreach>
+</trim>
+</if>
+</sql>
+<select id="getListWithPaging" resultType="com.koreait.domain.BoardVO">
+SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
+FROM 
+(SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
+FROM TBL_BOARD 
+WHERE 
+<include refid="criteria"/> <!-- sql태그를 사용해서 동적쿼리를 재사용하기위해 사용한다.  -->
+<![CDATA[
+ROWNUM <= #{pageNum} * #{amount}) 
+WHERE RN > (#{pageNum} - 1) * #{amount}
+]]>
+</select>
+<!-- 검색된 게시물의 전체 개수 -->
+<!-- * 은 너무 느리다. 그래서 컬럼을 쓸때 다 일일이 써주는것이 좋다. *는 잘 안쓰는것이다. 테스트할때만 사용한다. 컬럼명을 다 적어준다.  -->
+<!--검색된 게시물의 전체 개수를 파악해주는 첫번째 방법  criteria에있는 and를 없애줄 생각을 해야한다. -->
+  <select id="getTotal" resultType="_int">
+SELECT COUNT(BNO) FROM TBL_BOARD 
+<where>
+<trim suffixOverrides="AND"> 
+<include refid="criteria"/> 
+</trim>
+</where>
+</select> 
+ 
+  <!-- <select id="getTotal" resultType="_int">
+SELECT COUNT(BNO) FROM TBL_BOARD 
+<include refid="criteria"/>
+<![CDATA[BNO > 0]]> 
+</select> 검색된 게시물의 전체개수를 파악해주는 두번째 방법 -->
+<insert id="insert">
+INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER) 
+VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{writer})
+</insert>
+<!-- selectKey테그가 먼저 실행되어야하므로 before를 넣어주는것이다.
+selectKey에서 bno를 셀렉해주고, 이걸 밑의 insert문의 #{bno}자리에 넣어주는것이다.
+select먼저하고 bno라는 필드에 값을 집어넣고, 그다음에 다시 insert문으로 하는것이다. 
+이방법은 ! 
+PK값을 미리 SQL을 통해서 처리해 두고 지정한 이름으로 결과를 보관하는 방식이다.
+SQL을 한 번 더 실행하는 부담이 있기는 하지만 자동으로 추가되는 PK값을 확인해야 하는 상황에서는
+유용하게 사용될 수 있다. 
+-->
+<insert id="insertSelectKey_bno">
+<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+SELECT SEQ_BOARD.NEXTVAL FROM DUAL
+</selectKey>
+INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER) 
+VALUES(#{bno}, #{title}, #{content}, #{writer})
+</insert>
+<select id="read" resultType="com.koreait.domain.BoardVO">
+SELECT * FROM TBL_BOARD WHERE BNO = #{bno}
+</select>
+<delete id="delete">
+DELETE FROM TBL_BOARD WHERE BNO = #{bno}
+</delete>
+<update id="update">
+UPDATE TBL_BOARD 
+SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}, UPDATEDATE = SYSDATE
+WHERE BNO = #{bno}
+</update>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ReplyMapper.xml
+ 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.koreait.mapper.ReplyMapper"> <!-- mapper.java와 연결해주는것임 -->
+ 
+<insert id="insert">
+INSERT INTO TBL_REPLY (RNO, BNO, REPLY, REPLYER) 
+VALUES(SEQ_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
+</insert>
+<!--  <select id="read" resultType="com.koreait.domain.ReplyVO">
+SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE FROM TBL_REPLY 
+WHERE RNO = #{rno}
+</select> -->
+<!-- 댓글 상세보기 -->
+<select id="read" resultType="com.koreait.domain.ReplyVO">
+SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE FROM TBL_REPLY 
+WHERE RNO = #{rno}
+</select>
+<!-- <select id="getListWithPaging" resultType="com.koreait.domain.ReplyVO">
+SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE FROM TBL_REPLY 
+WHERE BNO = #{bno}
+</select> -->
+<!-- 그 게시글의 댓글 목록 불러오기 
+hint를 써서 이제 페이징을 해줘야한다. 
+Criteria가 필요하다. -> start, end 연산이 필요함. 
+-->
+<select id="getListWithPaging" resultType="com.koreait.domain.ReplyVO">
+<![CDATA[
+SELECT BNO, RNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE 
+FROM 
+(
+SELECT /*+INDEX_DESC(TBL_REPLY PK_REPLY)*/ 
+ROWNUM RN, BNO, RNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE  
+FROM TBL_REPLY 
+WHERE BNO = #{bno} 
+AND ROWNUM <= #{cri.pageNum} * #{cri.amount}
+) 
+WHERE RN > (#{cri.pageNum} -1) * #{cri.amount}
+]]>
+</select>
+<!-- <delete id="delete">
+DELETE FROM TBL_REPLY WHERE RNO = #{rno}
+</delete> -->
+<delete id="delete">
+DELETE FROM TBL_REPLY WHERE RNO = #{rno}
+</delete>
+<!-- <update id="update">
+UPDATE TBL_REPLY 
+SET REPLY = #{reply}, UPDATEDATE = SYSDATE 
+WHERE RNO = #{rno}
+</update> -->
+<update id="update">
+UPDATE TBL_REPLY
+SET REPLY = #{reply}, UPDATEDATE = SYSDATE
+WHERE RNO = #{rno}
+</update>
+ 
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+reply.js (javascript)
+ 
+/**
+ * javascript의 모듈화
+함수들을 하나의 모듈처럼 묶음으로 구성하는 것을 의미한다.
+화면 내에서 Javascript 처리를 하다 보면 1) 이벤트 처리, 2) DOM, 3) Ajax 처리 등이 섞여있다. 
+복잡하게 섞여서 유지보수가 힘들다. 
+따라서 Javascript를 하나의 모듈처럼 구성하여 사용한다. 
+ 
+ */
+ 
+console.log("Reply Module.....");
+ 
+ 
+var replyService = (function() {
+/** 자바스크립트에서 객체로 넘기는 방법 : json으로 넘기는 것이다. 
+json toString으로 넘겨야한다. 
+*/
+function add (reply, callback, error) { /** reply가 json으로 넘겨질 것이다. 또한 js는 매개변수가 3개여도 다 전달안해도*/
+/* callback과 error는 함수를 전달 한다.
+*/
+console.log("add reply......");
+$.ajax({
+type : "post", /** replycontroller 에 있는 댓글등록의 전달방식이 Post이기때문이다. */
+url : "/replies/new",
+data : JSON.stringify(reply), /** json타입인 reply를 전달한다. 
+JSON으로 값을 전달할때는 항상 문자열로 전달한다. 
+그런데 key값에도 쌍따옴표를 써줘야한다. 
+그런데, googlejson에서는 JSON.stringify 라는 라이브러리를 제공하여서 key값과 value값에
+쌍따옴표를 붙여줘서 문자열로 만들어줌. (datatype은 내가 전달받을 데이터 )*/
+contentType :"application/json; charset=utf-8",/**전달할  데이터 타입 */
+success : function (result) { /** success는 callback / success를 담아줄 매개변수 -> result */
+if(callback) { /** callback이 전달되었는지 판단. if문에들어오면 boolean타입이 된다*/
+callback (result);
+}
+},
+error : function (xhr, status, er) /** error는 error를 */{
+if(error) {
+error(er);
+}
+}
+});
+}
+function getList (param, callback, error) {
+/** 구글 제이슨에 있는 것이다 간단하다. get은 get방식이라는 의미이다. 1번째는 url, 2번째는 success(callback) 그 후에 fail을서서 error를 잡는다.*/
+var bno = param.bno;
+var page = param.page || 1; /** param.page가 전달이안되면 1이다 라는 의미 */
+$.getJSON ("/replies/list/" + bno + "/" + page +".json", /** json데이터화 하기위해서 .json을 붙여준다. 디폴트가 xml형식이다. */ 
+function(data){
+if(callback) {
+callback(data);
+}
+}).fail(function(xhr, status, err){
+if(error) {
+error(err);
+}
+});
+}
+//댓글 삭제
+/*function removeReply (param, callback, error) {
+var rno = param.rno;
+$.getJSON ("/replies/" + rno + ".json",
+function(data) {
+if(callback) {
+callback(data);
+}
+}).fail(function(xhr, status, err) {
+if(error) {
+error(err);
+}
+});
+} */
+function remove (rno, callback, error) {
+$.ajax({
+type:"delete",
+url:"replies/" + rno,
+success: function (result) {
+if(callback) {
+callback(result);
+}
+},
+error : function (xhr, status, err) {
+if(error) {
+error(err);
+}
+}
+})
+}
+function modify (reply, callback, error) {
+console.log("RNO : " + reply.rno);
+$.ajax ({
+type : "put",
+url : "replies" + reply.rno,
+data : JSON.stringify(reply),
+contentType :"application/json; charset=utf-8",
+success: function(result) {
+/*console.log("UPDATE : " +result);*/
+if(callback) {
+callback(result);
+}
+},
+error : function(xhr, status, err) {
+/*console.log("ERROR");*/
+if(error){
+error(err);
+}
+}
+})
+}
+function get (rno, callback, error) {
+$.getJSON("/replies/" + rno +".json", function (result){
+if(callback) {
+callback(result);
+}
+}).fail(function(xhr, status, err){
+if(error) {
+error(err);
+}
+})
+}
+return {add : add, getList : getList, remove : remove, modify: modify, get : get /*removeReply :removeReply*/ }
+/*return {name : "AAAA"}*//** replyService의 리턴값이 제이슨형식이*/
+})() /*function을 선언하자마자 바로 실행한다.*/ ;
+ 
+ 
+/**
+/**
+ * Javascript의 모듈화
+ *    함수들을 하나의 모듈처럼 묶음으로 구성하는 것을 의미한다.
+ *    화면 내에서 Javascript 처리를 하다 보면 이벤트 처리와 DOM, Ajax 처리 등
+ *    복잡하게 섞여서 유지보수가 힘들다. 따라서 Javascript를 하나의 모듈처럼 구성하여
+ *    사용한다.
+ */
+ 
+/*console.log("Reply Module.........");
+ 
+var replyService = (function(){
+   
+   function add(reply, callback, error){
+      console.log("add reply..........");
+      $.ajax({
+         type: "post",
+         url: "/replies/new",
+         data: JSON.stringify(reply),
+         contentType: "application/json; charset=utf-8",
+         success: function(result){
+            if(callback){
+               callback(result);
+            }
+         },
+         error: function(xhr, status, er){
+            if(error){
+               error(er);
+            }
+         }
+      });
+   }
+   
+   function getList(param, callback, error){
+      var bno = param.bno;
+      var page = param.page || 1;
+      $.getJSON("/replies/pages/" + bno + "/" + page + ".json", 
+            function(data){
+               if(callback){callback(data);}
+      }).fail(function(xhr, status, err){
+               if(error){error(err);}
+      });
+   }
+   
+   function remove(rno, callback, error){
+      $.ajax({
+         type:"delete",
+         url:"/replies/" + rno,
+         success:function(result){
+            if(callback){
+               callback(result);
+            }
+         },
+         error:function(xhr, status, err){
+            if(error){
+               error(err);
+            }
+         }
+      });
+   }
+   
+   function modify(reply, callback, error){
+      console.log("RNO : " + reply.rno);
+      
+      $.ajax({
+         type: "put",
+         url: "/replies/" + reply.rno,
+         data: JSON.stringify(reply),
+         contentType: "application/json; charset=utf-8",
+         success:function(result){
+            if(callback){callback(result);}
+         },
+         error: function(xhr, status, err){
+            if(error){error(err);}
+         }
+      });
+   }
+   
+   function get(rno, callback, error){
+      $.get("/replies/" + rno + ".json", function(result){
+         if(callback){callback(result);}
+      }).fail(function(xhr, status, err){
+         if(error){
+            error(err);
+         }
+      })
+   }
+   
+   return {add : add, getList : getList, remove : remove, modify : modify, get : get}
+})();*/
+ 
+ 
+ 
+ 
+

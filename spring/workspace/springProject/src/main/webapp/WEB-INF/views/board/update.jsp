@@ -12,9 +12,9 @@
 		<title>Untitled</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<meta name="description" content="" />
         <meta name="keywords" content="" />
-		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<style>
 		a {
 			border-bottom: none;
@@ -83,12 +83,12 @@
                   <!-- Elements -->
                      <header class="major">
                         <h1>Board</h1>
-                        <p>게시판 상세보기</p>
+                        <p>게시판 수정하기</p>
                      </header>
                               <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
                               <div class="content">
                               	<div class="form">
-                              		<form action="board/remove">
+                              		<form method = "post" action="/board/update">
                               			<input type="hidden" name="pageNum" value="${cri.pageNum}">
                               			<input type="hidden" name="amount" value="${cri.amount}">
                               			<input type="hidden" name="keyword" value="${cri.keyword}">
@@ -101,11 +101,11 @@
                               				</div>
                               				<div class="field">
                               					<h3>Title.</h3>
-                              					<input name="title" type="text" value="${board.title}" readonly/>
+                              					<input name="title" type="text" value="${board.title}"/>
                               				</div>
                               				<div class="field">
                               					<h3>Content</h3>
-                              					<textarea name="content" style="resize: none"rows="6" readonly>${board.content}</textarea>
+                              					<textarea name="content" rows="6" style="resize: none;">${board.content}</textarea>
                               				</div>
                               				<div class="field">
                               					<h3>Writer</h3>
@@ -114,9 +114,7 @@
                               			</div>
                               			<ul class="actions special">
                               				<li>
-                              					<input type="button" class="button" value="수정" 
-                              						onclick="location.href='/board/update${cri.getListLink()}&bno=${board.bno}'"/>
-                              					<input type="submit" class="button" value="삭제">
+                              					<input type="submit" class="button" value="수정 완료">
                               				</li>
                               			</ul>
                               		</form>
