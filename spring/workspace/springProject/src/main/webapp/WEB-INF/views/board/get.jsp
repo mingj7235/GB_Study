@@ -88,7 +88,7 @@
                               <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
                               <div class="content">
                               	<div class="form">
-                              		<form action="board/remove">
+                              		<form action="/board/remove">
                               			<input type="hidden" name="pageNum" value="${cri.pageNum}">
                               			<input type="hidden" name="amount" value="${cri.amount}">
                               			<input type="hidden" name="keyword" value="${cri.keyword}">

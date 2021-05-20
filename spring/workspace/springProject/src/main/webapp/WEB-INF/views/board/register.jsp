@@ -92,22 +92,21 @@
                               			<div class="fields">
                               				<div class="field">
                               					<h3>Title.</h3>
-                              					<input name="title" type="text" value="${board.title}"/>
+                              					<input name="title" type="text" placeholder="title"/>
                               				</div>
                               				<div class="field">
                               					<h3>Content</h3>
-                              					<textarea rows="6" name="content"></textarea>
+                              					<textarea rows="6" name="content" placeholder="content"></textarea>
                               				</div>
                               				<div class="field">
                               					<h3>Writer</h3>
-                              					<input name="writer" type="text" value="${board.writer}"/>
-                              				</div>
+                              					<input name="writer" type="text" placeholder="writer"/>
+                              				</div>    
                               			</div>
+                              			
                               			<ul class="actions special">
                               				<li>
-                              					<input type="button" class="button" value="수정" 
-                              						onclick="location.href='/board/update${cri.getListLink()}&bno=${board.bno}'"/>
-                              					<input type="submit" class="button" value="삭제">
+                              					<input type="submit" class="button" value="등록">
                               				</li>
                               			</ul>
                               		</form>

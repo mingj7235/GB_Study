@@ -51,6 +51,11 @@
 			width : 20%;
 		}
 		
+		#selectNum {
+			background : #565656;
+			color : white;
+		}
+		
 		
 		
 		@media(max-width : 918px) {
@@ -180,7 +185,7 @@
 										<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 											<c:choose>
 												<c:when test="${num eq pageMaker.cri.pageNum}">
-													<code>${num}</code>
+													<code id="selectNum">${num}</code>
 												</c:when>
 												<c:otherwise>
 													<a class="changePage" href="${num}"><code>${num}</code></a>
