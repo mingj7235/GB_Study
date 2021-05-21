@@ -64,6 +64,11 @@
 		SET REPLY = #{reply}, UPDATEDATE = SYSDATE
 		WHERE RNO = #{rno}
 	</update>
+	
+	<!--  -->
+	<select id="getTotal" resultType="_int">
+		SELECT COUNT(RNO) FROM TBL_REPLY WHERE BNO = #{bno}
+	</select>
 	 
 	
 </mapper>

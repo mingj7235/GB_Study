@@ -1,10 +1,9 @@
 package com.koreait.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.koreait.domain.Criteria;
+import com.koreait.domain.ReplyPageDTO;
 import com.koreait.domain.ReplyVO;
 import com.koreait.mapper.ReplyMapper;
 
@@ -45,9 +44,9 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> getListWithPaging(Criteria cri, Long bno) {
+	public ReplyPageDTO getListWithPaging(Criteria cri, Long bno) {
 		log.info("get reply list of a board..." + bno);
-		return mapper.getListWithPaging(cri, bno);
+		return new ReplyPageDTO(mapper.getTotal(bno), mapper.getListWithPaging(cri, bno));
 	}
 	//테스트하는거 복습할때 해보자! 
 

@@ -27,7 +27,7 @@ public interface ReplyMapper {
 	 * 이 key값을 활용하여 MyBatis에서 사용하는것이다.
 	 * */
 	public List<ReplyVO> getListWithPaging (@Param("cri") Criteria cri, @Param("bno") Long bno); //mapper.xml에서 매개변수의 필드를 사용함. 페이징 처리위해서 cri가 필요하다! 
-	
+	public int getTotal (Long bno);
 	
 	
 	

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.koreait.domain.Criteria;
+import com.koreait.domain.ReplyPageDTO;
 import com.koreait.domain.ReplyVO;
 import com.koreait.service.ReplyService;
 
@@ -45,12 +46,12 @@ public class ReplyController {
 	//댓글 목록
 	
 	@GetMapping (value ="/list/{bno}/{page}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ReplyVO>> getList (@PathVariable("bno") Long bno,@PathVariable ("page") int page) {
+	public ResponseEntity<ReplyPageDTO> getList (@PathVariable("bno") Long bno,@PathVariable ("page") int page) {
 		log.info("list");
 		Criteria cri = new Criteria(page, 5);
 		log.info(cri);
 		
-		return new ResponseEntity<List<ReplyVO>>(service.getListWithPaging(cri, bno), HttpStatus.OK);
+		return new ResponseEntity<ReplyPageDTO>(service.getListWithPaging(cri, bno), HttpStatus.OK);
 	}
 	
 	//댓글 조회

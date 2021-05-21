@@ -3,6 +3,7 @@ package com.koreait.service;
 import java.util.List;
 
 import com.koreait.domain.Criteria;
+import com.koreait.domain.ReplyPageDTO;
 import com.koreait.domain.ReplyVO;
 
 public interface ReplyService {
@@ -14,6 +15,6 @@ public interface ReplyService {
 	
 	public int modify (ReplyVO reply);
 	
-	public List<ReplyVO> getListWithPaging (Criteria cri, Long bno);
+	public ReplyPageDTO getListWithPaging (Criteria cri, Long bno);
 	
 }

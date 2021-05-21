@@ -25,10 +25,10 @@ var replyService = (function() {
 								JSON으로 값을 전달할때는 항상 문자열로 전달한다. 
 								그런데 key값에도 쌍따옴표를 써줘야한다. 
 								그런데, googlejson에서는 JSON.stringify 라는 라이브러리를 제공하여서 key값과 value값에
-								쌍따옴표를 붙여줘서 문자열로 만들어줌. (datatype은 내가 전달받을 데이터 )*/
+								쌍따옴표를 붙여줘서 문자열로 만들어줌. (datatype은 내가 전달받을 데이터 ) json타입으로 보내는 것이다. */ 
 			contentType :"application/json; charset=utf-8",/**전달할  데이터 타입 */
 			success : function (result) { /** success는 callback / success를 담아줄 매개변수 -> result */
-				if(callback) { /** callback이 전달되었는지 판단. if문에들어오면 boolean타입이 된다*/
+				if(callback) { /** callback이 전달되었는지 판단. if문에들어오면 boolean타입이 된다 result가 컨트롤러에 담기게 된다. */
 					callback (result);
 				}
 			},
@@ -51,7 +51,7 @@ var replyService = (function() {
 		$.getJSON ("/replies/list/" + bno + "/" + page +".json", /** json데이터화 하기위해서 .json을 붙여준다. 디폴트가 xml형식이다. */ 
 			function(data){
 				if(callback) {
-					callback(data);
+					callback(data.replyCnt, data.list);
 				}
 			}).fail(function(xhr, status, err){
 				if(error) {
@@ -133,7 +133,7 @@ var replyService = (function() {
 	return {add : add, getList : getList, remove : remove, modify: modify, get : get /*removeReply :removeReply*/ }
 	
 	/*return {name : "AAAA"}*//** replyService의 리턴값이 제이슨형식이*/
-})() /*function을 선언하자마자 바로 실행한다.*/ ;
+})(); /*function을 선언하자마자 바로 실행한다.*/ ;
 
 
 /**
