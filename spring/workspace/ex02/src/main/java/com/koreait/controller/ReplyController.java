@@ -46,9 +46,11 @@ public class ReplyController {
 	//댓글 목록
 	
 	@GetMapping (value ="/list/{bno}/{page}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	//서비스에 있는 getListWithPaging은 댓글 목록과 댓글 전체 개수 두 개를 가지고 있는 ReplyPageDTO 타입이다. 
+	//그렇기때문에 리턴타입의 제네릭에 ReplyPageDTO를 써준것이다. 
 	public ResponseEntity<ReplyPageDTO> getList (@PathVariable("bno") Long bno,@PathVariable ("page") int page) {
 		log.info("list");
-		Criteria cri = new Criteria(page, 5);
+		Criteria cri = new Criteria(page, 10);
 		log.info(cri);
 		
 		return new ResponseEntity<ReplyPageDTO>(service.getListWithPaging(cri, bno), HttpStatus.OK);

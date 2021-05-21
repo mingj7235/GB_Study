@@ -50,8 +50,10 @@ var replyService = (function() {
 		var page = param.page || 1; /** param.page가 전달이안되면 1이다 라는 의미 */
 		$.getJSON ("/replies/list/" + bno + "/" + page +".json", /** json데이터화 하기위해서 .json을 붙여준다. 디폴트가 xml형식이다. */ 
 			function(data){
+				//getList 컨트롤러에서는 댓글 목록과 댓글 전체 개수를 응답해준다. 
+				//따로 전달받지 않고 ReplyPageDTO객체로 한 번에 전달 받는다. 
 				if(callback) {
-					callback(data.replyCnt, data.list);
+					callback(data.replyCnt, data.list); // callback 함수에 전체 개수와 목록을 따로 전달해준다. 
 				}
 			}).fail(function(xhr, status, err){
 				if(error) {
@@ -78,7 +80,7 @@ var replyService = (function() {
 	function remove (rno, callback, error) {
 		$.ajax({
 			type:"delete",
-			url:"replies/" + rno,
+			url:"/replies/" + rno,
 			success: function (result) {
 				if(callback) {
 					callback(result);
@@ -98,7 +100,7 @@ var replyService = (function() {
 		
 		$.ajax ({
 			type : "put",
-			url : "replies" + reply.rno,
+			url : "/replies/" + reply.rno,
 			data : JSON.stringify(reply),
 			contentType :"application/json; charset=utf-8",
 			success: function(result) {

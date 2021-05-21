@@ -46,8 +46,26 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public ReplyPageDTO getListWithPaging(Criteria cri, Long bno) {
 		log.info("get reply list of a board..." + bno);
+		
+		//댓글을 구현하기 위해 필요한 두개의 요소를 ReplyPageDTO에 전달한다. 
 		return new ReplyPageDTO(mapper.getTotal(bno), mapper.getListWithPaging(cri, bno));
 	}
 	//테스트하는거 복습할때 해보자! 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
