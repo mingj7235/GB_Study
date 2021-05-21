@@ -279,11 +279,11 @@
             $(this).hide();
             
             
-            
-            //다 가져오기
+			//한줄로 가져오기            
             
             $(this).parent().find(".finish").show();
             
+            //다 가져오기
           /*  var finishs = $(".finish")
            for(let i=0; i<finishs.length; i++){
                if($(finishs[i]).attr("href") == rnoValue){
