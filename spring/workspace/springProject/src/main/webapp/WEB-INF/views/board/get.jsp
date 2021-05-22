@@ -260,8 +260,9 @@ a {
 			)
 		});
 
-		function showList () {
-			
+		function showList (page) {
+			var replyUL = $(".replies");
+			replyService.getList ({bno : bno, page : })
 		};
 		
 		function showReplyPage () {
