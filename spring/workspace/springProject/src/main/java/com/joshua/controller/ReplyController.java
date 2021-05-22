@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.joshua.domain.Criteria;
@@ -62,6 +63,15 @@ public class ReplyController {
 					: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	//댓글 수정
+	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{rno}", 
+			consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> modify (@RequestBody ReplyVO reply) {
+		
+		return service.update(reply) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK) 
+				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
+ 	}
+ 	
 	
 	
 	
