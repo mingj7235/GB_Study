@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.joshua.domain.Criteria;
+import com.joshua.domain.ReplyPageDTO;
 import com.joshua.domain.ReplyVO;
 import com.joshua.mapper.ReplyMapper;
 
@@ -29,7 +30,7 @@ public class ReplyServiceImple implements ReplyService{
 	}
 	
 	@Override
-	public List<ReplyVO> getListWithPaging(Criteria cri, long bno) {
+	public ReplyPageDTO getListWithPaging(Criteria cri, long bno) {
 		return mapper.getListWithPaging(cri, bno);
 	}
 	

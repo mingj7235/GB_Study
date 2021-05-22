@@ -148,9 +148,12 @@ a {
 								</div>
 							</div>
 							
-							<ul class="replies">
+							<ul class="replies"> <!-- 댓글들 꽂아 넣을 ul -->
+							
 							</ul>
-							<div class="paging" style="text-align: center;"></div>
+							<div class="paging" style="text-align: center;">
+							
+							</div>
 
 
 						</form>
@@ -246,6 +249,28 @@ a {
 			
 			//위의 객체 가져오기
 			var reply = $("textarea[name='reply']").val();
+			var replyer = $("input[name='replyer']").val();
+			
+			//mapper를 보면 bno, reply, replyer만 전달해주면 db에 인서트된다.
+			replyService.add({bno : bno, reply : reply, replyer : replyer},
+					function(result) {
+						alert(result);
+						pageNum = 1;
+						showList(pageNum);
+			});
+			
+			function showList (page) {
+				var replyUL = $(".replies");
+				
+				replyService.getList({bno : bno, page : page ||1}, 
+					function (result) {
+					
+				}			
+				)
+				
+				
+				
+			}
 			
 		})
 		
