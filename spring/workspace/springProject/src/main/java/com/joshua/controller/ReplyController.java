@@ -36,7 +36,7 @@ public class ReplyController {
 	//@requestbody : json데이터로 받아온것을 꽂아주는 
 	public ResponseEntity<String> register (@RequestBody ReplyVO reply) {
 		
-		return service.register(reply) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK) 
+		return service.register(reply) == 1 ? new ResponseEntity<String>("댓글이 등록되었습니다.", HttpStatus.OK) 
 				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR); 
  	}
 

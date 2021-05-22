@@ -227,7 +227,6 @@ a {
 	$(document).ready(function(){
 		var bno = "${board.bno}";
 		var pageNum = 1;
-		showList();
 		
 		//등록버튼을 눌렀을 때, 등록란은 켜지고, 본인은 사라지도록 하는 애니메이션
 		$(".register").on("click", function(e){
@@ -244,35 +243,22 @@ a {
 			
 		});
 		
+		
+		//댓글 등록 버튼 (클래스가 finish로 되어있다. )
 		$(".finish").on("click", function(e){
 			e.preventDefault();
-			
-			//위의 객체 가져오기
 			var reply = $("textarea[name='reply']").val();
 			var replyer = $("input[name='replyer']").val();
 			
-			//mapper를 보면 bno, reply, replyer만 전달해주면 db에 인서트된다.
-			replyService.add({bno : bno, reply : reply, replyer : replyer},
-					function(result) {
-						alert(result);
-						pageNum = 1;
-						showList(pageNum);
-			});
-			
-			function showList (page) {
-				var replyUL = $(".replies");
-				
-				replyService.getList({bno : bno, page : page ||1}, 
-					function (result) {
-					
-				}			
-				)
-				
-				
-				
-			}
-			
+			replyService.add ({bno : bno, reply : reply, replyer : replyer},
+				function (result) {
+					alert(result);
+					pageNum = 1;
+					showList(pageNum);
+				}		
+			)
 		})
+		
 		
 		
 		
