@@ -18,6 +18,7 @@ public interface ReplyMapper {
 	
 	public int delete (long rno);
 	
-	public ReplyPageDTO getListWithPaging (@Param("cri") Criteria cri, @Param("bno") long bno);
-
+	public List<ReplyVO> getListWithPaging (@Param("cri") Criteria cri, @Param("bno") long bno);
+	
+	public int getTotal(long bno);
 }

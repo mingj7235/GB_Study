@@ -37,6 +37,10 @@
 		DELETE TBL_LIGHTREPLY WHERE RNO = #{rno}
 	</delete>
 	
+	<select id="getTotal">
+		SELECT COUNT(RNO) FROM TBL_LIGHTREPLY WHERE BNO =#{bno}
+	</select>
+	
 
 
 

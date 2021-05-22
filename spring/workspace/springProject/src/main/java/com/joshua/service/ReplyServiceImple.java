@@ -31,7 +31,7 @@ public class ReplyServiceImple implements ReplyService{
 	
 	@Override
 	public ReplyPageDTO getListWithPaging(Criteria cri, long bno) {
-		return mapper.getListWithPaging(cri, bno);
+		return new ReplyPageDTO(mapper.getTotal(bno), mapper.getListWithPaging(cri, bno));
 	}
 	
 	@Override
