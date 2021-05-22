@@ -231,7 +231,7 @@ a {
 		//등록버튼을 눌렀을 때, 등록란은 켜지고, 본인은 사라지도록 하는 애니메이션
 		$(".register").on("click", function(e){
 			e.preventDefault();
-			$(".regisger-form").show();
+			$(".register-form").show();
 			$(this).hide();
 		});
 		
@@ -250,6 +250,7 @@ a {
 			var reply = $("textarea[name='reply']").val();
 			var replyer = $("input[name='replyer']").val();
 			
+			
 			replyService.add ({bno : bno, reply : reply, replyer : replyer},
 				function (result) {
 					alert(result);
@@ -257,7 +258,9 @@ a {
 					showList(pageNum);
 				}		
 			)
-		})
+		});
+		
+		
 		
 		
 		

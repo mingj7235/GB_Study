@@ -35,8 +35,7 @@ public class ReplyController {
 	@PostMapping (value ="/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 	//@requestbody : json데이터로 받아온것을 꽂아주는 
 	public ResponseEntity<String> register (@RequestBody ReplyVO reply) {
-		
-		return service.register(reply) == 1 ? new ResponseEntity<String>("댓글이 등록되었습니다.", HttpStatus.OK) 
+		return service.register(reply) == 1 ? new ResponseEntity<String>("reply insert success", HttpStatus.OK) 
 				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR); 
  	}
 
@@ -59,7 +58,7 @@ public class ReplyController {
 	@DeleteMapping (value = "/{rno}", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> remove (@PathVariable long rno) {
 		
-		return service.delete(rno) == 1 ? new ResponseEntity<String> ("댓글이 삭제되었습니다", HttpStatus.OK)
+		return service.delete(rno) == 1 ? new ResponseEntity<String> ("reply delete success", HttpStatus.OK)
 				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
@@ -68,7 +67,7 @@ public class ReplyController {
 			consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> update (@RequestBody ReplyVO reply, @PathVariable long rno) {
 		
-		return service.update(reply) == 1 ? new ResponseEntity<String> ("댓글이 수정되었습니다", HttpStatus.OK)  
+		return service.update(reply) == 1 ? new ResponseEntity<String> ("reply update success", HttpStatus.OK)  
 				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	

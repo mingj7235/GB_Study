@@ -4,7 +4,7 @@
 <mapper namespace="com.joshua.mapper.ReplyMapper">
 	<insert id="insert">
 		INSERT INTO TBL_LIGHTREPLY (RNO, BNO, REPLY, REPLYER) 
-		VALUES(SEQ_LIGHTREPLY.NEXTVAL, #{rno}, #{bno}, #{reply}, #{replyer})
+		VALUES(SEQ_LIGHTREPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
 	</insert>
 	
 	<select id="read" resultType="com.joshua.domain.ReplyVO">
