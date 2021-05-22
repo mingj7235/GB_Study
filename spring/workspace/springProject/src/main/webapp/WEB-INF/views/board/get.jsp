@@ -247,19 +247,18 @@ a {
 		//댓글 등록 버튼 (클래스가 finish로 되어있다. )
 		$(".finish").on("click", function(e){
 			e.preventDefault();
+			
 			var reply = $("textarea[name='reply']").val();
 			var replyer = $("input[name='replyer']").val();
 			
-			
 			replyService.add ({bno : bno, reply : reply, replyer : replyer},
-				function (result) {
+				function(result) {
 					alert(result);
 					pageNum = 1;
-					showList(pageNum);
+					//showList(pageNum);
 				}		
 			)
 		});
-		
 		
 		
 		

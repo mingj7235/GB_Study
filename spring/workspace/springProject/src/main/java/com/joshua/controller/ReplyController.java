@@ -31,45 +31,47 @@ public class ReplyController {
 	private ReplyService service;
 	
 	//댓글 등록
-	
 	@PostMapping (value ="/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	//@requestbody : json데이터로 받아온것을 꽂아주는 
 	public ResponseEntity<String> register (@RequestBody ReplyVO reply) {
-		return service.register(reply) == 1 ? new ResponseEntity<String>("reply insert success", HttpStatus.OK) 
-				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR); 
- 	}
-
-	//댓글 전체 조회 
-	@GetMapping (value ="/list/{bno}/{page}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<ReplyPageDTO> getList (@PathVariable("bno") Long bno,@PathVariable ("page") int page) {
-		Criteria cri = new Criteria(page, 10);
-		return new ResponseEntity<ReplyPageDTO>(service.getListWithPaging(cri, bno), HttpStatus.OK);
+		return service.register(reply) == 1 ? new ResponseEntity<String> ("reply register success", HttpStatus.OK)
+				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	//댓글 하나 조회
-	@GetMapping(value ="/{rno}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<ReplyVO> getReply (@PathVariable long rno) {
+	//댓글 조회 (그 게시판의 모든 댓글 조회)
+	@GetMapping (value ="list/{bno}/{page}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<ReplyPageDTO> getList (@PathVariable("bno") long bno, @PathVariable("page") int page) {
+		
+		Criteria cri = new Criteria(page, 5);
+		
+		return new ResponseEntity<ReplyPageDTO> (service.getListWithPaging(cri, bno), HttpStatus.OK);
+	}
+	
+	//댓글 하나만 가져오기 
+	@GetMapping (value="/{rno}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<ReplyVO> getReply (@PathVariable("rno") long rno) {
 		
 		return new ResponseEntity<ReplyVO> (service.getReply(rno), HttpStatus.OK);
 	}
 	
-	//댓글 삭제
-	
+	//댓글 삭제 
 	@DeleteMapping (value = "/{rno}", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> remove (@PathVariable long rno) {
+	public ResponseEntity<String> remove (@PathVariable("rno") long rno) {
 		
-		return service.delete(rno) == 1 ? new ResponseEntity<String> ("reply delete success", HttpStatus.OK)
+		return service.delete(rno) == 1 ? new ResponseEntity<String> ("delete success", HttpStatus.OK)  
 				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	//댓글 수정
-	@RequestMapping (method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{rno]", 
+	@RequestMapping (method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{rno}", 
 			consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> update (@RequestBody ReplyVO reply, @PathVariable long rno) {
+	
+	public ResponseEntity<String> update (@RequestBody ReplyVO reply, @PathVariable ("rno") long rno) {
 		
-		return service.update(reply) == 1 ? new ResponseEntity<String> ("reply update success", HttpStatus.OK)  
+		return service.update(reply) == 1 ? new ResponseEntity<String> ("update success", HttpStatus.OK)
 				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	
 	
 	
 	
