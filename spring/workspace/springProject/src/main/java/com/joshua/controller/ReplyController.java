@@ -56,22 +56,22 @@ public class ReplyController {
 	
 	//댓글 삭제
 	
-	@DeleteMapping(value ="/{rno}", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> remove (@PathVariable("rno") long rno) {
+	@DeleteMapping (value = "/{rno}", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> remove (@PathVariable long rno) {
 		
-		return service.delete(rno) == 1 ? new ResponseEntity<String> ("success", HttpStatus.OK) 
-					: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
+		return service.delete(rno) == 1 ? new ResponseEntity<String> ("댓글이 삭제되었습니다", HttpStatus.OK)
+				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	//댓글 수정
-	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{rno}", 
+	@RequestMapping (method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{rno]", 
 			consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> modify (@RequestBody ReplyVO reply) {
+	public ResponseEntity<String> update (@RequestBody ReplyVO reply, @PathVariable long rno) {
 		
-		return service.update(reply) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK) 
+		return service.update(reply) == 1 ? new ResponseEntity<String> ("댓글이 수정되었습니다", HttpStatus.OK)  
 				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
- 	}
- 	
+	}
+	
 	
 	
 	
