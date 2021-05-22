@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,18 +32,34 @@ public class ReplyController {
 	//댓글 등록
 	
 	@PostMapping (value ="/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	
 	//@requestbody : json데이터로 받아온것을 꽂아주는 
 	public ResponseEntity<String> register (@RequestBody ReplyVO reply) {
 		
 		return service.register(reply) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK) 
 				: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR); 
  	}
-	
+
+	//댓글 전체 조회 
 	@GetMapping (value ="/list/{bno}/{page}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<ReplyPageDTO> getList (@PathVariable("bno") Long bno,@PathVariable ("page") int page) {
 		Criteria cri = new Criteria(page, 10);
 		return new ResponseEntity<ReplyPageDTO>(service.getListWithPaging(cri, bno), HttpStatus.OK);
+	}
+	
+	//댓글 하나 조회
+	@GetMapping(value ="/{rno}", produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<ReplyVO> getReply (@PathVariable long rno) {
+		
+		return new ResponseEntity<ReplyVO> (service.getReply(rno), HttpStatus.OK);
+	}
+	
+	//댓글 삭제
+	
+	@DeleteMapping(value ="/{rno}", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> remove (@PathVariable("rno") long rno) {
+		
+		return service.delete(rno) == 1 ? new ResponseEntity<String> ("success", HttpStatus.OK) 
+					: new ResponseEntity<String> (HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	

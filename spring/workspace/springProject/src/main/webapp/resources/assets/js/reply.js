@@ -43,9 +43,64 @@ var replyService = (function(){
 			}
 		})
 		
+	};
+	
+	
+	function getReply (rno, callback, error) {
+		
+		$.getJSON ("/" + rno + ".json",
+			function (data) {
+				if(callback) {
+					callback(data);
+				}
+			}
+		), fail(function(xhr, status, err) {
+			if(error) {
+				error(err);
+			}
+		})
+		
+	};
+	
+	function remove (rno, callback, error) {
+		
+		$.ajax ({
+			type : "delete",
+			url : "/replies/" + rno,
+			success : function (result) {
+				if (callback) {
+					callback (result);
+				}
+			}, 
+			error : function (xhr, status, err) {
+				if (error) {
+					error (err);
+				}
+			}
+			
+		})
+		
 	}
+	
+	
+	return {add : add, getList : getList}
 		
 	
 	
 		
 })(); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
