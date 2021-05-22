@@ -259,6 +259,17 @@ a {
 				}		
 			)
 		});
+
+		function showList () {
+			
+		};
+		
+		function showReplyPage () {
+			
+		};
+		
+		
+		
 		
 		
 		

@@ -166,6 +166,38 @@
                      showList(pageNum);
             });
          });
+         function showList(page){
+            var replyUL = $(".replies");
+            replyService.getList({bno:bno, page:page||1},
+                  function(replyCnt, list){//컨트롤러에서 응답한 댓글 전체 개수와 댓글 목록을 받는다.
+                     if(list == null || list.length == 0){
+                        //만약 현재 페이지가 1보다 클 때 더 이상 보여줄 댓글이 없다면
+                        //이전 페이지로 이동하여 댓글 목록을 보여주도록 한다.
+                        if(pageNum > 1){pageNum -= 1; showList(pageNum);}   
+                        replyUL.html("등록된 댓글이 없습니다.");
+                        return;
+                     }
+                     var str = "";
+                     //data 속성
+                     //태그에 원하는 value를 저장시키기 위해서 사용한다.
+                     //data-변수명="value"로 작성하며, jQuery에서 해당 태그객체.data("변수명")으로
+                     //value를 가져와 사용할 수 있다.
+                     //만약 value를 수정하고 싶다면 해당 태그객체.data("변수명","새로운 값");
+                     for(let i=0, len=list.length; i<len; i++){
+                        str += "<li data-rno='" + list[i].rno + "'>";
+                        str += "<strong>" + list[i].replyer + "</strong>";
+                        str += "<p class='reply" + list[i].rno + "'>" + list[i].reply + "</p>";
+                        str += "<div style='text-align:right;'>";
+                        str += "<a class='modify' href='" + list[i].rno + "'>수정</a>"
+                        str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>"
+                        str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                        str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>"
+                        str += "</div><div class='line'></div></li>";
+                     }
+                     replyUL.html(str);
+                     showReplyPage(replyCnt);
+            });
+         }
          
          function showReplyPage(replyCnt){
             var str = "";
@@ -220,38 +252,6 @@
             showList(pageNum);
          });
          
-         function showList(page){
-            var replyUL = $(".replies");
-            replyService.getList({bno:bno, page:page||1},
-                  function(replyCnt, list){//컨트롤러에서 응답한 댓글 전체 개수와 댓글 목록을 받는다.
-                     if(list == null || list.length == 0){
-                        //만약 현재 페이지가 1보다 클 때 더 이상 보여줄 댓글이 없다면
-                        //이전 페이지로 이동하여 댓글 목록을 보여주도록 한다.
-                        if(pageNum > 1){pageNum -= 1; showList(pageNum);}   
-                        replyUL.html("등록된 댓글이 없습니다.");
-                        return;
-                     }
-                     var str = "";
-                     //data 속성
-                     //태그에 원하는 value를 저장시키기 위해서 사용한다.
-                     //data-변수명="value"로 작성하며, jQuery에서 해당 태그객체.data("변수명")으로
-                     //value를 가져와 사용할 수 있다.
-                     //만약 value를 수정하고 싶다면 해당 태그객체.data("변수명","새로운 값");
-                     for(let i=0, len=list.length; i<len; i++){
-                        str += "<li data-rno='" + list[i].rno + "'>";
-                        str += "<strong>" + list[i].replyer + "</strong>";
-                        str += "<p class='reply" + list[i].rno + "'>" + list[i].reply + "</p>";
-                        str += "<div style='text-align:right;'>";
-                        str += "<a class='modify' href='" + list[i].rno + "'>수정</a>"
-                        str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>"
-                        str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-                        str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>"
-                        str += "</div><div class='line'></div></li>";
-                     }
-                     replyUL.html(str);
-                     showReplyPage(replyCnt);
-            });
-         }
          
          //댓글 삭제
          //삭제 버튼 클릭 시 해당 댓글 번호를 가져와 삭제하기
