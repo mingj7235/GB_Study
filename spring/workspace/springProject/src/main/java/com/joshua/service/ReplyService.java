@@ -10,12 +10,12 @@ public interface ReplyService {
 	
 	public int register (ReplyVO reply);
 	
-	public ReplyVO getReply (long rno);
+	public ReplyVO getReply (Long rno);
 	
 	public int update (ReplyVO reply);
 	
-	public int delete (long rno);
+	public int delete (Long rno);
 	
-	public ReplyPageDTO getListWithPaging (Criteria cri, long bno);
+	public ReplyPageDTO getListWithPaging (Criteria cri, Long bno);
 
 }

@@ -12,13 +12,13 @@ public interface ReplyMapper {
 	
 	public int insert (ReplyVO reply) ;
 	
-	public ReplyVO read (long rno);
+	public ReplyVO read (Long rno);
 	
 	public int update (ReplyVO reply);
 	
-	public int delete (long rno);
+	public int delete (Long rno);
 	
-	public List<ReplyVO> getListWithPaging (@Param("cri") Criteria cri, @Param("bno") long bno);
+	public List<ReplyVO> getListWithPaging (@Param("cri") Criteria cri, @Param("bno") Long bno);
 	
-	public int getTotal(long bno);
+	public int getTotal(Long bno);
 }

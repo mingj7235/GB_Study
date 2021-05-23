@@ -39,13 +39,13 @@ public class BoardServiceImple implements BoardService{
 	}
 	
 	@Override
-	public BoardVO getBoard(long bno) {
+	public BoardVO getBoard(Long bno) {
 		return mapper.read(bno);
 	}
 	
 	
 	@Override
-	public int delete(long bno) {
+	public int delete(Long bno) {
 		return mapper.delete(bno);
 	}
 	

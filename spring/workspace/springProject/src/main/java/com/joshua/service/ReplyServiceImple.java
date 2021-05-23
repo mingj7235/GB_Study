@@ -25,12 +25,12 @@ public class ReplyServiceImple implements ReplyService{
 	}
 	
 	@Override
-	public ReplyVO getReply(long rno) {
+	public ReplyVO getReply(Long rno) {
 		return mapper.read(rno);
 	}
 	
 	@Override
-	public ReplyPageDTO getListWithPaging(Criteria cri, long bno) {
+	public ReplyPageDTO getListWithPaging(Criteria cri, Long bno) {
 		return new ReplyPageDTO(mapper.getTotal(bno), mapper.getListWithPaging(cri, bno));
 	}
 	
@@ -40,7 +40,7 @@ public class ReplyServiceImple implements ReplyService{
 	}
 	
 	@Override
-	public int delete(long rno) {
+	public int delete(Long rno) {
 		return mapper.delete(rno);
 	}
 }

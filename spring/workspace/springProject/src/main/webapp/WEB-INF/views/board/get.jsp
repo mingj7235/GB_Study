@@ -20,7 +20,14 @@
 a {
 	border-bottom: none;
 }
+
+.replyLine {
+	border-bottom: 1px solid 
+}
+
 </style>
+
+
 
 
 </head>
@@ -228,8 +235,11 @@ a {
 		var bno = "${board.bno}";
 		var pageNum = 1;
 		
+		showList();
+		
 		//등록버튼을 눌렀을 때, 등록란은 켜지고, 본인은 사라지도록 하는 애니메이션
 		$(".register").on("click", function(e){
+			console.log('check')
 			e.preventDefault();
 			$(".register-form").show();
 			$(this).hide();
@@ -279,16 +289,20 @@ a {
 						str += "<strong>" + list[i].replyer +"</strong>";
 						str += "<p class='reply" + list[i].rno +"'>" + list[i].reply +"</p>";
 						str += "<div style='text-align:right'>";
-						str += "<a class ='modify' href='"+list[i].rno"'>수정</a>";
-						stt += "<a class ='modifyFinish' href ='"+list[i].rno"' style = 'display:none;'>수정완료</a>";
-						str += "<a class ='remove' href='"+list[i].rno"'>삭제</a>";
+						str += "<a class ='modify' href='"+list[i].rno+"'>수정</a>";
+						stt += "<a class ='modifyFinish' href ='"+list[i].rno+"' style = 'display:none;'>수정완료</a>";
+						str += "<a class ='remove' href='"+list[i].rno+"'>삭제</a>";
+						str += "</div><div class='replyLine'></div></li>"
 						
 					}
+					
+					replyUL.html(str);
+					showReplyPage(replyCnt);
 			}		
 			)
-		};
+		}; 
 		
-		function showReplyPage () {
+		function showReplyPage (replyCnt) {
 			
 		};
 		
