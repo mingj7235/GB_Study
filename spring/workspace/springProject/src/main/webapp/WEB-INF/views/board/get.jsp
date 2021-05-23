@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -231,6 +230,7 @@ a {
 
 	<!-- Scripts -->
 	<script src="/resources/assets/js/jquery.min.js"></script>
+	
 	<script src="/resources/assets/js/browser.min.js"></script>
 	<script src="/resources/assets/js/breakpoints.min.js"></script>
 	<script src="/resources/assets/js/util.js"></script>
@@ -251,14 +251,14 @@ a {
 			e.preventDefault();
 			$(".register-form").show();
 			$(this).hide();
-		})
+		});
 		
 		//댓글 등록 취소버튼
 		$("a.cancel").on("click", function(e){
 			e.preventDefault();
 			$(".register-form").hide();
 			$("a.register").show();
-		})
+		});
 		
 		//댓글 등록 
 		$("a.finish").on("click", function(e){
@@ -275,7 +275,7 @@ a {
 				function(result) {
 					alert(result);
 					pageNum = 1;
-					//showList(pageNum);
+					showList(pageNum);
 			});
 			
 		});
@@ -308,15 +308,96 @@ a {
 				}
 				
 				replyUL.html(str);
+				showReplyPage(replyCnt);
 				
 					
-			})
+			});
 			
 		} 
 		
+		function showReplyPage (replyCnt) {
+			var str = "";
+			var replyPaging = $(".paging");
+			var endNum = Math.ceil(pageNum / 10.0) * 10;
+			var startNum = endNum -9 ;
+			var realEnd = Math.ceil(replyCnt / 10.0);
+			
+			if(endNum > realEnd) {
+				endNum = realEnd;
+			}
+			
+			var prev = startNum != 1;
+			var next = endNum * 10 < replyCnt;
+			
+			if (prev) {
+				str += "<a class = 'changPage' href = '" + (startNum - 1) + "'><code>&lt;</code></a>";
+			}
+			
+			for (let i = startNum; i <= endNum; i ++) {
+				if(pageNum == i) {
+					str += "<code>" + i + "</code>";
+					continue;
+				}
+				str += "<a class = 'changePage' href ='" + i + "'><code>" + i + "</code></a>";
+			}
+			
+			if(next) {
+				str += "<a class = 'changePage' href = '" + (endNum + 1) + "'><code>&gt;</code></a>"; 
+			}
+			
+			replyPaging.html(str);
+		}
+		
+		//페이지 전환 
+		
+		$(".paging").on("click", "a.changePage", function(e){
+			e.preventDefault();
+			pageNum = parseInt($(this).attr("href"));
+			showList(pageNum);
+		});
+		
+		//댓글 삭제
+		
+		$(".replies").on("click", "a.remove", function(e){
+			e.preventDefault();
+			
+			var rno = $(this).attr("href");
+			
+			replyService.remove ({rno : rno},
+				function(result) {
+					alert(result);
+					showList(pageNum);
+			});
+		});
 		
 		
-	
+		
+		//댓글 수정 (댓글 수정 텍스트가 활성화 되도록 한다. 또한 p테그를 textarea로 변환한다)
+		$(".replies").on("click", "a.modify", function(e){
+			e.preventDefault();
+			
+			var rno = $(this).attr("href");
+			var reply = $(".reply" + rno);
+			
+			//reply 태그를 변화시키기 
+			reply.html("<textarea class='" + rno +"'>" + rno.text() + "</textarea>");
+			$(this).hide();
+			
+			$(this).parent().find(".modifyfinish").show();
+			
+		});
+		
+		 $(".replies").on("click", "a.finish", function(e){
+	            e.preventDefault();
+	            var rnoValue = $(this).attr("href");
+	            var newReply = $("." + rnoValue).val();
+	            
+	            replyService.modify({rno:rnoValue, reply:newReply}, function(result){
+	               alert(result);
+	               check = false;
+	               showList(pageNum);
+	            });
+	         });
 	
 	});
 	

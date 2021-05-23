@@ -48,5 +48,6 @@
    
    <mybatis-spring:scan base-package="com.joshua.mapper"/>
    <context:component-scan base-package="com.joshua.service"/>
+   <context:component-scan base-package="com.joshua.exception"/>
    
 </beans>

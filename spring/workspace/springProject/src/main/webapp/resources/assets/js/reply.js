@@ -80,6 +80,8 @@ var replyService = (function(){
 	
 	function update (reply, callback, error) {
 		
+		console.log('들어오니');
+		
 		var rno = reply.rno;
 		$.ajax ({
 			type : "put",
