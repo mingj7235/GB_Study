@@ -22,7 +22,7 @@ a {
 }
 
 .replyLine {
-	border-bottom: 1px solid 
+	border-bottom: 1px solid #565656;
 }
 
 .replyLi {
@@ -242,17 +242,80 @@ a {
 	
 	$(document).ready(function () {
 		
+		var bno = "${board.bno}";
+		var pageNum = 1;
+		showList();
+		
+		//댓글 등록 활성화 버튼
 		$("a.register").on("click", function(e){
 			e.preventDefault();
 			$(".register-form").show();
 			$(this).hide();
 		})
 		
+		//댓글 등록 취소버튼
 		$("a.cancel").on("click", function(e){
 			e.preventDefault();
 			$(".register-form").hide();
 			$("a.register").show();
 		})
+		
+		//댓글 등록 
+		$("a.finish").on("click", function(e){
+			e.preventDefault();
+			var reply = $("textarea[name='reply']").val();
+			var replyer = $("input[name='replyer']").val();
+			
+			if(reply == "" || replyer == "") {
+				alert("댓글과 작성자를 올바르게 입력해주세요");
+				return;
+			}
+			
+			replyService.add ({bno : bno, reply : reply, replyer: replyer},
+				function(result) {
+					alert(result);
+					pageNum = 1;
+					//showList(pageNum);
+			});
+			
+		});
+		
+		function showList (page) {
+			
+			var replyUL = $(".replies");
+			replyService.getList ({bno : bno , page : page || 1}, 
+				function(replyCnt, list){
+					if (list == null || list.length == 0) {
+						if(pageNum < 1) {
+							pageNum -= 1;
+							showList(pageNum);
+						}
+						replyUL.html("등록된 댓글이 없습니다.");
+						return;
+					}
+				
+				var str ="";
+				
+				for (let i=0, len = list.length; i<len; i++) {
+					str += "<li class = 'replyLi' data-rno='" + list[i].rno + "'>";
+					str += "<strong>" + list[i].replyer + "</strong>";
+					str += "<p class='reply" +list[i].rno+"'>" + list[i].reply + "</p>";
+					str += "<div style='text-align: right;'>";
+					str += "<a class = 'modify' href = '" + list[i].rno +"'>수정&nbsp;&nbsp;</a>";
+					str += "<a class = 'modifyfinish' href ='" + list[i].rno + "' style='display : none;'>수정완료 </a>"
+					str += "<a class = 'remove' href = '" + list[i].rno +"'>삭제</a>";
+					str += "</div><div class = 'replyLine'></div></li>"
+				}
+				
+				replyUL.html(str);
+				
+					
+			})
+			
+		} 
+		
+		
+		
 	
 	
 	});
