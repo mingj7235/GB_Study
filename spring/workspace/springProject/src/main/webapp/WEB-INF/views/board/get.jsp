@@ -262,7 +262,30 @@ a {
 
 		function showList (page) {
 			var replyUL = $(".replies");
-			replyService.getList ({bno : bno, page : })
+			replyService.getList ({bno : bno, page : page || 1},
+				function (replyCnt, list) {
+					if(list == null || list.length == 0) {
+						if(page > 1) {
+							page -= 1;
+							showList(page);
+						}
+						replyUL.html('등록된 댓글이 없습니다.');
+						return;
+					}
+					var str = "";
+					
+					for (let i = 0, len = list.length; i<len; i++) {
+						str += "<li data-rno='" + list[i].rno + "'>";
+						str += "<strong>" + list[i].replyer +"</strong>";
+						str += "<p class='reply" + list[i].rno +"'>" + list[i].reply +"</p>";
+						str += "<div style='text-align:right'>";
+						str += "<a class ='modify' href='"+list[i].rno"'>수정</a>";
+						stt += "<a class ='modifyFinish' href ='"+list[i].rno"' style = 'display:none;'>수정완료</a>";
+						str += "<a class ='remove' href='"+list[i].rno"'>삭제</a>";
+						
+					}
+			}		
+			)
 		};
 		
 		function showReplyPage () {
