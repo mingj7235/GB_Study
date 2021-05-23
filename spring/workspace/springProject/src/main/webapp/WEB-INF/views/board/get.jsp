@@ -363,7 +363,7 @@ a {
 			
 			var rno = $(this).attr("href");
 			
-			replyService.remove ({rno : rno},
+			replyService.remove (rno,
 				function(result) {
 					alert(result);
 					showList(pageNum);
@@ -371,33 +371,41 @@ a {
 		});
 		
 		
+		var check = false;
 		
 		//댓글 수정 (댓글 수정 텍스트가 활성화 되도록 한다. 또한 p테그를 textarea로 변환한다)
 		$(".replies").on("click", "a.modify", function(e){
 			e.preventDefault();
 			
+			if(check) {
+				alert("이미 수정중인 댓글이있습니다.");
+				return;
+			}
+			
 			var rno = $(this).attr("href");
 			var reply = $(".reply" + rno);
 			
 			//reply 태그를 변화시키기 
-			reply.html("<textarea class='" + rno +"'>" + rno.text() + "</textarea>");
+			reply.html("<textarea class='" + rno +"'>" + reply.text() + "</textarea>");
 			$(this).hide();
 			
 			$(this).parent().find(".modifyfinish").show();
-			
+			check = true;
 		});
 		
-		 $(".replies").on("click", "a.finish", function(e){
-	            e.preventDefault();
-	            var rnoValue = $(this).attr("href");
-	            var newReply = $("." + rnoValue).val();
-	            
-	            replyService.modify({rno:rnoValue, reply:newReply}, function(result){
-	               alert(result);
-	               check = false;
-	               showList(pageNum);
-	            });
-	         });
+		//댓글 수정 기능
+		$(".replies").on("click", "a.modifyfinish", function(e){
+			e.preventDefault();
+			var rno = $(this).attr("href");
+			var reply = $("." + rno).val();
+			replyService.update ({rno : rno, reply : reply}, 
+					function(result){
+						alert(result);
+						check = false;
+						showList(pageNum);
+			});
+		})
+		 
 	
 	});
 	

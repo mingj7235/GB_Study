@@ -36,7 +36,7 @@ var replyService = (function(){
 					callback (data.replyCnt, data.list)
 				}
 			}
-		), fail (function (xhr, status, err){
+		).fail (function (xhr, status, err){
 			if(error) {
 				error (err);
 			}
@@ -51,7 +51,7 @@ var replyService = (function(){
 					callback (result);
 				}
 			}
-		), fail (function (xhr, status, err) {
+		).fail (function (xhr, status, err) {
 			if (error) {
 				error(err);
 			}
