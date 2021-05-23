@@ -25,6 +25,14 @@ a {
 	border-bottom: 1px solid 
 }
 
+.replyLi {
+	text-align: left;
+}
+
+.icons {
+	text-align: left;
+}
+
 </style>
 
 
@@ -230,98 +238,26 @@ a {
 	<script src="/resources/assets/js/reply.js"></script>
 
 </body>
-<script>
-	$(document).ready(function(){
-		var bno = "${board.bno}";
-		var pageNum = 1;
+	<script>
+	
+	$(document).ready(function () {
 		
-		showList();
-		
-		//등록버튼을 눌렀을 때, 등록란은 켜지고, 본인은 사라지도록 하는 애니메이션
-		$(".register").on("click", function(e){
-			console.log('check')
+		$("a.register").on("click", function(e){
 			e.preventDefault();
 			$(".register-form").show();
 			$(this).hide();
-		});
+		})
 		
-		//취소버튼을 눌렀을 때 다시 원상복귀 
-		$(".cancel").on("click", function(e){
+		$("a.cancel").on("click", function(e){
 			e.preventDefault();
-			$(".register").show();
 			$(".register-form").hide();
-			
-		});
-		
-		
-		//댓글 등록 버튼 (클래스가 finish로 되어있다. )
-		$(".finish").on("click", function(e){
-			e.preventDefault();
-			
-			var reply = $("textarea[name='reply']").val();
-			var replyer = $("input[name='replyer']").val();
-			
-			replyService.add ({bno : bno, reply : reply, replyer : replyer},
-				function(result) {
-					alert(result);
-					pageNum = 1;
-					//showList(pageNum);
-				}		
-			)
-		});
-
-		function showList (page) {
-			var replyUL = $(".replies");
-			replyService.getList ({bno : bno, page : page || 1},
-				function (replyCnt, list) {
-					if(list == null || list.length == 0) {
-						if(page > 1) {
-							page -= 1;
-							showList(page);
-						}
-						replyUL.html('등록된 댓글이 없습니다.');
-						return;
-					}
-					var str = "";
-					
-					for (let i = 0, len = list.length; i<len; i++) {
-						str += "<li data-rno='" + list[i].rno + "'>";
-						str += "<strong>" + list[i].replyer +"</strong>";
-						str += "<p class='reply" + list[i].rno +"'>" + list[i].reply +"</p>";
-						str += "<div style='text-align:right'>";
-						str += "<a class ='modify' href='"+list[i].rno+"'>수정</a>";
-						stt += "<a class ='modifyFinish' href ='"+list[i].rno+"' style = 'display:none;'>수정완료</a>";
-						str += "<a class ='remove' href='"+list[i].rno+"'>삭제</a>";
-						str += "</div><div class='replyLine'></div></li>"
-						
-					}
-					
-					replyUL.html(str);
-					showReplyPage(replyCnt);
-			}		
-			)
-		}; 
-		
-		function showReplyPage (replyCnt) {
-			
-		};
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}); //end document.ready(function)	
+			$("a.register").show();
+		})
 	
 	
-</script>
+	});
+	
+	</script>
 </html>
 
 
