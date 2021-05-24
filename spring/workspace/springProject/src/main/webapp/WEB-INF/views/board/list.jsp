@@ -75,10 +75,28 @@
 				display : block;
 			}
 			
+			.searchbox {
+				display : block;
+			}
+			
+			select {
+				width : 100%;
+			}
+			
+			input[name='keyword'] {
+				width : 100%;
+			}
+			
+			.search {
+				width : 100%;
+			}
+				
+			
+			
 		
 		}
 		
-		@media(max-width : 1200px) {
+		@media(max-width : 1300px) {
 			#header {
 				display : none;
 			}
