@@ -148,6 +148,12 @@
   	
    */
    
+   /*
+   	Node.js
+   	
+   	
+   */
+   
    
    //javascript 연산 복습 부분 (다되면 주석 처리를 하던가 script를 닫기 )
    	$(document).ready (function(){

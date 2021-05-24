@@ -32,6 +32,13 @@ a {
 	text-align: left;
 }
 
+.replyListDiv {
+	text-align: right;
+	display : flex;	
+	justify-content: flex-end; 
+} 
+
+
 </style>
 
 
@@ -274,6 +281,10 @@ a {
 			replyService.add ({bno : bno, reply : reply, replyer: replyer},
 				function(result) {
 					alert(result);
+					$("textarea[name='reply']").val("");
+					$("input[name='replyer']").val("");
+					$(".register-form").hide();
+					$("a.register").show();
 					pageNum = 1;
 					showList(pageNum);
 			});
@@ -297,10 +308,17 @@ a {
 				var str ="";
 				
 				for (let i=0, len = list.length; i<len; i++) {
+					
+					console.log(list[i].updateDate);
+					
+					var replyDate = list[i].updateDate
+					var cutReplyDate = replyDate.substring(0, 10);
+					
 					str += "<li class = 'replyLi' data-rno='" + list[i].rno + "'>";
 					str += "<strong>" + list[i].replyer + "</strong>";
 					str += "<p class='reply" +list[i].rno+"'>" + list[i].reply + "</p>";
-					str += "<div style='text-align: right;'>";
+					str += "<div class = 'replyListDiv'>";
+					str += "<p style='margin-right: 1%;'>"+cutReplyDate+"</p>"
 					str += "<a class = 'modify' href = '" + list[i].rno +"'>수정&nbsp;&nbsp;</a>";
 					str += "<a class = 'modifyfinish' href ='" + list[i].rno + "' style='display : none;'>수정완료 </a>"
 					str += "<a class = 'remove' href = '" + list[i].rno +"'>삭제</a>";
