@@ -34,7 +34,7 @@ var replyService = (function(){ //replyService는 json타입이다!
 		$.getJSON ("/replies/pages/"+bno+"/"+page+".json"  //".json"을 붙이지 않으면 xml데이터
 			,function(data) {
 				if(callback) {
-					callback (data);
+					callback (data.replyCnt, data.list);
 				}
 			})
 		.fail(function(xhr, status, err){

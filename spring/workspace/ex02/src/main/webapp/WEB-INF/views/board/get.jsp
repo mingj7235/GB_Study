@@ -134,9 +134,27 @@
    </body>
    
    <script>
+   
+   //jQuery를 사용했던 이유 
+   /*
+  	jQuery의 목적은 웹표준의 통일성을 위해서 사용햇던 것이다. 그런데 지금은 그게 필요가 없다. 모두가 다 웹표준을 사용하고 있기 때문이다. 
+  	
+  	웹 표준으로 개발되던 시대가 아니었을 때에는 개발자가 버젼별로 다양한 언어들을 공부해야 했다.
+  	그렇기 때문에 웹 표준을 정해놓으면 개발자들이 편하게 개발할 수 있는 상태였다.
+  	바로 이 때 jQuery를 만든 회사에서 JS의 표준화 즉, 통일성을 주기 위해서 홍보를 하였고,
+  	jQuery 개발자가 대량으로 늘어나며, 거의 모든 프로젝트에서 jQuery가 사용되었다.
+  	하지만 지금은 거의 대부분의 브라우저는 W3C에 의해 표준화된 웹 표준을 사용하기 때문에
+  	jQuery의 목적성을 잃어가고 있다. 
+  	
+   */
+   
+   
+   //javascript 연산 복습 부분 (다되면 주석 처리를 하던가 script를 닫기 )
    	$(document).ready (function(){
-   		
+   		var pageNum = 1;
    		var bno = "${board.bno}";
+   		
+   		showList(pageNum);
    		
    		$(".register").on("click", function(e){
    			e.preventDefault();
@@ -156,25 +174,183 @@
    			var replyer = $("input[name='replyer']").val();
    			var reply = $("textarea[name='reply']").val();
    			
+   			if(reply == "" || replyer == "") {
+   				alert("댓글과 작성자를 올바르게 입력해주세요");
+   			}
+   			
    			replyService.add({bno:bno, reply:reply, replyer:replyer},
    				function(result) {
    				alert(result);
+   				
+   				$("input[name='replyer']").val("");
+   				$("textarea[name='reply']").val("");
+   				$(".register-form").hide();
+   	   			$(".register").show();
+   				
+   				pageNum = 1;
+   				showList(pageNum);
    			}		
    			);
    		})
    		
-   		function showReplyPage(replyCnt) {
+   		function showReplyPage(replyCnt) { //전체 댓글의 갯수 
    			var str = "";
    			var paging = $(".paging");
    			var endNum = Math.ceil (pageNum / 10.0) * 10;
    			var startNum = endNum - 9;
    			var realEnd = Math.ceil(replyCnt / 10.0);
    			
+   			if(endNum > realEnd) {
+   				endNum = realEnd;
+   			}
+   			
+   			var prev = startNum != 1 ;
+   			var next = endNum * 10 < replyCnt;
+   			
+   			//반응형을 위해서 
+   			if(matchMedia("screen and (max-width:918px)").matches) {
+   				//918px 보다 작을 때 
+   				
+   				if(prev) {
+   					str += "<a class = 'changePage' href'" + (pageNum - 1) + "'><code>&lt;</code></a>";
+   				}
+   				
+   			
+   				str += "<code>" + pageNum + "</code>";
+   				
+   				if(next) {
+   					str += "<a class = 'changePage' href'" + (pageNum + 1) + "'><code>&gt;</code></a>";
+   				}
+   				
+   				
+   			} else {
+   				//918px 이상일 때
+   				if(prev) {
+   					str += "<a class = 'changePage' href'" + (startNum - 1) + "'><code>&lt;</code></a>";
+   				}
+   				
+   				for (let i = startNum; i<= endNum ; i++) {
+   					if(i == pageNum) {
+   						str += "<code>" + i + "</code>";
+   						continue; //i 가 현재페이지면 밑으로 가지않고 다시 반복 돌수 있도록 함 
+   					}
+   					str += "<a class = 'changePage' href'" + i + "'><code>" + i + "</code></a>";
+   				}
+   				
+   				if(next) {
+   					str += "<a class = 'changePage' href'" + (endNum + 1) + "'><code>&gt;</code></a>";
+   				}
+   			}
+   			paging.html(str);
    		}
    		
-   		function showList () {
-   			replyService.getList();
+   		
+   		//이벤트위임 
+   		$(".paging").on("click","a.changePage", function(e){
+   			e.preventDefault();
+   			pageNum = parseInt($(this).attr("href"));
+   			showList(pageNum);
+   		})
+   		
+   		function showList (page) {
+   			var replyUL = $(".replies");
+   			replyService.getList({bno:bno, page:page || 1}
+   				function(replyCnt, list) {
+   					
+   					var str = "";
+   					
+   					if(list == null || list.length == 0) {
+						//등록된 댓글이 없습니다.
+						if(pageNum > 1) {
+							pageNum -= 1;
+							showList(pageNum);
+						}
+						replyUL.html("등록된 댓글이 없습니다.");
+   						return;
+   					}
+   					
+   					for (let i = 0 ; i < list.length; i ++) {
+   						str += "<li data-rno='"+ list[i].rno +"'>"; // 첨부파일을 위해서 미리 설계한 것임
+   						str += "<strong>"+list[i].replyer+"</strong>";
+   						str += "<p class = 'reply"+list[i].rno+"'>"+list[i].reply+"</p>";
+   						str += "<div style = 'text-align:right;'>"
+   						str += "<a class = 'modify' href='"+list[i].rno+"'>수정</a>";
+   						str += "<a class = 'finish' href='"+list[i].rno+"' style='display:none;'>수정완료</a>";
+   						str += "&nbsp;&nbsp;&nbsp;&nbsp;"
+   						str += "<a class = 'remove' href='"+list[i].rno+"'>삭제</a>";
+   						str += "</div><div class= 'line'></div></li>";
+   					}
+   					replyUL.html(str);
+   					showReplyPage(replyCnt);
+   				}
+   			);
    		}
+   		
+   		
+   		$(".replies").on("click", "a.remove", function(e){
+   			e.preventDefault();
+   			
+   			var rnoValue = $(this).attr("href");
+   			
+   			replyService.remove(rnoValue,
+   				function (result) {
+   					alert(result);
+   					showList(pageNum);
+   			}		
+   			);
+   			
+   		});
+   		
+   		var check = false ;
+   		
+   		//댓글 수정 
+   		$(".replies").on("click", "a.modify", function(e){
+   			//1.p테그를 textarea로 변경 (기존 p태그의 내용을 textarea로 옮겨야한다. )
+   			e.preventDefault();
+   			
+   			var rnoValue = $(this).attr("href");
+			var replyTag = $(".reply" + rnoValue);
+			
+			replyTab.html("<textarea class='"+rnoValue+"'>"+replyTag.text()+"</textarea>");
+			
+			if(check) {
+				alert("수정중인 댓글이 있습니다");
+				return;
+			}
+			
+   			//2.수정완료 버튼
+			$(this).hide();
+			$(this).parent().find(".finish").show();
+			
+			//find의 알고리즘
+			/* var finishs = $(".finish");
+			for (let i = 0; i<finishs.length; i++) {
+				if($(finishs[i]).attr("href") == rnoValue) {
+					$(finishs[i]).show();
+					break;
+				}
+			} */
+			
+			check = true;
+			
+   		});
+   		
+   		//수정 완료 
+   		$(".replies").on("click", "a.finish", function(e){
+   			e.preventDefault();
+   			
+   			var rnoValue = $(this).attr("href");
+   			var newReply = $("."+rnoValue).val();
+   			
+   			if(newReply =="") {return;}
+   			
+   			replyService.update ({rno : rnoValue, reply : newReply}, 
+   					function(result){
+   						alert(result);
+   						check = false;
+   						showList(pageNum);
+   			})
+   		});
    		
    		
    	})
