@@ -132,6 +132,56 @@
          <script src="/resources/assets/js/main.js"></script>
          <script src="/resources/assets/js/reply.js"></script>
    </body>
+   
+   <script>
+   	$(document).ready (function(){
+   		
+   		var bno = "${board.bno}";
+   		
+   		$(".register").on("click", function(e){
+   			e.preventDefault();
+   			$(".register-form").show();
+   			$(this).hide();
+   		})
+   		
+   		$(".cancel").on("click", function(e){
+   			e.preventDefault();
+   			$(".register-form").hide();
+   			$(".register").show();
+   		})
+   		
+   		$(".finish").on("click", function(e){
+   			e.preventDefault();
+   			
+   			var replyer = $("input[name='replyer']").val();
+   			var reply = $("textarea[name='reply']").val();
+   			
+   			replyService.add({bno:bno, reply:reply, replyer:replyer},
+   				function(result) {
+   				alert(result);
+   			}		
+   			);
+   		})
+   		
+   		function showReplyPage(replyCnt) {
+   			var str = "";
+   			var paging = $(".paging");
+   			var endNum = Math.ceil (pageNum / 10.0) * 10;
+   			var startNum = endNum - 9;
+   			var realEnd = Math.ceil(replyCnt / 10.0);
+   			
+   		}
+   		
+   		function showList () {
+   			replyService.getList();
+   		}
+   		
+   		
+   	})
+   	
+   </script>
+   
+   
    <script>
       $(document).ready(function(){
          var bno = "${board.bno}";

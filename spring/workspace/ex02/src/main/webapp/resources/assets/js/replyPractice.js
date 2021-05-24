@@ -27,7 +27,7 @@ var replyService = (function(){ //replyService는 json타입이다!
 	
 	//댓글 목록
 	function getList (param, callback, error) {
-		log.info ("getList...");
+		console.log ("getList...");
 		var bno = param.bno;
 		var page = param.page;
 		
@@ -46,7 +46,7 @@ var replyService = (function(){ //replyService는 json타입이다!
 	
 	//댓글 삭제
 	function remove (rno, callback, error) {
-		log.info("remove.....");
+		console.log("remove.....");
 		$.ajax ({
 			type : "delete",
 			url : "/replies/" + rno,
@@ -64,10 +64,41 @@ var replyService = (function(){ //replyService는 json타입이다!
 	}
 	
 	//댓글 수정
-	function 
+	function update (reply, callback, error) {
+		console.log("update .....");
+		
+		$.ajax ({
+			type : "PUT",
+			url : "/replies/" + reply.rno,
+			data : JSON.stringify(reply),
+			contentType : "application/json; charset=utf-8",
+			success : function (result) {
+				if(callback) {
+					callback(result);
+				}	
+			},
+			success : function (xhr, status, err) {
+				if(error) {
+					callback(err)
+				}
+			}
+			
+		})
+	}
+	
+	//댓글 조회 
+	function get(rno, callback, error) {
+		$.getJSON ("/replies/" + rno +".json",
+			function (result) {
+				if(callback) {
+					callback (result)
+				}
+			}
+		).fail(function(xhr, status, err) {if(error) error(err);})
+	}
 	
 	
-	return {add : add, getList : getList, remove : remove} ;
+	return {add : add, getList : getList, remove : remove, update, update, get : get} ;
 }) ();
 
 
