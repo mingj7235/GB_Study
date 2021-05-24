@@ -285,7 +285,7 @@
             
             //다 가져오기
           /*  var finishs = $(".finish")
-           for(let i=0; i<finishs.length; i++){
+           for(let i=0; i<finishs.length; i++)
                if($(finishs[i]).attr("href") == rnoValue){
                   $(finishs[i]).show();
                   check = true;

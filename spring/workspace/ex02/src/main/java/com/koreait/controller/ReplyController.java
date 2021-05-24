@@ -2,7 +2,10 @@ package com.koreait.controller;
 
 
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,10 +38,12 @@ public class ReplyController {
 	private ReplyService service;
 	
 	//댓글 작성
-	@PostMapping (value ="/new", consumes ="application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> register (@RequestBody ReplyVO reply) {
+	
+	//문자열을 전달할 때 한글이 깨지지 않게 하기 위해서는 text/plain; charset=utf-8를 작성한다. 
+	@PostMapping (value ="/new", consumes ="application/json", produces = "text/plain; charset=utf-8")
+	public ResponseEntity<String> register (@RequestBody ReplyVO reply) throws UnsupportedEncodingException{
 		log.info("등록된 댓글 : " + reply);
-		return service.register(reply) == 1 ? new ResponseEntity<>("success", HttpStatus.OK) :
+		return service.register(reply) == 1 ? new ResponseEntity<>(new String("댓글 등록 성공".getBytes(),"UTF-8"), HttpStatus.OK) :
 				new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		
 	}
