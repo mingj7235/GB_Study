@@ -1,5 +1,7 @@
 package com.koreait.aop;
 
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,40 @@ public class LogAdvice {
 			//logBefore()를 실행해!
 	
 	public void logBefore () {
-		log.info("=============");
+		log.info("=======before======");
+	}
+	
+	
+	@After ("execution(* com.koreait.service.SampleService*.*(..))")
+	public void logAfter () {
+		log.info("=======after======");
+	}
+	
+	@AfterReturning ("execution(* com.koreait.service.SampleService*.*(..))")
+	public void logAfterReturning () {
+		log.info("=======afterReturning======");
+	}
+																						//메소드의 매개변수명을 매핑하기위해 args를 넣어
+	@Before ("execution (* com.koreait.service.SampleService*.doAdd(String, String)) && args(str1, str2)")
+	public void logBeforeWithParam(String str1, String str2) { //매개변수 자동으로 매핑이 되어서 들어감
+		log.info("str1 :"  + str1);
+		log.info("str2 :"  + str2);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
