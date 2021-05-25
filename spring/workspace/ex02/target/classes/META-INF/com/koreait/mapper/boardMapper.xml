@@ -45,9 +45,9 @@
 	</sql>
 	
 	<select id="getListWithPaging" resultType="com.koreait.domain.BoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, REPLYCNT 
 		FROM 
-			(SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
+			(SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, REPLYCNT 
 			FROM TBL_BOARD 
 			WHERE 
 			<include refid="criteria"/> <!-- sql태그를 사용해서 동적쿼리를 재사용하기위해 사용한다.  -->
@@ -112,6 +112,12 @@
 	<update id="update">
 		UPDATE TBL_BOARD 
 		SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}, UPDATEDATE = SYSDATE
+		WHERE BNO = #{bno}
+	</update>
+	
+	<update id="updateReplyCnt">
+		UPDATE TBL_BOARD 
+		SET REPLYCNT = REPLYCNT + #{amount}
 		WHERE BNO = #{bno}
 	</update>
 </mapper>

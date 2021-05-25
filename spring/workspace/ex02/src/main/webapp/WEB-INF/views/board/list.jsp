@@ -66,7 +66,7 @@
                                     <thead>
                                        <tr class="tHead">
                                           <th class="bno">번호</th>
-                                          <th class="title">제목</th>
+                                          <th class="title">제목 [댓글]</th>
                                           <th class="writer">작성자</th>
                                           <th class="regDate">작성일</th>
                                           <th class="updateDate">수정일</th>
@@ -76,7 +76,8 @@
          								<c:forEach var="board" items="${list}">
          									<tr class="tBody">
 	                                          <td class="bno">${board.bno}</td> <!-- board.getBno()를 써도되지만, 자동으로 매핑해서 가져온다. -->
-	                                          <td class="title"><a href="/board/get${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a></td>
+	                                          <td class="title"><a href="/board/get${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a>
+	                                          	<span style="font-size: 0.5rem;">&nbsp;&nbsp;[${board.replyCnt}]</span></td>
 	                                          <td class="writer">${board.writer}</td>
 	                                          <td class="regDate">${board.regDate}</td>
 	                                          <td class="updateDate">${board.updateDate}</td>

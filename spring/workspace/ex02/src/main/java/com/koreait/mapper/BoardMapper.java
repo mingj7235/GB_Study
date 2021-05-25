@@ -2,6 +2,7 @@ package com.koreait.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.koreait.domain.BoardVO;
@@ -32,4 +33,6 @@ public interface BoardMapper {
 	public int delete (long bno);
 	
 	public int update (BoardVO board);
+	
+	public void updateReplyCnt (@Param ("bno") Long bno,@Param("amount") int amount);
 }
