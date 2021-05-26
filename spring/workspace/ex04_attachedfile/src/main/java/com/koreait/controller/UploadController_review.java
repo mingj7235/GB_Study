@@ -17,28 +17,35 @@ public class UploadController_review {
 	String uploadFolder = "/Users/joshua/upload";
 	
 	@GetMapping ("/uploadFormReview")
-	public void uploadForm () {
-		log.info("upload form");
+	public void uploadFormReview () {
+		log.info("upload form...");
 	}
 	
-	@PostMapping ("/uploadFormAction") //jsp에서 uri 로 요청
-	public void uploadFormPost (MultipartFile[] uploadFile) {
-		for (MultipartFile multipartFile : uploadFile) {
+	@PostMapping ("/uploadFormActionReview")
+	public void uploadFormPostReview (MultipartFile[] uploadFiles) {
+		
+		for (MultipartFile multipartFile : uploadFiles) {
 			
 			String fileName = multipartFile.getOriginalFilename();
 			Long fileSize = multipartFile.getSize();
 			
-			log.info("filename : " + fileName);
-			log.info("filesize : " + fileSize);
+			log.info("fileName : " + fileName);
+			log.info("fileSize : " + fileSize);
 			
 			File saveFile = new File(uploadFolder, fileName);
+			
 			try {
 				multipartFile.transferTo(saveFile);
-			} catch (Exception e) {
+			} catch (IllegalStateException e) {
 				e.printStackTrace();
-			} 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+					
+			
 		}
+		
+		
 	}
-	
 	
 }
