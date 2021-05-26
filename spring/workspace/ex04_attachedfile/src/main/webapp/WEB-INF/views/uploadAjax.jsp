@@ -21,6 +21,7 @@
 		
 		//첨부파일 확장자, 사이즈 제한
 		function check (fileName, fileSize) {
+			//파일 확장자 제한을 위한 정규식 
 			var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); //업로드 하지않아야할 파일 확장자 
 			var maxSize = 5242880; //5MB 
 			if(regex.test(fileName)){	
@@ -39,7 +40,7 @@
 			var formData = new FormData(); //프로토 타입? 
 			var inputFile = $("input[name='uploadFile']");
 			var files = inputFile[0].files; //list형식으로 들어가게 된다. 0번째방이라고 하는 것은, input테그의 이름이 또 있을까봐 쓴것이다
-			//파일 확장자 제한을 위한 정규식 
+			
 			
 			console.log(files);
 			

@@ -41,11 +41,27 @@ public class UploadController_review {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-					
-			
 		}
-		
+	}
+	
+	@GetMapping ("/uploadAjaxReview")
+	public void uploadAjaxReview () {
+		log.info("upload Ajax review...");
+	}
+	
+	@PostMapping ("/uploadAjaxActionReview")
+	public void uploadAjaxActionReview () {
 		
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
