@@ -56,6 +56,8 @@ public class UploadController_review {
 	public void uploadAjaxActionReview (MultipartFile[] uploadFiles) {
 		log.info("upload ajax post....");
 		
+		log.info(uploadFiles);
+		
 		File uploadPath = new File(uploadFolder, getFolder());
 		
 		if (!uploadPath.exists()) {
@@ -65,6 +67,8 @@ public class UploadController_review {
 		
 		for (MultipartFile multipartFile : uploadFiles) {
 			
+			log.info(multipartFile);
+			
 			String fileName = multipartFile.getOriginalFilename();
 			Long fileSize = multipartFile.getSize();
 			UUID uuid = UUID.randomUUID();
@@ -72,15 +76,13 @@ public class UploadController_review {
 			fileName = fileName.substring(fileName.lastIndexOf("\\")+1);
 			fileName = uuid.toString() + "_" + fileName;
 			
-			File saveFile = new File(uploadFolder, fileName);
+			File saveFile = new File(uploadPath, fileName);
 			
 			try {
 				multipartFile.transferTo(saveFile);
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -89,7 +91,7 @@ public class UploadController_review {
 	}
 	
 	private String getFolder() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String str = sdf.format(date);
 		return str.replace("-", File.separator);

@@ -11,7 +11,7 @@
 	<div class = "uploadDiv"> <!-- dom을 위한 선택자 -->
 		<input type ="file" name = "uploadFiles" multiple>	
 	</div>
-	<button id="uploadBtn">submit</button>
+	<button name = "uploadBtn" id="uploadBtn">submit</button>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -30,7 +30,7 @@
 			}
 			if (fileSize > maxSize) {
 				alert("파일 크기는 5mb 이하입니다. ");
-				return false'
+				return false;
 			}
 			
 			return true;
@@ -46,9 +46,9 @@
 			var files = inputFile[0].files;
 			
 			//이거확인해볼 것  inputFile[0].files와 뭐가 다른지 
-			console.log(inputFile);
-			console.log(inputFile[0]);
-			console.log(inputFile[1]);
+			console.log(formData);
+			console.log("inputFile : " + inputFile);
+			console.log("inputFile[0]" + inputFile[0]);
 			console.log("무엇으로 찍히는지 궁금 : "+files);
 			
 			for(let i = 0; i<files.length; i++) {
@@ -62,6 +62,8 @@
 				//보내는것은 아래에 ajax를 통해서 보낸다. 
 				formData.append("uploadFiles", files[i]);
 			}
+			
+			console.log("실제데이터:" + formData);
 			$.ajax ({
 				url : contextPath + "/uploadAjaxActionReview",
 				type : "post",
