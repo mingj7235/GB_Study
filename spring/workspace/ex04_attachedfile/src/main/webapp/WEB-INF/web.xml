@@ -32,7 +32,6 @@
       	<max-request-size>41943040</max-request-size> <!-- 한번에 올릴 수 있는 최대 크기 (40m)-->
       	<file-zie-threshold>20971520</file-zie-threshold> <!-- 20mb 메모리 사용 -->
       </multipart-config>
-      
    </servlet>
       
    <servlet-mapping>
