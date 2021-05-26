@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>File Upload</title>
+<title>File Upload - Form</title>
 </head>
 <body>
 	<form action="uploadFormAction" method = "post" enctype="multipart/form-data">

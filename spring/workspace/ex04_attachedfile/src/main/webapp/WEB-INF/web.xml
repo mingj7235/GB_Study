@@ -27,7 +27,8 @@
       
       <!-- 파일 업로드 할수 있도록 설정  -->
       <multipart-config>
-      	<location>/Users/joshua/upload/temp</location>
+      	<!-- 되도록 Location의 경로는 파일 업로드 처리가 완료될 디렉토리 상으로 설정해주는 것이 좋다.  -->
+      	<location>/Users/joshua/upload/temp</location> <!-- 문제가 발생했을 때 파일이 저장되는 임시 경로 -->
       	<max-file-size>20971520</max-file-size> <!-- 업로드 되는 파일의 최대 크기(20m) -->
       	<max-request-size>41943040</max-request-size> <!-- 한번에 올릴 수 있는 최대 크기 (40m)-->
       	<file-zie-threshold>20971520</file-zie-threshold> <!-- 20mb 메모리 사용 -->
