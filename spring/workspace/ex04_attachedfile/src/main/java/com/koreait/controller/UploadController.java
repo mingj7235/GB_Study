@@ -29,6 +29,7 @@ public class UploadController {
 	}
 	
 	
+	
 	@PostMapping ("/uploadFormAction")
 	//외부에서 여러개의 파일이 전달될 수 있으므로 배열로 받는다. 
 	public void uploadFormPost (MultipartFile[] uploadFile) { //여러개를 파일을 받으므로 multipartfile의 배열 형태로 받는다
