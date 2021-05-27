@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.koreait.domain.AllFileDTO;
 import com.koreait.domain.AttachFileDTO;
 
 import lombok.extern.log4j.Log4j;
@@ -86,7 +87,7 @@ public class UploadController {
 	//첨부파일을할때는 자동으로 multipartfile로 들어가기때문에 consumes가 필요없다. 
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public ResponseEntity<List<AttachFileDTO>> uploadAjaxAction (MultipartFile[] uploadFile) {
+	public ResponseEntity<AllFileDTO> uploadAjaxAction (MultipartFile[] uploadFile) {
 		log.info("upload ajax post.....");
 		String uploadFolder = "/Users/joshua/upload";
 		
@@ -94,7 +95,10 @@ public class UploadController {
 		//사용자가 업로드를 한 시간인 년, 월, 일을 디렉토리로 만드는 getFolder()를 사용한다.
 		String uploadFolderPath = getFolder(); //연월일을 만든것임 
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
-		List<AttachFileDTO> list = new ArrayList<AttachFileDTO>();
+		
+		AllFileDTO allFile = new AllFileDTO();
+		List<AttachFileDTO> succeedlist = new ArrayList<AttachFileDTO>();
+		List<AttachFileDTO> failurelist = new ArrayList<AttachFileDTO>();
 		
 		//만약 해당 디렉토리가 존재하지 않으면 
 		if(!uploadPath.exists()) {
@@ -138,6 +142,7 @@ public class UploadController {
 				//파일이 이미지인지 검사 
 				if(checkImg(saveFile)) {
 					
+					
 					attachDTO.setImage(true); //이미지 인것을 확인하기위해 
 					
 					//Stream은 파일을 통신할 때 byte가 이동할 경로이다. 
@@ -156,13 +161,16 @@ public class UploadController {
 					Thumbnailator.createThumbnail(in, thumbnail, 100, 100);
 					thumbnail.close();
 				}
-				list.add(attachDTO);
+				succeedlist.add(attachDTO);
 				
 			} catch (Exception e) {
+				failurelist.add(attachDTO);
 				e.printStackTrace();
 			} 
 		}
-		return new ResponseEntity<List<AttachFileDTO>> (list, HttpStatus.OK);
+		allFile.setSucceedList(succeedlist);
+		allFile.setFailureList(failurelist);
+		return new ResponseEntity<AllFileDTO> (allFile, HttpStatus.OK);
 	}
 	
 	//파일경로를 날짜별로 변경하기 위해 만드는 내부에서 쓰이는 메소드
