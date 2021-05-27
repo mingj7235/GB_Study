@@ -1,0 +1,28 @@
+<script>
+$(function() {
+   $("#input-file").change(function(){
+        var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader) {return;} 
+        if (/^image/.test( files[0].type)){ 
+            var reader = new FileReader();
+            var text = "";
+            reader.readAsDataURL(files[0]); 
+            reader.onloadend = function(){ 
+             $('div .imagePreview').css("background-image", "url("+this.result+")");
+             $(".fa-plus").hide();
+             $("#default").show();
+            };
+        }
+    });
+});
+
+$("#default").on("click", function(e){
+   e.preventDefault();
+    $('div .imagePreview').css("background-image", "url('../../green/images/profile.jpg')");
+})
+
+
+</script>
+
+
+선생님의 소스 !!! 

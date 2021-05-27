@@ -18,10 +18,13 @@ import java.util.UUID;
 
 import javax.imageio.ImageIO;
 
+import org.apache.ibatis.javassist.compiler.ast.InstanceOfExpr;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -155,9 +158,6 @@ public class UploadController {
 					//Thumbnailator는 중간관리의 역할을 한다.
 					//스트림이 통로가 되어서 바이트가 이동한다.
 					
-					//BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(Files.readAllBytes(Paths.get(saveFile.getPath())));
-					//Builder builder = Thumbnails.of(originalImage).size(100,100);
-					
 					Thumbnailator.createThumbnail(in, thumbnail, 100, 100);
 					thumbnail.close();
 				}
@@ -171,6 +171,26 @@ public class UploadController {
 		allFile.setSucceedList(succeedlist);
 		allFile.setFailureList(failurelist);
 		return new ResponseEntity<AllFileDTO> (allFile, HttpStatus.OK);
+	}
+	
+	@GetMapping("/display")
+	@ResponseBody //REST 방식 
+	public ResponseEntity<byte[]> getFile (String fileName) {
+		log.info("fileName :"  + fileName);
+		File file = new File ("/Users/joshua/upload/" + fileName);
+		log.info("file : " + file);
+		
+		ResponseEntity<byte[]> result = null;
+		HttpHeaders header = new HttpHeaders();
+		
+		try {
+			//헤더에 적절한 파일의타입을 probeContentType을 통하여 포함시킨다. 
+			header.add("Content-Type", Files.probeContentType(file.toPath())); //content-type을 mime 타입으로 담는다. 
+			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file) ,header ,HttpStatus.OK); //이미지 파일 자체가 날아간다. 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	//파일경로를 날짜별로 변경하기 위해 만드는 내부에서 쓰이는 메소드
