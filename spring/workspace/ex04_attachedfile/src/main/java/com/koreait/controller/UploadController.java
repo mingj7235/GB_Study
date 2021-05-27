@@ -150,10 +150,10 @@ public class UploadController {
 					//Thumbnailator는 중간관리의 역할을 한다.
 					//스트림이 통로가 되어서 바이트가 이동한다.
 					
-					BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(Files.readAllBytes(Paths.get(saveFile.getPath())));
-					Builder builder = Thumbnails.of(originalImage).size(100,100);
+					//BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(Files.readAllBytes(Paths.get(saveFile.getPath())));
+					//Builder builder = Thumbnails.of(originalImage).size(100,100);
 					
-					//Thumbnailator.createThumbnail(in, thumbnail, 100, 100);
+					Thumbnailator.createThumbnail(in, thumbnail, 100, 100);
 					thumbnail.close();
 				}
 				list.add(attachDTO);
