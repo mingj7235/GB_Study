@@ -97,6 +97,7 @@ public class UploadController {
 		//폴더를 만들기위해서 쓰는 것이다. 
 		//사용자가 업로드를 한 시간인 년, 월, 일을 디렉토리로 만드는 getFolder()를 사용한다.
 		String uploadFolderPath = getFolder(); //연월일을 만든것임 
+		
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
 		
 		AllFileDTO allFile = new AllFileDTO();
@@ -136,7 +137,7 @@ public class UploadController {
 			
 			try {
 				File saveFile = new File(uploadPath, uploadFileName);//원본파일
-				multipartFile.transferTo(saveFile); //업로드 하고 나서 
+				multipartFile.transferTo(saveFile); //업로드 하게되면 이 이미지를 다시 가져와서 바이트로 변경시켜준다 뭘 통해서 ? inputStream !! 이걸 통해서 썸네일을 만드는것이다. 
 				InputStream in = new FileInputStream(saveFile); //썸네일에 넣기위해 업로드된 파일을 가져옴
 				
 				attachDTO.setUuid(uuid.toString());

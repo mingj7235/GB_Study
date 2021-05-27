@@ -49,7 +49,7 @@
 	    var uploadResult = $(".uploadResult ul");
 	    var uploadFail = $(".uploadFail ul");
 	    var cloneObj = $(".uploadDiv").clone();
-	    
+	    									  //성공할지, 실패할지를 tag를 사용하는 쪽에서 가지고와서 꽂아줌 	
 	    function showUploadFile(uploadResults, tag){ //ajax success 부분에서 사용됨 
 	       str = "";
 	       $(uploadResults).each(function(i, obj){ //obj는 각각의 파일정보
