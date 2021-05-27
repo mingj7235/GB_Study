@@ -1,0 +1,58 @@
+JPA(Java Persistence API)
+
+*JDBC API와 SQL
+               SQL   
+   자바 애플리케이션(JDBC API)   --->      DB
+               <---
+               결과
+
+[SQL을 직접 다룰 때 발생하는 문제점]
+1. 반복되는 작업
+   - SQL 작성
+   - JDBC API를 사용해서 SQL 실행
+   - 조회 결과를 모델 객체에 대입
+
+   객체를 DB에 CRUD하기 위해서는 굉장히 많은 SQL과 JDBC API를 코드로 작성해야 한다.
+   테이블마다 이런 비슷한 일을 계속 반복해야 한다.
+
+2. SQL에 의존적인 개발
+   각 객체를 사용 여부는 SQL에 따라 변할 수 있다.
+   항상 DAO에서 SQL이 실행되는 지를 확인해야 한다.
+
+3. JPA로 해결
+   객체를 DB에 저장하고 관리할 때, 개발자가 직접 SQL을 작성하지 않고
+   JPA가 제공하는 API를 사용한다. JPA에서 제공하는 메소드를 호출하면
+   적절한 SQL을 생성하여 DB에 전달해 준다.
+
+   -저장
+      jpa.persist(member);
+      해당 객체를 DB에 저장한다. 
+
+      INSERT SQL을 생성하여 DB에 전달해준다.
+
+   -조회
+      String memberId = "hds";
+      Member member = jpa.find(Member.class, memberId);
+      
+      매핑 정보를 확인 후 적절한 SELECE SQL을 생성하여 DB에 전달하고
+      그 결과를 Member객체로 전달한다.
+
+   -수정
+      Member member = jpa.find(Member.class, memberId);
+      member.setName("새로운 이름");
+
+      객체 조회 후 값을 변경하면 UPDATE SQL이 DB에 전달된다.
+
+
+   -연관된 객체 조회 (fk로 묶여있는것)
+      Member member = jpa.find(Meber.class, memberId);
+      Team team = member.getTeam();
+
+      연관된 객체를 사용할 때 적절한 SELECT SQL을 실행한다.
+
+[패러다임 불일치]
+   애플리케이션은 자바라는 객체지향 언어로 개발하고, 데이터는 관계형 데이터베이스에
+   저장한다면, 서로 표현 방법이 다르기 때문에 직접 연결될 수 없다. 이것을
+   패러다임 불일치라고 말한다. 이러한 패러다임 불일치를 개발자가 중간에서
+   해결해야 하지만 너무 많은 시간과 코드를 소비하게 된다.
+   객체지향의 표현방식과 관계형 데이터베이스 표현방식이 달라서 데이터 관리 방식이 불일치하다.

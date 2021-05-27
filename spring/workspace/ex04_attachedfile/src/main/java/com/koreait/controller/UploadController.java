@@ -1,18 +1,38 @@
 package com.koreait.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
+import javax.imageio.ImageIO;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.koreait.domain.AttachFileDTO;
+
 import lombok.extern.log4j.Log4j;
+import net.coobird.thumbnailator.Thumbnailator;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.Thumbnails.Builder;
 
 @Controller
 @Log4j
@@ -46,6 +66,8 @@ public class UploadController {
 			log.info("업로드 파일 명 : "  + multipartFile.getOriginalFilename());
 			log.info("업로드 파일 크기 " + multipartFile.getSize());
 			
+		
+			
 			//파일을 업로드하기위해서 File 타입의 객체를 선언해야한다. 
 			//경로와, 파일의 이름을 File 객체에 담아주고,
 			//전체 경로를 File 객체에 담아준다. 
@@ -61,14 +83,18 @@ public class UploadController {
 		}
 	}
 	
-	@PostMapping("/uploadAjaxAction")
-	public void uploadAjaxAction (MultipartFile[] uploadFile) {
+	//첨부파일을할때는 자동으로 multipartfile로 들어가기때문에 consumes가 필요없다. 
+	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<AttachFileDTO>> uploadAjaxAction (MultipartFile[] uploadFile) {
 		log.info("upload ajax post.....");
 		String uploadFolder = "/Users/joshua/upload";
 		
 		//폴더를 만들기위해서 쓰는 것이다. 
-		//사용자가 업로드를 한 시간인 년, 월, 일을 디렉토리로 만드는 getFolder()를 사용한다.  
-		File uploadPath = new File(uploadFolder, getFolder());
+		//사용자가 업로드를 한 시간인 년, 월, 일을 디렉토리로 만드는 getFolder()를 사용한다.
+		String uploadFolderPath = getFolder(); //연월일을 만든것임 
+		File uploadPath = new File(uploadFolder, uploadFolderPath);
+		List<AttachFileDTO> list = new ArrayList<AttachFileDTO>();
 		
 		//만약 해당 디렉토리가 존재하지 않으면 
 		if(!uploadPath.exists()) {
@@ -82,12 +108,17 @@ public class UploadController {
 			log.info("업로드 파일 명 : "  + multipartFile.getOriginalFilename());
 			log.info("업로드 파일 크기 " + multipartFile.getSize());	
 			
+			AttachFileDTO attachDTO = new AttachFileDTO();
+			
 			String uploadFileName = multipartFile.getOriginalFilename();
 			//IE에서는 파일 이름만 가져오지 않고 전체 경로를 가져오기 때문에 마지막에 위치한 파일 이름만 가져오도록 한다.
 			//IE이외의 브라우저에서는 \\가 없기 때문에 -1 + 1 로 연산되어 0번째, 즉 파일이름을 의미한다. 
 			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("/")+1);
 			
 			log.info("실제 파일 명 : " + uploadFileName);
+			
+			//모델객체에 파일이름을 담기
+			attachDTO.setFileName(uploadFileName);
 			
 			//랜덤한 UUID를 담아 놓는다.
 			UUID uuid = UUID.randomUUID(); //340간개... 개많음 ㅋㅋㅋㅋㅋㅋㅋ
@@ -96,13 +127,42 @@ public class UploadController {
 			//덮어씌워지는 것을 방지한다. 
 			uploadFileName = uuid.toString() + "_" + uploadFileName; //중복을 피하기 위해 파일 이름앞에 uuid를 붙인다. 
 			
-			File saveFile = new File(uploadPath, uploadFileName);
 			try {
-				multipartFile.transferTo(saveFile);
+				File saveFile = new File(uploadPath, uploadFileName);//원본파일
+				multipartFile.transferTo(saveFile); //업로드 하고 나서 
+				InputStream in = new FileInputStream(saveFile); //썸네일에 넣기위해 업로드된 파일을 가져옴
+				
+				attachDTO.setUuid(uuid.toString());
+				attachDTO.setUploadPath(uploadFolderPath);
+				
+				//파일이 이미지인지 검사 
+				if(checkImg(saveFile)) {
+					
+					attachDTO.setImage(true); //이미지 인것을 확인하기위해 
+					
+					//Stream은 파일을 통신할 때 byte가 이동할 경로이다. 
+					
+					//이미지라면 섬네일 만들기 ! 
+					FileOutputStream thumbnail = new FileOutputStream(new File (uploadPath, "s_" + uploadFileName)); //얘도 바이트로 다시 전달하는 통
+					
+					//사용자가 첨부한 파일은 multipart에 담겨있으므로 이걸 통해서 가져오고, (첫번째 매개변수)
+					//원하는 w, h를 지정한 후 변경된 이미지 파일을 FileOutPutStream 객체를 통해 (thumbnail) 업로드한다. (두번째 매개변수)
+					//Thumbnailator는 중간관리의 역할을 한다.
+					//스트림이 통로가 되어서 바이트가 이동한다.
+					
+					BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(Files.readAllBytes(Paths.get(saveFile.getPath())));
+					Builder builder = Thumbnails.of(originalImage).size(100,100);
+					
+					//Thumbnailator.createThumbnail(in, thumbnail, 100, 100);
+					thumbnail.close();
+				}
+				list.add(attachDTO);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
 		}
+		return new ResponseEntity<List<AttachFileDTO>> (list, HttpStatus.OK);
 	}
 	
 	//파일경로를 날짜별로 변경하기 위해 만드는 내부에서 쓰이는 메소드
@@ -121,7 +181,8 @@ public class UploadController {
 		//즉, 파일을 전달한것의 타입이 무엇이니1? 물어보는것인데, 이게 image니!? 라고 물어보는 것임 
 		
 		//사용자가 업로드한 파일의 타입 중앞부분이 image로 시작한다면 이미지 파일이다. 
-		return Files.probeContentType(file.toPath()).startsWith("image"); 
+		//MIME 
+		return Files.probeContentType(file.toPath()).startsWith("image"); //이미지라면 true. 즉 섬네일을 만들야한다.  
 	}
 	
 }

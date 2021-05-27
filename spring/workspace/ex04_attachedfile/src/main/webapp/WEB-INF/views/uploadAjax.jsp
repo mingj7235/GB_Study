@@ -11,6 +11,11 @@
 	<div class = "uploadDiv">
 		<input type="file" name="uploadFile" multiple>
 	</div>
+	
+	<div class="uploadResult">
+		<ul></ul>
+	</div>
+	
 	<button id="uploadBtn">upload</button>
 </body>
 
@@ -18,6 +23,18 @@
 <script>
 	$(document).ready(function(){
 		var contextPath = "${pageContext.request.contextPath}";
+		var uploadResult = "$(.uploadResult ul)";
+		var cloneObj = $(".uploadDiv").clone();
+		
+		function showUploadFile (uploadResults) { //업로드된 파일들을 매개벼수로 받는다.  //이 함수는 ajax의 success에서 사용된다. 
+			str = "";
+			$(uploadResults).each(function(i, obj){
+				str += "<li>"+ obj.fileName +"</li>";
+			}) 
+			
+			uploadResult.append(str); //html이 아니라 append를 써야한다. 덧붙여써야함 
+		}
+		
 		
 		//첨부파일 확장자, 사이즈 제한
 		function check (fileName, fileSize) {
@@ -57,8 +74,11 @@
 				contentType: false,// processData와 contentType을 false로주는건 디폴트 값도 안쓰겠다는 것임 
 				data : formData,
 				type : "post",
+				dataType : "json", //받아온 데이터의 타입 
 				success : function (result) {
-					alert("Uploaded!");
+					console.log(result);
+					showUploadFile(result);
+					$(".uploadDiv").html(cloneObj.html()); //이 부분은 초기화 해준다. 
 				}
 			});
 			
