@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -249,7 +250,34 @@ public class UploadController {
 				
 	}
 	
-	
+	@PostMapping ("/deleteFile")
+	@ResponseBody
+	public ResponseEntity<String> deleteFile(String fileName, String type) {
+		log.info("deleteFile:" + fileName);
+		File file = null;
+		//encode : 헤더에 담은 데이터에 명령어로 인식될 수 있거나 특수문자 등이 포함되어 있을 때에는 
+		//		해당 문자에 대한 코드번호로 대체하는 작업 
+		// 	\\ ----> %2F : encoding
+		//  %2F ----> \\ : decoding 
+		try {
+			file = new File("/Users/joshua/upload/" + URLDecoder.decode(fileName, "UTF-8"));
+			file.delete();
+			
+			if(type.equals("image")) {
+				
+				//서버 디렉토리 설정시 "s_" 피해주세요. 라고 만들면 된다. 
+				String imgFileName = file.getPath().replace("s_", ""); //fileName에 들어올때 썸네일로 들어오므로, s_를빼줘서 원본파일도 지워준다.
+				file = new File(imgFileName);
+				file.delete();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String> (HttpStatus.NOT_FOUND);
+		} 
+		
+		return new ResponseEntity<String> ("deleted", HttpStatus.OK);
+	}
 	
 	//파일경로를 날짜별로 변경하기 위해 만드는 내부에서 쓰이는 메소드
 	private String getFolder () {
