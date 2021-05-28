@@ -20,6 +20,11 @@
 		list-style: none;
 		padding : 10px;
 	}
+	.bigPicture {
+		text-align: center;
+	}
+	
+	
 </style>
 </head>
 <body>
@@ -35,6 +40,13 @@
 	
 	<button id="uploadBtn">upload</button>
 	
+	<div class="bigPictureWrapper">
+		<div class="bigPicture"></div>
+		
+	</div>
+	
+	
+	
 	<div class="uploadFail" style="display : none;"><!-- 실패한 파일이 올라감 -->
 		<h3>가져오기 실패한 파일 </h3>
 		<h2>지원하지 않는 형식입니다.</h2>
@@ -44,11 +56,37 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+	
+	var check = false; //애니메이션이 실행중인지 체크하는 변수
+	
+	//이미지를 애니메이션을 크게만드는 
+	function showImage (fileCallPath) {
+		//alert(originPath);
+		if (check) {return;}
+		$(".bigPictureWrapper").css("display", "flex").show();
+		
+		$(".bigPicture").html("<img src='/upload/display?fileName="+ encodeURIComponent(fileCallPath) +"'>")
+		.animate({width: "100%", height: "100%"}, 1000);
+		check = true;
+	}
+    //애니메이션 : 사진을 확대 후에 다시 닫는 이벤트
+	$(".bigPictureWrapper").on("click", function (e){
+		//조건
+		if(!check) {return;}
+		$(".bigPicture").animate({width: "0%", height: "0%"}, 1000);
+		setTimeout(function(){
+			check = false;
+			$(".bigPictureWrapper").hide();
+		}, 1000);
+	});
+
+
 	$(document).ready(function(){
 	    var contextPath = "${pageContext.request.contextPath}";
 	    var uploadResult = $(".uploadResult ul");
 	    var uploadFail = $(".uploadFail ul");
 	    var cloneObj = $(".uploadDiv").clone();
+		
 	    									  //성공할지, 실패할지를 tag를 사용하는 쪽에서 가지고와서 꽂아줌 	
 	    function showUploadFile(uploadResults, tag){ //ajax success 부분에서 사용됨 
 	       str = "";
@@ -66,10 +104,12 @@
 	    		  //그런데 url 인코딩이 필요하다. (encodeURIComponenent 사용할것 ) 
 	    		  //encodeURIComponent("문자열") : get방식으로 전송시 파라미터로 전달할 때, 값에 인식할 수 없는 문자가 있을 경우 쿼리 스트링 문법에 맞게 변경해야 한다.
 	    		  //이 때사용하는메소드이다. 
-	    		  var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
-					
+	    		  var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName); //썸네일 이미지
+	    		  var originPath = obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName;
+				  originPath = originPath.replace(new RegExp(/\\/g), "/"); // \\대신에 / 를 넣겟다는 것임 	
 	    		  //컨트롤러에 display로 요청하여 매핑. get방식이므로 fileName에 fileCallPath를 전달한다. 
-	    		  str += "<li><img src='/upload/display?fileName=" + fileCallPath + "'>" + obj.fileName + "</li>";
+	    		  // \를 사용하는 것은 '와 "를 사용하기 위함이다 
+	    		  str += "<li><a href = \"javascript:showImage(\'"+ originPath +"\')\"><img src='/upload/display?fileName=" + fileCallPath + "'>" + obj.fileName + "</li>";
 	    	  }
 	       })
 	       $(tag).append(str); //html이 아니라 append하는 것은 덮어쓰는게 아니라 계속 밑에 추가하기 위해서임
