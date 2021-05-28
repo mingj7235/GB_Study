@@ -140,11 +140,11 @@ public class UploadController {
 			//파일이름이 중복되더라도 이름 앞에 UUID를 붙여주기 때문에 중복될 가능성이 희박하다.
 			//덮어씌워지는 것을 방지한다. 
 			uploadFileName = uuid.toString() + "_" + uploadFileName; //중복을 피하기 위해 파일 이름앞에 uuid를 붙인다. 
-			
+			InputStream in = null;
 			try {
 				File saveFile = new File(uploadPath, uploadFileName);//원본파일
 				multipartFile.transferTo(saveFile); //업로드 하게되면 이 이미지를 다시 가져와서 바이트로 변경시켜준다 뭘 통해서 ? inputStream !! 이걸 통해서 썸네일을 만드는것이다. 
-				InputStream in = new FileInputStream(saveFile); //썸네일에 넣기위해 업로드된 파일을 가져옴
+				in = new FileInputStream(saveFile); //썸네일에 넣기위해 업로드된 파일을 가져옴
 				
 				attachDTO.setUuid(uuid.toString());
 				attachDTO.setUploadPath(uploadFolderPath);
@@ -173,7 +173,18 @@ public class UploadController {
 			} catch (Exception e) {
 				failurelist.add(attachDTO);
 				e.printStackTrace();
-			} 
+			} finally {
+				
+				//inputstream 을 닫아준다. 닫아야한다. 
+				try {
+					if (in != null) {
+						in.close();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					throw new RuntimeException();
+				}
+			}
 		}
 		allFile.setSucceedList(succeedlist);
 		allFile.setFailureList(failurelist);
@@ -250,10 +261,10 @@ public class UploadController {
 				
 	}
 	
-	@PostMapping ("/deleteFile")
+	@PostMapping (value = "/deleteFile", produces = "text/plain; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<String> deleteFile(String fileName, String type) {
-		log.info("deleteFile:" + fileName);
+	public ResponseEntity<String> deleteFile(String fileName, String type) throws UnsupportedEncodingException{
+		log.info("deleteFile(from Ajax):" + fileName);
 		File file = null;
 		//encode : 헤더에 담은 데이터에 명령어로 인식될 수 있거나 특수문자 등이 포함되어 있을 때에는 
 		//		해당 문자에 대한 코드번호로 대체하는 작업 
@@ -261,12 +272,14 @@ public class UploadController {
 		//  %2F ----> \\ : decoding 
 		try {
 			file = new File("/Users/joshua/upload/" + URLDecoder.decode(fileName, "UTF-8"));
+			log.info("deleteThumbFile:" + file);
 			file.delete();
 			
 			if(type.equals("image")) {
 				
 				//서버 디렉토리 설정시 "s_" 피해주세요. 라고 만들면 된다. 
 				String imgFileName = file.getPath().replace("s_", ""); //fileName에 들어올때 썸네일로 들어오므로, s_를빼줘서 원본파일도 지워준다.
+				log.info("deleteFileOrigin:" + imgFileName);
 				file = new File(imgFileName);
 				file.delete();
 			}
@@ -276,7 +289,7 @@ public class UploadController {
 			return new ResponseEntity<String> (HttpStatus.NOT_FOUND);
 		} 
 		
-		return new ResponseEntity<String> ("deleted", HttpStatus.OK);
+		return new ResponseEntity<String> (new String("삭제되었습니다.".getBytes(),"UTF-8"), HttpStatus.OK);
 	}
 	
 	//파일경로를 날짜별로 변경하기 위해 만드는 내부에서 쓰이는 메소드

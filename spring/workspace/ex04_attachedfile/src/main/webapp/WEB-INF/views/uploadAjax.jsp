@@ -135,6 +135,7 @@
 	    	//data 속성을 이렇게 가지고와서 활용한다. 
 	    	var targetFile = $(this).data("file");
 	    	var type = $(this).data("type");
+	    	var li = $(this).parents("li");
 	    	console.log(targetFile);
 	    	
 	    	//x버튼 눌렀을 때 
@@ -146,7 +147,9 @@
 	    		success : function (result) {
 	    			alert(result);
 	    			//closest는 가장 가까운 태그를 찾아준다.
-	    			$(this).parent().parent().remove();
+	    			//$(this).closest("li").remove()
+	    			//$(this).parent().parent().remove();
+	    			li.remove();
 	    		}
 	    		
 	    	})
