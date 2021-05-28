@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,6 +20,8 @@ import java.util.UUID;
 import javax.imageio.ImageIO;
 
 import org.apache.ibatis.javassist.compiler.ast.InstanceOfExpr;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -193,6 +196,30 @@ public class UploadController {
 		}
 		return result;
 	}
+	
+	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE) //8진수로 보내야한다. 
+	@ResponseBody
+	public ResponseEntity<Resource> downloadFile (String fileName) {
+		log.info("download file : " + fileName);
+		Resource resource = new FileSystemResource("/Users/joshua/upload/" + fileName);
+		log.info("resource : "  + resource);
+		
+		String resourceName = resource.getFilename(); //헤당 파일의 이름을 가져오기
+		HttpHeaders headers = new HttpHeaders();
+		try {
+			//다운로드시 저장되는 이름 : Content-Disposition 키값 !! 
+			//new String (byte[], charset) -> 인코딩을 바꾸기위해서는 바이트배열이 들어가야한다. : 해당 바이트배열을 charset으로 인코딩한다.
+			//getBytes(charset) ; 해당 문자열을 charset으로 변경하기 위해 byte배열로 리턴한다. 
+			headers.add("Content-Disposition", "attachment; filename =" + new String (resourceName.getBytes("UTF-8"), "ISO-8859-1"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+				//매개변수 3개 !! 
+		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
+				
+	}
+	
+	
 	
 	//파일경로를 날짜별로 변경하기 위해 만드는 내부에서 쓰이는 메소드
 	private String getFolder () {
