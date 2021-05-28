@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -30,6 +31,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -199,18 +201,46 @@ public class UploadController {
 	
 	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE) //8진수로 보내야한다. 
 	@ResponseBody
-	public ResponseEntity<Resource> downloadFile (String fileName) {
+																	//user-agent 는 헤더에 담겨서 오는 브라우저의 정보다!!
+																	//@requestHeader는 헤더에 담겨져있는 것중에서 user-agent를 가져오라는것이다. 
+	public ResponseEntity<Resource> downloadFile (String fileName, @RequestHeader("User-Agent") String userAgent) { //매개변수 역시 uri로 매핑된다. !!!! 그래서 ?fileName=요렇게 요청!!
 		log.info("download file : " + fileName);
 		Resource resource = new FileSystemResource("/Users/joshua/upload/" + fileName);
 		log.info("resource : "  + resource);
 		
 		String resourceName = resource.getFilename(); //헤당 파일의 이름을 가져오기
+		String originalName = resourceName.substring(resourceName.indexOf("_")+1);
+		
 		HttpHeaders headers = new HttpHeaders();
+
 		try {
+			String downloadName = null;
+			
+			log.info(userAgent);
+			
+			if (userAgent.contains("Trident")) {
+				//Tredent : 인터넷 익스플로어
+				log.info("IE browser");
+																	// "\\"를 공백으로 변환해줘야한다. 인터넷익스플로어는 똥이다
+//				downloadName = URLEncoder.encode(resourceName, "UTF-8").replace("\\", " ");
+				downloadName = URLEncoder.encode(originalName, "UTF-8");
+				
+			}else if (userAgent.contains("Edg")) {
+				//Edg : 엣지
+				log.info("Edg");
+				downloadName = URLEncoder.encode(originalName, "UTF-8");
+				
+			}else {
+				//그외 즉, 크롬등 
+				
+				log.info("Chrome");
+				//new String (byte[], charset) -> 인코딩을 바꾸기위해서는 바이트배열이 들어가야한다. : 해당 바이트배열을 charset으로 인코딩한다.
+				//getBytes(charset) ; 해당 문자열을 charset으로 변경하기 위해 byte배열로 리턴한다.
+				downloadName = new String(originalName.getBytes("UTF-8"), "ISO-8859-1");
+			}
+			
 			//다운로드시 저장되는 이름 : Content-Disposition 키값 !! 
-			//new String (byte[], charset) -> 인코딩을 바꾸기위해서는 바이트배열이 들어가야한다. : 해당 바이트배열을 charset으로 인코딩한다.
-			//getBytes(charset) ; 해당 문자열을 charset으로 변경하기 위해 byte배열로 리턴한다. 
-			headers.add("Content-Disposition", "attachment; filename =" + new String (resourceName.getBytes("UTF-8"), "ISO-8859-1"));
+			headers.add("Content-Disposition", "attachment; filename =" + downloadName);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}

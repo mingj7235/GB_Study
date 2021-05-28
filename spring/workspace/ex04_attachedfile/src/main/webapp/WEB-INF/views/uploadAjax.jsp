@@ -54,8 +54,13 @@
 	       str = "";
 	       $(uploadResults).each(function(i, obj){ //obj는 각각의 파일정보
 	    	  if(!obj.image) { //attachFileDTO의 속성중 boolean 타입의 image
+	    		  
+	    		  var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
+	    		  
+	    	  		console.log(fileCallPath);
 	    		  					//module에 있는 루트 경로 upload
-	    		  str += "<li><img src='/upload/resources/img/attach.png'>" + obj.fileName + "</li>"; //이미지가 아닐경우 디폴트 이미지를 넣을 것
+	    		  							//파일이 다운로드!!! 된드아아아!! 즉, 이미지가 아닐경우는 다운로드! 
+	    		  str += "<li><a href='/upload/download?fileName=" + fileCallPath +"'><img src='/upload/resources/img/attach.png'>" + obj.fileName + "</a></li>"; //이미지가 아닐경우 디폴트 이미지를 넣을 것
 	    	  } else {
 	    		  //썸네일의 파일 경로를 가져옴
 	    		  //그런데 url 인코딩이 필요하다. (encodeURIComponenent 사용할것 ) 
