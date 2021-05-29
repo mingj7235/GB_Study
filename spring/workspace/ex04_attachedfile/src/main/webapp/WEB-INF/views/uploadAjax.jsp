@@ -136,6 +136,7 @@
 	    	var targetFile = $(this).data("file");
 	    	var type = $(this).data("type");
 	    	var li = $(this).parents("li");
+	    	//var li = $(this).closest("li"); 이것도됨 
 	    	console.log(targetFile);
 	    	
 	    	//x버튼 눌렀을 때 

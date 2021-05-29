@@ -187,7 +187,7 @@ Lombok 라이브러리 설치
 	이후에 이클립스를 닫고 터미널 실행 -> eclipse의 경로를 넣어준다. -> update -> quit -> 터미널 끝
 
    https://projectlombok.org/download
-   cmd창 열기 > java -jar [다운받은 .jar파일 드래그 앤 드롭] >
+   cmd창 열기 > java -jar [다운받은 .jar파일 드래그 앤 드롭] > 
    specify   location클릭 후 eclipse.exe경로로 설정 >
    install 클릭 > 끝
 
