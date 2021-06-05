@@ -11,8 +11,10 @@ public class CallbyReference {
 		ref_a.age = 10;
 		ref_b.age = 20;
 		
+		
 		System.out.println(ref_a.age);
 		System.out.println(ref_b.age);
+		ref_a = null;
 		
 		System.out.println(ref_a);
 		System.out.println(ref_b);
