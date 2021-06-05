@@ -21,5 +21,10 @@ public class Driver {
 		
 		//Penguin happy = new Animal (); 불가 
 		
+		
+		Animal test = new Animal();
+		
+		test.showName();
+		
 	}
 }

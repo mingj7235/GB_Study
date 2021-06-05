@@ -9,7 +9,7 @@ public class Penguin extends Animal{
 	
 	@Override
 	public void showName() {
-		System.out.println("엄허\n");
+		System.out.println("오버라이딩 엄허\n");
 	}
 	
 	
