@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<context:annotation-config/>
+	
+	<!-- 상품 등록하기 -->
+	
+	<!--  <bean id ="tire" class="expert004.KoreaTire"></bean> -->
+	
+	<!-- <bean id="americaTire" class="expert004.AmericaTire"></bean> -->
+	<bean class="expert004.AmericaTire"></bean>
+	<!-- @Autowired는 id속성을 찾아서 연결시켜주는 줄 알았는데 이렇게 해도 정상 작동한다. 왤ㄲ? 
+		답은 인터페이스에 있다. 
+	-->
+	
+	<bean id="car" class="expert004.Car"></bean>
+	<!-- car의 property가사라진 이유 : @Autowired를 통해 car의 property를 자동으로 엮어 줄수있다.
+	즉, 자동 의존성 주입이 되는 것이다.  -->
+
+</beans>
