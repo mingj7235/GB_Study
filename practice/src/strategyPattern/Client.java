@@ -1,5 +1,7 @@
 package strategyPattern;
 
+import java.util.Iterator;
+
 public class Client {
 	public static void main(String[] args) {
 //		Strategy strategy = null;
@@ -19,13 +21,42 @@ public class Client {
 //		rambo.runContext(strategy);
 				
 		
-		Soldier rambo = new Soldier();
+//		Soldier rambo = new Soldier();
+//		
+//		rambo.runContext("stratege", "practice");
+//		
+//		for (int i = 1; i < 10; i++) {
+//			for (int j = 1; j < 10; j++) {
+//				int result = i * j ;
+//				System.out.println(i + "x" + j + "=" + result);
+//			}
+//		}
 		
-		rambo.runContext("총입니다 \n");
-		rambo.runContext("활입니다 \n");
-		rambo.runContext("도끼입니다 \n");
+		
+//		for(int i = 1; i < 10; i ++) {
+//			System.out.print(" ");
+//			for (int j = 10; j > i ; j --) {
+//				System.out.print("*");
+//			}
+//			System.out.println();
+//		}
+		
+//		for(int i = 1; i < 10; i ++) {
+//			System.out.print("*");
+//			for (int j = 1; j < i ; j ++) {
+//				System.out.print("*");
+//			}
+//			System.out.println();
+//		}
 		
 		
+		for (int i=1 ; i < 10 ; i ++) {
+			for (int j = 10 ; j > i ; j --) {
+				System.out.print(j);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
 		
 	}
 }
