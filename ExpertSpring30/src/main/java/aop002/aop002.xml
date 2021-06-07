@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<aop:aspectj-autoproxy/> <!-- proxy패턴을 이용해 횡단관심사를 핵심관심사에 주입하는 것  
+	즉, 결국은 스프링에게 AOP프록시를 사용하라고 알려주는 지시자다. auto가 붙었으니 자동으로 하라는 말임 -->
+	
+	<bean id="myAspect" class="aop002.MyAspect"/>
+	<bean id="boy" class="aop002.Boy"/>
+	<bean id="girl" class="aop002.Girl"/>
+	
+	<!-- POJO 형식으로 AOP 구현 할때 쓰는 태그  -->
+	<aop:config>
+		<aop:aspect ref="myAspect">
+			<aop:before method="before" pointcut="execution (* runSomething())"/>		
+		</aop:aspect>
+	</aop:config>
+</beans>

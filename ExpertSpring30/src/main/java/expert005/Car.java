@@ -3,9 +3,14 @@ package expert005;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class Car {
-	@Resource
+	@Autowired
+	@Qualifier("tire1")
 	Tire tire;
+	//@Resource (name = "tire1")
 	
 //	public Tire getTire() {
 //		return tire;

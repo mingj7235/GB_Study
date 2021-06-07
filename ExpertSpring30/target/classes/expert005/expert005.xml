@@ -10,10 +10,10 @@
 	
 	<!-- 상품 등록하기 -->
 	
-	<!--  <bean id ="tire" class="expert004.KoreaTire"></bean> -->
+	 <bean id ="tire1" class="expert005.KoreaTire"></bean> 
 	
 	<!-- <bean id="americaTire" class="expert004.AmericaTire"></bean> -->
-	<bean class="expert005.AmericaTire"></bean>
+	<bean id ="tire2" class="expert005.AmericaTire"></bean>
 	
 	<bean id="car" class="expert005.Car"></bean>
 
